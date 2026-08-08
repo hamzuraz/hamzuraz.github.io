@@ -1,5 +1,7 @@
 ---
 import "$/styles/global.css";
+import Footer from "$/components/Footer.astro";
+import Header from "$/components/Header.astro";
 ---
 
 <!doctype html>
@@ -7,12 +9,16 @@ import "$/styles/global.css";
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
 		<title>Rifki Muhazzar</title>
+		<script is:inline src="/src/scripts/initTheme.ts"></script>
 	</head>
-	<body class="bg-primary-stone-200">
+	<body class="bg-primary-stone-200 dark:bg-primary-stone-950">
+		<Header />
 		<slot />
+		<Footer />
+		<script src="$/scripts/changeTheme.ts"></script>
 	</body>
 </html>

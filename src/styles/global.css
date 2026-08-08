@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
 	/* Primary */
 	--color-primary-stone-50: oklch(98.5% 0.001 106.423);
