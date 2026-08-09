@@ -1,11 +1,17 @@
-interface Storage { theme: string }
+export { };
+
+declare global {
+	interface Storage {
+		theme: string;
+	}
+}
 
 const themeSelect = document.getElementById("themeSelect");
-const theme = localStorage.theme
+const theme = localStorage.theme;
 
 if (theme === "light" || theme === "dark") {
 	if (themeSelect instanceof HTMLSelectElement) {
-		themeSelect.value = theme
+		themeSelect.value = theme;
 	}
 }
 
@@ -20,7 +26,7 @@ function getValueInLocalStorage() {
 function changeTheme(value: string) {
 	if (value === "system") {
 		localStorage.removeItem("theme");
-		document.documentElement.dataset.theme = getValueInLocalStorage()
+		document.documentElement.dataset.theme = getValueInLocalStorage();
 	} else if (value === "light") {
 		document.documentElement.dataset.theme = "light";
 		localStorage.theme = "light";
