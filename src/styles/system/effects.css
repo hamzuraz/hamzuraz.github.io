@@ -1,0 +1,77 @@
+/* Box Shadows */
+@theme {
+	/* Flat: neutral state with no visible shadow */
+	--shadow-off: 0 0 #0000;
+
+	/* Standard Shadow (elevation) */
+	--shadow-2xs: 0 1px rgb(0 0 0 / 0.05);
+	--shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg:
+		0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-xl:
+		0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+	--shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+
+	/* Raised Shadows (convex surfaces) */
+	--shadow-raised-sm:
+		2px 2px 4px rgb(0 0 0 / 0.12), -2px -2px 4px rgb(255 255 255 / 0.7);
+	--shadow-raised-md:
+		4px 4px 8px rgb(0 0 0 / 0.15), -4px -4px 8px rgb(255 255 255 / 0.75);
+	--shadow-raised-lg:
+		8px 8px 16px rgb(0 0 0 / 0.18), -8px -8px 16px rgb(255 255 255 / 0.8);
+
+	/* Inset Shadows (concave surfaces) */
+	--inset-shadow-2xs: inset 0 1px rgb(0 0 0 / 0.05);
+	--inset-shadow-xs: inset 0 1px 1px rgb(0 0 0 / 0.05);
+	--inset-shadow-sm:
+		inset 2px 2px 4px rgb(0 0 0 / 0.12),
+		inset -2px -2px 4px rgb(255 255 255 / 0.7);
+	--inset-shadow-md:
+		inset 4px 4px 8px rgb(0 0 0 / 0.15),
+		inset -4px -4px 8px rgb(255 255 255 / 0.75);
+	--inset-shadow-lg:
+		inset 8px 8px 16px rgb(0 0 0 / 0.18),
+		inset -8px -8px 16px rgb(255 255 255 / 0.8);
+
+	/* Pressed Inset Shadows */
+	--inset-shadow-pressed-sm:
+		inset -2px -2px 4px rgb(255 255 255 / 0.7),
+		inset 2px 2px 4px rgb(0 0 0 / 0.15);
+	--inset-shadow-pressed-md:
+		inset -4px -4px 8px rgb(255 255 255 / 0.7),
+		inset 4px 4px 8px rgb(0 0 0 / 0.15);
+}
+
+/* Opacity */
+@theme {
+	/* Disabled or visually de-emphasized elements */
+	--opacity-disabled: 0.38;
+
+	/* Scrim behind modals, dialogs, and drawers */
+	--opacity-scrim: 0.5;
+
+	/* Surface-tint overlays that follow the elevation level (dark-theme friendly) */
+	--opacity-overlay-1: 0.05;
+	--opacity-overlay-2: 0.07;
+	--opacity-overlay-3: 0.08;
+	--opacity-overlay-4: 0.09;
+	--opacity-overlay-6: 0.11;
+	--opacity-overlay-8: 0.12;
+	--opacity-overlay-12: 0.14;
+	--opacity-overlay-16: 0.15;
+	--opacity-overlay-24: 0.16;
+}
+
+/* Glassmorphism */
+@theme {
+	/* opacity-*, blur[-*], backdrop-blur[-*] */
+	--opacity-glass: 0.6;
+	--blur-glass: 12px;
+}
+
+@utility glass {
+	background: oklch(100% 0 0 / var(--opacity-glass));
+	backdrop-filter: blur(var(--blur-glass));
+}
