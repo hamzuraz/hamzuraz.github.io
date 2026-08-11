@@ -39,6 +39,7 @@
 	--color-gray-950: oklch(12.9% 0.042 264.695);
 
 	/* Semantic */
+	--color-semantic-neutral-500: oklch(55.6% 0 none);
 	--color-semantic-green-500: oklch(72.3% 0.219 149.579);
 	--color-semantic-yellow-500: oklch(79.5% 0.184 86.047);
 	--color-semantic-red-500: oklch(63.7% 0.237 25.331);

@@ -12,7 +12,36 @@ import Header from "$/components/header/Header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
-		<title>Rifki Muhazzar</title>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/noto-serif-normal.woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/noto-serif-italic.woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/noto-sans-normal.woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/noto-sans-italic.woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			as="font"
+			href="/fonts/noto-sans-mono-normal.woff2"
+			crossorigin
+		/>
 		<script is:inline>
 			function getValueInLocalStorage() {
 				const theme = localStorage.theme;
@@ -28,6 +57,7 @@ import Header from "$/components/header/Header.astro";
 			}
 			document.documentElement.dataset.theme = getValueInLocalStorage();
 		</script>
+		<title>Rifki Muhazzar</title>
 	</head>
 	<body class="bg-primary-stone-200 dark:bg-primary-950">
 		<Header />
