@@ -6,21 +6,26 @@
 		"node": ">=22.12.0"
 	},
 	"scripts": {
+		"prepare": "lefthook install",
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"format": "bunx --bun @biomejs/biome check --write"
+		"formatlint": "bunx --bun @biomejs/biome check --write"
 	},
 	"dependencies": {
+		"@astrojs/check": "^0.9.10",
 		"@astrojs/svelte": "^9.0.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"astro": "^7.2.0",
 		"svelte": "^5.56.8",
 		"tailwindcss": "^4.3.3",
-		"typescript": "^6.0.3"
+		"typescript": "^7.0.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.7"
+		"@biomejs/biome": "2.5.7",
+		"@commitlint/cli": "^21.2.2",
+		"@commitlint/config-conventional": "^21.2.2",
+		"lefthook": "^2.1.10"
 	}
 }

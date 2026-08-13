@@ -1,0 +1,21 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome-check:
+      glob: "*.{js,ts,jsx,tsx,astro,svelte,json,css}"
+      run: bun run formatlint -- --no-errors-on-unmatched {staged_files}
+      stage_fixed: true
+
+    typecheck:
+      glob: "*.{ts,tsx,astro}"
+      run: bun run astro check
+
+commit-msg:
+  commands:
+    conventional-commit:
+      run: bunx --bun commitlint --edit {1}
+
+pre-push:
+  commands:
+    build:
+      run: bun run build
