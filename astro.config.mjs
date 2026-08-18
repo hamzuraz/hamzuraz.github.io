@@ -10,4 +10,10 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	integrations: [svelte()],
+
+	// Not needed because this project does not use Astro's built-in i18n routing features.
+	// i18n: {
+	// 	locales: ["en-US", "id", "ja"],
+	// 	defaultLocale: "en-US",
+	// },
 });

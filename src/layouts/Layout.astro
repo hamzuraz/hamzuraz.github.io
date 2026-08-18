@@ -2,10 +2,12 @@
 import "$/styles/global.css";
 import Footer from "$/components/Footer.astro";
 import Header from "$/components/header/Header.astro";
+
+const { lang } = Astro.locals;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -64,5 +66,6 @@ import Header from "$/components/header/Header.astro";
 		<slot />
 		<Footer />
 		<script src="$/scripts/theme.ts"></script>
+		<script src="$/scripts/language-selector.ts"></script>
 	</body>
 </html>
