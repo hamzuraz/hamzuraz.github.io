@@ -10,3 +10,9 @@ declare global {
 		}
 	}
 }
+
+declare global {
+	interface Storage {
+		theme: string;
+	}
+}
