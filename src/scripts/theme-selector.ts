@@ -1,17 +1,9 @@
-export {};
-
-declare global {
-	interface Storage {
-		theme: string;
-	}
-}
-
-const themeSelect = document.getElementById("themeSelect");
+const themeSelector = document.getElementById("theme-selector");
 const theme = localStorage.theme;
 
 if (theme === "light" || theme === "dark") {
-	if (themeSelect instanceof HTMLSelectElement) {
-		themeSelect.value = theme;
+	if (themeSelector instanceof HTMLSelectElement) {
+		themeSelector.value = theme;
 	}
 }
 
@@ -36,7 +28,7 @@ function changeTheme(value: string) {
 	}
 }
 
-themeSelect?.addEventListener("change", (event: Event) => {
+themeSelector?.addEventListener("change", (event: Event) => {
 	if (event.target instanceof HTMLSelectElement) {
 		changeTheme(event.target.value);
 	}
