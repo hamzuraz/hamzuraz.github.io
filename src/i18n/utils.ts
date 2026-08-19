@@ -1,4 +1,5 @@
-import { defaultLang, languagePrefixes, ui } from "./ui.ts";
+import type { GetStaticPaths } from "astro";
+import { defaultLang, languagePrefixes, languages, ui } from "./ui.ts";
 
 export function getLangFromPathname(pathname: string) {
 	const lang = pathname.split("/")[1];
@@ -25,3 +26,10 @@ export function buildLocalizedPath(pathname: string, lang: string): string {
 
 	return prefix ? `/${prefix}/${segments.join("/")}` : `/${segments.join("/")}`;
 }
+
+export const getLangStaticPaths = (() => {
+	return Object.keys(languages).map((lang) => {
+		const prefix = languagePrefixes[lang];
+		return { params: { lang: prefix || undefined } };
+	});
+}) satisfies GetStaticPaths;

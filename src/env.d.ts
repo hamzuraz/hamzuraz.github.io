@@ -1,6 +1,6 @@
 /// <reference types="astro/client" />
 
-import { type Dictionary } from "$/i18n/ui.ts";
+import type { Dictionary } from "$/i18n/ui.ts";
 
 declare global {
 	namespace App {
