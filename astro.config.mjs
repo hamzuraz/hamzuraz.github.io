@@ -10,10 +10,10 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
+	trailingSlash: "always",
 	redirects: {
-		"/en-US": "/",
-		"/en-US/": "/"
-	}
+		"/en-US/": "/",
+	},
 
 	// Not needed because this project does not use Astro's built-in i18n routing features.
 	// i18n: {
