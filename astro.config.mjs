@@ -12,7 +12,7 @@ export default defineConfig({
 	},
 	trailingSlash: "always",
 	redirects: {
-		"/en-US/": "/",
+		"/en-US/[...lang]": "/[...lang]",
 	},
 
 	// Not needed because this project does not use Astro's built-in i18n routing features.

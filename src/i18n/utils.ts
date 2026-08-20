@@ -24,7 +24,9 @@ export function buildLocalizedPath(pathname: string, lang: string): string {
 		segments.shift();
 	}
 
-	return prefix ? `/${prefix}/${segments.join("/")}` : `/${segments.join("/")}`;
+	return prefix
+		? `/${prefix}/${segments.join("/")}/`
+		: `/${segments.join("/")}/`;
 }
 
 export const getLangStaticPaths = (() => {
