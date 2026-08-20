@@ -10,7 +10,11 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
+
+	// Only fully works in dev/preview; behavior may differ on static hosting.
 	trailingSlash: "always",
+
+	// Only works in dev; after a static build this behaves like "/en-US/": "/"
 	redirects: {
 		"/en-US/[...lang]": "/[...lang]",
 	},
