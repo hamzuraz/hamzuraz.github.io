@@ -14,9 +14,9 @@ export default defineConfig({
 	// Only fully works in dev/preview; behavior may differ on static hosting.
 	trailingSlash: "always",
 
-	// Only works in dev; after a static build this behaves like "/en-US/": "/"
+	// Client side redirect: only "/en-US/" to "/", not "/en-US/other/segment/" to "/other/segment/"
 	redirects: {
-		"/en-US/[...lang]": "/[...lang]",
+		"/en-US/": "/",
 	},
 
 	// Not needed because this project does not use Astro's built-in i18n routing features.
