@@ -14,7 +14,7 @@ export default defineConfig({
 	// Only fully works in dev/preview; behavior may differ on static hosting.
 	trailingSlash: "always",
 
-	// Client side redirect: only "/en-US/" to "/", not "/en-US/other/segment/" to "/other/segment/"
+	// Redirect only "/en-US/" to "/", not "/en-US/other/segments/" to "/other/segments/"
 	redirects: {
 		"/en-US/": "/",
 	},
