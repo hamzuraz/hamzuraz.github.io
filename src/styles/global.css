@@ -8,3 +8,7 @@
 @import "./system/typography.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@plugin "daisyui" {
+	prefix: "d-";
+}
