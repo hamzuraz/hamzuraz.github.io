@@ -1,0 +1,92 @@
+---
+import Layout from "$/layouts/Layout.astro";
+---
+
+<Layout title="404">
+    <main
+        class="flex min-h-[70vh] flex-col items-center justify-center gap-4 px-6 text-center"
+    >
+        <p class="text-sm font-semibold tracking-widest text-neutral-400">
+            ERROR
+        </p>
+        <h1
+            class="text-6xl font-bold text-neutral-900 dark:text-neutral-100 sm:text-8xl"
+        >
+            404
+        </h1>
+        <p
+            id="title"
+            class="text-lg font-medium text-neutral-700 dark:text-neutral-300"
+        >
+            Page not found
+        </p>
+        <p
+            id="desc"
+            class="max-w-md text-sm text-neutral-500 dark:text-neutral-400"
+        >
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+        <a
+            id="back"
+            href="/"
+            class="mt-4 rounded-full bg-neutral-900 px-6 py-2.5
+        text-sm font-medium text-white transition hover:bg-neutral-700
+        dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
+        >
+            Back to home
+        </a>
+    </main>
+</Layout>
+
+<script>
+    type Content = { title: string; desc: string; back: string; home: string };
+
+    const messages: Record<string, Content> = {
+        "en-US": {
+            title: "Page not found",
+            desc: "The page you're looking for doesn't exist or has been moved.",
+            back: "Back to home",
+            home: "/",
+        },
+        id: {
+            title: "Halaman tidak ditemukan",
+            desc: "Halaman yang kamu cari tidak ada atau sudah dipindahkan.",
+            back: "Kembali ke beranda",
+            home: "/id/",
+        },
+        ja: {
+            title: "ページが見つかりません",
+            desc: "お探しのページは存在しないか、移動された可能性があります。",
+            back: "ホームに戻る",
+            home: "/ja/",
+        },
+    };
+
+    const path = window.location.pathname;
+
+    let lang = "en-US";
+    if (path.startsWith("/id/")) {
+        lang = "id";
+    } else if (path.startsWith("/ja/")) {
+        lang = "ja";
+    }
+
+    const t = messages[lang];
+
+    const titleEl = document.getElementById("title");
+    const descEl = document.getElementById("desc");
+    const backEl = document.getElementById("back");
+
+    if (titleEl instanceof HTMLParagraphElement) {
+        titleEl.textContent = t.title;
+    }
+    if (descEl instanceof HTMLParagraphElement) {
+        descEl.textContent = t.desc;
+    }
+    if (backEl instanceof HTMLAnchorElement) {
+        backEl.textContent = t.back;
+        backEl.href = t.home;
+    }
+
+    document.title = `404 - ${t.title}`;
+</script>
