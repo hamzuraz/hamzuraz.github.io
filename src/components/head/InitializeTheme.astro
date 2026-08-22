@@ -1,0 +1,14 @@
+<script is:inline>
+    function getValueInLocalStorage() {
+        const theme = localStorage.theme;
+        if (theme !== "light" && theme !== "dark") {
+            localStorage.removeItem("theme");
+        }
+        return theme === "dark" ||
+            (!("theme" in localStorage) &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? "dark"
+            : "light";
+    }
+    document.documentElement.dataset.theme = getValueInLocalStorage();
+</script>
