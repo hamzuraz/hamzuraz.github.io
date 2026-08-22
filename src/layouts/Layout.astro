@@ -1,6 +1,7 @@
 ---
 import "$/styles/global.css";
 import Footer from "$/components/Footer.astro";
+import Head from "$/components/head/Head.astro";
 import Header from "$/components/header/Header.astro";
 
 const { lang } = Astro.locals;
@@ -8,59 +9,7 @@ const { lang } = Astro.locals;
 
 <!doctype html>
 <html lang={lang}>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<link
-			rel="preload"
-			as="font"
-			href="/fonts/noto-serif-normal.woff2"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			as="font"
-			href="/fonts/noto-serif-italic.woff2"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			as="font"
-			href="/fonts/noto-sans-normal.woff2"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			as="font"
-			href="/fonts/noto-sans-italic.woff2"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			as="font"
-			href="/fonts/noto-sans-mono-normal.woff2"
-			crossorigin
-		/>
-		<script is:inline>
-			function getValueInLocalStorage() {
-				const theme = localStorage.theme;
-				if (theme !== "light" && theme !== "dark") {
-					localStorage.removeItem("theme");
-				}
-				return theme === "dark" ||
-					(!("theme" in localStorage) &&
-						window.matchMedia("(prefers-color-scheme: dark)")
-							.matches)
-					? "dark"
-					: "light";
-			}
-			document.documentElement.dataset.theme = getValueInLocalStorage();
-		</script>
-		<title>Rifki Muhazzar</title>
-	</head>
+	<Head />
 	<body>
 		<Header />
 		<slot />
