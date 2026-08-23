@@ -1,0 +1,57 @@
+@font-face {
+	font-family: "Noto Sans Fallback";
+	font-style: normal;
+	src:
+		local("Arial"), local("Liberation Sans"), local("Roboto"),
+		local("Helvetica");
+	size-adjust: 104%;
+	ascent-override: 95%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: "Noto Sans Fallback";
+	font-style: italic;
+	src:
+		local("Arial Italic"), local("Liberation Sans Italic"),
+		local("Roboto Italic"), local("Helvetica Oblique");
+	size-adjust: 104%;
+	ascent-override: 95%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: "Noto Serif Fallback";
+	font-style: normal;
+	src: local("Georgia"), local("Liberation Serif"), local("Times New Roman");
+	size-adjust: 106%;
+	ascent-override: 90%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: "Noto Serif Fallback";
+	font-style: italic;
+	src:
+		local("Georgia Italic"), local("Liberation Serif Italic"),
+		local("Times New Roman Italic");
+	size-adjust: 106%;
+	ascent-override: 90%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: "Noto Sans Mono Fallback";
+	font-style: normal;
+	src:
+		local("Consolas"), local("Menlo"), local("Liberation Mono"),
+		local("DejaVu Sans Mono"), local("Roboto Mono"), local("Courier New");
+	size-adjust: 100%;
+	ascent-override: 90%;
+	descent-override: 22%;
+	line-gap-override: 0%;
+}
