@@ -1,11 +1,11 @@
 /// <reference types="astro/client" />
 
-import type { Dictionary } from "$/i18n/ui.ts";
+import type { Dictionary, LangCode } from "$/i18n/ui.ts";
 
 declare global {
 	namespace App {
 		interface Locals {
-			lang: "en-US" | "id" | "ja";
+			langCode: LangCode;
 			t: (key: Dictionary["key"]) => string;
 		}
 	}
@@ -13,6 +13,6 @@ declare global {
 
 declare global {
 	interface Storage {
-		theme: string;
+		theme: string | undefined;
 	}
 }

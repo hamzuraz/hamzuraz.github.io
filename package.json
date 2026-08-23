@@ -11,7 +11,7 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome": "bunx --bun @biomejs/biome check --write --no-errors-on-unmatched",
+		"biome": "biome check --write --no-errors-on-unmatched",
 		"lefthook": "lefthook"
 	},
 	"dependencies": {

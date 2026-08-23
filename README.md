@@ -41,9 +41,9 @@ The site is available at `http://localhost:4321` by default.
 | `bun run dev` | Start the Astro development server |
 | `bun run build` | Build the production site into `dist/` |
 | `bun run preview` | Preview the production build locally |
-| `bun run astro` | Run Astro CLI commands |
+| `bun run astro ...` | Run Astro CLI commands |
 | `bun run biome` | Check supported files and apply Biome's formatting fixes |
-| `bun run lefthook` | Run Lefthook commands |
+| `bun run lefthook ...` | Run Lefthook commands |
 | `bun install` | Install project dependencies and Git hooks |
 
 ## Project Structure
@@ -57,14 +57,14 @@ The site is available at `http://localhost:4321` by default.
 │   ├── layouts/           # Shared page layouts
 │   ├── middleware.ts      # Resolves the language for each request
 │   ├── pages/             # File-based page routes
-│   ├── scripts/            # Client-side theme and language selectors
-│   └── styles/             # Global styles and design system styles
+│   ├── scripts/           # Client-side theme and language selectors
+│   └── styles/            # Global styles and design system styles
 ├── astro.config.mjs       # Astro, Vite, and routing configuration
-├── biome.json              # Biome formatter and checker configuration
+├── biome.json             # Biome formatter and checker configuration
 ├── lefthook.yml           # Git hook configuration
-├── svelte.config.js        # Svelte configuration
-├── tsconfig.json           # TypeScript configuration
-└── package.json            # Project metadata and scripts
+├── svelte.config.js       # Svelte configuration
+├── tsconfig.json          # TypeScript configuration
+└── package.json           # Project metadata and scripts
 ```
 
 ## Internationalization
