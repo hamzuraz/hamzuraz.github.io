@@ -2,12 +2,12 @@ pre-commit:
   parallel: true
   commands:
     biome-check:
-      glob: "*.{js,ts,jsx,tsx,astro,svelte,json,css}"
-      run: bun run formatlint -- --no-errors-on-unmatched {staged_files}
+      glob: "*.{js,ts,astro,svelte,json,css}"
+      run: bun run biome {staged_files}
       stage_fixed: true
 
     typecheck:
-      glob: "*.{ts,tsx,astro}"
+      glob: "*.{astro}"
       run: bun run astro check
 
 commit-msg:

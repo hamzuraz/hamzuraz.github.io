@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @import "./system/daisyui.css";
-@import "./system/borders.css";
+
+/* @import "./system/borders.css"; */
 @import "./system/breakpoints.css";
-@import "./system/colors.css";
-@import "./system/effects.css";
+/* @import "./system/colors.css"; */
+/* @import "./system/effects.css"; */
 @import "./system/spacing-and-sizing.css";
-@import "./system/typography.css";
+@import "./system/typography/typography.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
