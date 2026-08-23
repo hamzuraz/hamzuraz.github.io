@@ -1,35 +1,58 @@
 import type { GetStaticPaths } from "astro";
-import { defaultLang, languagePrefixes, languages, ui } from "./ui.ts";
+import {
+	type Dictionary,
+	defaultLangCode,
+	type LangCode,
+	langCodeUrlPrefixes,
+	languages,
+	ui,
+} from "./ui.ts";
 
-export const getLangStaticPaths = (() => {
-	return Object.keys(languages).map((lang) => {
-		const prefix = languagePrefixes[lang];
-		return { params: { lang: prefix || undefined } };
+function getObjectKeys<T extends object>(obj: T): (keyof T)[] {
+	return Object.keys(obj) as (keyof T)[];
+}
+
+function isLangCode(value: string): value is LangCode {
+	return value in ui;
+}
+
+export const getLangCodeStaticPaths = (() => {
+	const langCodes = getObjectKeys(languages);
+
+	return langCodes.map((lang) => {
+		const langCodeUrlPrefix = langCodeUrlPrefixes[lang];
+		return {
+			params: {
+				lang: langCodeUrlPrefix,
+			},
+		};
 	});
 }) satisfies GetStaticPaths;
 
-export function getLangFromPathname(pathname: string) {
-	const lang = pathname.split("/")[1];
-	if (lang in ui) return lang as keyof typeof ui;
-	return defaultLang;
+export function getLangCodeFromPathname(pathname: string) {
+	const langCode = pathname.split("/")[1];
+	if (isLangCode(langCode)) return langCode;
+	return defaultLangCode;
 }
 
-export function useTranslations(lang: keyof typeof ui) {
-	return function t(key: keyof (typeof ui)[typeof defaultLang]) {
-		return ui[lang][key] || ui[defaultLang][key];
+export function useTranslations(langCode: LangCode) {
+	return function t(key: Dictionary["key"]) {
+		return ui[langCode][key];
 	};
 }
 
-export function buildLocalizedPath(pathname: string, lang: string): string {
-	const prefix = languagePrefixes[lang];
-	if (prefix === undefined) return pathname;
+export function buildLocalizedPath(pathname: string, langCode: string): string {
+	if (!isLangCode(langCode)) return pathname;
 
+	const targetUrlPrefix = langCodeUrlPrefixes[langCode];
 	const segments = pathname.split("/").filter(Boolean);
-	const currentPrefixes = Object.values(languagePrefixes).filter(Boolean);
+	const nonEmptyLangUrlPrefixes =
+		Object.values(langCodeUrlPrefixes).filter(Boolean);
+	const hasLangPrefixSegment = nonEmptyLangUrlPrefixes.includes(segments[0]);
 
-	if (currentPrefixes.includes(segments[0])) {
-		segments.shift();
-	}
+	if (hasLangPrefixSegment) segments.shift();
 
-	return prefix ? `/${prefix}/${segments.join("/")}` : `/${segments.join("/")}`;
+	return targetUrlPrefix
+		? `/${targetUrlPrefix}/${segments.join("/")}`
+		: `/${segments.join("/")}`;
 }
