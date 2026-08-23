@@ -1,0 +1,16 @@
+<script is:inline>
+    function resolveTheme() {
+        const theme = localStorage.getItem("theme");
+        const isInvalidTheme = theme !== "light" && theme !== "dark";
+
+        if (isInvalidTheme) localStorage.removeItem("theme");
+
+        return theme === "dark" ||
+            (isInvalidTheme &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches)
+            ? "dark"
+            : "light";
+    }
+
+    document.documentElement.dataset.theme = resolveTheme();
+</script>
