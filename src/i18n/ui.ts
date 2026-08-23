@@ -1,14 +1,18 @@
+import { en_US } from "./dictionary/en-US";
+import { id } from "./dictionary/id";
+import { ja } from "./dictionary/ja";
+
 export type Dictionary = {
 	key: keyof (typeof ui)[typeof defaultLang];
 };
 
-export const defaultLang = "en-US";
-
 export const languages = {
-	"en-US": "English",
-	id: "Bahasa Indonesia",
-	ja: "日本語",
+	"en-US": "English (en-US)",
+	id: "Bahasa Indonesia (id)",
+	ja: "日本語 (ja)",
 };
+
+export const defaultLang = "en-US";
 
 export const languagePrefixes: Record<string, string> = {
 	"en-US": "",
@@ -34,13 +38,7 @@ export const languagePrefixes: Record<string, string> = {
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const ui = {
-	"en-US": {
-		"home.hero.title": "Hello, world!",
-	},
-	id: {
-		"home.hero.title": "Halo, dunia!",
-	},
-	ja: {
-		"home.hero.title": "こんにちは、世界！",
-	},
+	"en-US": en_US,
+	id: id,
+	ja: ja,
 } as const;

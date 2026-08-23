@@ -11,16 +11,17 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"formatlint": "bunx --bun @biomejs/biome check --write"
+		"biome": "bunx --bun @biomejs/biome check --write --no-errors-on-unmatched",
+		"lefthook": "lefthook"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.10",
 		"@astrojs/svelte": "^9.0.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"astro": "^7.2.0",
-		"svelte": "^5.56.8",
 		"tailwindcss": "^4.3.3",
-		"typescript": "^6.0.0"
+		"typescript": "^6.0.0",
+		"svelte": "^5.56.8"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.7",

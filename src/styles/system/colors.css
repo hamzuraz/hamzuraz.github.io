@@ -38,7 +38,7 @@
 	--color-gray-900: oklch(20.8% 0.042 265.755);
 	--color-gray-950: oklch(12.9% 0.042 264.695);
 
-	/* Semantic */
+	/* Semantic - Info, Success, Warning, and Danger/Destructive/Error */
 	--color-semantic-neutral-500: oklch(55.6% 0 none);
 	--color-semantic-green-500: oklch(72.3% 0.219 149.579);
 	--color-semantic-yellow-500: oklch(79.5% 0.184 86.047);
