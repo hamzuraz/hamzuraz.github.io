@@ -1,8 +1,55 @@
-<select
+<!-- <select
     id="theme-selector"
     class="d-select [&::picker(select)]:max-h-52 cursor-pointer hover:bg-base-200"
 >
     <option value="system">System</option>
     <option value="light">Light</option>
     <option value="dark">Dark</option>
-</select>
+</select> -->
+<div class="d-dropdown d-dropdown-center">
+    <div tabindex="0" role="button" class="d-btn m-1 w-38 flex justify-between">
+        <div class="flex gap-3">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-palette-icon lucide-palette translate-y-0.75"
+                ><path
+                    d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"
+                ></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"
+                ></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"
+                ></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"
+                ></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"
+                ></circle></svg
+            >
+            <span>{"System"}</span>
+        </div>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-down-icon lucide-chevron-down"
+            ><path d="m6 9 6 6 6-6"></path></svg
+        >
+    </div>
+    <ul
+        tabindex="-1"
+        class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+    >
+        <li><a>System</a></li>
+        <li><a>Light</a></li>
+        <li><a>Dark</a></li>
+    </ul>
+</div>
