@@ -6,13 +6,13 @@ export { getLangCodeStaticPaths as getStaticPaths } from "$/i18n/utils.ts";
 const { t } = Astro.locals;
 ---
 
-<Layout>
+<Layout title={t("home.title")} description={t("home.description")}>
 	<main>
-		<h1>{t("home.title")}</h1>
 		<section id="hero"></section>
 		<section id="experience"></section>
-		<section id="technologies"></section>
+		<section id="about"></section>
 		<section id="projects"></section>
+		<section id="technologies"></section>
 		<section id="blogs"></section>
 		<section id="contact"></section>
 	</main>
