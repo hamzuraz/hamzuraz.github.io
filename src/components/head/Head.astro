@@ -1,15 +1,35 @@
 ---
-import PreloadFonts from "./PreloadFonts.astro";
-import ThemeInitializer from "./ThemeInitializer.astro";
+import type { SEOProps } from "$/env.d.ts";
+import LinkHreflang from "./LinkHreflang.astro";
+import LinkPreloadFonts from "./LinkPreloadFonts.astro";
+import ScriptThemeInitializer from "./ScriptThemeInitializer.astro";
+
+type Props = SEOProps;
+
+const { title, description } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const siteUrl = Astro.site;
+
+const canonicalUrl = new URL(pathname, siteUrl);
 ---
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+
+    <meta name="description" content={description} />
+
+    <ScriptThemeInitializer />
+
+    <LinkPreloadFonts />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <title>Rifki Muhazzar</title>
-    <PreloadFonts />
-    <ThemeInitializer />
+
+    <link rel="canonical" href={canonicalUrl} />
+
+    <LinkHreflang />
 </head>
