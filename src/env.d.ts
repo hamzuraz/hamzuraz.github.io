@@ -16,3 +16,8 @@ declare global {
 		theme: string | undefined;
 	}
 }
+
+export type SEOProps = {
+	title: string;
+	description: string;
+};

@@ -16,7 +16,9 @@
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const en_US = {
-	"home.title": "Hello, world!",
+	"home.title": "Rifki Muhazzar — Software Engineer",
+	"home.description":
+		"Portfolio of Rifki Muhazzar, a software engineer. Explore my experience, technologies, projects, and blog posts, or get in touch.",
 } as const;
 
 export type DictionaryShape = Record<keyof typeof en_US, string>;
