@@ -7,10 +7,10 @@
 
         return theme === "dark" ||
             (isInvalidTheme &&
-                window.matchMedia("(prefers-color-scheme: dark)").matches)
+                matchMedia("(prefers-color-scheme: dark)").matches)
             ? "dark"
             : "light";
     }
 
-    document.documentElement.dataset.theme = resolveTheme();
+    document.documentElement.setAttribute("data-theme", resolveTheme());
 </script>
