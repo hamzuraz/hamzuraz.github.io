@@ -14,10 +14,11 @@ const { langCode } = Astro.locals;
 <!doctype html>
 <html lang={langCode}>
 	<Head title={title} description={description} />
-	<body>
+	<body class="min-w-80 mx-auto lg:max-w-250 lg:border-2 lg:border-base-300">
 		<Header />
 		<slot />
 		<Footer />
 		<script src="$/scripts/theme-selector.ts"></script>
+		<script src="$/scripts/common.ts"></script>
 	</body>
 </html>
