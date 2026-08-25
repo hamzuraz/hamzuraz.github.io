@@ -1,28 +1,49 @@
 ---
+import { ChevronDown, Languages } from "@lucide/astro";
 import { languages } from "$/i18n/ui.ts";
+import { buildLocalizedPath } from "$/i18n/utils.ts";
+
+const langCode = Astro.locals.langCode;
+const pathname = Astro.url.pathname;
 ---
 
-<div class="relative inline-block">
-    <select
+<div class="d-dropdown d-dropdown-start">
+    <div tabindex="0" role="button" class="d-btn m-1 w-62 flex justify-between">
+        <div class="font-normal flex gap-3">
+            <Languages size={16} stroke-width={1.5} class="translate-y-0.5" />
+            <div class="flex items-baseline gap-1">
+                <span>{languages[langCode]}</span>
+                <span class="text-xs font-mono opacity-60 uppercase"
+                    >{langCode}</span
+                >
+            </div>
+        </div>
+        <ChevronDown size={16} stroke-width={1.5} />
+    </div>
+
+    <ul
         id="language-selector"
-        class="appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-10 text-sm font-medium text-gray-700 shadow-sm outline-none transition-colors hover:border-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/30 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-gray-600 cursor-pointer"
+        tabindex="-1"
+        class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >
         {
-            Object.entries(languages).map(([key, value]) => (
-                <option value={key}>{value}</option>
-            ))
+            Object.entries(languages).map(([code, name]) => {
+                const path = buildLocalizedPath(code, pathname);
+                return (
+                    <li>
+                        <a
+                            href={path}
+                            data-lang-code={code}
+                            class="flex justify-between"
+                        >
+                            {name}
+                            <span class="text-xs font-mono opacity-60 uppercase">
+                                {code}
+                            </span>
+                        </a>
+                    </li>
+                );
+            })
         }
-    </select>
-    <svg
-        class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400 dark:text-gray-500"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        stroke="currentColor"
-    >
-        <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-    </svg>
+    </ul>
 </div>
