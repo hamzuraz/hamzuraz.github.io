@@ -6,7 +6,7 @@ import { ChevronDown, Paintbrush } from "@lucide/astro";
     <div tabindex="0" role="button" class="d-btn m-1 w-38 flex justify-between">
         <div class="flex gap-3">
             <Paintbrush size={16} stroke-width={1.25} class="translate-y-0.5" />
-            <span id="theme-active" class="first-letter:uppercase font-normal">
+            <span data-theme-active class="first-letter:uppercase font-normal">
                 System
             </span>
         </div>
@@ -14,7 +14,7 @@ import { ChevronDown, Paintbrush } from "@lucide/astro";
     </div>
 
     <ul
-        id="theme-selector"
+        data-theme-selector
         tabindex="-1"
         class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >
