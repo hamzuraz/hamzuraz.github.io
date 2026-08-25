@@ -1,16 +1,24 @@
-const themeActive = document.getElementById("theme-active");
-const themeSelector = document.getElementById("theme-selector");
+const themeActiveElements = document.querySelectorAll<HTMLElement>(
+	"[data-theme-active]",
+);
+const themeSelectorElements = document.querySelectorAll<HTMLUListElement>(
+	"[data-theme-selector]",
+);
 const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
 
 const storedTheme = localStorage.getItem("theme");
 
-if (themeActive instanceof HTMLSpanElement) {
-	if (storedTheme === "light" || storedTheme === "dark") {
-		themeActive.textContent = storedTheme;
+const updateThemeLabels = (theme: string) => {
+	for (const themeActive of themeActiveElements) {
+		themeActive.textContent = theme;
 	}
+};
+
+if (storedTheme === "light" || storedTheme === "dark") {
+	updateThemeLabels(storedTheme);
 }
 
-if (themeSelector instanceof HTMLUListElement) {
+for (const themeSelector of themeSelectorElements) {
 	themeSelector.addEventListener("click", (event) => {
 		const element = event.target;
 		if (!(element instanceof HTMLElement)) return;
@@ -26,14 +34,17 @@ if (themeSelector instanceof HTMLUListElement) {
 			case "system":
 				localStorage.removeItem("theme");
 				document.documentElement.removeAttribute("data-theme");
+				updateThemeLabels("System");
 				break;
 			case "light":
 				localStorage.setItem("theme", "light");
 				document.documentElement.setAttribute("data-theme", "light");
+				updateThemeLabels("light");
 				break;
 			case "dark":
 				localStorage.setItem("theme", "dark");
 				document.documentElement.setAttribute("data-theme", "dark");
+				updateThemeLabels("dark");
 				break;
 		}
 	});
