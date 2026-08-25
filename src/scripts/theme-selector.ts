@@ -1,52 +1,52 @@
+const themeActive = document.getElementById("theme-active");
 const themeSelector = document.getElementById("theme-selector");
+const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
+
 const storedTheme = localStorage.getItem("theme");
 
-if (themeSelector instanceof HTMLSelectElement) {
+if (themeActive instanceof HTMLSpanElement) {
 	if (storedTheme === "light" || storedTheme === "dark") {
-		themeSelector.value = storedTheme;
+		themeActive.textContent = storedTheme;
 	}
 }
 
-export function setToSystemTheme() {
-	const theme = localStorage.getItem("theme");
-	const isInvalidTheme = theme !== "light" && theme !== "dark";
+if (themeSelector instanceof HTMLUListElement) {
+	themeSelector.addEventListener("click", (event) => {
+		const element = event.target;
+		if (!(element instanceof HTMLElement)) return;
 
-	return theme === "dark" ||
-		(isInvalidTheme &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches)
-		? "dark"
-		: "light";
-}
+		const link = element.closest<HTMLAnchorElement>("a[data-theme-value]");
+		if (!link) return;
 
-function changeTheme(value: string) {
-	if (value === "system") {
-		localStorage.removeItem("theme");
-		document.documentElement.dataset.theme = setToSystemTheme();
-	} else if (value === "light") {
-		document.documentElement.dataset.theme = "light";
-		localStorage.setItem("theme", "light");
-	} else if (value === "dark") {
-		document.documentElement.dataset.theme = "dark";
-		localStorage.setItem("theme", "dark");
-	}
-}
+		event.preventDefault();
 
-if (themeSelector instanceof HTMLSelectElement) {
-	themeSelector.addEventListener("change", (event) => {
-		if (event.target instanceof HTMLSelectElement) {
-			changeTheme(event.target.value);
+		const themeValue = link.dataset.themeValue;
+
+		switch (themeValue) {
+			case "system":
+				localStorage.removeItem("theme");
+				document.documentElement.removeAttribute("data-theme");
+				break;
+			case "light":
+				localStorage.setItem("theme", "light");
+				document.documentElement.setAttribute("data-theme", "light");
+				break;
+			case "dark":
+				localStorage.setItem("theme", "dark");
+				document.documentElement.setAttribute("data-theme", "dark");
+				break;
 		}
 	});
 }
 
-matchMedia("(prefers-color-scheme: dark)").addEventListener(
-	"change",
-	(event) => {
-		const theme = localStorage.getItem("theme");
-		const isInvalidTheme = theme !== "light" && theme !== "dark";
+mediaQuery.addEventListener("change", (event) => {
+	const theme = localStorage.getItem("theme");
+	const isInvalidTheme = theme !== "light" && theme !== "dark";
 
-		if (isInvalidTheme) {
-			document.documentElement.dataset.theme = event.matches ? "dark" : "light";
-		}
-	},
-);
+	if (isInvalidTheme) {
+		document.documentElement.setAttribute(
+			"data-theme",
+			event.matches ? "dark" : "light",
+		);
+	}
+});
