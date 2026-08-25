@@ -41,7 +41,7 @@ export function useTranslations(langCode: LangCode) {
 	};
 }
 
-export function buildLocalizedPath(pathname: string, langCode: string): string {
+export function buildLocalizedPath(langCode: string, pathname: string): string {
 	if (!isLangCode(langCode)) return pathname;
 
 	const targetUrlPrefix = langCodeUrlPrefixes[langCode];
