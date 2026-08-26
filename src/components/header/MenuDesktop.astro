@@ -1,0 +1,32 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import SelectorLanguage from "./SelectorLanguage.astro";
+import SelectorTheme from "./SelectorTheme.astro";
+---
+
+<div class="d-navbar-center hidden lg:flex">
+    <ul class="d-menu d-menu-horizontal px-1">
+        <li><button>Projects</button></li>
+        <li><button>Skills</button></li>
+        <li><button>Contact</button></li>
+        <li>
+            <details>
+                <summary
+                    class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
+                >
+                    Social
+                    <ChevronDown size={16} stroke-width={1.5} />
+                </summary>
+                <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
+                    <li><button>LinkedIn</button></li>
+                    <li><button>GitHub</button></li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+
+    <div>
+        <SelectorTheme />
+        <SelectorLanguage />
+    </div>
+</div>

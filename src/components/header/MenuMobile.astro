@@ -1,0 +1,24 @@
+---
+import SelectorLanguage from "./SelectorLanguage.astro";
+import SelectorTheme from "./SelectorTheme.astro";
+---
+
+<div class="d-collapse-content lg:hidden z-1">
+    <ul class="d-menu border-b-2 border-base-300 w-full dark:border-base-100">
+        <li><button>Projects</button></li>
+        <li><button>Skills</button></li>
+        <li><button>Contact</button></li>
+        <li>
+            <button>Social</button>
+            <ul>
+                <li><button>LinkedIn</button></li>
+                <li><button>GitHub</button></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="d-menu">
+        <SelectorTheme />
+        <SelectorLanguage />
+    </div>
+</div>
