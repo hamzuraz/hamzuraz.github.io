@@ -1,7 +1,6 @@
 ---
-import { ChevronDown } from "@lucide/astro";
-import LanguageSelector from "./LanguageSelector.astro";
-import ThemeSelector from "./ThemeSelector.astro";
+import MenuDesktop from "./MenuDesktop.astro";
+import MenuMobile from "./MenuMobile.astro";
 ---
 
 <header class="max-lg:d-collapse bg-base-200 lg:mb-48 shadow-sm w-full">
@@ -22,65 +21,26 @@ import ThemeSelector from "./ThemeSelector.astro";
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    ><path
+                >
+                    <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
                         stroke-width="2"
-                        d="M4 6h16M4 12h8m-8 6h16"></path></svg
-                >
+                        d="M4 6h16M4 12h8m-8 6h16"
+                    >
+                    </path>
+                </svg>
             </label>
 
             <button
-                class="d-btn text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
-                >RM
+                class="d-btn d-btn-ghost text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
+            >
+                RM
             </button>
         </div>
 
-        <div class="d-navbar-center hidden lg:flex">
-            <ul class="d-menu d-menu-horizontal px-1">
-                <li><button>Projects</button></li>
-                <li><button>Skills</button></li>
-                <li><button>Contact</button></li>
-                <li>
-                    <details>
-                        <summary
-                            class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
-                        >
-                            Social
-                            <ChevronDown size={16} stroke-width={1.5} />
-                        </summary>
-                        <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
-                            <li><button>LinkedIn</button></li>
-                            <li><button>GitHub</button></li>
-                        </ul>
-                    </details>
-                </li>
-            </ul>
-
-            <div>
-                <ThemeSelector />
-                <LanguageSelector />
-            </div>
-        </div>
+        <MenuDesktop />
     </div>
 
-    <div class="d-collapse-content lg:hidden z-1">
-        <ul class="d-menu">
-            <li><button>Projects</button></li>
-            <li><button>Skills</button></li>
-            <li><button>Contact</button></li>
-            <li>
-                <button>Social</button>
-                <ul>
-                    <li><button>LinkedIn</button></li>
-                    <li><button>GitHub</button></li>
-                </ul>
-            </li>
-        </ul>
-
-        <div class="flex flex-col gap-2">
-            <ThemeSelector />
-            <LanguageSelector />
-        </div>
-    </div>
+    <MenuMobile />
 </header>
