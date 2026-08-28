@@ -1,5 +1,5 @@
 ---
-import { ChevronDown } from "@lucide/astro";
+import { ChevronDown, ExternalLink } from "@lucide/astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 ---
@@ -18,8 +18,18 @@ import SelectorTheme from "./SelectorTheme.astro";
                     <ChevronDown size={16} stroke-width={1.5} />
                 </summary>
                 <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
-                    <li><button>LinkedIn</button></li>
-                    <li><button>GitHub</button></li>
+                    <li>
+                        <button>
+                            LinkedIn
+                            <ExternalLink size={16} stroke-width={1.25} />
+                        </button>
+                    </li>
+                    <li>
+                        <button>
+                            GitHub
+                            <ExternalLink size={16} stroke-width={1.25} />
+                        </button>
+                    </li>
                 </ul>
             </details>
         </li>
