@@ -13,12 +13,12 @@ const langCodes = getObjectKeys(languages);
         <link
             rel="alternate"
             hreflang={lang}
-            href={new URL(buildLocalizedPath(pathname, lang), siteUrl)}
+            href={new URL(buildLocalizedPath(lang, pathname), siteUrl)}
         />
     ))
 }
 <link
     rel="alternate"
     hreflang="x-default"
-    href={new URL(buildLocalizedPath(pathname, defaultLangCode), siteUrl)}
+    href={new URL(buildLocalizedPath(defaultLangCode, pathname), siteUrl)}
 />
