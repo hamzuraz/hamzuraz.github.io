@@ -32,4 +32,4 @@ Consult these guides before working on related tasks:
 - Use Tailwind CSS v4's CSS-first configuration with directives such as `@theme`, `@plugin`, and `@custom-variant`.
 - This project uses daisyUI v5. Its configuration is in `src/styles/system/daisyui.css`.
 - Prefix every daisyUI component and modifier class with `d-`, such as `d-btn`, `d-menu`, and `d-dropdown`. Tailwind utility classes remain unprefixed.
-- When a daisyUI component is needed, first consult the official component documentation at https://daisyui.com/components/.
+- When creating or styling a component, first look for a suitable daisyUI component in the official documentation at https://daisyui.com/components/. Use and adapt that component with Tailwind CSS v4 utilities as needed; only build the component with Tailwind CSS v4 utilities when no suitable daisyUI component exists.
