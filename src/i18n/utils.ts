@@ -9,7 +9,7 @@ import {
 } from "./ui.ts";
 
 function isLangCode(value: string): value is LangCode {
-	return value in ui;
+	return Object.hasOwn(ui, value);
 }
 
 export function getObjectKeys<T extends object>(obj: T): (keyof T)[] {
@@ -30,8 +30,12 @@ export const getLangCodeStaticPaths = (() => {
 }) satisfies GetStaticPaths;
 
 export function getLangCodeFromPathname(pathname: string) {
-	const langCode = pathname.split("/")[1];
-	if (isLangCode(langCode)) return langCode;
+	const segment = pathname.split("/")[1];
+	const langCode = getObjectKeys(langCodeUrlPrefixes).find(
+		(code) => code === segment || langCodeUrlPrefixes[code] === segment,
+	);
+
+	if (langCode) return langCode;
 	return defaultLangCode;
 }
 
@@ -46,13 +50,23 @@ export function buildLocalizedPath(langCode: string, pathname: string): string {
 
 	const targetUrlPrefix = langCodeUrlPrefixes[langCode];
 	const segments = pathname.split("/").filter(Boolean);
-	const nonEmptyLangUrlPrefixes =
-		Object.values(langCodeUrlPrefixes).filter(Boolean);
-	const hasLangPrefixSegment = nonEmptyLangUrlPrefixes.includes(segments[0]);
+	const hasTrailingSlash = pathname.endsWith("/");
+	const hasLangPrefixSegment = getObjectKeys(langCodeUrlPrefixes).some(
+		(code) =>
+			code === segments[0] ||
+			(Boolean(langCodeUrlPrefixes[code]) &&
+				langCodeUrlPrefixes[code] === segments[0]),
+	);
 
 	if (hasLangPrefixSegment) segments.shift();
 
-	return targetUrlPrefix
+	const localizedPath = targetUrlPrefix
 		? `/${targetUrlPrefix}/${segments.join("/")}`
 		: `/${segments.join("/")}`;
+
+	if (hasTrailingSlash && !localizedPath.endsWith("/")) {
+		return `${localizedPath}/`;
+	}
+
+	return localizedPath;
 }
