@@ -3,19 +3,19 @@ pre-commit:
   commands:
     biome-check:
       glob: "*.{js,ts,astro,svelte,json,css}"
-      run: bun run biome {staged_files}
+      run: bun --bun run biome {staged_files}
       stage_fixed: true
 
     astro-check:
       glob: "*.{astro}"
-      run: bun run astro check
+      run: bun --bun run astro check
 
 commit-msg:
   commands:
     conventional-commit:
-      run: bun run commitlint --edit {1}
+      run: bun --bun run commitlint --edit {1}
 
 pre-push:
   commands:
     build:
-      run: bun run build
+      run: bun --bun run build
