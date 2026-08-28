@@ -1,5 +1,6 @@
 ---
 import { ExternalLink } from "@lucide/astro";
+import { iconProps } from "$/lib/icon-props.ts";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 ---
@@ -19,13 +20,13 @@ import SelectorTheme from "./SelectorTheme.astro";
                 <li>
                     <button>
                         LinkedIn
-                        <ExternalLink size={16} stroke-width={1.25} />
+                        <ExternalLink {...iconProps} />
                     </button>
                 </li>
                 <li>
                     <button>
                         GitHub
-                        <ExternalLink size={16} stroke-width={1.25} />
+                        <ExternalLink {...iconProps} />
                     </button>
                 </li>
             </ul>
