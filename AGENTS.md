@@ -20,3 +20,16 @@ Consult these guides before working on related tasks:
 - [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+
+## Coding Guidelines
+
+- When creating a function, prioritize using the `function` keyword when possible.
+- When a function is passed directly as an argument, prioritize using an arrow function.
+
+## Styling
+
+- This project uses Tailwind CSS v4 with the `@tailwindcss/vite` plugin.
+- Use Tailwind CSS v4's CSS-first configuration with directives such as `@theme`, `@plugin`, and `@custom-variant`.
+- This project uses daisyUI v5. Its configuration is in `src/styles/system/daisyui.css`.
+- Prefix every daisyUI component and modifier class with `d-`, such as `d-btn`, `d-menu`, and `d-dropdown`. Tailwind utility classes remain unprefixed.
+- When a daisyUI component is needed, first consult the official component documentation at https://daisyui.com/components/.
