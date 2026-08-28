@@ -1,15 +1,15 @@
 <script is:inline>
     function resolveTheme() {
         const theme = localStorage.getItem("theme");
-        const isInvalidTheme = theme !== "light" && theme !== "dark";
 
-        if (isInvalidTheme) localStorage.removeItem("theme");
+        if (theme !== "light" && theme !== "dark") {
+            if (theme !== null) localStorage.removeItem("theme");
+            return matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+        }
 
-        return theme === "dark" ||
-            (isInvalidTheme &&
-                matchMedia("(prefers-color-scheme: dark)").matches)
-            ? "dark"
-            : "light";
+        return theme;
     }
 
     document.documentElement.setAttribute("data-theme", resolveTheme());

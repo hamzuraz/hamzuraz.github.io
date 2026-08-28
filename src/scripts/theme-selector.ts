@@ -6,22 +6,47 @@ const themeSelectorElements = document.querySelectorAll<HTMLUListElement>(
 );
 const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
 
-const storedTheme = localStorage.getItem("theme");
+type ThemePreference = "system" | "light" | "dark";
+type ResolvedTheme = Exclude<ThemePreference, "system">;
 
-const updateThemeLabels = (theme: string) => {
+function isThemePreference(value: string | null): value is ResolvedTheme {
+	return value === "light" || value === "dark";
+}
+
+function isThemeSelection(value: string | undefined): value is ThemePreference {
+	return value === "system" || value === "light" || value === "dark";
+}
+
+function updateThemeLabels(theme: string) {
 	for (const themeActive of themeActiveElements) {
 		themeActive.textContent = theme;
 	}
-};
-
-if (storedTheme === "light" || storedTheme === "dark") {
-	updateThemeLabels(storedTheme);
 }
+
+function getStoredTheme(): ThemePreference {
+	const storedTheme = localStorage.getItem("theme");
+
+	if (isThemePreference(storedTheme)) return storedTheme;
+	if (storedTheme !== null) localStorage.removeItem("theme");
+
+	return "system";
+}
+
+function resolveTheme(theme: ThemePreference): ResolvedTheme {
+	return theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme;
+}
+
+function applyTheme(theme: ThemePreference) {
+	document.documentElement.setAttribute("data-theme", resolveTheme(theme));
+	updateThemeLabels(theme === "system" ? "System" : theme);
+}
+
+applyTheme(getStoredTheme());
 
 for (const themeSelector of themeSelectorElements) {
 	themeSelector.addEventListener("click", (event) => {
 		const element = event.target;
-		if (!(element instanceof HTMLElement)) return;
+		if (!(element instanceof Element)) return;
 
 		const link = element.closest<HTMLAnchorElement>("a[data-theme-value]");
 		if (!link) return;
@@ -29,35 +54,25 @@ for (const themeSelector of themeSelectorElements) {
 		event.preventDefault();
 
 		const themeValue = link.dataset.themeValue;
+		if (!isThemeSelection(themeValue)) return;
 
-		switch (themeValue) {
-			case "system":
-				localStorage.removeItem("theme");
-				document.documentElement.removeAttribute("data-theme");
-				updateThemeLabels("System");
-				break;
-			case "light":
-				localStorage.setItem("theme", "light");
-				document.documentElement.setAttribute("data-theme", "light");
-				updateThemeLabels("light");
-				break;
-			case "dark":
-				localStorage.setItem("theme", "dark");
-				document.documentElement.setAttribute("data-theme", "dark");
-				updateThemeLabels("dark");
-				break;
+		if (themeValue === "system") {
+			localStorage.removeItem("theme");
+		} else {
+			localStorage.setItem("theme", themeValue);
 		}
+
+		applyTheme(themeValue);
 	});
 }
 
-mediaQuery.addEventListener("change", (event) => {
-	const theme = localStorage.getItem("theme");
-	const isInvalidTheme = theme !== "light" && theme !== "dark";
-
-	if (isInvalidTheme) {
-		document.documentElement.setAttribute(
-			"data-theme",
-			event.matches ? "dark" : "light",
-		);
+mediaQuery.addEventListener("change", () => {
+	if (getStoredTheme() === "system") {
+		applyTheme("system");
 	}
+});
+
+window.addEventListener("storage", (event) => {
+	if (event.key !== "theme") return;
+	applyTheme(getStoredTheme());
 });
