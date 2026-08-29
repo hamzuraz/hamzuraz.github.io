@@ -12,7 +12,9 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"biome": "biome check --write --no-errors-on-unmatched",
-		"lefthook": "lefthook"
+		"commitlint": "commitlint",
+		"lefthook": "lefthook",
+		"svelte-check": "svelte-check"
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.10",
@@ -29,6 +31,7 @@
 		"@commitlint/cli": "^21.2.2",
 		"@commitlint/config-conventional": "^21.2.2",
 		"daisyui": "^5.7.19",
-		"lefthook": "^2.1.10"
+		"lefthook": "^2.1.10",
+		"svelte-check": "^4.7.6"
 	}
 }
