@@ -1,10 +1,6 @@
 /// <reference types="astro/client" />
 
-import type { Dictionary, LangCode } from "$/i18n/ui";
-
-declare global {
-	type TranslationFunc = (key: Dictionary["key"]) => string;
-}
+import type { LangCode, TranslationFunc } from "./i18n/ui";
 
 declare global {
 	namespace App {

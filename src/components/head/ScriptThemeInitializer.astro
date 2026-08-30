@@ -1,10 +1,11 @@
 <script is:inline>
     function resolveTheme() {
-        const theme = localStorage.getItem("theme");
+        const theme = window.localStorage.getItem("theme");
 
         if (theme !== "light" && theme !== "dark") {
-            if (theme !== null) localStorage.removeItem("theme");
-            return matchMedia("(prefers-color-scheme: dark)").matches
+            if (theme !== null) window.localStorage.removeItem("theme");
+
+            return window.matchMedia("(prefers-color-scheme: dark)").matches
                 ? "dark"
                 : "light";
         }
@@ -12,5 +13,5 @@
         return theme;
     }
 
-    document.documentElement.setAttribute("data-theme", resolveTheme());
+    window.document.documentElement.setAttribute("data-theme", resolveTheme());
 </script>

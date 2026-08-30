@@ -4,11 +4,13 @@ import { ja } from "./dictionary/ja";
 
 export type LangCode = keyof typeof ui;
 
-type LangCodeRecord = Record<LangCode, string>;
-
 export type Dictionary = {
 	key: keyof (typeof ui)[LangCode];
 };
+
+export type TranslationFunc = (key: Dictionary["key"]) => string;
+
+type LangCodeRecord = Record<LangCode, string>;
 
 export const languages: LangCodeRecord = {
 	"en-US": "English",
