@@ -11,15 +11,20 @@ import { chevronProps, iconProps } from "$/lib/icon-props";
     >
         <div class="flex gap-3">
             <Paintbrush {...iconProps} class="translate-y-0.5" />
-            <span data-theme-active class="first-letter:uppercase font-normal">
+
+            <span
+                id="theme-current-text"
+                class="first-letter:uppercase font-normal"
+            >
                 System
             </span>
         </div>
+
         <ChevronDown {...chevronProps} />
     </div>
 
     <ul
-        data-theme-selector
+        id="theme-list"
         tabindex="-1"
         class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >

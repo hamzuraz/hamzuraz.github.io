@@ -1,5 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
-import { getLangCodeFromPathname, useTranslations } from "$/i18n/utils.ts";
+import { getLangCodeFromPathname, useTranslations } from "$/i18n/utils";
 
 export const onRequest = defineMiddleware((context, next) => {
 	const langCode = getLangCodeFromPathname(context.url.pathname);

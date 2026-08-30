@@ -6,6 +6,7 @@ import {
 	langCodeDefault,
 	langCodeSegments,
 	languages,
+	type TranslationFunc,
 	ui,
 } from "./ui.ts";
 

@@ -29,7 +29,6 @@ const pathname = Astro.url.pathname;
     </div>
 
     <ul
-        id="language-selector"
         tabindex="-1"
         class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >
@@ -39,7 +38,6 @@ const pathname = Astro.url.pathname;
                     <li>
                         <a
                             href={buildLocalizedRoutePath(langCode, pathname)}
-                            data-lang-code={langCode}
                             class="flex justify-between"
                         >
                             {langName}

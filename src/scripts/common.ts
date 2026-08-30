@@ -1,10 +1,10 @@
 document.addEventListener("click", (event) => {
-	const target = event.target as Node;
-	if (!target) return;
+	const target = event.target;
+	if (!(target instanceof Node)) return;
 
 	document.querySelectorAll("details[open]").forEach((details) => {
-		if (!details.contains(target)) {
-			(details as HTMLDetailsElement).open = false;
+		if (!details.contains(target) && details instanceof HTMLDetailsElement) {
+			details.open = false;
 		}
 	});
 });
