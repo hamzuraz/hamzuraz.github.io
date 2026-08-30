@@ -1,0 +1,11 @@
+---
+import { langCodeSegments } from "$/i18n/ui";
+
+const langCode = Astro.locals.langCode;
+const langCodeSegment = langCodeSegments[langCode];
+const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
+---
+
+<li><a href={`${segment}/projects/`}>Projects</a></li>
+<li><a href={`${segment}/#skills`}>Skills</a></li>
+<li><a href={`${segment}/#contact`}>Contact</a></li>

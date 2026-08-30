@@ -1,38 +1,15 @@
 ---
-import { ExternalLink } from "@lucide/astro";
-import { iconProps } from "$/lib/icon-props";
+import ListDropdownMobile from "./ListDropdownMobile.astro";
+import ListInternalLinks from "./ListInternalLinks.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 ---
 
 <div class="d-collapse-content lg:hidden z-1">
     <ul class="d-menu border-b-2 border-base-300 w-full dark:border-base-100">
-        <li><button>Projects</button></li>
-        <li><button>Skills</button></li>
-        <li><button>Contact</button></li>
-        <li>
-            <span
-                class="pointer-events-none hover:bg-transparent hover:text-inherit"
-            >
-                Social
-            </span>
-            <ul>
-                <li>
-                    <button>
-                        LinkedIn
-                        <ExternalLink {...iconProps} />
-                    </button>
-                </li>
-                <li>
-                    <button>
-                        GitHub
-                        <ExternalLink {...iconProps} />
-                    </button>
-                </li>
-            </ul>
-        </li>
+        <ListInternalLinks />
+        <ListDropdownMobile />
     </ul>
-
     <div class="d-menu">
         <SelectorTheme />
         <SelectorLanguage />
