@@ -1,6 +1,6 @@
-import { en_US } from "./dictionary/default-en-us.ts";
-import { id } from "./dictionary/id.ts";
-import { ja } from "./dictionary/ja.ts";
+import { en_US } from "./dictionary/default-en-us";
+import { id } from "./dictionary/id";
+import { ja } from "./dictionary/ja";
 
 export type LangCode = keyof typeof ui;
 
@@ -16,9 +16,9 @@ export const languages: LangCodeRecord = {
 	ja: "日本語",
 };
 
-export const defaultLangCode = "en-US";
+export const langCodeDefault = "en-US";
 
-export const langCodeUrlPrefixes: LangCodeRecord = {
+export const langCodeSegments: LangCodeRecord = {
 	"en-US": "",
 	id: "id",
 	ja: "ja",

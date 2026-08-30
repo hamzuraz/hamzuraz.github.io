@@ -1,6 +1,7 @@
 ---
-import { defaultLangCode, languages } from "$/i18n/ui";
-import { buildLocalizedPath, getObjectKeys } from "$/i18n/utils";
+import { getObjectKeys } from "$/i18n/type-helpers";
+import { langCodeDefault, languages } from "$/i18n/ui";
+import { buildLocalizedRoutePath } from "$/i18n/utils";
 
 const pathname = Astro.url.pathname;
 const siteUrl = Astro.site;
@@ -9,16 +10,16 @@ const langCodes = getObjectKeys(languages);
 ---
 
 {
-    langCodes.map((lang) => (
+    langCodes.map((langCode) => (
         <link
             rel="alternate"
-            hreflang={lang}
-            href={new URL(buildLocalizedPath(lang, pathname), siteUrl)}
+            hreflang={langCode}
+            href={new URL(buildLocalizedRoutePath(langCode, pathname), siteUrl)}
         />
     ))
 }
 <link
     rel="alternate"
     hreflang="x-default"
-    href={new URL(buildLocalizedPath(defaultLangCode, pathname), siteUrl)}
+    href={new URL(buildLocalizedRoutePath(langCodeDefault, pathname), siteUrl)}
 />

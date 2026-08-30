@@ -1,4 +1,4 @@
-import type { DictionaryShape } from "./default-en-us.ts";
+import type { DictionaryShape } from "./default-en-us";
 
 export const ja = {
 	"home.title": "Rifki Muhazzar — ソフトウェアエンジニア",
