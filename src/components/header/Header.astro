@@ -37,7 +37,7 @@ const langCode = Astro.locals.langCode;
             </label>
 
             <a
-                href={`/${langCode}/`}
+                href={langCode === "en-US" ? "/" : `/${langCode}/`}
                 class="d-btn text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 dark:border-base-content/50 px-3 ml-1"
             >
                 RM
