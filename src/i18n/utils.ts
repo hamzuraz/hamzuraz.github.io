@@ -1,72 +1,60 @@
 import type { GetStaticPaths } from "astro";
+import { getObjectKeys, isLangCode } from "./type-helpers";
 import {
 	type Dictionary,
-	defaultLangCode,
 	type LangCode,
-	langCodeUrlPrefixes,
+	langCodeDefault,
+	langCodeSegments,
 	languages,
 	ui,
 } from "./ui.ts";
 
-function isLangCode(value: string): value is LangCode {
-	return Object.hasOwn(ui, value);
-}
-
-export function getObjectKeys<T extends object>(obj: T): (keyof T)[] {
-	return Object.keys(obj) as (keyof T)[];
-}
-
-export const getLangCodeStaticPaths = (() => {
+export const getLocalizedRouteStaticPaths = (() => {
 	const langCodes = getObjectKeys(languages);
 
-	return langCodes.map((lang) => {
-		const langCodeUrlPrefix = langCodeUrlPrefixes[lang];
+	return langCodes.map((langCode) => {
 		return {
 			params: {
-				lang: langCodeUrlPrefix,
+				lang: langCodeSegments[langCode],
 			},
 		};
 	});
 }) satisfies GetStaticPaths;
 
-export function getLangCodeFromPathname(pathname: string) {
-	const segment = pathname.split("/")[1];
-	const langCode = getObjectKeys(langCodeUrlPrefixes).find(
-		(code) => code === segment || langCodeUrlPrefixes[code] === segment,
-	);
-
-	if (langCode) return langCode;
-	return defaultLangCode;
+export function getLangCodeFromPathname(pathname: string): LangCode {
+	const firstSegment = pathname.split("/")[1];
+	return isLangCode(firstSegment) ? firstSegment : langCodeDefault;
 }
 
-export function useTranslations(langCode: LangCode) {
-	return function t(key: Dictionary["key"]) {
+export function useTranslations(langCode: LangCode): TranslationFunc {
+	return function t(key: Dictionary["key"]): string {
 		return ui[langCode][key];
 	};
 }
 
-export function buildLocalizedPath(langCode: string, pathname: string): string {
+export function buildLocalizedRoutePath(
+	langCode: string,
+	pathname: string,
+): string {
 	if (!isLangCode(langCode)) return pathname;
 
-	const targetUrlPrefix = langCodeUrlPrefixes[langCode];
+	const langCodeSegment = langCodeSegments[langCode];
 	const segments = pathname.split("/").filter(Boolean);
+
 	const hasTrailingSlash = pathname.endsWith("/");
-	const hasLangPrefixSegment = getObjectKeys(langCodeUrlPrefixes).some(
-		(code) =>
-			code === segments[0] ||
-			(Boolean(langCodeUrlPrefixes[code]) &&
-				langCodeUrlPrefixes[code] === segments[0]),
+	const hasLangCodeSegment = getObjectKeys(langCodeSegments).some(
+		(code) => code === segments[0],
 	);
 
-	if (hasLangPrefixSegment) segments.shift();
+	if (hasLangCodeSegment) segments.shift();
 
-	const localizedPath = targetUrlPrefix
-		? `/${targetUrlPrefix}/${segments.join("/")}`
+	const localizedRoutePath = langCodeSegment
+		? `/${langCodeSegment}/${segments.join("/")}`
 		: `/${segments.join("/")}`;
 
-	if (hasTrailingSlash && !localizedPath.endsWith("/")) {
-		return `${localizedPath}/`;
+	if (hasTrailingSlash && !localizedRoutePath.endsWith("/")) {
+		return `${localizedRoutePath}/`;
 	}
 
-	return localizedPath;
+	return localizedRoutePath;
 }

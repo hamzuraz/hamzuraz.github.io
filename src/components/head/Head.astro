@@ -1,10 +1,10 @@
 ---
-import type { SEOProps } from "$/env.d.ts";
+import type { HeadProps } from "$/env";
 import LinkHreflang from "./LinkHreflang.astro";
 import LinkPreloadFonts from "./LinkPreloadFonts.astro";
 import ScriptThemeInitializer from "./ScriptThemeInitializer.astro";
 
-type Props = SEOProps;
+type Props = HeadProps;
 
 const { title, description } = Astro.props;
 

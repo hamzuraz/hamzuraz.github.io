@@ -1,8 +1,8 @@
 ---
 import { ChevronDown, Languages } from "@lucide/astro";
-import { languages } from "$/i18n/ui.ts";
-import { buildLocalizedPath } from "$/i18n/utils.ts";
-import { chevronProps, iconProps } from "$/lib/icon-props.ts";
+import { languages } from "$/i18n/ui";
+import { buildLocalizedRoutePath } from "$/i18n/utils";
+import { chevronProps, iconProps } from "$/lib/icon-props";
 
 const langCode = Astro.locals.langCode;
 const pathname = Astro.url.pathname;
@@ -16,6 +16,7 @@ const pathname = Astro.url.pathname;
     >
         <div class="font-normal flex gap-3">
             <Languages {...iconProps} class="translate-y-0.5" />
+
             <div class="flex items-baseline gap-1">
                 <span>{languages[langCode]}</span>
                 <span class="text-xs font-mono opacity-60 uppercase">
@@ -23,6 +24,7 @@ const pathname = Astro.url.pathname;
                 </span>
             </div>
         </div>
+
         <ChevronDown {...chevronProps} />
     </div>
 
@@ -32,18 +34,17 @@ const pathname = Astro.url.pathname;
         class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >
         {
-            Object.entries(languages).map(([code, name]) => {
-                const path = buildLocalizedPath(code, pathname);
+            Object.entries(languages).map(([langCode, langName]) => {
                 return (
                     <li>
                         <a
-                            href={path}
-                            data-lang-code={code}
+                            href={buildLocalizedRoutePath(langCode, pathname)}
+                            data-lang-code={langCode}
                             class="flex justify-between"
                         >
-                            {name}
+                            {langName}
                             <span class="text-xs font-mono opacity-60 uppercase">
-                                {code}
+                                {langCode}
                             </span>
                         </a>
                     </li>

@@ -1,23 +1,21 @@
 /// <reference types="astro/client" />
 
-import type { Dictionary, LangCode } from "$/i18n/ui.ts";
+import type { Dictionary, LangCode } from "$/i18n/ui";
+
+declare global {
+	type TranslationFunc = (key: Dictionary["key"]) => string;
+}
 
 declare global {
 	namespace App {
 		interface Locals {
 			langCode: LangCode;
-			t: (key: Dictionary["key"]) => string;
+			t: TranslationFunc;
 		}
 	}
 }
 
-declare global {
-	interface Storage {
-		theme: string | undefined;
-	}
-}
-
-export type SEOProps = {
+export type HeadProps = {
 	title: string;
 	description: string;
 };
