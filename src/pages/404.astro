@@ -7,3 +7,54 @@ import Layout from "$/layouts/Layout.astro";
         <h1>404 - Not Found</h1>
     </main>
 </Layout>
+
+<script>
+    import { isLangCode } from "$/i18n/type-helpers";
+    import { languages } from "$/i18n/ui";
+    import { buildLocalizedRoutePath } from "$/i18n/utils";
+
+    const langList = window.document.getElementById("lang-list");
+    const langNameCurrentText = window.document.getElementById(
+        "lang-name-current-text",
+    );
+    const langCodeCurrentText = window.document.getElementById(
+        "lang-code-current-text",
+    );
+
+    if (
+        langNameCurrentText instanceof HTMLSpanElement &&
+        langCodeCurrentText instanceof HTMLSpanElement
+    ) {
+        const langCode = window.location.pathname.split("/")[1];
+        if (isLangCode(langCode)) {
+            langNameCurrentText.textContent = languages[langCode];
+            langCodeCurrentText.textContent = langCode;
+        }
+    }
+
+    if (langList instanceof HTMLUListElement) {
+        langList.addEventListener("click", (event) => {
+            const element = event.target;
+            if (!(element instanceof Element)) return;
+
+            const langCodeValueElement = element.closest<HTMLAnchorElement>(
+                "a[data-lang-code-value]",
+            );
+            if (!langCodeValueElement) return;
+
+            event.preventDefault();
+
+            const langCode = langCodeValueElement.getAttribute(
+                "data-lang-code-value",
+            );
+            if (!langCode || !isLangCode(langCode)) return;
+
+            const newPath = buildLocalizedRoutePath(
+                langCode,
+                window.location.pathname,
+            );
+
+            window.location.pathname = newPath;
+        });
+    }
+</script>
