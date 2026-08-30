@@ -1,59 +1,17 @@
 ---
-import { ChevronDown, ExternalLink } from "@lucide/astro";
-import { chevronProps, iconProps } from "$/lib/icon-props";
+import ListDropdownDesktop from "./ListDropdownDesktop.astro";
+import ListInternalLinks from "./ListInternalLinks.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 ---
 
 <div class="d-navbar-center hidden lg:flex">
     <ul class="d-menu d-menu-horizontal px-1">
-        <li><button>Projects</button></li>
-        <li><button>Skills</button></li>
-        <li><button>Contact</button></li>
-        <li>
-            <details>
-                <summary
-                    class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
-                >
-                    Social
-                    <ChevronDown {...chevronProps} />
-                </summary>
-                <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
-                    <li>
-                        <button>
-                            LinkedIn
-                            <ExternalLink {...iconProps} />
-                        </button>
-                    </li>
-                    <li>
-                        <button>
-                            GitHub
-                            <ExternalLink {...iconProps} />
-                        </button>
-                    </li>
-                </ul>
-            </details>
-        </li>
+        <ListInternalLinks />
+        <ListDropdownDesktop />
     </ul>
-
-    <div>
+    <div class="flex gap-1">
         <SelectorTheme />
         <SelectorLanguage />
     </div>
 </div>
-
-<script>
-    document.addEventListener("click", (event) => {
-        const target = event.target;
-        if (!(target instanceof Node)) return;
-
-        document.querySelectorAll("details[open]").forEach((details) => {
-            if (
-                !details.contains(target) &&
-                details instanceof HTMLDetailsElement
-            ) {
-                details.open = false;
-            }
-        });
-    });
-</script>
