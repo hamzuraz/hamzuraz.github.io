@@ -25,10 +25,10 @@ import Layout from "$/layouts/Layout.astro";
         langNameActiveTextElement instanceof HTMLSpanElement &&
         langCodeActiveTextElement instanceof HTMLSpanElement
     ) {
-        const langCode = window.location.pathname.split("/")[1];
-        if (isLangCode(langCode)) {
-            langNameActiveTextElement.textContent = languages[langCode];
-            langCodeActiveTextElement.textContent = langCode;
+        const firstSegment = window.location.pathname.split("/")[1];
+        if (isLangCode(firstSegment)) {
+            langNameActiveTextElement.textContent = languages[firstSegment];
+            langCodeActiveTextElement.textContent = firstSegment;
         }
     }
 
