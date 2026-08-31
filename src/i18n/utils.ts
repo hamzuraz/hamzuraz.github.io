@@ -1,14 +1,12 @@
 import type { GetStaticPaths } from "astro";
-import { getObjectKeys, isLangCode } from "./type-helpers";
 import {
 	type Dictionary,
+	getObjectKeys,
+	isLangCode,
 	type LangCode,
-	langCodeDefault,
-	langCodeSegments,
-	languages,
 	type TranslationFunc,
-	ui,
-} from "./ui.ts";
+} from "./type-helpers";
+import { langCodeDefault, langCodeSegments, languages, ui } from "./ui";
 
 export const getLocalizedRouteStaticPaths = (() => {
 	const langCodes = getObjectKeys(languages);

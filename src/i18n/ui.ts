@@ -1,14 +1,7 @@
 import { en_US } from "./dictionary/default-en-us";
 import { id } from "./dictionary/id";
 import { ja } from "./dictionary/ja";
-
-export type LangCode = keyof typeof ui;
-
-export type Dictionary = {
-	key: keyof (typeof ui)[LangCode];
-};
-
-export type TranslationFunc = (key: Dictionary["key"]) => string;
+import type { LangCode } from "./type-helpers";
 
 type LangCodeRecord = Record<LangCode, string>;
 

@@ -1,6 +1,6 @@
 /// <reference types="astro/client" />
 
-import type { LangCode, TranslationFunc } from "./i18n/ui";
+import type { LangCode, TranslationFunc } from "./i18n/type-helpers";
 
 declare global {
 	namespace App {
