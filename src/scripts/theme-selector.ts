@@ -59,7 +59,7 @@ themeMenuElements.forEach((list) => {
 
 		event.preventDefault();
 
-		const themeValue = themeValueElement.dataset.themValue;
+		const themeValue = themeValueElement.dataset.themeValue;
 		if (!isThemePreference(themeValue)) return;
 
 		if (themeValue === "system") {
