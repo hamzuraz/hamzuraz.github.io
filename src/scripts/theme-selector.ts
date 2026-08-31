@@ -1,5 +1,8 @@
-const themeCurrentText = window.document.getElementById("theme-current-text");
-const themeList = window.document.getElementById("theme-list");
+const themeCurrentText = window.document.querySelectorAll<HTMLSpanElement>(
+	"#theme-current-text",
+);
+const themeList =
+	window.document.querySelectorAll<HTMLUListElement>("#theme-list");
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 type ThemePreference = "system" | "light" | "dark";
@@ -18,9 +21,9 @@ function resolveTheme(theme: ThemePreference): ResolvedTheme {
 }
 
 function updateThemeLabel(theme: string) {
-	if (themeCurrentText instanceof HTMLSpanElement) {
-		themeCurrentText.textContent = theme;
-	}
+	themeCurrentText.forEach((element) => {
+		element.textContent = theme;
+	});
 }
 
 function getStoredTheme(): ThemePreference {
@@ -40,8 +43,8 @@ function applyTheme(theme: ThemePreference) {
 
 applyTheme(getStoredTheme());
 
-if (themeList instanceof HTMLUListElement) {
-	themeList.addEventListener("click", (event) => {
+themeList.forEach((list) => {
+	list.addEventListener("click", (event) => {
 		const element = event.target;
 		if (!(element instanceof Element)) return;
 
@@ -63,7 +66,7 @@ if (themeList instanceof HTMLUListElement) {
 
 		applyTheme(themeValue);
 	});
-}
+});
 
 mediaQuery.addEventListener("change", () => {
 	if (getStoredTheme() === "system") applyTheme("system");
