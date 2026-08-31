@@ -13,27 +13,27 @@ import Layout from "$/layouts/Layout.astro";
     import { languages } from "$/i18n/ui";
     import { buildLocalizedRoutePath } from "$/i18n/utils";
 
-    const langList = window.document.getElementById("lang-list");
-    const langNameCurrentText = window.document.getElementById(
-        "lang-name-current-text",
+    const langNameActiveTextElement = window.document.getElementById(
+        "lang-name-active-text",
     );
-    const langCodeCurrentText = window.document.getElementById(
-        "lang-code-current-text",
+    const langCodeActiveTextElement = window.document.getElementById(
+        "lang-code-active-text",
     );
+    const langMenuElement = window.document.getElementById("lang-menu");
 
     if (
-        langNameCurrentText instanceof HTMLSpanElement &&
-        langCodeCurrentText instanceof HTMLSpanElement
+        langNameActiveTextElement instanceof HTMLSpanElement &&
+        langCodeActiveTextElement instanceof HTMLSpanElement
     ) {
         const langCode = window.location.pathname.split("/")[1];
         if (isLangCode(langCode)) {
-            langNameCurrentText.textContent = languages[langCode];
-            langCodeCurrentText.textContent = langCode;
+            langNameActiveTextElement.textContent = languages[langCode];
+            langCodeActiveTextElement.textContent = langCode;
         }
     }
 
-    if (langList instanceof HTMLUListElement) {
-        langList.addEventListener("click", (event) => {
+    if (langMenuElement instanceof HTMLUListElement) {
+        langMenuElement.addEventListener("click", (event) => {
             const element = event.target;
             if (!(element instanceof Element)) return;
 
@@ -44,9 +44,7 @@ import Layout from "$/layouts/Layout.astro";
 
             event.preventDefault();
 
-            const langCode = langCodeValueElement.getAttribute(
-                "data-lang-code-value",
-            );
+            const langCode = langCodeValueElement.dataset.langCodeValue;
             if (!langCode || !isLangCode(langCode)) return;
 
             const newPath = buildLocalizedRoutePath(
