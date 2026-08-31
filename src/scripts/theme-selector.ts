@@ -1,14 +1,18 @@
-const themeCurrentText = window.document.querySelectorAll<HTMLSpanElement>(
-	"#theme-current-text",
+const themeActiveTextElements =
+	window.document.querySelectorAll<HTMLSpanElement>(
+		"span[data-theme-active-text]",
+	);
+const themeMenuElements = window.document.querySelectorAll<HTMLUListElement>(
+	"ul[data-theme-menu]",
 );
-const themeList =
-	window.document.querySelectorAll<HTMLUListElement>("#theme-list");
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 type ThemePreference = "system" | "light" | "dark";
 type ResolvedTheme = Exclude<ThemePreference, "system">;
 
-function isThemePreference(value: string | null): value is ThemePreference {
+function isThemePreference(
+	value: string | undefined,
+): value is ThemePreference {
 	return value === "system" || value === "light" || value === "dark";
 }
 
@@ -21,7 +25,7 @@ function resolveTheme(theme: ThemePreference): ResolvedTheme {
 }
 
 function updateThemeLabel(theme: string) {
-	themeCurrentText.forEach((element) => {
+	themeActiveTextElements.forEach((element) => {
 		element.textContent = theme;
 	});
 }
@@ -37,13 +41,13 @@ function getStoredTheme(): ThemePreference {
 
 function applyTheme(theme: ThemePreference) {
 	const themeValue = resolveTheme(theme);
-	window.document.documentElement.setAttribute("data-theme", themeValue);
+	window.document.documentElement.dataset.theme = themeValue;
 	updateThemeLabel(theme);
 }
 
 applyTheme(getStoredTheme());
 
-themeList.forEach((list) => {
+themeMenuElements.forEach((list) => {
 	list.addEventListener("click", (event) => {
 		const element = event.target;
 		if (!(element instanceof Element)) return;
@@ -55,7 +59,7 @@ themeList.forEach((list) => {
 
 		event.preventDefault();
 
-		const themeValue = themeValueElement.getAttribute("data-theme-value");
+		const themeValue = themeValueElement.dataset.themValue;
 		if (!isThemePreference(themeValue)) return;
 
 		if (themeValue === "system") {
