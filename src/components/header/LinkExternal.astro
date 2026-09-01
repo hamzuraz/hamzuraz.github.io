@@ -1,11 +1,9 @@
 ---
 import { ExternalLink } from "@lucide/astro";
+import type { LinkProps } from "$/env";
 import { iconProps } from "$/lib/icon-props";
 
-type Props = {
-	href: string;
-	label: string;
-};
+type Props = LinkProps;
 
 const { href, label } = Astro.props;
 ---

@@ -1,14 +1,40 @@
 ---
-import ListDropdownDesktop from "./ListDropdownDesktop.astro";
-import ListInternalLinks from "./ListInternalLinks.astro";
+import { ChevronDown } from "@lucide/astro";
+import { langCodeSegments } from "$/i18n/ui";
+import { chevronProps } from "$/lib/icon-props";
+import LinkExternal from "./LinkExternal.astro";
+import LinkInternal from "./LinkInternal.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
+
+const langCode = Astro.locals.langCode;
+const langCodeSegment = langCodeSegments[langCode];
+const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div class="d-navbar-center hidden lg:flex">
     <ul class="d-menu d-menu-horizontal px-1">
-        <ListInternalLinks />
-        <ListDropdownDesktop />
+        <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
+        <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
+        <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
+        <li>
+            <details>
+                <summary
+                    class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
+                >
+                    Social
+                    <ChevronDown {...chevronProps} />
+                </summary>
+                <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
+                    <li>
+                        <LinkExternal
+                            href="https://github.com/hamzuraz/"
+                            label="GitHub"
+                        />
+                    </li>
+                </ul>
+            </details>
+        </li>
     </ul>
     <div class="flex gap-1">
         <SelectorTheme />

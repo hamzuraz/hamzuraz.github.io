@@ -1,20 +1,41 @@
 ---
-import ListDropdownMobile from "./ListDropdownMobile.astro";
-import ListInternalLinks from "./ListInternalLinks.astro";
+import { langCodeSegments } from "$/i18n/ui";
+import LinkExternal from "./LinkExternal.astro";
+import LinkInternal from "./LinkInternal.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
+
+const langCode = Astro.locals.langCode;
+const langCodeSegment = langCodeSegments[langCode];
+const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div
-    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line"
+    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line px-5 pt-1"
 >
     <ul
-        class="d-menu border-b border-dark-line dark:border-light-line w-full mb-1"
+        class="d-menu border-b border-dark-line dark:border-light-line w-full mb-px px-0 pb-2"
     >
-        <ListInternalLinks />
-        <ListDropdownMobile />
+        <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
+        <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
+        <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
+        <li>
+            <span
+                class="pointer-events-none hover:bg-transparent hover:text-inherit"
+            >
+                Social
+            </span>
+            <ul class="border-l border-dark-line dark:border-light-line">
+                <li>
+                    <LinkExternal
+                        href="https://github.com/hamzuraz/"
+                        label="GitHub"
+                    />
+                </li>
+            </ul>
+        </li>
     </ul>
-    <div class="d-menu gap-1">
+    <div class="d-menu gap-1 pb-1">
         <SelectorTheme />
         <SelectorLanguage />
     </div>
