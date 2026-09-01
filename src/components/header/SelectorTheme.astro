@@ -14,7 +14,9 @@ const t = Astro.locals.t;
         <div class="flex gap-3">
             <Paintbrush {...iconProps} class="translate-y-0.5" />
 
-            <span data-theme-active-text class="font-normal">System</span>
+            <span data-theme-active-text class="font-normal invisible">
+                System
+            </span>
         </div>
 
         <ChevronDown {...chevronProps} />
