@@ -1,0 +1,9 @@
+---
+import type { LinkProps } from "$/env";
+
+type Props = LinkProps;
+
+const { href, label } = Astro.props;
+---
+
+<a href={href}>{label}</a>
