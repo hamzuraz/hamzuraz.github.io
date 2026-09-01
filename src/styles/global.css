@@ -5,8 +5,4 @@
 @import "./system/themes.css";
 @import "./system/typography/typography.css";
 
-/* @import "./system/borders.css"; */
-/* @import "./system/colors.css"; */
-/* @import "./system/effects.css"; */
-
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

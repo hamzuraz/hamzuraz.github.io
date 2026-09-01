@@ -30,6 +30,17 @@ Consult these guides before working on related tasks:
 
 - This project uses Tailwind CSS v4 with the `@tailwindcss/vite` plugin.
 - Use Tailwind CSS v4's CSS-first configuration with directives such as `@theme`, `@plugin`, and `@custom-variant`.
-- This project uses daisyUI v5. Its configuration is in `src/styles/system/daisyui.css`.
+- This project uses daisyUI v5. Its configuration is in `src/styles/system/themes.css`.
 - Prefix every daisyUI component and modifier class with `d-`, such as `d-btn`, `d-menu`, and `d-dropdown`. Tailwind utility classes remain unprefixed.
 - When creating or styling a component, first look for a suitable daisyUI component in the official documentation at https://daisyui.com/components/. Use and adapt that component with Tailwind CSS v4 utilities as needed; only build the component with Tailwind CSS v4 utilities when no suitable daisyUI component exists.
+
+## Design System & Tokens
+
+All design tokens and global app styles should be referenced from [src/styles/global.css](src/styles/global.css) and the token files in [src/styles/system/](src/styles/system/), while files beginning with `_` are internal implementation details and should be ignored when reviewing or editing the design system.
+
+- **Global Styles:** [src/styles/global.css](src/styles/global.css)
+- **Breakpoints:** [src/styles/system/breakpoints.css](src/styles/system/breakpoints.css)
+- **Spacing & Sizing:** [src/styles/system/spacing-and-sizing.css](src/styles/system/spacing-and-sizing.css)
+- **Themes:** [src/styles/system/themes.css](src/styles/system/themes.css)
+- **Typography:** [src/styles/system/typography/typography.css](src/styles/system/typography/typography.css)
+- **Ignore internal partials:** any file in [src/styles/system/](src/styles/system/) whose name starts with `_` (for example, `_colors.css`, `_borders.css`, `_effects.css`) is not part of the public design token surface.
