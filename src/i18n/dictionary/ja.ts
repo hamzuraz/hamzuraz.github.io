@@ -20,7 +20,7 @@ export const ja = {
 
 	"home.hero.badge.role": "ソフトウェアエンジニア",
 	"home.hero.subheading":
-		"ユーザーが触れるインターフェースから、それを支えるアーキテクチャまで——私は\u00A0両方を、スケールすることを前提に\u00A0構築します。",
+		"ユーザーが触れるインターフェースから、それを支えるアーキテクチャまで——私は両方を、スケールすることを前提に構築します。",
 	"home.hero.cta.primary": "レジュメを見る",
 	"home.hero.cta.secondary": "お問い合わせ",
 
