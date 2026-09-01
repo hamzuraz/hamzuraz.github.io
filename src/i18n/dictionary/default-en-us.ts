@@ -20,6 +20,7 @@ export const en_US = {
 	"header.nav.projects": "Projects",
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
+	"header.nav.social": "Social",
 	"header.theme.system": "System",
 	"header.theme.light": "Light",
 	"header.theme.dark": "Dark",
@@ -34,7 +35,7 @@ export const en_US = {
 
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
-		"From the interface users interact with to the architecture that keeps it running — I&nbsp;build both, and I&nbsp;build them to scale.",
+		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
 	"home.hero.cta.primary": "View resume",
 	"home.hero.cta.secondary": "Contact me",
 
