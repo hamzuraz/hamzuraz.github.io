@@ -5,6 +5,7 @@ export const ja = {
 	"header.nav.projects": "プロジェクト",
 	"header.nav.skills": "スキル",
 	"header.nav.contact": "お問い合わせ",
+	"header.nav.social": "ソーシャル",
 	"header.theme.system": "システム",
 	"header.theme.light": "ライト",
 	"header.theme.dark": "ダーク",
@@ -19,7 +20,7 @@ export const ja = {
 
 	"home.hero.badge.role": "ソフトウェアエンジニア",
 	"home.hero.subheading":
-		"ユーザーが触れるインターフェースから、それを支えるアーキテクチャまで——私は&nbsp;両方を、スケールすることを前提に&nbsp;構築します。",
+		"ユーザーが触れるインターフェースから、それを支えるアーキテクチャまで——私は\u00A0両方を、スケールすることを前提に\u00A0構築します。",
 	"home.hero.cta.primary": "レジュメを見る",
 	"home.hero.cta.secondary": "お問い合わせ",
 

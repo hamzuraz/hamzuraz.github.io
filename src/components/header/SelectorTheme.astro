@@ -1,6 +1,8 @@
 ---
 import { ChevronDown, Paintbrush } from "@lucide/astro";
 import { chevronProps, iconProps } from "$/lib/icon-props";
+
+const t = Astro.locals.t;
 ---
 
 <div class="d-dropdown d-dropdown-start p-0">
@@ -28,8 +30,14 @@ import { chevronProps, iconProps } from "$/lib/icon-props";
         tabindex="-1"
         class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
     >
-        <li><a href="" data-theme-value="system">System</a></li>
-        <li><a href="" data-theme-value="light">Light</a></li>
-        <li><a href="" data-theme-value="dark">Dark</a></li>
+        <li>
+            <a href="" data-theme-value="system">{t("header.theme.system")}</a>
+        </li>
+        <li>
+            <a href="" data-theme-value="light">{t("header.theme.light")}</a>
+        </li>
+        <li>
+            <a href="" data-theme-value="dark">{t("header.theme.dark")}</a>
+        </li>
     </ul>
 </div>

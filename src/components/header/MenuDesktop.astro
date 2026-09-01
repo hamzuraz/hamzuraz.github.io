@@ -7,6 +7,7 @@ import LinkInternal from "./LinkInternal.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 
+const t = Astro.locals.t;
 const langCode = Astro.locals.langCode;
 const langCodeSegment = langCodeSegments[langCode];
 const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
@@ -14,15 +15,30 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 
 <div class="d-navbar-center hidden lg:flex">
     <ul class="d-menu d-menu-horizontal px-2">
-        <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
-        <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
-        <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
+        <li>
+            <LinkInternal
+                href={`${segment}/projects/`}
+                label={t("header.nav.projects")}
+            />
+        </li>
+        <li>
+            <LinkInternal
+                href={`${segment}/#skills`}
+                label={t("header.nav.skills")}
+            />
+        </li>
+        <li>
+            <LinkInternal
+                href={`${segment}/#contact`}
+                label={t("header.nav.contact")}
+            />
+        </li>
         <li>
             <details>
                 <summary
                     class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
                 >
-                    Social
+                    {t("header.nav.social")}
                     <ChevronDown {...chevronProps} />
                 </summary>
                 <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
