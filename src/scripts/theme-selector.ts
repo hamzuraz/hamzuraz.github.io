@@ -1,3 +1,6 @@
+import { ui } from "$/i18n/ui";
+import { getLangCodeFromPathname } from "$/i18n/utils";
+
 const themeActiveTextElements =
 	window.document.querySelectorAll<HTMLSpanElement>(
 		"span[data-theme-active-text]",
@@ -24,9 +27,10 @@ function resolveTheme(theme: ThemePreference): ResolvedTheme {
 	return theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme;
 }
 
-function updateThemeLabel(theme: string) {
+function updateThemeLabel(theme: ThemePreference) {
+	const langCode = getLangCodeFromPathname(window.location.pathname);
 	themeActiveTextElements.forEach((element) => {
-		element.textContent = theme;
+		element.textContent = ui[langCode][`${"header.theme."}${theme}`];
 	});
 }
 

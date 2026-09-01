@@ -20,7 +20,7 @@ export const id = {
 
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
-		"Dari antarmuka yang berinteraksi dengan pengguna hingga arsitektur yang menjaganya tetap berjalan — saya\u00A0membangun keduanya, dan saya\u00A0membangunnya agar dapat berkembang.",
+		"Dari antarmuka yang berinteraksi dengan pengguna hingga arsitektur yang menjaganya tetap berjalan — saya membangun keduanya, dan saya membangunnya agar dapat berkembang.",
 	"home.hero.cta.primary": "Lihat resume",
 	"home.hero.cta.secondary": "Hubungi saya",
 
