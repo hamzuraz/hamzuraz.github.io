@@ -5,9 +5,11 @@ import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 ---
 
-<div class="d-collapse-content lg:hidden z-1">
+<div
+    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line"
+>
     <ul
-        class="d-menu border-b-2 border-[#DBDCDD] w-full dark:border-[#2D343E] mb-1"
+        class="d-menu border-b border-dark-line dark:border-light-line w-full mb-1"
     >
         <ListInternalLinks />
         <ListDropdownMobile />

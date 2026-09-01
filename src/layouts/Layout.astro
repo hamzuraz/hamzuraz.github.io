@@ -14,7 +14,9 @@ const langCode = Astro.locals.langCode;
 <!doctype html>
 <html lang={langCode}>
 	<Head title={title} description={description} />
-	<body class="min-w-80 mx-auto lg:max-w-250 lg:border-2 lg:border-base-300">
+	<body
+		class="min-w-80 mx-auto lg:max-w-250 lg:border lg:border-dark-line dark:lg:border-light-line"
+	>
 		<Header />
 		<slot />
 		<Footer />
