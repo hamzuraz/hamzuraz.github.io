@@ -1,3 +1,7 @@
+---
+const t = Astro.locals.t;
+---
+
 <section
     id="_hero"
     class="px-4 lg:px-8 py-16 sm:py-32 border-b border-dark-line dark:border-light-line"
@@ -5,7 +9,7 @@
     <div
         class="d-badge d-badge-soft d-badge-secondary uppercase tracking-wider font-mono d-badge-sm sm:d-badge-md"
     >
-        Fullstack Cross-platform Developer
+        {t("home.hero.badge.role")}
     </div>
 
     <h1 class="text-6xl sm:text-7xl font-bold mt-2 dark:text-primary">
@@ -13,8 +17,7 @@
     </h1>
 
     <p class="mt-6 text-lg sm:text-xl max-w-xl">
-        From the interface users interact with to the architecture that keeps it
-        running — I&nbsp;build both, and I&nbsp;build them to scale.
+        {t("home.hero.subheading")}
     </p>
 
     <div class="mt-6 flex gap-2 flex-wrap font-mono">
@@ -51,11 +54,11 @@
     <div class="flex gap-4 mt-12">
         <div class="d-aura d-aura-silver d-aura-lg">
             <button class="d-btn d-btn-primary sm:d-btn-lg">
-                View Resume
+                {t("home.hero.cta.primary")}
             </button>
         </div>
         <button class="d-btn d-btn-outline d-btn-secondary sm:d-btn-lg">
-            Contact Me
+            {t("home.hero.cta.secondary")}
         </button>
     </div>
 </section>

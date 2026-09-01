@@ -1,5 +1,8 @@
 ---
+import SectionContact from "$/components/home/SectionContact.astro";
 import SectionHero from "$/components/home/SectionHero.astro";
+import SectionProjects from "$/components/home/SectionProjects.astro";
+import SectionSkills from "$/components/home/SectionSkills.astro";
 import Layout from "$/layouts/Layout.astro";
 
 export { getLocalizedRouteStaticPaths as getStaticPaths } from "$/i18n/utils";
@@ -9,19 +12,7 @@ const t = Astro.locals.t;
 
 <Layout title={t("home.title")} description={t("home.description")}>
 	<SectionHero />
-	<section
-		id="projects"
-		class="border-b border-dark-line dark:border-light-line"
-	>
-		<h2>Projects</h2>
-	</section>
-	<section
-		id="skills"
-		class="border-b border-dark-line dark:border-light-line"
-	>
-		<h2>Skills</h2>
-	</section>
-	<section id="contact" class="border-dark-line dark:border-light-line">
-		<h2>Contact</h2>
-	</section>
+	<SectionProjects />
+	<SectionSkills />
+	<SectionContact />
 </Layout>
