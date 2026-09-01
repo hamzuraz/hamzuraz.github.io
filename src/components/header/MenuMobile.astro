@@ -11,10 +11,10 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div
-    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line px-5 pt-1"
+    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line p-0"
 >
     <ul
-        class="d-menu border-b border-dark-line dark:border-light-line w-full mb-px px-0 pb-2"
+        class="d-menu border-b border-dark-line dark:border-light-line w-full px-0 py-3"
     >
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
@@ -35,7 +35,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
             </ul>
         </li>
     </ul>
-    <div class="d-menu gap-1 pb-1">
+    <div class="d-menu gap-3 p-3 pb-6">
         <SelectorTheme />
         <SelectorLanguage />
     </div>

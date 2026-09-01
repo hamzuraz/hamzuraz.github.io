@@ -13,7 +13,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div class="d-navbar-center hidden lg:flex">
-    <ul class="d-menu d-menu-horizontal px-1">
+    <ul class="d-menu d-menu-horizontal px-2">
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
         <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
@@ -36,7 +36,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
             </details>
         </li>
     </ul>
-    <div class="flex gap-1">
+    <div class="flex gap-3">
         <SelectorTheme />
         <SelectorLanguage />
     </div>
