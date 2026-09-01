@@ -16,9 +16,42 @@
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const en_US = {
+	// Header --------------------------------------------------
+	"header.nav.projects": "Projects",
+	"header.nav.skills": "Skills",
+	"header.nav.contact": "Contact",
+	"header.theme.system": "System",
+	"header.theme.light": "Light",
+	"header.theme.dark": "Dark",
+
+	// Footer --------------------------------------------------
+	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",
+
+	// Home page -----------------------------------------------
 	"home.title": "Rifki Muhazzar — Software Engineer",
 	"home.description":
-		"Portfolio of Rifki Muhazzar, a software engineer. Explore my experience, technologies, projects, and blog posts, or get in touch.",
+		"Portfolio of Rifki Muhazzar, a software engineer. Explore my projects, skills, or get in touch.",
+
+	"home.hero.badge.role": "Software Engineer",
+	"home.hero.subheading":
+		"From the interface users interact with to the architecture that keeps it running — I&nbsp;build both, and I&nbsp;build them to scale.",
+	"home.hero.cta.primary": "View resume",
+	"home.hero.cta.secondary": "Contact me",
+
+	"home.projects.title": "Projects",
+	"home.projects.description":
+		"Here are some of the projects I've worked on. I enjoy building things that solve real problems.",
+	"home.projects.cta": "View all projects",
+
+	"home.skills.title": "Skills",
+	"home.skills.description":
+		"I'm a software engineer with experience in web and mobile applications. I enjoy learning new technologies and improving my skills.",
+
+	"home.contact.title": "Contact",
+	"home.contact.description":
+		"If you'd like to get in touch, feel free to reach out via email or connect with me on LinkedIn.",
+	"home.contact.cta.email": "Send me an email",
+	"home.contact.cta.linkedin": "Connect on LinkedIn",
 } as const;
 
 export type DictionaryShape = Record<keyof typeof en_US, string>;
