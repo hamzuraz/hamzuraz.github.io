@@ -1,18 +1,40 @@
 ---
-const t = Astro.locals.t;
+const { langCode, t } = Astro.locals;
+const lastUpdated = new Date().toLocaleDateString(langCode, {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+
+const techStack = [
+	{ label: "HTML", color: "error" },
+	{ label: "CSS", color: "info" },
+	{ label: "JS", color: "warning" },
+	{ label: "TS", color: "info" },
+	{ label: "Python", color: "info" },
+	{ label: "Go", color: "info" },
+	{ label: "Rust", color: "error" },
+];
 ---
 
 <section
-    id="_hero"
-    class="px-4 lg:px-8 py-16 sm:py-32 border-b border-dark-line dark:border-light-line"
+    id="hero"
+    class="border-b border-dark-line px-4 pt-8 pb-16 sm:pb-32 lg:px-8 dark:border-light-line"
 >
+    <div class="font-mono text-sm">
+        — {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
+    </div>
+
     <div
-        class="d-badge d-badge-soft d-badge-secondary uppercase tracking-wider font-mono d-badge-sm sm:d-badge-md"
+        class="d-badge d-badge-soft mt-12 font-mono d-badge-sm tracking-wider uppercase d-badge-secondary sm:d-badge-md"
     >
         {t("home.hero.badge.role")}
     </div>
 
-    <h1 class="text-6xl sm:text-7xl font-bold mt-2 dark:text-primary">
+    <h1
+        id="hero-heading"
+        class="text-4xl sm:text-6xl font-bold mt-2 dark:text-primary"
+    >
         Rifki Muhazzar
     </h1>
 
@@ -20,45 +42,39 @@ const t = Astro.locals.t;
         {t("home.hero.subheading")}
     </p>
 
-    <div class="mt-6 flex gap-2 flex-wrap font-mono">
-        <div
-            class="d-badge d-badge-soft d-badge-error d-badge-sm sm:d-badge-md"
-        >
-            HTML
-        </div>
-        <div class="d-badge d-badge-soft d-badge-info d-badge-sm sm:d-badge-md">
-            CSS
-        </div>
-        <div
-            class="d-badge d-badge-soft d-badge-warning d-badge-sm sm:d-badge-md"
-        >
-            JS
-        </div>
-        <div class="d-badge d-badge-soft d-badge-info d-badge-sm sm:d-badge-md">
-            TS
-        </div>
-        <div class="d-badge d-badge-soft d-badge-info d-badge-sm sm:d-badge-md">
-            Python
-        </div>
-        <div class="d-badge d-badge-soft d-badge-info d-badge-sm sm:d-badge-md">
-            Go
-        </div>
-        <div
-            class="d-badge d-badge-soft d-badge-error d-badge-sm sm:d-badge-md"
-        >
-            Rust
-        </div>
-        <a class="d-link d-link-secondary text-sm sm:text-base">See more</a>
-    </div>
+    <ul class="mt-6 flex gap-2 flex-wrap font-mono list-none p-0 m-0">
+        {
+            techStack.map((tech) => (
+                <li>
+                    <span
+                        class={`d-badge d-badge-soft d-badge-${tech.color} d-badge-sm sm:d-badge-md`}
+                    >
+                        {tech.label}
+                    </span>
+                </li>
+            ))
+        }
+        <li>
+            <a
+                href="#skills"
+                class="d-link d-link-secondary text-sm sm:text-base"
+            >
+                {t("home.hero.techstack.more")}
+            </a>
+        </li>
+    </ul>
 
     <div class="flex gap-4 mt-12">
         <div class="d-aura d-aura-silver d-aura-lg">
-            <button class="d-btn d-btn-primary sm:d-btn-lg">
+            <a href="#contact" class="d-btn d-btn-primary sm:d-btn-lg">
                 {t("home.hero.cta.primary")}
-            </button>
+            </a>
         </div>
-        <button class="d-btn d-btn-outline d-btn-secondary sm:d-btn-lg">
+        <a
+            href="/projects/"
+            class="d-btn d-btn-outline d-btn-secondary sm:d-btn-lg"
+        >
             {t("home.hero.cta.secondary")}
-        </button>
+        </a>
     </div>
 </section>
