@@ -36,11 +36,11 @@ Consult these guides before working on related tasks:
 
 ## Design System & Tokens
 
-All design tokens and global app styles should be referenced from [src/styles/global.css](src/styles/global.css) and the token files in [src/styles/system/](src/styles/system/), while files beginning with `_` are internal implementation details and should be ignored when reviewing or editing the design system.
+All global app styles and design tokens should be referenced from [src/styles/global.css](src/styles/global.css) and the token files in [src/styles/system/](src/styles/system/).
 
 - **Global Styles:** [src/styles/global.css](src/styles/global.css)
 - **Breakpoints:** [src/styles/system/breakpoints.css](src/styles/system/breakpoints.css)
 - **Spacing & Sizing:** [src/styles/system/spacing-and-sizing.css](src/styles/system/spacing-and-sizing.css)
 - **Themes:** [src/styles/system/themes.css](src/styles/system/themes.css)
 - **Typography:** [src/styles/system/typography/typography.css](src/styles/system/typography/typography.css)
-- **Ignore internal partials:** any file in [src/styles/system/](src/styles/system/) whose name starts with `_` (for example, `_colors.css`, `_borders.css`, `_effects.css`) is not part of the public design token surface.
+- **Excluded files (treat as non-existent):** any file in [src/styles/system/](src/styles/system/) whose name starts with `_` (for example, `_colors.css`, `_borders.css`, `_effects.css`) is unused and not part of the codebase in practice. These files should not be referenced, imported, or considered in any way — behave as though they do not exist.
