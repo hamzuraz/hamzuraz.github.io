@@ -18,9 +18,11 @@ export const ja = {
 	"home.description":
 		"ソフトウェアエンジニア、Rifki Muhazzarのポートフォリオです。プロジェクトやスキルをご覧いただくか、お気軽にお問い合わせください。",
 
+	"home.hero.lastupdated": "最終更新日",
 	"home.hero.badge.role": "ソフトウェアエンジニア",
 	"home.hero.subheading":
 		"ユーザーが触れるインターフェースから、それを支えるアーキテクチャまで——私は両方を、スケールすることを前提に構築します。",
+	"home.hero.techstack.more": "もっと見る",
 	"home.hero.cta.primary": "レジュメを見る",
 	"home.hero.cta.secondary": "お問い合わせ",
 

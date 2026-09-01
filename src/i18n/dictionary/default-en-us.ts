@@ -33,9 +33,11 @@ export const en_US = {
 	"home.description":
 		"Portfolio of Rifki Muhazzar, a software engineer. Explore my projects, skills, or get in touch.",
 
+	"home.hero.lastupdated": "Last Updated",
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
 		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
+	"home.hero.techstack.more": "See more",
 	"home.hero.cta.primary": "View resume",
 	"home.hero.cta.secondary": "Contact me",
 

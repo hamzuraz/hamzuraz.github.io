@@ -18,9 +18,11 @@ export const id = {
 	"home.description":
 		"Portofolio Rifki Muhazzar, seorang software engineer. Jelajahi proyek, keahlian, atau hubungi saya.",
 
+	"home.hero.lastupdated": "Terakhir Diperbarui",
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
 		"Dari antarmuka yang berinteraksi dengan pengguna hingga arsitektur yang menjaganya tetap berjalan — saya membangun keduanya, dan saya membangunnya agar dapat berkembang.",
+	"home.hero.techstack.more": "Lihat lebih banyak",
 	"home.hero.cta.primary": "Lihat resume",
 	"home.hero.cta.secondary": "Hubungi saya",
 
