@@ -31,6 +31,7 @@ function updateThemeLabel(theme: ThemePreference) {
 	const langCode = getLangCodeFromPathname(window.location.pathname);
 	themeActiveTextElements.forEach((element) => {
 		element.textContent = ui[langCode][`${"header.theme."}${theme}`];
+		element.classList.remove("invisible");
 	});
 }
 
