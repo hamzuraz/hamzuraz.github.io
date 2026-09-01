@@ -15,10 +15,12 @@ const langCode = Astro.locals.langCode;
 <html lang={langCode}>
 	<Head title={title} description={description} />
 	<body
-		class="min-w-80 mx-auto lg:max-w-250 lg:border lg:border-dark-line dark:lg:border-light-line"
+		class="min-w-80 mx-auto lg:max-w-250 lg:border lg:border-dark-line lg:dark:border-light-line"
 	>
 		<Header />
-		<slot />
+		<main class="p-4 lg:p-8">
+			<slot />
+		</main>
 		<Footer />
 		<script src="$/scripts/theme-selector.ts"></script>
 	</body>
