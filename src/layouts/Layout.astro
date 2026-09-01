@@ -18,7 +18,9 @@ const langCode = Astro.locals.langCode;
 		class="min-w-80 mx-auto lg:max-w-250 lg:border lg:border-dark-line lg:dark:border-light-line"
 	>
 		<Header />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
 		<script src="$/scripts/theme-selector.ts"></script>
 	</body>
