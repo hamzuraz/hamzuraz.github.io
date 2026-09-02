@@ -1,4 +1,4 @@
-import { ui } from "$/i18n/ui";
+import { themeOptions } from "$/i18n/ui";
 import { getLangCodeFromPathname } from "$/i18n/utils";
 
 type ThemePreference = "system" | "light" | "dark";
@@ -46,7 +46,7 @@ window.document.addEventListener("astro:page-load", () => {
 	function updateThemeLabel(theme: ThemePreference) {
 		const langCode = getLangCodeFromPathname(window.location.pathname);
 		themeActiveTextElements.forEach((element) => {
-			element.textContent = ui[langCode][`${"header.theme."}${theme}`];
+			element.textContent = themeOptions[langCode][theme];
 			element.classList.remove("invisible");
 		});
 	}

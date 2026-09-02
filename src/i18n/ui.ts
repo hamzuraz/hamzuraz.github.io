@@ -24,3 +24,21 @@ export const ui = {
 	id: id,
 	ja: ja,
 } as const;
+
+export const themeOptions = {
+	"en-US": {
+		system: en_US["header.theme.system"],
+		light: en_US["header.theme.light"],
+		dark: en_US["header.theme.dark"],
+	},
+	id: {
+		system: id["header.theme.system"],
+		light: id["header.theme.light"],
+		dark: id["header.theme.dark"],
+	},
+	ja: {
+		system: ja["header.theme.system"],
+		light: ja["header.theme.light"],
+		dark: ja["header.theme.dark"],
+	},
+} as const;
