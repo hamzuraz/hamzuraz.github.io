@@ -5,76 +5,100 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 	month: "long",
 	day: "numeric",
 });
-
-const techStack = [
-	{ label: "HTML", color: "error" },
-	{ label: "CSS", color: "info" },
-	{ label: "JS", color: "warning" },
-	{ label: "TS", color: "info" },
-	{ label: "Python", color: "info" },
-	{ label: "Go", color: "info" },
-	{ label: "Rust", color: "error" },
-];
 ---
 
 <section
-    id="hero"
-    class="border-b border-dark-line px-4 pt-8 pb-16 sm:pb-32 lg:px-8 dark:border-light-line"
+    id="_hero"
+    class="border-b border-line-on-light px-4 pt-8 pb-32 sm:px-8 dark:border-line-on-dark"
 >
-    <div class="font-mono text-sm">
-        — {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
+    <div class="font-mono text-xs sm:text-sm">
+        <span class="font-bold text-secondary">———</span>
+        <span>&nbsp;&nbsp;{t("home.hero.lastupdated")}&nbsp;{lastUpdated}</span>
     </div>
 
     <div
-        class="d-badge d-badge-soft mt-12 font-mono d-badge-sm tracking-wider uppercase d-badge-secondary sm:d-badge-md"
+        class="mt-16 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-secondary sm:d-badge-md"
     >
         {t("home.hero.badge.role")}
     </div>
 
-    <h1
-        id="hero-heading"
-        class="text-4xl sm:text-6xl font-bold mt-2 dark:text-primary"
-    >
+    <h1 class="mt-1 text-4.5xl font-bold text-primary sm:text-7xl">
         Rifki Muhazzar
     </h1>
 
-    <p class="mt-6 text-lg sm:text-xl max-w-xl">
+    <p class="mt-6 max-w-xl text-lg sm:text-xl">
         {t("home.hero.subheading")}
     </p>
 
-    <ul class="mt-6 flex gap-2 flex-wrap font-mono list-none p-0 m-0">
-        {
-            techStack.map((tech) => (
-                <li>
-                    <span
-                        class={`d-badge d-badge-soft d-badge-${tech.color} d-badge-sm sm:d-badge-md`}
-                    >
-                        {tech.label}
-                    </span>
-                </li>
-            ))
-        }
+    <ul class="mt-6 flex flex-wrap gap-2 font-mono sm:gap-3">
         <li>
-            <a
-                href="#skills"
-                class="d-link d-link-secondary text-sm sm:text-base"
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-error sm:d-badge-md"
             >
-                {t("home.hero.techstack.more")}
-            </a>
+                HTML
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
+            >
+                CSS
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-warning sm:d-badge-md"
+            >
+                JS
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
+            >
+                TS
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
+            >
+                Python
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
+            >
+                Go
+            </div>
+        </li>
+        <li>
+            <div
+                class="d-badge d-badge-soft d-badge-sm d-badge-error sm:d-badge-md"
+            >
+                Rust
+            </div>
+        </li>
+        <li>
+            <a class="d-link text-sm d-link-accent sm:text-base">
+                {t("home.hero.techstack.more")}</a
+            >
         </li>
     </ul>
 
-    <div class="flex gap-4 mt-12">
-        <div class="d-aura d-aura-silver d-aura-lg">
-            <a href="#contact" class="d-btn d-btn-primary sm:d-btn-lg">
-                {t("home.hero.cta.primary")}
-            </a>
+    <div class="mt-12 flex items-baseline gap-4 sm:gap-6">
+        <div class="d-aura d-aura-silver d-aura-md sm:d-aura-lg duration-7000">
+            <div class="d-card bg-base-100">
+                <button class="d-btn d-btn-md d-btn-primary sm:d-btn-lg">
+                    {t("home.hero.cta.primary")}
+                </button>
+            </div>
         </div>
-        <a
-            href="/projects/"
-            class="d-btn d-btn-outline d-btn-secondary sm:d-btn-lg"
+        <button
+            class="d-btn d-btn-outline d-btn-md d-btn-secondary sm:d-btn-lg"
         >
             {t("home.hero.cta.secondary")}
-        </a>
+        </button>
     </div>
 </section>

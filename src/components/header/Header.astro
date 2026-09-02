@@ -3,10 +3,11 @@ import MenuDesktop from "./MenuDesktop.astro";
 import MenuMobile from "./MenuMobile.astro";
 
 const langCode = Astro.locals.langCode;
+const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
 ---
 
 <header
-    class="max-lg:d-collapse bg-base-200 w-full rounded-none border-b border-dark-line dark:border-light-line px-4 lg:px-8"
+    class="rounded-none border-b border-line-on-light bg-base-300 px-4 max-lg:d-collapse sm:px-8 dark:border-line-on-dark"
 >
     <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
     <label
@@ -18,7 +19,7 @@ const langCode = Astro.locals.langCode;
         <div class="d-navbar-start">
             <label
                 for="navbar-1-toggle"
-                class="d-btn lg:hidden border-dark-line dark:border-light-line"
+                class="d-btn border-line-on-light lg:hidden dark:border-line-on-dark"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -37,8 +38,8 @@ const langCode = Astro.locals.langCode;
                 </svg>
             </label>
             <a
-                href={langCode === "en-US" ? "/" : `/${langCode}/`}
-                class="d-btn text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 px-3 border-dark-line dark:border-light-line"
+                href={localizedHomePath}
+                class="d-btn border-line-on-light px-3 text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 dark:border-line-on-dark"
             >
                 RM
             </a>

@@ -1,7 +1,7 @@
 ---
 import { ExternalLink } from "@lucide/astro";
 import type { LinkProps } from "$/env";
-import { iconProps } from "$/lib/icon-props";
+import { defaultIconProps } from "$/lib/icon-props";
 
 type Props = LinkProps;
 
@@ -10,5 +10,5 @@ const { href, label } = Astro.props;
 
 <a href={href} target="_blank" rel="noopener noreferrer">
     {label}
-    <ExternalLink {...iconProps} />
+    <ExternalLink {...defaultIconProps} />
 </a>
