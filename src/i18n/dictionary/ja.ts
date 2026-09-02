@@ -1,3 +1,4 @@
+import { themeOptions } from "$/i18n/theme-options";
 import type { DictionaryShape } from "./default-en-us";
 
 export const ja = {
@@ -6,9 +7,9 @@ export const ja = {
 	"header.nav.skills": "スキル",
 	"header.nav.contact": "お問い合わせ",
 	"header.nav.social": "ソーシャル",
-	"header.theme.system": "システム",
-	"header.theme.light": "ライト",
-	"header.theme.dark": "ダーク",
+	"header.theme.system": themeOptions.ja.system,
+	"header.theme.light": themeOptions.ja.light,
+	"header.theme.dark": themeOptions.ja.dark,
 
 	// Footer --------------------------------------------------
 	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",

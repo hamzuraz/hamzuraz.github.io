@@ -1,3 +1,5 @@
+import { themeOptions } from "$/i18n/theme-options";
+
 /**
  * Key format: namespace[.group].semantic
  *
@@ -21,9 +23,9 @@ export const en_US = {
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
 	"header.nav.social": "Social",
-	"header.theme.system": "System",
-	"header.theme.light": "Light",
-	"header.theme.dark": "Dark",
+	"header.theme.system": themeOptions["en-US"].system,
+	"header.theme.light": themeOptions["en-US"].light,
+	"header.theme.dark": themeOptions["en-US"].dark,
 
 	// Footer --------------------------------------------------
 	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",

@@ -1,20 +1,20 @@
-import { themeOptions } from "$/i18n/ui";
-import { getLangCodeFromPathname } from "$/i18n/utils";
-
-type ThemePreference = "system" | "light" | "dark";
-type ResolvedTheme = Exclude<ThemePreference, "system">;
-
-function isThemePreference(
-	value: string | undefined,
-): value is ThemePreference {
-	return value === "system" || value === "light" || value === "dark";
-}
-
-function isResolvedTheme(value: string | null): value is ResolvedTheme {
-	return value === "light" || value === "dark";
-}
+import { langCodeDefault, localizedThemeOptions } from "./data";
+import {
+	isLangCode,
+	isResolvedTheme,
+	isThemePreference,
+	type LangCode,
+	type ResolvedTheme,
+	type ThemePreference,
+} from "./type-helpers";
 
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+let controller: AbortController | undefined;
+
+function getLangCodeFromPathname(pathname: string): LangCode {
+	const firstSegment = pathname.split("/")[1];
+	return isLangCode(firstSegment) ? firstSegment : langCodeDefault;
+}
 
 function resolveTheme(theme: ThemePreference): ResolvedTheme {
 	return theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme;
@@ -28,8 +28,6 @@ function getStoredTheme(): ThemePreference {
 
 	return "system";
 }
-
-let controller: AbortController | undefined;
 
 window.document.addEventListener("astro:page-load", () => {
 	controller = new AbortController();
@@ -46,7 +44,7 @@ window.document.addEventListener("astro:page-load", () => {
 	function updateThemeLabel(theme: ThemePreference) {
 		const langCode = getLangCodeFromPathname(window.location.pathname);
 		themeActiveTextElements.forEach((element) => {
-			element.textContent = themeOptions[langCode][theme];
+			element.textContent = localizedThemeOptions[langCode][theme];
 			element.classList.remove("invisible");
 		});
 	}
