@@ -1,3 +1,4 @@
+import { themeOptions } from "$/i18n/theme-options";
 import type { DictionaryShape } from "./default-en-us";
 
 export const id = {
@@ -6,9 +7,9 @@ export const id = {
 	"header.nav.skills": "Keahlian",
 	"header.nav.contact": "Kontak",
 	"header.nav.social": "Sosial",
-	"header.theme.system": "Sistem",
-	"header.theme.light": "Terang",
-	"header.theme.dark": "Gelap",
+	"header.theme.system": themeOptions.id.system,
+	"header.theme.light": themeOptions.id.light,
+	"header.theme.dark": themeOptions.id.dark,
 
 	// Footer --------------------------------------------------
 	"footer.copyright": "© 2026 Rifki Muhazzar. Hak cipta dilindungi.",
