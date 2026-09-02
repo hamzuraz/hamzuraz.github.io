@@ -1,20 +1,19 @@
-import { themeOptions } from "$/i18n/theme-options";
 import type { DictionaryShape } from "./default-en-us";
 
 export const ja = {
-	// Header --------------------------------------------------
+	// HEADER ============================================================
 	"header.nav.projects": "プロジェクト",
 	"header.nav.skills": "スキル",
 	"header.nav.contact": "お問い合わせ",
 	"header.nav.social": "ソーシャル",
-	"header.theme.system": themeOptions.ja.system,
-	"header.theme.light": themeOptions.ja.light,
-	"header.theme.dark": themeOptions.ja.dark,
+	"header.theme.system": "システム",
+	"header.theme.light": "ライト",
+	"header.theme.dark": "ダーク",
 
-	// Footer --------------------------------------------------
+	// FOOTER ============================================================
 	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",
 
-	// Home page -----------------------------------------------
+	// HOME PAGE =========================================================
 	"home.title": "Rifki Muhazzar — ソフトウェアエンジニア",
 	"home.description":
 		"ソフトウェアエンジニア、Rifki Muhazzarのポートフォリオです。プロジェクトやスキルをご覧いただくか、お気軽にお問い合わせください。",

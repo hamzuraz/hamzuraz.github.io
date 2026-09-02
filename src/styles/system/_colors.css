@@ -1,5 +1,10 @@
 @theme {
-	/* Primary - Stone */
+	/* ============================================================
+	 * PRIMARY COLOR
+	 * Main brand/UI color (1 base color, multiple shades).
+	 * Base: Stone
+	 * Used for: primary text, primary buttons, dominant UI elements.
+	 * ============================================================ */
 	--color-primary-50: oklch(98.5% 0.001 106.423);
 	--color-primary-100: oklch(97% 0.001 106.424);
 	--color-primary-200: oklch(92.3% 0.003 48.717);
@@ -12,20 +17,19 @@
 	--color-primary-900: oklch(21.6% 0.006 56.043);
 	--color-primary-950: oklch(14.7% 0.004 49.25);
 
-	/* Accent - Emerald */
-	--color-accent-50: oklch(97.9% 0.021 166.113);
-	--color-accent-100: oklch(95% 0.052 163.051);
-	--color-accent-200: oklch(90.5% 0.093 164.15);
-	--color-accent-300: oklch(84.5% 0.143 164.978);
-	--color-accent-400: oklch(76.5% 0.177 163.223);
-	--color-accent-500: oklch(69.6% 0.17 162.48);
-	--color-accent-600: oklch(59.6% 0.145 163.225);
-	--color-accent-700: oklch(50.8% 0.118 165.612);
-	--color-accent-800: oklch(43.2% 0.095 166.913);
-	--color-accent-900: oklch(37.8% 0.077 168.94);
-	--color-accent-950: oklch(26.2% 0.051 172.552);
+	/* ============================================================
+	 * SECONDARY COLOR
+	 * Complementary color to primary (1 base color, multiple shades).
+	 * Status: NOT YET FILLED.
+	 * ============================================================ */
+	/* Fill in shades 50–950 for secondary */
 
-	/* Gray - Slate */
+	/* ============================================================
+	 * GRAY/NEUTRAL
+	 * Neutral color for text, borders, and non-brand backgrounds.
+	 * Base: Slate
+	 * Note: neutral is used across components, not as a brand accent color.
+	 * ============================================================ */
 	--color-gray-50: oklch(98.4% 0.003 247.858);
 	--color-gray-100: oklch(96.8% 0.007 247.896);
 	--color-gray-200: oklch(92.9% 0.013 255.508);
@@ -38,9 +42,41 @@
 	--color-gray-900: oklch(20.8% 0.042 265.755);
 	--color-gray-950: oklch(12.9% 0.042 264.695);
 
-	/* Semantic - Info, Success, Warning, and Danger/Destructive/Error */
-	--color-semantic-neutral-500: oklch(55.6% 0 none);
-	--color-semantic-green-500: oklch(72.3% 0.219 149.579);
-	--color-semantic-yellow-500: oklch(79.5% 0.184 86.047);
-	--color-semantic-red-500: oklch(63.7% 0.237 25.331);
+	/* ============================================================
+	 * ACCENT COLOR
+	 * Emphasis/highlight color, can have more than 1 accent color
+	 * if needed (e.g. accent-2, accent-3 for other categories).
+	 * Base: Emerald
+	 * Used for: secondary CTAs, badges, highlights, chart illustrations.
+	 * ============================================================ */
+	--color-accent-50: oklch(97.9% 0.021 166.113);
+	--color-accent-100: oklch(95% 0.052 163.051);
+	--color-accent-200: oklch(90.5% 0.093 164.15);
+	--color-accent-300: oklch(84.5% 0.143 164.978);
+	--color-accent-400: oklch(76.5% 0.177 163.223);
+	--color-accent-500: oklch(69.6% 0.17 162.48);
+	--color-accent-600: oklch(59.6% 0.145 163.225);
+	--color-accent-700: oklch(50.8% 0.118 165.612);
+	--color-accent-800: oklch(43.2% 0.095 166.913);
+	--color-accent-900: oklch(37.8% 0.077 168.94);
+	--color-accent-950: oklch(26.2% 0.051 172.552);
+
+	/* ============================================================
+	 * SEMANTIC COLORS
+	 * Colors with fixed status meaning (1 color per meaning,
+	 * can have more than 1 shade if intensity variation is needed).
+	 * Currently only shade 500 (default) is defined.
+	 * ============================================================ */
+	--color-semantic-neutral-500: oklch(
+		55.6% 0 none
+	); /* Info/neutral — default status */
+	--color-semantic-green-500: oklch(
+		72.3% 0.219 149.579
+	); /* Success — successful action, active/positive status */
+	--color-semantic-yellow-500: oklch(
+		79.5% 0.184 86.047
+	); /* Warning — caution, needs attention */
+	--color-semantic-red-500: oklch(
+		63.7% 0.237 25.331
+	); /* Danger/Destructive/Error — failed action, delete, error */
 }

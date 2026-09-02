@@ -1,5 +1,3 @@
-import { themeOptions } from "$/i18n/theme-options";
-
 /**
  * Key format: namespace[.group].semantic
  *
@@ -18,19 +16,19 @@ import { themeOptions } from "$/i18n/theme-options";
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const en_US = {
-	// Header --------------------------------------------------
+	// HEADER ============================================================
 	"header.nav.projects": "Projects",
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
 	"header.nav.social": "Social",
-	"header.theme.system": themeOptions["en-US"].system,
-	"header.theme.light": themeOptions["en-US"].light,
-	"header.theme.dark": themeOptions["en-US"].dark,
+	"header.theme.system": "System",
+	"header.theme.light": "Light",
+	"header.theme.dark": "Dark",
 
-	// Footer --------------------------------------------------
+	// FOOTER ============================================================
 	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",
 
-	// Home page -----------------------------------------------
+	// HOME PAGE =========================================================
 	"home.title": "Rifki Muhazzar — Software Engineer",
 	"home.description":
 		"Portfolio of Rifki Muhazzar, a software engineer. Explore my projects, skills, or get in touch.",
