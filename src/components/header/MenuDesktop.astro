@@ -38,7 +38,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
                 <summary
                     class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
                 >
-                    {t("header.nav.social")}
+                    <span data-menu-item-social>{t("header.nav.social")}</span>
                     <ChevronDown {...chevronProps} />
                 </summary>
                 <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">

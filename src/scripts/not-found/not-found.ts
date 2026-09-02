@@ -1,5 +1,10 @@
 import { isLangCode } from "../theme-selector/theme-selector-helpers";
-import { buildLocalizedRoutePath, languages } from "./not-found-helpers";
+import {
+	buildLocalizedRoutePath,
+	languages,
+	localizedMenuItemInternal,
+	localizedMenuItemSocial,
+} from "./not-found-helpers";
 
 const langNameActiveTextElements =
 	window.document.querySelectorAll<HTMLSpanElement>("#lang-name-active-text");
@@ -9,8 +14,6 @@ const langMenuElements =
 	window.document.querySelectorAll<HTMLUListElement>("#lang-menu");
 
 const firstSegment = window.location.pathname.split("/")[1];
-console.log(firstSegment);
-
 if (isLangCode(firstSegment)) {
 	langNameActiveTextElements.forEach((element) => {
 		element.textContent = languages[firstSegment];
@@ -20,6 +23,34 @@ if (isLangCode(firstSegment)) {
 		element.textContent = firstSegment;
 	});
 }
+
+const link = window.document.querySelectorAll<HTMLAnchorElement>(
+	"a[data-lang-code-value]",
+);
+
+link.forEach((element) => {
+	const langCode = element.dataset.langCodeValue;
+	if (!langCode || !isLangCode(langCode)) return;
+
+	const menuItemInternal = window.document.querySelectorAll<HTMLAnchorElement>(
+		"a[data-menu-item-internal]",
+	);
+	menuItemInternal.forEach((element, index) => {
+		const text = localizedMenuItemInternal[langCode][index];
+		element.textContent = text;
+	});
+
+	const menuItemSocial = window.document.querySelectorAll<HTMLAnchorElement>(
+		"span[data-menu-item-social]",
+	);
+	menuItemSocial.forEach((element, index) => {
+		const text = localizedMenuItemSocial[langCode][index];
+		element.textContent = text;
+	});
+
+	const newPath = buildLocalizedRoutePath(langCode, window.location.pathname);
+	element.href = newPath;
+});
 
 langMenuElements.forEach((langMenuElement) => {
 	langMenuElement.addEventListener("click", (event) => {
