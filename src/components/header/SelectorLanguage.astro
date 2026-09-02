@@ -2,7 +2,7 @@
 import { ChevronDown, Languages } from "@lucide/astro";
 import { languages } from "$/i18n/ui";
 import { buildLocalizedRoutePath } from "$/i18n/utils";
-import { chevronProps, iconProps } from "$/lib/icon-props";
+import { chevronProps, defaultIconProps } from "$/lib/icon-props";
 
 const langCode = Astro.locals.langCode;
 const pathname = Astro.url.pathname;
@@ -12,41 +12,35 @@ const pathname = Astro.url.pathname;
     <div
         tabindex="0"
         role="button"
-        class="d-btn w-62 flex justify-between border-dark-line dark:border-light-line"
+        class="d-btn flex w-62 justify-between border-line-on-light dark:border-line-on-dark"
     >
-        <div class="font-normal flex gap-3">
-            <Languages {...iconProps} class="translate-y-0.5" />
-
-            <div class="flex items-baseline gap-1">
-                <span id="lang-name-active-text">{languages[langCode]}</span>
+        <div class="flex gap-2">
+            <Languages {...defaultIconProps} class="translate-y-0.5" />
+            <div class="flex items-baseline gap-2">
+                <span>{languages[langCode]}</span>
                 <span
-                    id="lang-code-active-text"
-                    class="text-xs font-mono opacity-60 uppercase"
+                    class="font-mono text-xs text-subtle-on-light uppercase dark:text-subtle-on-dark"
                 >
                     {langCode}
                 </span>
             </div>
         </div>
-
         <ChevronDown {...chevronProps} />
     </div>
-
     <ul
-        id="lang-menu"
         tabindex="-1"
-        class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+        class="d-menu d-dropdown-content z-1 w-62 rounded-box bg-base-100 shadow-sm"
     >
         {
             Object.entries(languages).map(([langCode, langName]) => {
                 return (
                     <li>
                         <a
-                            data-lang-code-value={langCode}
                             href={buildLocalizedRoutePath(langCode, pathname)}
                             class="flex justify-between"
                         >
                             {langName}
-                            <span class="text-xs font-mono opacity-60 uppercase">
+                            <span class="font-mono text-xs text-subtle-on-light uppercase dark:text-subtle-on-dark">
                                 {langCode}
                             </span>
                         </a>

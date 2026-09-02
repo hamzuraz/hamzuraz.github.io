@@ -7,14 +7,14 @@ import LinkInternal from "./LinkInternal.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 
-const t = Astro.locals.t;
-const langCode = Astro.locals.langCode;
+const { langCode, t } = Astro.locals;
+
 const langCodeSegment = langCodeSegments[langCode];
 const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div class="d-navbar-center hidden lg:flex">
-    <ul class="d-menu d-menu-horizontal px-2">
+    <ul class="d-menu d-menu-horizontal">
         <li>
             <LinkInternal
                 href={`${segment}/projects/`}
@@ -38,14 +38,20 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
                 <summary
                     class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
                 >
-                    <span data-menu-item-social>{t("header.nav.social")}</span>
+                    <span>{t("header.nav.social")}</span>
                     <ChevronDown {...chevronProps} />
                 </summary>
-                <ul class="p-2 bg-base-100 w-40 z-1 -translate-x-2">
+                <ul class="z-1 w-40 -translate-y-3 bg-base-100">
                     <li>
                         <LinkExternal
                             href="https://github.com/hamzuraz/"
                             label="GitHub"
+                        />
+                    </li>
+                    <li>
+                        <LinkExternal
+                            href="https://linkedin.com/"
+                            label="LinkedIn"
                         />
                     </li>
                 </ul>

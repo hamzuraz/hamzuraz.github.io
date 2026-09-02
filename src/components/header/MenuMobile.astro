@@ -11,10 +11,10 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div
-    class="d-collapse-content lg:hidden z-1 border-dark-line dark:border-light-line p-0"
+    class="d-collapse-content z-1 border-line-on-light p-0 lg:hidden dark:border-line-on-dark"
 >
     <ul
-        class="d-menu border-b border-dark-line dark:border-light-line w-full px-0 py-3"
+        class="d-menu w-full border-b border-line-on-light px-0 py-3 dark:border-line-on-dark"
     >
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
@@ -22,15 +22,22 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
         <li>
             <span
                 class="pointer-events-none hover:bg-transparent hover:text-inherit"
-                data-menu-item-social
             >
                 Social
             </span>
-            <ul class="border-l border-dark-line dark:border-light-line">
+            <ul
+                class="border-l border-line-on-light pl-3 before:hidden dark:border-line-on-dark"
+            >
                 <li>
                     <LinkExternal
                         href="https://github.com/hamzuraz/"
                         label="GitHub"
+                    />
+                </li>
+                <li>
+                    <LinkExternal
+                        href="https://linkedin.com/"
+                        label="LinkedIn"
                     />
                 </li>
             </ul>

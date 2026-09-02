@@ -11,7 +11,7 @@
  *   represents the page template, not a specific instance.
  * - group: optional. Add it only when that namespace has a repeated set of
  *   items that would otherwise collide (e.g. "header.nav.home", "header.nav.about").
- *   Skip it for one-off values ("header.logo", "header.themeToggle", "footer.copyright").
+ *   Skip it for one-off values ("header.logo", "header.themetoggle", "footer.copyright").
  * - semantic: always the last segment, describes meaning — never markup
  *   (e.g. "title" not "h1", "cta" not "button").
  */

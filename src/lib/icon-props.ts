@@ -1,4 +1,4 @@
-export const iconProps = {
+export const defaultIconProps = {
 	size: 16,
 	"stroke-width": 1.25,
 } as const;

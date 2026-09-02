@@ -38,9 +38,18 @@ window.document.addEventListener("astro:page-load", () => {
 		window.document.querySelectorAll<HTMLSpanElement>(
 			"span[data-theme-active-text]",
 		);
+	if (themeActiveTextElements.length === 0) {
+		console.warn(
+			"No elements found with selector 'span[data-theme-active-text]'.",
+		);
+	}
+
 	const themeMenuElements = window.document.querySelectorAll<HTMLUListElement>(
 		"ul[data-theme-menu]",
 	);
+	if (themeMenuElements.length === 0) {
+		console.warn("No elements found with selector 'ul[data-theme-menu]'.");
+	}
 
 	function updateThemeLabel(theme: ThemePreference) {
 		const langCode = getLangCodeFromPathname(window.location.pathname);

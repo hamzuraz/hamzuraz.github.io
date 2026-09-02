@@ -1,31 +1,26 @@
 ---
 import { ChevronDown, Paintbrush } from "@lucide/astro";
-import { chevronProps, iconProps } from "$/lib/icon-props";
+import { chevronProps, defaultIconProps } from "$/lib/icon-props";
 
 const t = Astro.locals.t;
 ---
 
-<div class="d-dropdown d-dropdown-start p-0">
+<div class="d-dropdown d-dropdown-start">
     <div
         tabindex="0"
         role="button"
-        class="d-btn w-38 flex justify-between border-dark-line dark:border-light-line"
+        class="d-btn flex w-38 justify-between border-line-on-light dark:border-line-on-dark"
     >
-        <div class="flex gap-3">
-            <Paintbrush {...iconProps} class="translate-y-0.5" />
-
-            <span data-theme-active-text class="font-normal invisible">
-                System
-            </span>
+        <div class="flex gap-2">
+            <Paintbrush {...defaultIconProps} class="translate-y-0.5" />
+            <span data-theme-active-text class="invisible">System</span>
         </div>
-
         <ChevronDown {...chevronProps} />
     </div>
-
     <ul
         data-theme-menu
         tabindex="-1"
-        class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+        class="d-menu d-dropdown-content z-1 w-38 rounded-box bg-base-100 shadow-sm"
     >
         <li>
             <a href="" data-theme-value="system">{t("header.theme.system")}</a>
