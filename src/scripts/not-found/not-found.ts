@@ -14,13 +14,52 @@ const langMenuElements =
 	window.document.querySelectorAll<HTMLUListElement>("#lang-menu");
 
 const firstSegment = window.location.pathname.split("/")[1];
+
 if (isLangCode(firstSegment)) {
 	langNameActiveTextElements.forEach((element) => {
 		element.textContent = languages[firstSegment];
 	});
-
 	langCodeActiveTextElements.forEach((element) => {
 		element.textContent = firstSegment;
+	});
+
+	const menuItemInternal = window.document.querySelectorAll<HTMLAnchorElement>(
+		"a[data-menu-item-internal]",
+	);
+	menuItemInternal.forEach((element, index) => {
+		const text = localizedMenuItemInternal[firstSegment][index];
+		element.textContent = text;
+	});
+
+	const menuItemSocial = window.document.querySelectorAll<HTMLAnchorElement>(
+		"span[data-menu-item-social]",
+	);
+	menuItemSocial.forEach((element, index) => {
+		const text = localizedMenuItemSocial[firstSegment][index];
+		element.textContent = text;
+	});
+} else {
+	langNameActiveTextElements.forEach((element) => {
+		element.textContent = "English";
+	});
+	langCodeActiveTextElements.forEach((element) => {
+		element.textContent = "en-US";
+	});
+
+	const menuItemInternal = window.document.querySelectorAll<HTMLAnchorElement>(
+		"a[data-menu-item-internal]",
+	);
+	menuItemInternal.forEach((element, index) => {
+		const text = localizedMenuItemInternal["en-US"][index];
+		element.textContent = text;
+	});
+
+	const menuItemSocial = window.document.querySelectorAll<HTMLAnchorElement>(
+		"span[data-menu-item-social]",
+	);
+	menuItemSocial.forEach((element, index) => {
+		const text = localizedMenuItemSocial["en-US"][index];
+		element.textContent = text;
 	});
 }
 
@@ -31,23 +70,6 @@ const link = window.document.querySelectorAll<HTMLAnchorElement>(
 link.forEach((element) => {
 	const langCode = element.dataset.langCodeValue;
 	if (!langCode || !isLangCode(langCode)) return;
-
-	const menuItemInternal = window.document.querySelectorAll<HTMLAnchorElement>(
-		"a[data-menu-item-internal]",
-	);
-	menuItemInternal.forEach((element, index) => {
-		const text = localizedMenuItemInternal[langCode][index];
-		element.textContent = text;
-	});
-
-	const menuItemSocial = window.document.querySelectorAll<HTMLAnchorElement>(
-		"span[data-menu-item-social]",
-	);
-	menuItemSocial.forEach((element, index) => {
-		const text = localizedMenuItemSocial[langCode][index];
-		element.textContent = text;
-	});
-
 	const newPath = buildLocalizedRoutePath(langCode, window.location.pathname);
 	element.href = newPath;
 });
