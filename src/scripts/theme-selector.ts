@@ -1,15 +1,6 @@
 import { ui } from "$/i18n/ui";
 import { getLangCodeFromPathname } from "$/i18n/utils";
 
-const themeActiveTextElements =
-	window.document.querySelectorAll<HTMLSpanElement>(
-		"span[data-theme-active-text]",
-	);
-const themeMenuElements = window.document.querySelectorAll<HTMLUListElement>(
-	"ul[data-theme-menu]",
-);
-const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
 type ThemePreference = "system" | "light" | "dark";
 type ResolvedTheme = Exclude<ThemePreference, "system">;
 
@@ -23,16 +14,10 @@ function isResolvedTheme(value: string | null): value is ResolvedTheme {
 	return value === "light" || value === "dark";
 }
 
+const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
 function resolveTheme(theme: ThemePreference): ResolvedTheme {
 	return theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme;
-}
-
-function updateThemeLabel(theme: ThemePreference) {
-	const langCode = getLangCodeFromPathname(window.location.pathname);
-	themeActiveTextElements.forEach((element) => {
-		element.textContent = ui[langCode][`${"header.theme."}${theme}`];
-		element.classList.remove("invisible");
-	});
 }
 
 function getStoredTheme(): ThemePreference {
@@ -44,44 +29,83 @@ function getStoredTheme(): ThemePreference {
 	return "system";
 }
 
-function applyTheme(theme: ThemePreference) {
-	const themeValue = resolveTheme(theme);
-	window.document.documentElement.dataset.theme = themeValue;
-	updateThemeLabel(theme);
-}
+let controller: AbortController | undefined;
 
-applyTheme(getStoredTheme());
+window.document.addEventListener("astro:page-load", () => {
+	controller = new AbortController();
+	const { signal } = controller;
 
-themeMenuElements.forEach((list) => {
-	list.addEventListener("click", (event) => {
-		const element = event.target;
-		if (!(element instanceof Element)) return;
-
-		const themeValueElement = element.closest<HTMLAnchorElement>(
-			"a[data-theme-value]",
+	const themeActiveTextElements =
+		window.document.querySelectorAll<HTMLSpanElement>(
+			"span[data-theme-active-text]",
 		);
-		if (!themeValueElement) return;
+	const themeMenuElements = window.document.querySelectorAll<HTMLUListElement>(
+		"ul[data-theme-menu]",
+	);
 
-		event.preventDefault();
+	function updateThemeLabel(theme: ThemePreference) {
+		const langCode = getLangCodeFromPathname(window.location.pathname);
+		themeActiveTextElements.forEach((element) => {
+			element.textContent = ui[langCode][`${"header.theme."}${theme}`];
+			element.classList.remove("invisible");
+		});
+	}
 
-		const themeValue = themeValueElement.dataset.themeValue;
-		if (!isThemePreference(themeValue)) return;
+	function applyTheme(theme: ThemePreference) {
+		const themeValue = resolveTheme(theme);
+		window.document.documentElement.dataset.theme = themeValue;
+		updateThemeLabel(theme);
+	}
 
-		if (themeValue === "system") {
-			window.localStorage.removeItem("theme");
-		} else {
-			window.localStorage.setItem("theme", themeValue);
-		}
-
-		applyTheme(themeValue);
-	});
-});
-
-mediaQuery.addEventListener("change", () => {
-	if (getStoredTheme() === "system") applyTheme("system");
-});
-
-window.addEventListener("storage", (event) => {
-	if (event.key !== "theme") return;
 	applyTheme(getStoredTheme());
+
+	themeMenuElements.forEach((list) => {
+		list.addEventListener(
+			"click",
+			(event) => {
+				const element = event.target;
+				if (!(element instanceof Element)) return;
+
+				const themeValueElement = element.closest<HTMLAnchorElement>(
+					"a[data-theme-value]",
+				);
+				if (!themeValueElement) return;
+
+				event.preventDefault();
+
+				const themeValue = themeValueElement.dataset.themeValue;
+				if (!isThemePreference(themeValue)) return;
+
+				if (themeValue === "system") {
+					window.localStorage.removeItem("theme");
+				} else {
+					window.localStorage.setItem("theme", themeValue);
+				}
+
+				applyTheme(themeValue);
+			},
+			{ signal },
+		);
+	});
+
+	mediaQuery.addEventListener(
+		"change",
+		() => {
+			if (getStoredTheme() === "system") applyTheme("system");
+		},
+		{ signal },
+	);
+
+	window.addEventListener(
+		"storage",
+		(event) => {
+			if (event.key !== "theme") return;
+			applyTheme(getStoredTheme());
+		},
+		{ signal },
+	);
+});
+
+window.document.addEventListener("astro:before-swap", () => {
+	controller?.abort();
 });
