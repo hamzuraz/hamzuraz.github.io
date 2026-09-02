@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import type { HeadProps } from "$/env";
 import LinkHreflang from "./LinkHreflang.astro";
 import LinkPreloadFonts from "./LinkPreloadFonts.astro";
@@ -31,4 +32,6 @@ const canonicalUrl = new URL(pathname, siteUrl);
     <link rel="canonical" href={canonicalUrl} />
 
     <LinkHreflang />
+
+    <ClientRouter />
 </head>
