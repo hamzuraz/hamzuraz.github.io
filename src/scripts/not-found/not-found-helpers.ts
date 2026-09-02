@@ -1,16 +1,20 @@
-import { isLangCode, type LangCode } from "../theme-selector/type-helpers";
+import {
+	isLangCode,
+	type LangCode,
+} from "../theme-selector/theme-selector-helpers";
 
 type LangCodeRecord = Record<LangCode, string>;
-export const langCodeSegments: LangCodeRecord = {
-	"en-US": "",
-	id: "id",
-	ja: "ja",
-};
 
 export const languages: LangCodeRecord = {
 	"en-US": "English",
 	id: "Bahasa Indonesia",
 	ja: "日本語",
+};
+
+export const langCodeSegments: LangCodeRecord = {
+	"en-US": "",
+	id: "id",
+	ja: "ja",
 };
 
 export function getObjectKeys<T extends object>(obj: T): (keyof T)[] {

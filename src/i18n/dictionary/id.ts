@@ -1,20 +1,19 @@
-import { themeOptions } from "$/i18n/theme-options";
 import type { DictionaryShape } from "./default-en-us";
 
 export const id = {
-	// Header --------------------------------------------------
+	// HEADER ============================================================
 	"header.nav.projects": "Proyek",
 	"header.nav.skills": "Keahlian",
 	"header.nav.contact": "Kontak",
 	"header.nav.social": "Sosial",
-	"header.theme.system": themeOptions.id.system,
-	"header.theme.light": themeOptions.id.light,
-	"header.theme.dark": themeOptions.id.dark,
+	"header.theme.system": "Sistem",
+	"header.theme.light": "Terang",
+	"header.theme.dark": "Gelap",
 
-	// Footer --------------------------------------------------
+	// FOOTER ============================================================
 	"footer.copyright": "© 2026 Rifki Muhazzar. Hak cipta dilindungi.",
 
-	// Home page -----------------------------------------------
+	// HOME PAGE =========================================================
 	"home.title": "Rifki Muhazzar — Software Engineer",
 	"home.description":
 		"Portofolio Rifki Muhazzar, seorang software engineer. Jelajahi proyek, keahlian, atau hubungi saya.",

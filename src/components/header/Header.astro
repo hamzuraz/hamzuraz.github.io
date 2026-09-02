@@ -48,18 +48,4 @@ const langCode = Astro.locals.langCode;
     <MenuMobile />
 </header>
 
-<script>
-    document.addEventListener("click", (event) => {
-        const target = event.target;
-        if (!(target instanceof Node)) return;
-
-        document.querySelectorAll("details[open]").forEach((details) => {
-            if (
-                !details.contains(target) &&
-                details instanceof HTMLDetailsElement
-            ) {
-                details.open = false;
-            }
-        });
-    });
-</script>
+<script src="$/scripts/header.ts"></script>

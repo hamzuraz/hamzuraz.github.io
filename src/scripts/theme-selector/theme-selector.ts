@@ -1,15 +1,16 @@
-import { langCodeDefault, localizedThemeOptions } from "./data";
 import {
 	isLangCode,
 	isResolvedTheme,
 	isThemePreference,
 	type LangCode,
+	langCodeDefault,
+	localizedThemeOptions,
 	type ResolvedTheme,
 	type ThemePreference,
-} from "./type-helpers";
+} from "./theme-selector-helpers";
 
-const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 let controller: AbortController | undefined;
+const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 function getLangCodeFromPathname(pathname: string): LangCode {
 	const firstSegment = pathname.split("/")[1];
@@ -21,10 +22,10 @@ function resolveTheme(theme: ThemePreference): ResolvedTheme {
 }
 
 function getStoredTheme(): ThemePreference {
-	const storedTheme = window.localStorage.getItem("theme");
+	const theme = window.localStorage.getItem("theme");
 
-	if (isResolvedTheme(storedTheme)) return storedTheme;
-	if (storedTheme !== null) window.localStorage.removeItem("theme");
+	if (isResolvedTheme(theme)) return theme;
+	if (theme !== null) window.localStorage.removeItem("theme");
 
 	return "system";
 }
@@ -105,5 +106,5 @@ window.document.addEventListener("astro:page-load", () => {
 });
 
 window.document.addEventListener("astro:before-swap", () => {
-	controller?.abort();
+	if (controller) controller.abort();
 });
