@@ -8,7 +8,12 @@ type Props = LinkProps;
 const { href, label } = Astro.props;
 ---
 
-<a href={href} target="_blank" rel="noopener noreferrer">
+<a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="justify-between items-center max-w-48"
+>
     {label}
-    <ExternalLink {...defaultIconProps} />
+    <ExternalLink {...defaultIconProps} class="relative -top-px" />
 </a>

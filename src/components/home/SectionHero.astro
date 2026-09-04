@@ -9,28 +9,33 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 
 <section
     id="_hero"
-    class="border-b border-line-on-light px-4 pt-8 pb-32 sm:px-8 dark:border-line-on-dark"
+    class="border-b border-line-on-light px-4 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-32 lg:pt-20 lg:pb-40 dark:border-line-on-dark"
 >
-    <div class="font-mono text-xs sm:text-sm">
-        <span class="font-bold text-secondary">———</span>
-        <span>&nbsp;&nbsp;{t("home.hero.lastupdated")}&nbsp;{lastUpdated}</span>
-    </div>
+    <p
+        class="font-mono text-xs text-subtle-on-light sm:text-sm dark:text-subtle-on-dark"
+    >
+        {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
+    </p>
 
     <div
-        class="mt-16 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-secondary sm:d-badge-md"
+        class="mt-10 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-accent sm:mt-12 sm:d-badge-md"
     >
         {t("home.hero.badge.role")}
     </div>
 
-    <h1 class="mt-1 text-4.5xl font-bold text-primary sm:text-7xl">
+    <h1
+        class="mt-2 text-4.5xl font-bold tracking-tight text-primary sm:text-6xl lg:text-7xl"
+    >
         Rifki Muhazzar
     </h1>
 
-    <p class="mt-6 max-w-xl text-lg sm:text-xl">
+    <p class="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
         {t("home.hero.subheading")}
     </p>
 
-    <ul class="mt-6 flex flex-wrap gap-2 font-mono sm:gap-3">
+    <ul
+        class="mt-8 flex flex-wrap gap-2 font-mono sm:mt-10 sm:gap-3 items-baseline"
+    >
         <li>
             <div
                 class="d-badge d-badge-soft d-badge-sm d-badge-error sm:d-badge-md"
@@ -80,24 +85,20 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
                 Rust
             </div>
         </li>
-        <li>
-            <a class="d-link text-sm d-link-accent sm:text-base">
-                {t("home.hero.techstack.more")}</a
-            >
+        <li class="d-link text-sm d-link-accent sm:text-base">
+            {t("home.hero.techstack.more")}
         </li>
     </ul>
 
-    <div class="mt-12 flex items-baseline gap-4 sm:gap-6">
-        <div class="d-aura d-aura-silver d-aura-md sm:d-aura-lg duration-7000">
+    <div class="mt-10 flex flex-wrap items-baseline gap-4 sm:mt-14 sm:gap-6">
+        <div class="d-aura d-aura-silver duration-7000 d-aura-md sm:d-aura-lg">
             <div class="d-card bg-base-100">
                 <button class="d-btn d-btn-md d-btn-primary sm:d-btn-lg">
                     {t("home.hero.cta.primary")}
                 </button>
             </div>
         </div>
-        <button
-            class="d-btn d-btn-outline d-btn-md d-btn-secondary sm:d-btn-lg"
-        >
+        <button class="d-btn d-btn-outline d-btn-accent d-btn-md sm:d-btn-lg">
             {t("home.hero.cta.secondary")}
         </button>
     </div>
