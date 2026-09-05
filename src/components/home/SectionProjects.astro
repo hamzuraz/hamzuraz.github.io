@@ -1,6 +1,8 @@
 ---
-import { ArrowRight } from "@lucide/astro";
+import { ArrowRight, SquareArrowOutUpRight } from "@lucide/astro";
+import GitHub from "$/assets/GitHub.svg";
 import { defaultIconProps } from "../../lib/icon-props";
+import IconLinkExternal from "../ui/IconLinkExternal.astro";
 
 const t = Astro.locals.t;
 
@@ -15,7 +17,7 @@ const projects = [1, 2, 3, 4];
     <p class="u-text-lg mt-6">{t("home.projects.description")}</p>
 
     <div
-        class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border u-border-color bg-subtle-border-light dark:bg-subtle-border-dark sm:grid-cols-2"
+        class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border u-border-color bg-subtle-border-light sm:grid-cols-2 dark:bg-subtle-border-dark"
     >
         {
             projects.map((project, index) => {
@@ -26,18 +28,17 @@ const projects = [1, 2, 3, 4];
                           ? "rounded-none sm:rounded-tr-box"
                           : index === 2
                             ? "rounded-none sm:rounded-bl-box"
-                            : "rounded-t-none rounded-b-box sm:rounded-bl-none sm:rounded-br-box";
+                            : "rounded-t-none rounded-b-box sm:rounded-br-box sm:rounded-bl-none";
                 return (
                     <div class={`d-card ${radiusClass} bg-base-100 shadow-sm`}>
-                        <figure class="border-b u-border-color p-4">
-                            <img
-                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="Shoes"
-                            />
-                        </figure>
-                        <div class="d-card-body p-4 pb-10">
-                            <h2 class="d-card-title">Social Media</h2>
-                            <ul class="flex gap-2">
+                        <div class="d-card-body p-4 gap-0">
+                            <div class="flex  justify-between">
+                                <h2 class="d-card-title">Social Media</h2>
+                                <IconLinkExternal href="https://github.com/hamzuraz/">
+                                    <GitHub class="u-icon-link" />
+                                </IconLinkExternal>
+                            </div>
+                            <ul class="flex gap-2 mt-2">
                                 <li>
                                     <div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
                                         Svelte Kit
@@ -55,11 +56,11 @@ const projects = [1, 2, 3, 4];
                                 </li>
                             </ul>
 
-                            <p class="mt-2">
+                            <p class="mt-4">
                                 A card component has a figure, a body part, and
                                 inside body there are title and actions parts
                             </p>
-                            <div class="d-card-actions justify-end mt-12">
+                            <div class="d-card-actions justify-end mt-16 gap-3">
                                 <button class="d-btn d-btn-primary d-btn-outline">
                                     Live Demo
                                 </button>
