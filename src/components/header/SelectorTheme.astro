@@ -9,13 +9,16 @@ const t = Astro.locals.t;
     <div
         tabindex="0"
         role="button"
-        class="d-btn flex w-38 justify-between u-border-color"
+        class="d-btn flex w-38 justify-between u-border-color group"
     >
         <div class="flex gap-2">
             <Paintbrush {...defaultIconProps} class="translate-y-0.5" />
             <span data-theme-active-text class="invisible">System</span>
         </div>
-        <ChevronDown {...chevronProps} />
+        <ChevronDown
+            {...chevronProps}
+            class="transition-transform duration-200 group-focus:rotate-180"
+        />
     </div>
     <ul
         data-theme-menu
