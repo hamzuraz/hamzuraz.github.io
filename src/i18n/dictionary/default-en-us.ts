@@ -36,9 +36,9 @@ export const en_US = {
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
 		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
-	"home.hero.techstack.more": "See more",
-	"home.hero.cta.primary": "See resume",
-	"home.hero.cta.secondary": "Contact me",
+	"home.hero.techstack.more": "See More",
+	"home.hero.cta.primary": "See Resume",
+	"home.hero.cta.secondary": "Contact Me",
 
 	"home.projects.title": "Projects",
 	"home.projects.description":
@@ -52,7 +52,7 @@ export const en_US = {
 	"home.contact.title": "Contact",
 	"home.contact.description":
 		"If you'd like to get in touch, feel free to reach out via email or connect with me on LinkedIn.",
-	"home.contact.cta.email": "Send me an email",
+	"home.contact.cta.email": "Send Me an Email",
 	"home.contact.cta.linkedin": "Connect on LinkedIn",
 } as const;
 
