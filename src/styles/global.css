@@ -6,3 +6,15 @@
 @import "./system/typography/typography.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@utility u-border-color {
+	@apply border-color-on-light dark:border-color-on-dark;
+}
+
+@utility u-text-subtle {
+	@apply text-subtle-on-light dark:text-subtle-on-dark;
+}
+
+@utility u-layout-padding {
+	@apply px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32;
+}

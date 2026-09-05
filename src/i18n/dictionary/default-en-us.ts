@@ -38,13 +38,13 @@ export const en_US = {
 	"home.hero.subheading":
 		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
 	"home.hero.techstack.more": "See more",
-	"home.hero.cta.primary": "View resume",
+	"home.hero.cta.primary": "See resume",
 	"home.hero.cta.secondary": "Contact me",
 
 	"home.projects.title": "Projects",
 	"home.projects.description":
 		"Here are some of the projects I've worked on. I enjoy building things that solve real problems.",
-	"home.projects.cta": "View all projects",
+	"home.projects.cta": "See all projects",
 
 	"home.skills.title": "Skills",
 	"home.skills.description":
