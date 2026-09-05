@@ -1,10 +1,76 @@
 ---
+import { ArrowRight } from "@lucide/astro";
+import { defaultIconProps } from "../../lib/icon-props";
+
 const t = Astro.locals.t;
+
+const projects = [1, 2, 3];
 ---
 
 <section id="projects" class="border-b u-border-color u-layout-padding">
     <h2 class="u-text-5xl font-bold">
         {t("home.projects.title")}
     </h2>
+
     <p class="u-text-lg mt-6">{t("home.projects.description")}</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+        {
+            projects.map((project, index) => {
+                const marginLeft = index === 0 ? "" : "-ml-px";
+                return (
+                    <div
+                        class={`d-card flex h-full flex-col border u-border-color bg-base-100 shadow-sm ${marginLeft}`}
+                    >
+                        <figure class="border-b u-border-color p-4">
+                            <img
+                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                alt="Shoes"
+                            />
+                        </figure>
+                        <div class="d-card-body p-4">
+                            <h2 class="d-card-title">Social Media</h2>
+                            <ul class="flex gap-2 mt-1 ">
+                                <li>
+                                    <div class="d-badge d-badge-ghost d-badge-sm">
+                                        Svelte Kit
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-badge d-badge-ghost d-badge-sm">
+                                        Go
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="d-badge d-badge-ghost  d-badge-sm">
+                                        Rust
+                                    </div>
+                                </li>
+                                <li>...</li>
+                            </ul>
+                            <p class="mt-4">
+                                A card component has a figure, a body part, and
+                                inside body there are title and actions parts
+                            </p>
+                            <div class="d-card-actions justify-end mt-8">
+                                <button class="d-btn d-btn-accent d-btn-outline">
+                                    Live Demo
+                                </button>
+                                <button class="d-btn d-btn-primary">
+                                    See Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })
+        }
+        <a
+            href="projects/"
+            class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-outline d-btn-primary sm:w-fit sm:self-center sm:justify-self-center lg:col-start-2 lg:mt-16"
+        >
+            See All Projects
+            <ArrowRight {...defaultIconProps} aria-hidden="true" />
+        </a>
+    </div>
 </section>
