@@ -12,7 +12,7 @@ const pathname = Astro.url.pathname;
     <div
         tabindex="0"
         role="button"
-        class="d-btn flex w-62 justify-between u-border-color"
+        class="d-btn flex w-62 justify-between u-border-color group"
     >
         <div class="flex gap-2">
             <Languages {...defaultIconProps} class="translate-y-0.5" />
@@ -23,7 +23,10 @@ const pathname = Astro.url.pathname;
                 </span>
             </div>
         </div>
-        <ChevronDown {...chevronProps} />
+        <ChevronDown
+            {...chevronProps}
+            class="transition-transform duration-200 group-focus:rotate-180"
+        />
     </div>
     <ul
         tabindex="-1"

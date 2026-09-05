@@ -14,7 +14,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div class="d-navbar-center hidden lg:flex">
-    <ul class="d-menu d-menu-horizontal">
+    <ul class="d-menu d-menu-horizontal p-0">
         <li>
             <LinkInternal
                 href={`${segment}/projects/`}
@@ -34,33 +34,33 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
             />
         </li>
         <li>
-            <details>
-                <summary
-                    class="list-none marker:hidden after:hidden [&::-webkit-details-marker]:hidden"
+            <div class="[all:unset] d-dropdown d-dropdown-center">
+                <div
+                    tabindex="0"
+                    role="button"
+                    class="d-btn d-btn-ghost hover:bg-base-100 font-normal group px-3"
                 >
-                    <span>{t("header.nav.social")}</span>
-                    <ChevronDown {...chevronProps} />
-                </summary>
+                    Social
+                    <ChevronDown
+                        {...chevronProps}
+                        class="transition-transform duration-200 group-focus:rotate-180"
+                    />
+                </div>
                 <ul
-                    class="z-1 w-40 -translate-y-3.5 bg-base-100 border u-border-color"
+                    tabindex="-1"
+                    class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm border u-border-color -mt-px max-w-38"
                 >
                     <li>
-                        <LinkExternal
-                            href="https://github.com/hamzuraz/"
-                            label="GitHub"
-                        />
+                        <LinkExternal href="github.com" label="GitHub" />
                     </li>
                     <li>
-                        <LinkExternal
-                            href="https://linkedin.com/"
-                            label="LinkedIn"
-                        />
+                        <LinkExternal href="linkedin.com" label="LinkedIn" />
                     </li>
                 </ul>
-            </details>
+            </div>
         </li>
     </ul>
-    <div class="flex gap-3">
+    <div class="flex gap-3 ml-3">
         <SelectorTheme />
         <SelectorLanguage />
     </div>
