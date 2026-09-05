@@ -5,15 +5,17 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 	month: "long",
 	day: "numeric",
 });
+const techStack = [
+	{ name: "JavaScript", badgeColor: "warning" },
+	{ name: "TypeScript", badgeColor: "info" },
+	{ name: "Python", badgeColor: "info" },
+	{ name: "Go", badgeColor: "info" },
+	{ name: "Rust", badgeColor: "error" },
+];
 ---
 
-<section
-    id="_hero"
-    class="border-b border-line-on-light px-4 pt-12 pb-24 sm:px-8 sm:pt-16 sm:pb-32 lg:pt-20 lg:pb-40 dark:border-line-on-dark"
->
-    <p
-        class="font-mono text-xs text-subtle-on-light sm:text-sm dark:text-subtle-on-dark"
-    >
+<section id="_hero" class="border-b u-border-color u-layout-padding">
+    <p class="font-mono text-xs u-text-subtle sm:text-sm">
         {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
     </p>
 
@@ -24,7 +26,7 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
     </div>
 
     <h1
-        class="mt-2 text-4.5xl font-bold tracking-tight text-primary sm:text-6xl lg:text-7xl"
+        class="mt-2 text-4.5xl font-bold tracking-tight text-primary sm:text-7xl"
     >
         Rifki Muhazzar
     </h1>
@@ -34,71 +36,29 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
     </p>
 
     <ul
-        class="mt-8 flex flex-wrap gap-2 font-mono sm:mt-10 sm:gap-3 items-baseline"
+        class="mt-8 flex flex-wrap items-baseline gap-2 font-mono sm:mt-10 sm:gap-3"
     >
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-error sm:d-badge-md"
-            >
-                HTML
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
-            >
-                CSS
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-warning sm:d-badge-md"
-            >
-                JS
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
-            >
-                TS
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
-            >
-                Python
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-info sm:d-badge-md"
-            >
-                Go
-            </div>
-        </li>
-        <li>
-            <div
-                class="d-badge d-badge-soft d-badge-sm d-badge-error sm:d-badge-md"
-            >
-                Rust
-            </div>
-        </li>
-        <li class="d-link text-sm d-link-accent sm:text-base">
+        {
+            techStack.map((tech) => (
+                <li>
+                    <div
+                        class={`d-badge-${tech.badgeColor} d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
+                    >
+                        {tech.name}
+                    </div>
+                </li>
+            ))
+        }
+        <li class="ml-0.5 d-link text-sm d-link-accent sm:text-base">
             {t("home.hero.techstack.more")}
         </li>
     </ul>
 
-    <div class="mt-10 flex flex-wrap items-baseline gap-4 sm:mt-14 sm:gap-6">
-        <div class="d-aura d-aura-silver duration-7000 d-aura-md sm:d-aura-lg">
-            <div class="d-card bg-base-100">
-                <button class="d-btn d-btn-md d-btn-primary sm:d-btn-lg">
-                    {t("home.hero.cta.primary")}
-                </button>
-            </div>
-        </div>
-        <button class="d-btn d-btn-outline d-btn-accent d-btn-md sm:d-btn-lg">
+    <div class="mt-10 flex items-baseline gap-4 sm:mt-14 sm:gap-6">
+        <button class="d-btn d-btn-primary sm:d-btn-lg">
+            {t("home.hero.cta.primary")}
+        </button>
+        <button class="d-btn d-btn-outline d-btn-accent sm:d-btn-lg">
             {t("home.hero.cta.secondary")}
         </button>
     </div>
