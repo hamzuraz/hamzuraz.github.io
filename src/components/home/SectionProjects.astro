@@ -17,10 +17,15 @@ const projects = [1, 2, 3];
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
         {
             projects.map((project, index) => {
-                const marginLeft = index === 0 ? "" : "-ml-px";
+                const borderClass =
+                    index === 1
+                        ? "border-t-transparent sm:border-t-subtle-border-light sm:border-l-transparent dark:sm:border-t-subtle-border-dark"
+                        : index === 2
+                          ? "border-t-transparent lg:border-t-subtle-border-light lg:border-l-transparent dark:lg:border-t-subtle-border-dark"
+                          : "";
                 return (
                     <div
-                        class={`d-card flex h-full flex-col border u-border-color bg-base-100 shadow-sm ${marginLeft}`}
+                        class={`d-card ${borderClass} flex h-full flex-col border u-border-color bg-base-100 shadow-sm`}
                     >
                         <figure class="border-b u-border-color p-4">
                             <img
