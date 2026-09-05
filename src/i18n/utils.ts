@@ -10,7 +10,6 @@ import { langCodeDefault, langCodeSegments, languages, ui } from "./ui";
 
 export const getLocalizedRouteStaticPaths = (() => {
 	const langCodes = getObjectKeys(languages);
-
 	return langCodes.map((langCode) => {
 		return {
 			params: {

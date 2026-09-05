@@ -18,3 +18,7 @@
 @utility u-layout-padding {
 	@apply px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32;
 }
+
+@utility u-icon-link {
+	@apply size-9 fill-base-content hover:fill-base-content/75 sm:size-11;
+}

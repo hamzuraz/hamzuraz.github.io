@@ -1,6 +1,6 @@
 ---
 import { ChevronDown, Paintbrush } from "@lucide/astro";
-import { chevronProps, defaultIconProps } from "$/lib/icon-props";
+import { chevronIconProps, defaultIconProps } from "$/lib/icon-props";
 
 const t = Astro.locals.t;
 ---
@@ -16,7 +16,7 @@ const t = Astro.locals.t;
             <span data-theme-active-text class="invisible">System</span>
         </div>
         <ChevronDown
-            {...chevronProps}
+            {...chevronIconProps}
             class="transition-transform duration-200 group-focus:rotate-180"
         />
     </div>

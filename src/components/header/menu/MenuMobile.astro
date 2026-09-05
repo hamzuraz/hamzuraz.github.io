@@ -1,6 +1,5 @@
 ---
 import { langCodeSegments } from "$/i18n/ui";
-import LinkExternal from "./link/LinkExternal.astro";
 import LinkInternal from "./link/LinkInternal.astro";
 import SelectorLanguage from "./selector/SelectorLanguage.astro";
 import SelectorTheme from "./selector/SelectorTheme.astro";
@@ -15,9 +14,6 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
         <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
-        <li>
-            <LinkExternal href="https://github.com/hamzuraz/" label="GitHub" />
-        </li>
     </ul>
     <div class="d-menu gap-3 p-3 pb-6">
         <SelectorTheme />

@@ -2,7 +2,7 @@
 import { ChevronDown, Languages } from "@lucide/astro";
 import { languages } from "$/i18n/ui";
 import { buildLocalizedRoutePath } from "$/i18n/utils";
-import { chevronProps, defaultIconProps } from "$/lib/icon-props";
+import { chevronIconProps, defaultIconProps } from "$/lib/icon-props";
 
 const langCode = Astro.locals.langCode;
 const pathname = Astro.url.pathname;
@@ -24,7 +24,7 @@ const pathname = Astro.url.pathname;
             </div>
         </div>
         <ChevronDown
-            {...chevronProps}
+            {...chevronIconProps}
             class="transition-transform duration-200 group-focus:rotate-180"
         />
     </div>

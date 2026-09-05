@@ -2,8 +2,10 @@
 import GitHub from "$/assets/GitHub.svg";
 import LinkedIn from "$/assets/LinkedIn.svg";
 import X from "$/assets/X.svg";
+import IconLinkExternal from "$/components/ui/IconLinkExternal.astro";
 
 const { langCode, t } = Astro.locals;
+
 const lastUpdated = new Date().toLocaleDateString(langCode, {
 	year: "numeric",
 	month: "long",
@@ -25,26 +27,16 @@ const techStack = [
         <p class="font-mono text-xs u-text-subtle sm:text-sm">
             {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
         </p>
-        <div class="flex sm:gap-1 -ml-1.25 sm:-mr-1.25">
-            <a
-                href="https://github.com/hamzuraz/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                <GitHub
-                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
-                />
-            </a>
-            <a href="#">
-                <LinkedIn
-                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
-                />
-            </a>
-            <a href="#">
-                <X
-                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
-                />
-            </a>
+        <div class="-ml-1.25 flex sm:-mr-1.25 sm:gap-1">
+            <IconLinkExternal href="https://github.com/hamzuraz/">
+                <GitHub class="u-icon-link" />
+            </IconLinkExternal>
+            <IconLinkExternal href="#">
+                <LinkedIn class="u-icon-link" />
+            </IconLinkExternal>
+            <IconLinkExternal href="#">
+                <X class="u-icon-link" />
+            </IconLinkExternal>
         </div>
     </div>
 
