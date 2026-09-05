@@ -42,7 +42,7 @@ export const en_US = {
 
 	"home.projects.title": "Projects",
 	"home.projects.description":
-		"Here are some of the projects I've worked on. I enjoy building things that solve real problems.",
+		"Below is a selection of projects I've built, each aimed at solving a real, practical problem.",
 	"home.projects.cta": "See all projects",
 
 	"home.skills.title": "Skills",
