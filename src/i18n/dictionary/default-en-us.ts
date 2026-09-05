@@ -20,7 +20,6 @@ export const en_US = {
 	"header.nav.projects": "Projects",
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
-	"header.nav.social": "Social",
 	"header.theme.system": "System",
 	"header.theme.light": "Light",
 	"header.theme.dark": "Dark",

@@ -16,23 +16,7 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
         <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
         <li>
-            <span class="pointer-events-none text-base-content/60">
-                Social
-            </span>
-            <ul class="border-l u-border-color pl-3 before:hidden">
-                <li>
-                    <LinkExternal
-                        href="https://github.com/hamzuraz/"
-                        label="GitHub"
-                    />
-                </li>
-                <li>
-                    <LinkExternal
-                        href="https://linkedin.com/"
-                        label="LinkedIn"
-                    />
-                </li>
-            </ul>
+            <LinkExternal href="https://github.com/hamzuraz/" label="GitHub" />
         </li>
     </ul>
     <div class="d-menu gap-3 p-3 pb-6">
