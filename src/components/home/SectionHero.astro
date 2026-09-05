@@ -1,4 +1,8 @@
 ---
+import GitHub from "$/assets/GitHub.svg";
+import LinkedIn from "$/assets/LinkedIn.svg";
+import X from "$/assets/X.svg";
+
 const { langCode, t } = Astro.locals;
 const lastUpdated = new Date().toLocaleDateString(langCode, {
 	year: "numeric",
@@ -15,9 +19,34 @@ const techStack = [
 ---
 
 <section id="_hero" class="border-b u-border-color u-layout-padding">
-    <p class="font-mono text-xs u-text-subtle sm:text-sm">
-        {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
-    </p>
+    <div
+        class="flex items-start justify-between flex-col sm:flex-row sm:items-center gap-2"
+    >
+        <p class="font-mono text-xs u-text-subtle sm:text-sm">
+            {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
+        </p>
+        <div class="flex sm:gap-1 -ml-1.25 sm:-mr-1.25">
+            <a
+                href="https://github.com/hamzuraz/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                <GitHub
+                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
+                />
+            </a>
+            <a href="#">
+                <LinkedIn
+                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
+                />
+            </a>
+            <a href="#">
+                <X
+                    class="size-9 sm:size-11 fill-base-content hover:fill-base-content/75"
+                />
+            </a>
+        </div>
+    </div>
 
     <div
         class="mt-10 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-accent sm:mt-12 sm:d-badge-md"
