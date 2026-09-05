@@ -4,7 +4,7 @@ import { defaultIconProps } from "../../lib/icon-props";
 
 const t = Astro.locals.t;
 
-const projects = [1, 2, 3];
+const projects = [1, 2, 3, 4];
 ---
 
 <section id="projects" class="border-b u-border-color u-layout-padding">
@@ -14,50 +14,52 @@ const projects = [1, 2, 3];
 
     <p class="u-text-lg mt-6">{t("home.projects.description")}</p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+    <div
+        class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border u-border-color bg-subtle-border-light dark:bg-subtle-border-dark sm:grid-cols-2"
+    >
         {
             projects.map((project, index) => {
-                const borderClass =
-                    index === 1
-                        ? "border-t-transparent sm:border-t-subtle-border-light sm:border-l-transparent dark:sm:border-t-subtle-border-dark"
-                        : index === 2
-                          ? "border-t-transparent lg:border-t-subtle-border-light lg:border-l-transparent dark:lg:border-t-subtle-border-dark"
-                          : "";
+                const radiusClass =
+                    index === 0
+                        ? "rounded-t-box rounded-b-none sm:rounded-tl-box sm:rounded-tr-none"
+                        : index === 1
+                          ? "rounded-none sm:rounded-tr-box"
+                          : index === 2
+                            ? "rounded-none sm:rounded-bl-box"
+                            : "rounded-t-none rounded-b-box sm:rounded-bl-none sm:rounded-br-box";
                 return (
-                    <div
-                        class={`d-card ${borderClass} flex h-full flex-col border u-border-color bg-base-100 shadow-sm`}
-                    >
+                    <div class={`d-card ${radiusClass} bg-base-100 shadow-sm`}>
                         <figure class="border-b u-border-color p-4">
                             <img
                                 src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
                                 alt="Shoes"
                             />
                         </figure>
-                        <div class="d-card-body p-4">
+                        <div class="d-card-body p-4 pb-10">
                             <h2 class="d-card-title">Social Media</h2>
-                            <ul class="flex gap-2 mt-1 ">
+                            <ul class="flex gap-2">
                                 <li>
-                                    <div class="d-badge d-badge-ghost d-badge-sm">
+                                    <div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
                                         Svelte Kit
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-badge d-badge-ghost d-badge-sm">
+                                    <div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
                                         Go
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="d-badge d-badge-ghost d-badge-sm">
+                                    <div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
                                         Rust
                                     </div>
                                 </li>
-                                <li>...</li>
                             </ul>
-                            <p class="mt-4">
+
+                            <p class="mt-2">
                                 A card component has a figure, a body part, and
                                 inside body there are title and actions parts
                             </p>
-                            <div class="d-card-actions justify-end mt-8">
+                            <div class="d-card-actions justify-end mt-12">
                                 <button class="d-btn d-btn-primary d-btn-outline">
                                     Live Demo
                                 </button>
@@ -70,12 +72,12 @@ const projects = [1, 2, 3];
                 );
             })
         }
-        <a
-            href="projects/"
-            class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-outline d-btn-primary sm:w-fit sm:self-center sm:justify-self-center lg:col-start-2 lg:mt-16"
-        >
-            See All Projects
-            <ArrowRight {...defaultIconProps} aria-hidden="true" />
-        </a>
     </div>
+    <a
+        href="projects/"
+        class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-outline d-btn-primary sm:mx-auto sm:w-fit lg:mt-16"
+    >
+        See All Projects
+        <ArrowRight {...defaultIconProps} aria-hidden="true" />
+    </a>
 </section>
