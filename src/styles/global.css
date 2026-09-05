@@ -11,14 +11,26 @@
 	@apply border-subtle-border-light dark:border-subtle-border-dark;
 }
 
+@utility u-icon-link {
+	@apply size-9 fill-base-content hover:fill-base-content/75 sm:size-11;
+}
+
+@utility u-text-lg {
+	@apply text-base sm:text-lg;
+}
+
+@utility u-text-5xl {
+	@apply text-3xl sm:text-5xl;
+}
+
+@utility u-text-7xl {
+	@apply text-4.5xl sm:text-7xl;
+}
+
 @utility u-text-subtle {
 	@apply text-subtle-text-light dark:text-subtle-text-dark;
 }
 
 @utility u-layout-padding {
 	@apply px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32;
-}
-
-@utility u-icon-link {
-	@apply size-9 fill-base-content hover:fill-base-content/75 sm:size-11;
 }
