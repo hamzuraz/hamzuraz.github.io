@@ -9,7 +9,7 @@ const t = Astro.locals.t;
     <div
         tabindex="0"
         role="button"
-        class="d-btn flex w-38 justify-between border-line-on-light dark:border-line-on-dark"
+        class="d-btn flex w-38 justify-between u-border-color"
     >
         <div class="flex gap-2">
             <Paintbrush {...defaultIconProps} class="translate-y-0.5" />
@@ -20,7 +20,7 @@ const t = Astro.locals.t;
     <ul
         data-theme-menu
         tabindex="-1"
-        class="d-menu d-dropdown-content z-1 w-38 rounded-box bg-base-100 shadow-sm"
+        class="d-menu d-dropdown-content z-1 w-38 rounded-box bg-base-100 shadow-sm border u-border-color -mt-px"
     >
         <li>
             <a href="" data-theme-value="system">{t("header.theme.system")}</a>
