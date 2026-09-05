@@ -1,8 +1,6 @@
 ---
 import { ArrowRight, SquareArrowOutUpRight } from "@lucide/astro";
-import GitHub from "$/assets/GitHub.svg";
-import { defaultIconProps } from "../../lib/icon-props";
-import IconLinkExternal from "../ui/IconLinkExternal.astro";
+import { defaultIconProps } from "$/lib/icon-props";
 
 const t = Astro.locals.t;
 
@@ -32,12 +30,7 @@ const projects = [1, 2, 3, 4];
                 return (
                     <div class={`d-card ${radiusClass} bg-base-100 shadow-sm`}>
                         <div class="d-card-body p-4 gap-0">
-                            <div class="flex  justify-between">
-                                <h2 class="d-card-title">Social Media</h2>
-                                <IconLinkExternal href="https://github.com/hamzuraz/">
-                                    <GitHub class="u-icon-link" />
-                                </IconLinkExternal>
-                            </div>
+                            <h2 class="d-card-title">Social Media</h2>
                             <ul class="flex gap-2 mt-2">
                                 <li>
                                     <div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
@@ -62,7 +55,10 @@ const projects = [1, 2, 3, 4];
                             </p>
                             <div class="d-card-actions justify-end mt-16 gap-3">
                                 <button class="d-btn d-btn-primary d-btn-outline">
-                                    Live Demo
+                                    Source Code
+                                    <SquareArrowOutUpRight
+                                        {...defaultIconProps}
+                                    />
                                 </button>
                                 <button class="d-btn d-btn-primary">
                                     See Details
