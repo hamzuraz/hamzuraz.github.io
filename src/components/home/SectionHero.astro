@@ -11,13 +11,7 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 	month: "long",
 	day: "numeric",
 });
-const techStack = [
-	{ name: "JavaScript", badgeColor: "d-badge-warning" },
-	{ name: "TypeScript", badgeColor: "d-badge-info" },
-	{ name: "Python", badgeColor: "d-badge-info" },
-	{ name: "Go", badgeColor: "d-badge-info" },
-	{ name: "Rust", badgeColor: "d-badge-error" },
-];
+const techStack = ["JavaScript", "TypeScript", "Python", "Go", "Rust"];
 ---
 
 <section id="_hero" class="border-b u-border-color u-layout-padding">
@@ -61,9 +55,9 @@ const techStack = [
             techStack.map((tech) => (
                 <li>
                     <div
-                        class={`${tech.badgeColor} d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
+                        class={`d-badge-accent d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
                     >
-                        {tech.name}
+                        {tech}
                     </div>
                 </li>
             ))
