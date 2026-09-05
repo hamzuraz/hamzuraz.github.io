@@ -1,6 +1,6 @@
 ---
-import MenuDesktop from "./MenuDesktop.astro";
-import MenuMobile from "./MenuMobile.astro";
+import MenuDesktop from "./menu/MenuDesktop.astro";
+import MenuMobile from "./menu/MenuMobile.astro";
 
 const langCode = Astro.locals.langCode;
 const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;

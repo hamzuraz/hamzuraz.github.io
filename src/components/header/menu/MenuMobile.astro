@@ -1,9 +1,9 @@
 ---
 import { langCodeSegments } from "$/i18n/ui";
-import LinkExternal from "./LinkExternal.astro";
-import LinkInternal from "./LinkInternal.astro";
-import SelectorLanguage from "./SelectorLanguage.astro";
-import SelectorTheme from "./SelectorTheme.astro";
+import LinkExternal from "./link/LinkExternal.astro";
+import LinkInternal from "./link/LinkInternal.astro";
+import SelectorLanguage from "./selector/SelectorLanguage.astro";
+import SelectorTheme from "./selector/SelectorTheme.astro";
 
 const langCode = Astro.locals.langCode;
 const langCodeSegment = langCodeSegments[langCode];
