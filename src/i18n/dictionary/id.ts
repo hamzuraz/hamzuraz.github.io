@@ -5,7 +5,6 @@ export const id = {
 	"header.nav.projects": "Proyek",
 	"header.nav.skills": "Keahlian",
 	"header.nav.contact": "Kontak",
-	"header.nav.social": "Sosial",
 	"header.theme.system": "Sistem",
 	"header.theme.light": "Terang",
 	"header.theme.dark": "Gelap",

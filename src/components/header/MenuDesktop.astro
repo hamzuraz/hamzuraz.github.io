@@ -34,33 +34,10 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
             />
         </li>
         <li>
-            <div class="[all:unset] d-dropdown d-dropdown-center">
-                <div
-                    tabindex="0"
-                    role="button"
-                    class="d-btn d-btn-ghost hover:bg-base-100 font-normal group px-3"
-                >
-                    Social
-                    <ChevronDown
-                        {...chevronProps}
-                        class="transition-transform duration-200 group-focus:rotate-180"
-                    />
-                </div>
-                <ul
-                    tabindex="-1"
-                    class="d-dropdown-content d-menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm border u-border-color -mt-px max-w-38"
-                >
-                    <li>
-                        <LinkExternal href="github.com" label="GitHub" />
-                    </li>
-                    <li>
-                        <LinkExternal href="linkedin.com" label="LinkedIn" />
-                    </li>
-                </ul>
-            </div>
+            <LinkExternal href="https://github.com/hamzuraz" label="GitHub" />
         </li>
     </ul>
-    <div class="flex gap-3 ml-3">
+    <div class="ml-3 flex gap-3">
         <SelectorTheme />
         <SelectorLanguage />
     </div>

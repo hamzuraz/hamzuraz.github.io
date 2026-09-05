@@ -6,9 +6,6 @@ type Props = LinkProps;
 const { href, label } = Astro.props;
 ---
 
-<a
-    href={href}
-    class="max-w-48 d-btn d-btn-ghost hover:bg-base-100 font-normal justify-start px-3 click:border-2 click:u-border-color"
->
+<a href={href} class="max-w-48 font-normal hover:bg-base-100">
     {label}
 </a>

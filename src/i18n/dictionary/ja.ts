@@ -5,7 +5,6 @@ export const ja = {
 	"header.nav.projects": "プロジェクト",
 	"header.nav.skills": "スキル",
 	"header.nav.contact": "お問い合わせ",
-	"header.nav.social": "ソーシャル",
 	"header.theme.system": "システム",
 	"header.theme.light": "ライト",
 	"header.theme.dark": "ダーク",
