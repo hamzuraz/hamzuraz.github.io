@@ -12,15 +12,13 @@ const pathname = Astro.url.pathname;
     <div
         tabindex="0"
         role="button"
-        class="d-btn flex w-62 justify-between border-line-on-light dark:border-line-on-dark"
+        class="d-btn flex w-62 justify-between u-border-color"
     >
         <div class="flex gap-2">
             <Languages {...defaultIconProps} class="translate-y-0.5" />
             <div class="flex items-baseline gap-2">
                 <span>{languages[langCode]}</span>
-                <span
-                    class="font-mono text-xs text-subtle-on-light uppercase dark:text-subtle-on-dark"
-                >
+                <span class="font-mono text-xs u-text-subtle uppercase">
                     {langCode}
                 </span>
             </div>
@@ -29,7 +27,7 @@ const pathname = Astro.url.pathname;
     </div>
     <ul
         tabindex="-1"
-        class="d-menu d-dropdown-content z-1 w-62 rounded-box bg-base-100 shadow-sm"
+        class="d-menu d-dropdown-content z-1 -mt-px w-62 rounded-box border u-border-color bg-base-100 shadow-sm"
     >
         {
             Object.entries(languages).map(([langCode, langName]) => {
@@ -40,7 +38,7 @@ const pathname = Astro.url.pathname;
                             class="flex justify-between"
                         >
                             {langName}
-                            <span class="font-mono text-xs text-subtle-on-light uppercase dark:text-subtle-on-dark">
+                            <span class="font-mono text-xs u-text-subtle uppercase">
                                 {langCode}
                             </span>
                         </a>

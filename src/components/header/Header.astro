@@ -7,7 +7,7 @@ const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
 ---
 
 <header
-    class="sticky top-0 z-100 rounded-none border-t border-b border-line-on-light bg-base-300 px-4 max-lg:d-collapse sm:px-8 dark:border-line-on-dark"
+    class="sticky top-0 z-100 rounded-none border-y u-border-color bg-base-300 px-4 max-lg:d-collapse sm:px-8"
 >
     <input id="navbar-1-toggle" class="peer hidden" type="checkbox" />
     <label
@@ -17,10 +17,7 @@ const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
     </label>
     <div class="d-collapse-title d-navbar p-0">
         <div class="d-navbar-start">
-            <label
-                for="navbar-1-toggle"
-                class="d-btn border-line-on-light lg:hidden dark:border-line-on-dark"
-            >
+            <label for="navbar-1-toggle" class="d-btn u-border-color lg:hidden">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-5 w-5"
@@ -39,7 +36,7 @@ const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
             </label>
             <a
                 href={localizedHomePath}
-                class="d-btn border-line-on-light px-3 text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2 dark:border-line-on-dark"
+                class="d-btn u-border-color px-3 text-xl max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
             >
                 RM
             </a>

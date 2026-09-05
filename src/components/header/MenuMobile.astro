@@ -10,24 +10,18 @@ const langCodeSegment = langCodeSegments[langCode];
 const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
-<div
-    class="d-collapse-content z-1 border-line-on-light p-0 lg:hidden dark:border-line-on-dark"
->
-    <ul
-        class="d-menu w-full border-b border-line-on-light px-0 py-3 dark:border-line-on-dark"
-    >
+<div class="d-collapse-content z-1 u-border-color p-0 lg:hidden">
+    <ul class="d-menu w-full border-b u-border-color px-0 py-3">
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
         <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
         <li>
             <span
-                class="pointer-events-none hover:bg-transparent hover:text-inherit"
+                class="pointer-events-none text-base-content/60 hover:bg-transparent hover:text-inherit"
             >
                 Social
             </span>
-            <ul
-                class="border-l border-line-on-light pl-3 before:hidden dark:border-line-on-dark"
-            >
+            <ul class="border-l u-border-color pl-3 before:hidden">
                 <li>
                     <LinkExternal
                         href="https://github.com/hamzuraz/"
