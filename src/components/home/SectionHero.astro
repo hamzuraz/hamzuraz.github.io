@@ -6,11 +6,11 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 	day: "numeric",
 });
 const techStack = [
-	{ name: "JavaScript", badgeColor: "warning" },
-	{ name: "TypeScript", badgeColor: "info" },
-	{ name: "Python", badgeColor: "info" },
-	{ name: "Go", badgeColor: "info" },
-	{ name: "Rust", badgeColor: "error" },
+	{ name: "JavaScript", badgeColor: "d-badge-warning" },
+	{ name: "TypeScript", badgeColor: "d-badge-info" },
+	{ name: "Python", badgeColor: "d-badge-info" },
+	{ name: "Go", badgeColor: "d-badge-info" },
+	{ name: "Rust", badgeColor: "d-badge-error" },
 ];
 ---
 
@@ -42,7 +42,7 @@ const techStack = [
             techStack.map((tech) => (
                 <li>
                     <div
-                        class={`d-badge-${tech.badgeColor} d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
+                        class={`${tech.badgeColor} d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
                     >
                         {tech.name}
                     </div>

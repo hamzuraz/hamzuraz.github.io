@@ -1,8 +1,8 @@
 @theme {
-	--color-line-on-light: oklch(0.8 0.0024 17.2);
-	--color-line-on-dark: oklch(0.5 0.0024 17.2);
-	--color-subtle-on-light: oklch(0.65 0.0024 17.2);
-	--color-subtle-on-dark: oklch(0.6 0.0024 17.2);
+	--color-subtle-border-light: oklch(0.8 0.0024 17.2);
+	--color-subtle-border-dark: oklch(0.5 0.0024 17.2);
+	--color-subtle-text-light: oklch(0.65 0.0024 17.2);
+	--color-subtle-text-dark: oklch(0.6 0.0024 17.2);
 }
 
 @plugin "daisyui" {
