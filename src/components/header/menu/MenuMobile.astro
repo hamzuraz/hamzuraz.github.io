@@ -4,19 +4,46 @@ import LinkInternal from "./link/LinkInternal.astro";
 import SelectorLanguage from "./selector/SelectorLanguage.astro";
 import SelectorTheme from "./selector/SelectorTheme.astro";
 
-const langCode = Astro.locals.langCode;
+const { langCode, t } = Astro.locals;
 const langCodeSegment = langCodeSegments[langCode];
 const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
-<div class="d-collapse-content z-1 u-border-color p-0 lg:hidden">
-    <ul class="d-menu w-full border-b u-border-color px-0 py-3">
+<div
+    id="mobile-navigation"
+    class="mobile-nav-panel absolute inset-x-0 top-full z-20 u-border-color bg-base-300 lg:hidden border-b sm:px-5"
+>
+    <ul class="d-menu w-full border-b u-border-color sm:px-0 py-4 pt-4.5 px-0">
         <li><LinkInternal href={`${segment}/projects/`} label="Projects" /></li>
         <li><LinkInternal href={`${segment}/#skills`} label="Skills" /></li>
-        <li><LinkInternal href={`${segment}/#contact`} label="contact" /></li>
+        <li>
+            <LinkInternal
+                href={`${segment}/#contact`}
+                label={t("header.nav.contact")}
+            />
+        </li>
     </ul>
-    <div class="d-menu gap-3 p-3 pb-6">
+    <div class="d-menu gap-3 px-4 sm:px-3 py-6">
         <SelectorTheme />
         <SelectorLanguage />
     </div>
 </div>
+
+<style>
+    .mobile-nav-panel {
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-0.75rem);
+        transition:
+            transform 180ms ease,
+            opacity 180ms ease,
+            visibility 180ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .mobile-nav-panel {
+            transition: none;
+        }
+    }
+</style>
