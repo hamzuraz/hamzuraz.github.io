@@ -4,7 +4,7 @@ const t = Astro.locals.t;
 type SkillRow = {
 	scope: string;
 	technologies: string[];
-	badgeClass: "d-badge-accent" | "d-badge-error" | "";
+	badgeClass: "d-badge-secondary" | "d-badge-accent" | "";
 	scopeClass: "text-base-content";
 };
 
@@ -12,7 +12,7 @@ const coreSkills: SkillRow[] = [
 	{
 		scope: "Language & Runtime",
 		technologies: ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"],
-		badgeClass: "d-badge-accent",
+		badgeClass: "d-badge-secondary",
 		scopeClass: "text-base-content",
 	},
 	{
@@ -27,19 +27,19 @@ const coreSkills: SkillRow[] = [
 			"SvelteKit",
 			"Astro",
 		],
-		badgeClass: "d-badge-accent",
+		badgeClass: "d-badge-secondary",
 		scopeClass: "text-base-content",
 	},
 	{
 		scope: "Mobile",
 		technologies: ["React Native", "Expo"],
-		badgeClass: "d-badge-accent",
+		badgeClass: "d-badge-secondary",
 		scopeClass: "text-base-content",
 	},
 	{
 		scope: "Databases",
 		technologies: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
-		badgeClass: "d-badge-accent",
+		badgeClass: "d-badge-secondary",
 		scopeClass: "text-base-content",
 	},
 	{
@@ -53,7 +53,7 @@ const coreSkills: SkillRow[] = [
 			"Biome",
 			"Lefthook",
 		],
-		badgeClass: "d-badge-accent",
+		badgeClass: "d-badge-secondary",
 		scopeClass: "text-base-content",
 	},
 ];
@@ -62,7 +62,7 @@ const familiarSkills: SkillRow[] = [
 	{
 		scope: "Familiar",
 		technologies: ["Python", "Rust", "Alpine.js", "HTMX"],
-		badgeClass: "d-badge-error",
+		badgeClass: "d-badge-accent",
 		scopeClass: "text-base-content",
 	},
 ];
@@ -92,53 +92,53 @@ const skillTabs = [
 ---
 
 <section id="skills" class="border-b u-border-color u-layout-padding">
-    <p
-        class="font-mono text-xs font-semibold uppercase tracking-[0.2em] u-text-subtle"
-    >
-        02 / Expertise
-    </p>
+	<p
+		class="font-mono text-xs font-semibold uppercase tracking-[0.2em] u-text-subtle"
+	>
+		02 / Expertise
+	</p>
 
-    <h2 class="u-text-5xl mt-3 font-bold">{t("home.skills.title")}</h2>
+	<h2 class="u-text-5xl mt-3 font-bold">{t("home.skills.title")}</h2>
 
-    <p class="u-text-lg mt-6 max-w-xl">{t("home.skills.description")}</p>
+	<p class="u-text-lg mt-6 max-w-xl">{t("home.skills.description")}</p>
 
-    <div class="d-tabs mt-6 w-full rounded-box border u-border-color font-mono">
-        {
-            skillTabs.map((tab, index) => (
-                <>
-                    <input
-                        type="radio"
-                        name="skills_tabs"
-                        class="d-tab text-base-content/70 hover:bg-base-content/10 hover:text-base-content checked:bg-base-content/10 checked:text-base-content"
-                        aria-label={tab.label}
-                        checked={index === 0}
-                    />
-                    <div class="d-tab-content min-w-0 border-t border-x-0 border-b-0 rounded-t-none bg-base-100 p-6 u-border-color">
-                        <div>
-                            {tab.skills.map((skill) => (
-                                <div class="grid grid-cols-1 gap-3 border-t py-4 first:border-t-0 u-border-color first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
-                                    <span
-                                        class={`text-sm font-semibold uppercase tracking-widest ${skill.scopeClass}`}
-                                    >
-                                        {skill.scope}
-                                    </span>
-                                    <div class="flex flex-wrap gap-2">
-                                        {skill.technologies.map(
-                                            (technology) => (
-                                                <span
-                                                    class={`d-badge d-badge-soft ${skill.badgeClass} d-badge-sm`}
-                                                >
-                                                    {technology}
-                                                </span>
-                                            ),
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </>
-            ))
-        }
-    </div>
+	<div class="d-tabs mt-6 w-full rounded-box border u-border-color font-mono">
+		{
+			skillTabs.map((tab, index) => (
+				<>
+					<input
+						type="radio"
+						name="skills_tabs"
+						class="d-tab text-base-content/70 hover:bg-base-content/10 hover:text-base-content checked:bg-base-content/10 checked:text-base-content"
+						aria-label={tab.label}
+						checked={index === 0}
+					/>
+					<div class="d-tab-content min-w-0 border-t border-x-0 border-b-0 rounded-t-none bg-base-100 p-6 u-border-color">
+						<div>
+							{tab.skills.map((skill) => (
+								<div class="grid grid-cols-1 gap-3 border-t py-4 first:border-t-0 u-border-color first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
+									<span
+										class={`text-sm font-semibold uppercase tracking-widest ${skill.scopeClass}`}
+									>
+										{skill.scope}
+									</span>
+									<div class="flex flex-wrap gap-2">
+										{skill.technologies.map(
+											(technology) => (
+												<span
+													class={`d-badge d-badge-soft ${skill.badgeClass} d-badge-sm`}
+												>
+													{technology}
+												</span>
+											),
+										)}
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</>
+			))
+		}
+	</div>
 </section>
