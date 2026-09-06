@@ -8,7 +8,13 @@ const projects = [1, 2, 3, 4];
 ---
 
 <section id="projects" class="border-b u-border-color u-layout-padding">
-    <h2 class="u-text-5xl font-bold">
+    <p
+        class="font-mono text-xs font-semibold uppercase tracking-[0.2em] u-text-subtle"
+    >
+        01 / Selected Work
+    </p>
+
+    <h2 class="u-text-5xl font-bold mt-3">
         {t("home.projects.title")}
     </h2>
 
@@ -18,7 +24,7 @@ const projects = [1, 2, 3, 4];
         class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border u-border-color bg-subtle-border-light sm:grid-cols-2 dark:bg-subtle-border-dark"
     >
         {
-            projects.map((project, index) => {
+            projects.map((_, index) => {
                 const radiusClass =
                     index === 0
                         ? "rounded-t-box rounded-b-none sm:rounded-tl-box sm:rounded-tr-none"
