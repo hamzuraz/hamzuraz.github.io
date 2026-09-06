@@ -2,11 +2,14 @@
 const t = Astro.locals.t;
 ---
 
-<section
-    id="skills"
-    class="border-b border-line-on-light px-4 py-16 sm:px-8 dark:border-line-on-dark"
->
-    <h2 class="text-4xl font-bold sm:text-6xl">
-        {t("home.skills.title")}
-    </h2>
+<section id="skills" class="border-b u-border-color u-layout-padding">
+    <div class="max-w-2xl">
+        <p
+            class="font-mono text-xs font-semibold uppercase tracking-[0.2em] u-text-subtle"
+        >
+            02 / Expertise
+        </p>
+        <h2 class="u-text-5xl mt-3 font-bold">{t("home.skills.title")}</h2>
+        <p class="u-text-lg mt-6 max-w-xl">{t("home.skills.description")}</p>
+    </div>
 </section>
