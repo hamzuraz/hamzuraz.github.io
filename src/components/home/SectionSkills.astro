@@ -102,7 +102,9 @@ const skillTabs = [
 
 	<p class="u-text-lg mt-6 max-w-xl">{t("home.skills.description")}</p>
 
-	<div class="d-tabs mt-6 w-full rounded-box border u-border-color font-mono">
+	<div
+		class="d-tabs mt-6 w-full rounded-box border u-border-color font-mono overflow-hidden"
+	>
 		{
 			skillTabs.map((tab, index) => (
 				<>
