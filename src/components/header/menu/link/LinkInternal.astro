@@ -4,6 +4,17 @@ import type { LinkProps } from "$/env";
 type Props = LinkProps;
 
 const { href, label } = Astro.props;
+const linkUrl = new URL(href, Astro.url);
+const isActive = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
 ---
 
-<a href={href} class="px-4 sm:px-3 rounded-none sm:rounded-box">{label}</a>
+<a
+    href={href}
+    class:list={[
+        "px-4 sm:px-3 rounded-none sm:rounded-box",
+        {
+            "bg-base-content/10 text-base-content": isActive,
+        },
+    ]}
+    aria-current={isActive ? "page" : undefined}>{label}</a
+>

@@ -87,7 +87,7 @@ const skillTabs = [
 	{ label: "All", skills: allSkills },
 	{ label: "Core", skills: coreSkills },
 	{ label: "Familiar", skills: familiarSkills },
-	{ label: "Beyond Code", skills: beyondCodeSkills },
+	{ label: "Other", skills: beyondCodeSkills },
 ];
 ---
 
@@ -109,7 +109,7 @@ const skillTabs = [
 					<input
 						type="radio"
 						name="skills_tabs"
-						class="d-tab text-base-content/70 hover:bg-base-content/10 hover:text-base-content checked:bg-base-content/10 checked:text-base-content"
+						class="d-tab text-base-content/70 hover:bg-base-content/10 hover:text-base-content checked:bg-base-content/10 checked:text-base-content active:bg-neutral active:text-neutral-content"
 						aria-label={tab.label}
 						checked={index === 0}
 					/>
