@@ -47,11 +47,10 @@ export const en_US = {
 
 	"home.skills.title": "Skills",
 	"home.skills.description":
-		"I'm a software engineer with experience in web and mobile applications. I enjoy learning new technologies and improving my skills.",
+		"Software engineer building reliable, scalable solutions across web, mobile, backend, and infrastructure. Driven by curiosity, I'm constantly exploring new technologies and sharpening my skills to build better products.",
 
 	"home.contact.title": "Contact",
-	"home.contact.description":
-		"If you'd like to get in touch, feel free to reach out via email or connect with me on LinkedIn.",
+	"home.contact.description": "Contact description.",
 	"home.contact.cta.email": "Send Me an Email",
 	"home.contact.cta.linkedin": "Connect on LinkedIn",
 } as const;
