@@ -9,10 +9,6 @@ pre-commit:
     astro-check:
       glob: "*.{js,mjs,ts,astro,svelte}"
       run: bun --bun run astro check
-    
-    svelte-check:
-      glob: "*.svelte"
-      run: bun --bun run svelte-check
 
 commit-msg:
   commands:
