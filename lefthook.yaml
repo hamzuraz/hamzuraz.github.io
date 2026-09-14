@@ -2,12 +2,12 @@ pre-commit:
   parallel: true
   commands:
     biome-check:
-      glob: "*.{js,mjs,ts,astro,svelte,json,css}"
+      glob: "*.{js,ts,astro,svg,json,css}"
       run: bun --bun run biome {staged_files}
       stage_fixed: true
 
     astro-check:
-      glob: "*.{js,mjs,ts,astro,svelte}"
+      glob: "*.{js,ts,astro,svg}"
       run: bun --bun run astro check
 
 commit-msg:
