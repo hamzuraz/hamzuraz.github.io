@@ -2,11 +2,12 @@
 const t = Astro.locals.t;
 ---
 
-<section
-    id="contact"
-    class="border-b border-line-on-light px-4 py-16 sm:px-8 dark:border-line-on-dark"
->
-    <h2 class="text-4xl font-bold sm:text-6xl">
-        {t("home.contact.title")}
-    </h2>
+<section id="contact" class="border-b r-border-subtle r-container-padding">
+	<p
+		class="font-mono text-xs font-semibold tracking-[0.2em] r-text-subtle uppercase"
+	>
+		03 / Get in touch
+	</p>
+	<h2 class="mt-3 r-text-larger font-bold">{t("home.contact.title")}</h2>
+	<p class="mt-6 max-w-xl r-text-medium">{t("home.contact.description")}</p>
 </section>

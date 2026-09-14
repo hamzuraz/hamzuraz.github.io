@@ -1,6 +1,6 @@
-export const defaultIconProps = {
+export const iconProps = {
 	size: 16,
-	"stroke-width": 1.25,
+	"stroke-width": 2,
 } as const;
 
 export const chevronIconProps = {

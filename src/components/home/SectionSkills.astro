@@ -4,19 +4,19 @@ const t = Astro.locals.t;
 type SkillRow = {
 	scope: string;
 	technologies: string[];
-	badgeClass: "d-badge-secondary" | "d-badge-accent" | "";
-	scopeClass: "text-base-content";
+	badgeColor: "d-badge-accent" | "";
+	scopeColor: "text-base-content";
 };
 
 const coreSkills: SkillRow[] = [
 	{
-		scope: "Language & Runtime",
+		scope: "Languages & Runtimes",
 		technologies: ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"],
-		badgeClass: "d-badge-secondary",
-		scopeClass: "text-base-content",
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
 	},
 	{
-		scope: "WEB",
+		scope: "Web",
 		technologies: [
 			"HTML",
 			"CSS",
@@ -27,23 +27,23 @@ const coreSkills: SkillRow[] = [
 			"SvelteKit",
 			"Astro",
 		],
-		badgeClass: "d-badge-secondary",
-		scopeClass: "text-base-content",
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
 	},
 	{
 		scope: "Mobile",
 		technologies: ["React Native", "Expo"],
-		badgeClass: "d-badge-secondary",
-		scopeClass: "text-base-content",
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
 	},
 	{
 		scope: "Databases",
 		technologies: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
-		badgeClass: "d-badge-secondary",
-		scopeClass: "text-base-content",
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
 	},
 	{
-		scope: "Tooling & Workflow",
+		scope: "Tooling",
 		technologies: [
 			"Git",
 			"GitHub",
@@ -53,82 +53,86 @@ const coreSkills: SkillRow[] = [
 			"Biome",
 			"Lefthook",
 		],
-		badgeClass: "d-badge-secondary",
-		scopeClass: "text-base-content",
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
+	},
+	{
+		scope: "IDE & AI",
+		technologies: [
+			"Zed",
+			"Visual Studio Code",
+			"GitHub Copilot",
+			"Antigravity",
+			"Codex",
+			"OpenCode",
+		],
+		badgeColor: "d-badge-accent",
+		scopeColor: "text-base-content",
 	},
 ];
 
 const familiarSkills: SkillRow[] = [
 	{
 		scope: "Familiar",
-		technologies: ["Python", "Rust", "Alpine.js", "HTMX"],
-		badgeClass: "d-badge-accent",
-		scopeClass: "text-base-content",
+		technologies: ["Python", "Rust", "Alpine.js", "HTMX", "Playwright"],
+		badgeColor: "",
+		scopeColor: "text-base-content",
 	},
 ];
 
-const beyondCodeSkills: SkillRow[] = [
+const otherSkills: SkillRow[] = [
 	{
-		scope: "Design",
-		technologies: ["Canva", "Figma"],
-		badgeClass: "",
-		scopeClass: "text-base-content",
-	},
-	{
-		scope: "Languages",
-		technologies: ["English", "Bahasa Indonesia"],
-		badgeClass: "",
-		scopeClass: "text-base-content",
+		scope: "Others",
+		technologies: ["English", "Bahasa Indonesia", "Canva", "Figma"],
+		badgeColor: "",
+		scopeColor: "text-base-content",
 	},
 ];
 
-const allSkills = [...coreSkills, ...familiarSkills, ...beyondCodeSkills];
+const allSkills = [...coreSkills, ...familiarSkills, ...otherSkills];
+
 const skillTabs = [
 	{ label: "All", skills: allSkills },
 	{ label: "Core", skills: coreSkills },
 	{ label: "Familiar", skills: familiarSkills },
-	{ label: "Other", skills: beyondCodeSkills },
+	{ label: "Others", skills: otherSkills },
 ];
 ---
 
-<section id="skills" class="border-b u-border-color u-layout-padding">
+<section id="skills" class="border-b r-border-subtle r-container-padding">
 	<p
-		class="font-mono text-xs font-semibold uppercase tracking-[0.2em] u-text-subtle"
+		class="font-mono text-xs font-semibold tracking-[0.2em] r-text-subtle uppercase"
 	>
 		02 / Expertise
 	</p>
-
-	<h2 class="u-text-5xl mt-3 font-bold">{t("home.skills.title")}</h2>
-
-	<p class="u-text-lg mt-6 max-w-xl">{t("home.skills.description")}</p>
-
+	<h2 class="mt-3 r-text-larger font-bold">{t("home.skills.title")}</h2>
+	<p class="mt-6 max-w-xl r-text-medium">{t("home.skills.description")}</p>
 	<div
-		class="d-tabs mt-6 w-full rounded-box border u-border-color font-mono overflow-hidden"
+		class="d-tabs mt-6 w-full overflow-hidden rounded-box border r-border-subtle"
 	>
-		{
-			skillTabs.map((tab, index) => (
+		{skillTabs.map((tab, index) => (
 				<>
 					<input
 						type="radio"
 						name="skills_tabs"
-						class="d-tab text-base-content/70 hover:bg-base-content/10 hover:text-base-content checked:bg-base-content/10 checked:text-base-content active:bg-neutral active:text-neutral-content"
+						class="d-tab r-text-small text-base-content/75 checked:bg-base-content/10 checked:text-base-content hover:bg-base-content/10 hover:text-base-content active:bg-neutral active:text-neutral-content"
 						aria-label={tab.label}
 						checked={index === 0}
 					/>
-					<div class="d-tab-content min-w-0 border-t border-x-0 border-b-0 rounded-t-none bg-base-100 p-6 u-border-color">
+					<div class="d-tab-content min-w-0 rounded-t-none border-x-0 border-t border-b-0 r-border-subtle bg-base-100 p-6">
 						<div>
 							{tab.skills.map((skill) => (
-								<div class="grid grid-cols-1 gap-3 border-t py-4 first:border-t-0 u-border-color first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
+								<div class="grid grid-cols-1 gap-3 border-t r-border-subtle py-4 first:border-t-0 first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
 									<span
-										class={`text-sm font-semibold uppercase tracking-widest ${skill.scopeClass}`}
+										class={`${skill.scopeColor} text-sm font-semibold tracking-widest`}
 									>
 										{skill.scope}
 									</span>
-									<div class="flex flex-wrap gap-2">
+									<div class="flex flex-wrap gap-2 font-mono">
 										{skill.technologies.map(
 											(technology) => (
 												<span
-													class={`d-badge d-badge-soft ${skill.badgeClass} d-badge-sm`}
+													class={`${skill.badgeColor} d-badge d-badge-soft d-badge-sm`}
 												>
 													{technology}
 												</span>
@@ -140,7 +144,6 @@ const skillTabs = [
 						</div>
 					</div>
 				</>
-			))
-		}
+			))}
 	</div>
 </section>

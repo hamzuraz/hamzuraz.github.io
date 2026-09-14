@@ -5,16 +5,18 @@ type Props = LinkProps;
 
 const { href, label } = Astro.props;
 const linkUrl = new URL(href, Astro.url);
-const isActive = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
+const isCurrent = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
 ---
 
 <a
-    href={href}
-    class:list={[
+	href={href}
+	class:list={[
         "px-4 sm:px-3 rounded-none sm:rounded-box",
         {
-            "bg-base-content/10 text-base-content": isActive,
+            "r-current font-medium": isCurrent,
         },
     ]}
-    aria-current={isActive ? "page" : undefined}>{label}</a
+	aria-current={isCurrent ? "page" : undefined}
 >
+	{label}
+</a>

@@ -1,0 +1,79 @@
+---
+import { ChevronDown, Languages } from "@lucide/astro";
+import { languages } from "$/i18n/config";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import { chevronIconProps, iconProps } from "$/utils/icon-props";
+
+const langCode = Astro.locals.langCode;
+const pathname = Astro.url.pathname;
+---
+
+<details name="header-dropdown" class="d-dropdown d-dropdown-start">
+	<summary class="d-btn flex w-62 justify-between r-border-subtle group">
+		<div class="flex gap-2">
+			<Languages {...iconProps} class="translate-y-0.75" />
+			<div class="flex items-baseline gap-2">
+				<span>{languages[langCode]}</span>
+				<span
+					class="font-mono text-xs r-text-subtle tracking-wider uppercase"
+				>
+					{langCode}
+				</span>
+			</div>
+		</div>
+		<ChevronDown
+			{...chevronIconProps}
+			class="dropdown-chevron transition-transform duration-200"
+		/>
+	</summary>
+	<ul
+		tabindex="-1"
+		class="dropdown-menu d-menu d-dropdown-content z-1 -mt-px w-62 rounded-box border r-border-subtle bg-base-100 shadow-sm"
+	>
+		{Object.entries(languages).map(([langCode, langName]) => {
+				return (
+					<li>
+						<a
+							href={buildLocalizedRoutePath(langCode, pathname)}
+							class="flex justify-between"
+						>
+							{langName}
+							<span class="font-mono text-xs r-text-subtle tracking-wider uppercase">
+								{langCode}
+							</span>
+						</a>
+					</li>
+				);
+			})}
+	</ul>
+</details>
+
+<style>
+	.dropdown-menu {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-0.75rem);
+		transition:
+			transform 180ms ease,
+			opacity 180ms ease,
+			visibility 180ms ease;
+	}
+
+	details[open] > .dropdown-menu {
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+	}
+
+	details[open] > summary .dropdown-chevron {
+		transform: rotate(180deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.dropdown-menu {
+			transition: none;
+		}
+	}
+</style>

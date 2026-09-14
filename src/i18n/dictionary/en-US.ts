@@ -16,7 +16,7 @@
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const en_US = {
-	// HEADER ============================================================
+	// HEADER ====================================================================
 	"header.nav.projects": "Projects",
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
@@ -24,14 +24,15 @@ export const en_US = {
 	"header.theme.light": "Light",
 	"header.theme.dark": "Dark",
 
-	// FOOTER ============================================================
-	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",
+	// FOOTER ====================================================================
+	"footer.copyright.rights": "All rights reserved.",
 
-	// HOME PAGE =========================================================
+	// HOME PAGE =================================================================
+	// Head ----------------------------------------------------------------------
 	"home.title": "Rifki Muhazzar — Software Engineer",
 	"home.description":
 		"Portfolio of Rifki Muhazzar, a software engineer. Explore my projects, skills, or get in touch.",
-
+	// Hero Section --------------------------------------------------------------
 	"home.hero.lastupdated": "Last Updated",
 	"home.hero.badge.role": "Software Engineer",
 	"home.hero.subheading":
@@ -39,16 +40,16 @@ export const en_US = {
 	"home.hero.techstack.more": "See More",
 	"home.hero.cta.primary": "See Resume",
 	"home.hero.cta.secondary": "Contact Me",
-
+	// Projects Section ----------------------------------------------------------
 	"home.projects.title": "Projects",
 	"home.projects.description":
 		"Below is a selection of projects I've built, each aimed at solving a real, practical problem.",
 	"home.projects.cta": "See all projects",
-
+	// Skills Section ------------------------------------------------------------
 	"home.skills.title": "Skills",
 	"home.skills.description":
 		"Software engineer building reliable, scalable solutions across web, mobile, backend, and infrastructure. Driven by curiosity, I'm constantly exploring new technologies and sharpening my skills to build better products.",
-
+	// Contact Section ------------------------------------------------------------
 	"home.contact.title": "Contact",
 	"home.contact.description": "Contact description.",
 	"home.contact.cta.email": "Send Me an Email",

@@ -1,8 +1,5 @@
 ---
-import GitHub from "$/assets/GitHub.svg";
-import LinkedIn from "$/assets/LinkedIn.svg";
-import X from "$/assets/X.svg";
-import IconLinkExternal from "$/components/ui/IconLinkExternal.astro";
+import IconLinkExternals from "$/components/ui/IconLinkExternals.astro";
 
 const { langCode, t } = Astro.locals;
 
@@ -11,68 +8,55 @@ const lastUpdated = new Date().toLocaleDateString(langCode, {
 	month: "long",
 	day: "numeric",
 });
-const techStack = ["JS", "TS", "Nodejs", "Bun", "Go"];
+
+const techStack = ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"];
 ---
 
-<section id="_hero" class="border-b u-border-color u-layout-padding">
-    <div
-        class="flex items-start justify-between flex-col sm:flex-row sm:items-center gap-2"
-    >
-        <p class="font-mono text-xs u-text-subtle sm:text-sm">
-            {t("home.hero.lastupdated")}&nbsp;{lastUpdated}
-        </p>
-        <div class="flex gap-1.5 sm:gap-2.5">
-            <IconLinkExternal href="https://github.com/hamzuraz/">
-                <GitHub class="u-icon-link" />
-            </IconLinkExternal>
-            <IconLinkExternal href="#">
-                <LinkedIn class="u-icon-link" />
-            </IconLinkExternal>
-            <IconLinkExternal href="#">
-                <X class="u-icon-link" />
-            </IconLinkExternal>
-        </div>
-    </div>
-
-    <div
-        class="mt-10 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-secondary sm:mt-12 sm:d-badge-md"
-    >
-        {t("home.hero.badge.role")}
-    </div>
-
-    <h1 class="mt-2 u-text-7xl font-bold tracking-tight text-base-content">
-        Rifki Muhazzar
-    </h1>
-
-    <p class="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
-        {t("home.hero.subheading")}
-    </p>
-
-    <ul
-        class="mt-8 flex flex-wrap items-baseline gap-2 font-mono sm:mt-10 sm:gap-3"
-    >
-        {
-            techStack.map((tech) => (
-                <li>
-                    <div
-                        class={`d-badge-secondary d-badge d-badge-soft d-badge-sm sm:d-badge-md`}
-                    >
-                        {tech}
-                    </div>
-                </li>
-            ))
-        }
-        <li class="ml-0.5 d-link text-sm d-link-primary sm:text-base">
-            {t("home.hero.techstack.more")}
-        </li>
-    </ul>
-
-    <div class="mt-10 flex items-baseline gap-4 sm:mt-14 sm:gap-6">
-        <button class="d-btn d-btn-primary sm:d-btn-lg">
-            {t("home.hero.cta.primary")}
-        </button>
-        <button class="d-btn d-btn-outline d-btn-primary sm:d-btn-lg">
-            {t("home.hero.cta.secondary")}
-        </button>
-    </div>
+<section id="_hero" class="border-b r-border-subtle r-container-padding">
+	<div
+		class="flex items-start justify-between flex-col sm:flex-row sm:items-center gap-2"
+	>
+		<p class="font-mono text-xs r-text-subtle sm:text-sm">
+			{t("home.hero.lastupdated")}&nbsp;{lastUpdated}
+		</p>
+		<IconLinkExternals />
+	</div>
+	<div
+		class="mt-10 d-badge d-badge-soft font-mono d-badge-sm tracking-widest uppercase d-badge-accent sm:mt-12 sm:d-badge-md"
+	>
+		{t("home.hero.badge.role")}
+	</div>
+	<h1 class="mt-2 r-text-largest font-bold tracking-tight text-base-content">
+		Rifki Muhazzar
+	</h1>
+	<p class="mt-6 max-w-xl text-lg leading-relaxed sm:text-xl">
+		{t("home.hero.subheading")}
+	</p>
+	<ul
+		class="mt-8 flex flex-wrap items-baseline gap-2 font-mono sm:mt-10 sm:gap-3"
+	>
+		{techStack.map((tech) => (
+				<li>
+					<div
+						class={`d-badge d-badge-soft d-badge-sm d-badge-accent sm:d-badge-md`}
+					>
+						{tech}
+					</div>
+				</li>
+			))}
+		<li class="ml-0.5 d-link text-sm d-link-primary sm:text-base">
+			{t("home.hero.techstack.more")}
+		</li>
+	</ul>
+	<div class="mt-10 flex items-baseline gap-4 sm:mt-14 sm:gap-6">
+		<button type="button" class="d-btn d-btn-primary sm:d-btn-lg">
+			{t("home.hero.cta.primary")}
+		</button>
+		<button
+			type="button"
+			class="d-btn d-btn-outline d-btn-primary sm:d-btn-lg"
+		>
+			{t("home.hero.cta.secondary")}
+		</button>
+	</div>
 </section>

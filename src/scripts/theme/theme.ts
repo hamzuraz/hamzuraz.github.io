@@ -7,7 +7,7 @@ import {
 	localizedThemeOptions,
 	type ResolvedTheme,
 	type ThemePreference,
-} from "./theme-selector-helpers";
+} from "./helpers";
 
 let controller: AbortController | undefined;
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -44,9 +44,10 @@ window.document.addEventListener("astro:page-load", () => {
 		);
 	}
 
-	const themeMenuElements = window.document.querySelectorAll<HTMLUListElement>(
-		"ul[data-theme-menu]",
-	);
+	const themeMenuElements =
+		window.document.querySelectorAll<HTMLUListElement>(
+			"ul[data-theme-menu]",
+		);
 	if (themeMenuElements.length === 0) {
 		console.warn("No elements found with selector 'ul[data-theme-menu]'.");
 	}
@@ -75,7 +76,7 @@ window.document.addEventListener("astro:page-load", () => {
 				if (!(element instanceof Element)) return;
 
 				const themeValueElement = element.closest<HTMLAnchorElement>(
-					"a[data-theme-value]",
+					"span[data-theme-value]",
 				);
 				if (!themeValueElement) return;
 

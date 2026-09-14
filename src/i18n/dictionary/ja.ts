@@ -1,4 +1,4 @@
-import type { DictionaryShape } from "./default-en-us";
+import type { DictionaryShape } from "./en-US";
 
 export const ja = {
 	// HEADER ============================================================
@@ -10,7 +10,7 @@ export const ja = {
 	"header.theme.dark": "ダーク",
 
 	// FOOTER ============================================================
-	"footer.copyright": "© 2026 Rifki Muhazzar. All rights reserved.",
+	"footer.copyright.rights": "© 2026 Rifki Muhazzar. All rights reserved.",
 
 	// HOME PAGE =========================================================
 	"home.title": "Rifki Muhazzar — ソフトウェアエンジニア",

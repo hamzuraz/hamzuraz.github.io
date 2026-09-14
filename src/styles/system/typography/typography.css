@@ -7,11 +7,11 @@
 		"Noto Sans", "Noto Sans Fallback", ui-sans-serif, "Segoe UI", "Roboto",
 		sans-serif;
 	--font-serif:
-		"Noto Serif", "Noto Serif Fallback", ui-serif, "Georgia", "Times New Roman",
-		serif;
+		"Noto Serif", "Noto Serif Fallback", ui-serif, "Georgia",
+		"Times New Roman", serif;
 	--font-mono:
-		"Noto Sans Mono", "Noto Sans Mono Fallback", ui-monospace, "SFMono-Regular",
-		"Menlo", "Consolas", monospace;
+		"Noto Sans Mono", "Noto Sans Mono Fallback", ui-monospace,
+		"SFMono-Regular", "Menlo", "Consolas", monospace;
 
 	/* Font Size and Line Height */
 	--text-xs: 0.75rem;

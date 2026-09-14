@@ -1,8 +1,8 @@
 ---
-import { langCodeSegments } from "$/i18n/ui";
-import LinkInternal from "./link/LinkInternal.astro";
-import SelectorLanguage from "./selector/SelectorLanguage.astro";
-import SelectorTheme from "./selector/SelectorTheme.astro";
+import { langCodeSegments } from "$/i18n/config";
+import NavLinkInternal from "./NavLinkInternal.astro";
+import SelectorLanguage from "./SelectorLanguage.astro";
+import SelectorTheme from "./SelectorTheme.astro";
 
 const { langCode, t } = Astro.locals;
 
@@ -11,28 +11,28 @@ const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---
 
 <div class="d-navbar-center hidden lg:flex">
-    <ul class="d-menu d-menu-horizontal p-0">
-        <li>
-            <LinkInternal
-                href={`${segment}/projects/`}
-                label={t("header.nav.projects")}
-            />
-        </li>
-        <li>
-            <LinkInternal
-                href={`${segment}/#skills`}
-                label={t("header.nav.skills")}
-            />
-        </li>
-        <li>
-            <LinkInternal
-                href={`${segment}/#contact`}
-                label={t("header.nav.contact")}
-            />
-        </li>
-    </ul>
-    <div class="ml-3 flex gap-3">
-        <SelectorTheme />
-        <SelectorLanguage />
-    </div>
+	<ul class="d-menu d-menu-horizontal p-0">
+		<li>
+			<NavLinkInternal
+				href={`${segment}/projects/`}
+				label={t("header.nav.projects")}
+			/>
+		</li>
+		<li>
+			<NavLinkInternal
+				href={`${segment}/#skills`}
+				label={t("header.nav.skills")}
+			/>
+		</li>
+		<li>
+			<NavLinkInternal
+				href={`${segment}/#contact`}
+				label={t("header.nav.contact")}
+			/>
+		</li>
+	</ul>
+	<div class="ml-3 flex gap-3">
+		<SelectorTheme />
+		<SelectorLanguage />
+	</div>
 </div>

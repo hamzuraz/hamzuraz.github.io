@@ -21,14 +21,16 @@ export type LangCode = keyof typeof localizedThemeOptions;
 export type ThemePreference = "system" | "light" | "dark";
 export type ResolvedTheme = Exclude<ThemePreference, "system">;
 
-export function isLangCode(v: string): v is LangCode {
-	return Object.hasOwn(localizedThemeOptions, v);
+export function isLangCode(value: string): value is LangCode {
+	return Object.hasOwn(localizedThemeOptions, value);
 }
 
-export function isThemePreference(v: string | undefined): v is ThemePreference {
-	return v === "system" || v === "light" || v === "dark";
+export function isThemePreference(
+	value: string | undefined,
+): value is ThemePreference {
+	return value === "system" || value === "light" || value === "dark";
 }
 
-export function isResolvedTheme(v: string | null): v is ResolvedTheme {
-	return v === "light" || v === "dark";
+export function isResolvedTheme(value: string | null): value is ResolvedTheme {
+	return value === "light" || value === "dark";
 }

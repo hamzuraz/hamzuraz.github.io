@@ -1,0 +1,46 @@
+/* ==================== RESPONSIVE SPACING & SIZING ==================== */
+@utility r-container-padding {
+	@apply px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32;
+}
+
+@utility r-container-padding-horizontal {
+	@apply px-4 sm:px-8;
+}
+
+@utility r-icon-link {
+	@apply size-7 sm:size-9 hover:stroke-neutral-600 hover:dark:stroke-neutral-400;
+}
+
+/* ======================= RESPONSIVE FONT SIZES ======================= */
+@utility r-text-small {
+	@apply text-xs sm:text-sm;
+}
+
+@utility r-text-medium {
+	@apply text-base sm:text-lg;
+}
+
+@utility r-text-large {
+	@apply text-lg sm:text-2xl;
+}
+
+@utility r-text-larger {
+	@apply text-3xl sm:text-5xl;
+}
+
+@utility r-text-largest {
+	@apply text-4.5xl sm:text-7xl;
+}
+
+/* ========================= RESPONSIVE COLORS ========================= */
+@utility r-border-subtle {
+	@apply border-neutral-400 dark:border-neutral-700;
+}
+
+@utility r-text-subtle {
+	@apply text-neutral-400 dark:text-neutral-500;
+}
+
+@utility r-current {
+	@apply bg-neutral-400 text-neutral dark:bg-neutral-800 dark:text-neutral-content;
+}

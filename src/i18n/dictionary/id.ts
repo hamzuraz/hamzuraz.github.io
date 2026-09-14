@@ -1,4 +1,4 @@
-import type { DictionaryShape } from "./default-en-us";
+import type { DictionaryShape } from "./en-US";
 
 export const id = {
 	// HEADER ============================================================
@@ -10,7 +10,7 @@ export const id = {
 	"header.theme.dark": "Gelap",
 
 	// FOOTER ============================================================
-	"footer.copyright": "© 2026 Rifki Muhazzar. Hak cipta dilindungi.",
+	"footer.copyright.rights": "© 2026 Rifki Muhazzar. Hak cipta dilindungi.",
 
 	// HOME PAGE =========================================================
 	"home.title": "Rifki Muhazzar — Software Engineer",
