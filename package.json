@@ -11,23 +11,23 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome": "biome check --write --no-errors-on-unmatched",
 		"commitlint": "commitlint",
-		"lefthook": "lefthook"
+		"lefthook": "lefthook",
+		"biome": "biome check --write --no-errors-on-unmatched"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.10",
 		"@lucide/astro": "^1.34.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"astro": "^7.2.0",
-		"tailwindcss": "^4.3.3",
-		"typescript": "^6.0.0"
+		"daisyui": "^5.7.19",
+		"tailwindcss": "^4.3.3"
 	},
 	"devDependencies": {
+		"@astrojs/check": "^0.9.10",
 		"@biomejs/biome": "2.5.7",
 		"@commitlint/cli": "^21.2.2",
 		"@commitlint/config-conventional": "^21.2.2",
-		"daisyui": "^5.7.19",
-		"lefthook": "^2.1.10"
+		"lefthook": "^2.1.10",
+		"typescript": "^6.0.0"
 	}
 }
