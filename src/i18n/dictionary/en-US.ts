@@ -1,3 +1,35 @@
+const homePage = {
+	// HERO SECTION ============================================================
+	"home.hero.eyebrow": "Last Updated",
+	"home.hero.role": "Software Engineer",
+	"home.hero.subheading":
+		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
+	"home.hero.seemore": "See More",
+	"home.hero.cta.primary": "See resume",
+	"home.hero.cta.secondary": "Get in touch",
+
+	// PROJECTS SECTION ========================================================
+	"home.projects.eyebrow": "01 / Selected Work",
+	"home.projects.title": "Projects",
+	"home.projects.description":
+		"A few things I've built along the way — each one started from an actual problem I wanted to solve.",
+	"home.projects.cta": "See all projects",
+
+	// SKILLS SECTION ==========================================================
+	"home.skills.eyebrow": "02 / Expertise",
+	"home.skills.title": "Skills",
+	"home.skills.description":
+		"Software engineer building reliable, scalable solutions across web, mobile, and backend. Driven by curiosity, I'm constantly exploring new technologies and sharpening my skills to build better products.",
+
+	// CONTACT SECTION =========================================================
+	"home.contact.eyebrow": "03 / Get in touch",
+	"home.contact.title": "Contact",
+	"home.contact.description":
+		"Got a project in mind, a question, or just want to say hi? My inbox is open.",
+	"home.contact.cta.email": "Email me",
+	"home.contact.cta.linkedin": "Find me on LinkedIn",
+};
+
 /**
  * Key format: namespace[.group].semantic
  *
@@ -16,7 +48,12 @@
  *   (e.g. "title" not "h1", "cta" not "button").
  */
 export const en_US = {
-	// HEADER ====================================================================
+	// HEAD ====================================================================
+	"home.title": "Rifki Muhazzar — Software Engineer",
+	"home.description":
+		"Rifki Muhazzar's portfolio — a software engineer who likes building things end to end. Take a look at his projects, skills, and how to get in touch.",
+
+	// HEADER ==================================================================
 	"header.nav.projects": "Projects",
 	"header.nav.skills": "Skills",
 	"header.nav.contact": "Contact",
@@ -24,36 +61,11 @@ export const en_US = {
 	"header.theme.light": "Light",
 	"header.theme.dark": "Dark",
 
-	// FOOTER ====================================================================
-	"footer.copyright.rights": "All rights reserved.",
+	// FOOTER ==================================================================
+	"footer.copyright": "Rifki Muhazzar. All rights reserved.",
 
-	// HOME PAGE =================================================================
-	// Head ----------------------------------------------------------------------
-	"home.title": "Rifki Muhazzar — Software Engineer",
-	"home.description":
-		"Portfolio of Rifki Muhazzar, a software engineer. Explore my projects, skills, or get in touch.",
-	// Hero Section --------------------------------------------------------------
-	"home.hero.lastupdated": "Last Updated",
-	"home.hero.badge.role": "Software Engineer",
-	"home.hero.subheading":
-		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
-	"home.hero.techstack.more": "See More",
-	"home.hero.cta.primary": "See Resume",
-	"home.hero.cta.secondary": "Contact Me",
-	// Projects Section ----------------------------------------------------------
-	"home.projects.title": "Projects",
-	"home.projects.description":
-		"Below is a selection of projects I've built, each aimed at solving a real, practical problem.",
-	"home.projects.cta": "See all projects",
-	// Skills Section ------------------------------------------------------------
-	"home.skills.title": "Skills",
-	"home.skills.description":
-		"Software engineer building reliable, scalable solutions across web, mobile, backend, and infrastructure. Driven by curiosity, I'm constantly exploring new technologies and sharpening my skills to build better products.",
-	// Contact Section ------------------------------------------------------------
-	"home.contact.title": "Contact",
-	"home.contact.description": "Contact description.",
-	"home.contact.cta.email": "Send Me an Email",
-	"home.contact.cta.linkedin": "Connect on LinkedIn",
+	// HOME PAGE ===============================================================
+	...homePage,
 } as const;
 
 export type DictionaryShape = Record<keyof typeof en_US, string>;

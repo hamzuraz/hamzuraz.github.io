@@ -1,7 +1,38 @@
 import type { DictionaryShape } from "./en-US";
 
+const homePage = {
+	"home.hero.eyebrow": "Terakhir Diperbarui",
+	"home.hero.role": "Software Engineer",
+	"home.hero.subheading":
+		"Dari antarmuka yang disentuh pengguna hingga arsitektur yang menopangnya di balik layar — saya membangun keduanya, dan saya membangunnya agar siap berkembang.",
+	"home.hero.seemore": "Lihat selengkapnya",
+	"home.hero.cta.primary": "Lihat resume",
+	"home.hero.cta.secondary": "Hubungi saya",
+
+	"home.projects.eyebrow": "01 / Karya Pilihan",
+	"home.projects.title": "Proyek",
+	"home.projects.description":
+		"Beberapa hal yang pernah saya bangun — masing-masing berawal dari masalah nyata yang ingin saya selesaikan.",
+	"home.projects.cta": "Lihat semua proyek",
+
+	"home.skills.eyebrow": "02 / Keahlian",
+	"home.skills.title": "Keahlian",
+	"home.skills.description":
+		"Saya bekerja di web, mobile, dan backend — di mana pun ada masalah yang perlu dipecahkan. Masih terus belajar hal baru, soalnya nggak tahan kalau ada teknologi yang belum sempat dicoba.",
+
+	"home.contact.eyebrow": "03 / Hubungi Saya",
+	"home.contact.title": "Kontak",
+	"home.contact.description":
+		"Punya proyek, pertanyaan, atau sekadar mau say hi? Kotak masuk saya selalu terbuka.",
+	"home.contact.cta.email": "Kirim email",
+	"home.contact.cta.linkedin": "Temukan saya di LinkedIn",
+};
+
 export const id = {
-	// HEADER ============================================================
+	"home.title": "Rifki Muhazzar — Software Engineer",
+	"home.description":
+		"Portofolio Rifki Muhazzar — seorang software engineer yang suka membangun sesuatu dari ujung ke ujung. Lihat proyek, keahlian, dan cara menghubunginya.",
+
 	"header.nav.projects": "Proyek",
 	"header.nav.skills": "Keahlian",
 	"header.nav.contact": "Kontak",
@@ -9,34 +40,7 @@ export const id = {
 	"header.theme.light": "Terang",
 	"header.theme.dark": "Gelap",
 
-	// FOOTER ============================================================
-	"footer.copyright.rights": "© 2026 Rifki Muhazzar. Hak cipta dilindungi.",
+	"footer.copyright": "Rifki Muhazzar. Hak cipta dilindungi.",
 
-	// HOME PAGE =========================================================
-	"home.title": "Rifki Muhazzar — Software Engineer",
-	"home.description":
-		"Portofolio Rifki Muhazzar, seorang software engineer. Jelajahi proyek, keahlian, atau hubungi saya.",
-
-	"home.hero.lastupdated": "Terakhir Diperbarui",
-	"home.hero.badge.role": "Software Engineer",
-	"home.hero.subheading":
-		"Dari antarmuka yang berinteraksi dengan pengguna hingga arsitektur yang menjaganya tetap berjalan — saya membangun keduanya, dan saya membangunnya agar dapat berkembang.",
-	"home.hero.techstack.more": "Lihat lebih banyak",
-	"home.hero.cta.primary": "Lihat resume",
-	"home.hero.cta.secondary": "Hubungi saya",
-
-	"home.projects.title": "Proyek",
-	"home.projects.description":
-		"Berikut beberapa proyek yang pernah saya kerjakan. Saya senang membangun hal-hal yang menyelesaikan masalah nyata.",
-	"home.projects.cta": "Lihat semua proyek",
-
-	"home.skills.title": "Keahlian",
-	"home.skills.description":
-		"Saya seorang software engineer dengan pengalaman di aplikasi web dan mobile. Saya senang mempelajari teknologi baru dan meningkatkan keahlian saya.",
-
-	"home.contact.title": "Kontak",
-	"home.contact.description":
-		"Jika Anda ingin menghubungi saya, jangan ragu untuk mengirim email atau terhubung dengan saya di LinkedIn.",
-	"home.contact.cta.email": "Kirim saya email",
-	"home.contact.cta.linkedin": "Terhubung di LinkedIn",
+	...homePage,
 } as const satisfies DictionaryShape;
