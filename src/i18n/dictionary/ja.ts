@@ -38,8 +38,11 @@ const homePage = {
 	"home.contact.title": "コンタクト",
 	"home.contact.description":
 		"プロジェクトの相談でも、ちょっとした質問でも、気軽な挨拶でも —— いつでもお気軽にご連絡ください。",
-	"home.contact.cta.email": "メールを送る",
-	"home.contact.cta.linkedin": "LinkedInで見る",
+	"home.contact.cta.email": "メールを開く",
+	"home.contact.cta.linkedin": "LinkedInを開く",
+	"home.contact.copy.email": "メールをコピー",
+	"home.contact.copy.linkedin": "LinkedInをコピー",
+	"home.contact.copied": "コピーしました!",
 };
 
 export const ja = {

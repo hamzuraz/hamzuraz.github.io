@@ -51,8 +51,11 @@ const homePage = {
 	"home.contact.title": "Contact",
 	"home.contact.description":
 		"Got a project in mind, a question, or just want to say hi? My inbox is open.",
-	"home.contact.cta.email": "Email me",
-	"home.contact.cta.linkedin": "Find me on LinkedIn",
+	"home.contact.cta.email": "Open email",
+	"home.contact.cta.linkedin": "Open LinkedIn",
+	"home.contact.copy.email": "Copy email",
+	"home.contact.copy.linkedin": "Copy LinkedIn URL",
+	"home.contact.copied": "Copied!",
 };
 
 export const en_US = {

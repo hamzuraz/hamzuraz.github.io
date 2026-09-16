@@ -38,8 +38,11 @@ const homePage = {
 	"home.contact.title": "Kontak",
 	"home.contact.description":
 		"Punya proyek yang ingin didiskusikan, ada pertanyaan, atau sekadar mau say hi? Inbox saya selalu terbuka.",
-	"home.contact.cta.email": "Kirim email",
-	"home.contact.cta.linkedin": "Temukan saya di LinkedIn",
+	"home.contact.cta.email": "Buka email",
+	"home.contact.cta.linkedin": "Buka LinkedIn",
+	"home.contact.copy.email": "Salin email",
+	"home.contact.copy.linkedin": "Salin LinkedIn",
+	"home.contact.copied": "Tersalin!",
 };
 
 export const id = {
