@@ -1,15 +1,63 @@
-## Project Setup
+## Project Overview
 
 - Package manager: **bun** (not npm/pnpm/yarn). See [package.json](package.json) for full dependency list and scripts.
 - Icons: use `@lucide/astro` for icons; do not introduce another icon library.
 
 ## AI Workflow
 
-- After adding, editing, or deleting any file or code, always run `bun --bun run biome`.
-- If it fails, fix the issues and re-run until it passes.
-- Once biome passes, run `bun --bun run astro check`.
-- If it fails, fix the issues and re-run until it passes.
-- Once both pass, stop there — do not continue further; the user will take over from that point.
+Follow this workflow every time the codebase changes (creating, updating, deleting, renaming, or moving files).
+
+### 1. Validate after every change
+
+1. Run `bun --bun run biome`.
+   - If it fails, fix the underlying issues and re-run until it passes.
+   - Fix the root cause; do not silence rules with `biome-ignore` unless the user explicitly asks for it.
+2. Once biome passes, run `bun --bun run astro check`.
+   - If it fails, fix the issues and re-run until it passes.
+   - Any fix that touches a file again sends you back to step 1.
+3. Repeat until both commands pass with no errors.
+
+### 2. Ask the user for approval
+
+- Once both checks pass, **stop**. Give a short summary: which files changed and what was done.
+- Ask the user whether the result matches what they wanted.
+- Do not run `git add`, `git commit`, or `git push` before the user explicitly approves.
+- If the user asks for changes, make them, repeat step 1, then ask again. Keep looping until the user accepts the result.
+
+### 3. Commit and push (only after user approval)
+
+1. Run `git status` and `git diff` to confirm nothing unintended is included. 2. Stage only the files relevant to this task (`git add <path>`), not `git add -A`, unless the user asks for everything.
+2. Commit with a message that follows Conventional Commits:
+   - Format: `type(scope): subject`
+   - Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
+   - Subject: imperative mood, lowercase, no trailing period, around 72 characters max
+   - Add a body when the change needs explanation, and a `BREAKING CHANGE:` footer when applicable
+   - Example: `feat(header): add mobile navigation dropdown`
+3. Run `git push`.
+4. After pushing, confirm to the user that the commit and push succeeded, including the commit hash and branch.
+
+### 4. Handling git hook failures (lefthook)
+
+This repo uses lefthook, so git runs extra checks. If any stage fails, the commit or push is aborted — fix it and retry, never skip it.
+
+| Stage        | What runs                                                                                 | If it fails                                                                                                                                  |
+| ------------ | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `pre-commit` | `bun --bun run biome {staged_files}` (with `stage_fixed`) and `bun --bun run astro check` | Fix the errors, return to step 1, then commit again                                                                                          |
+| `commit-msg` | `bun --bun run commitlint`                                                                | Correct the commit message so it satisfies Conventional Commits, then commit again                                                           |
+| `pre-push`   | `bun --bun run build`                                                                     | Fix the build errors, re-run step 1, create a fix-up commit (or `git commit --amend` if the last commit hasn't been pushed), then push again |
+
+Additional notes:
+
+- `stage_fixed: true` means biome may auto-fix and stage files during the commit. After a successful commit, check `git show --stat` or `git status` to confirm the commit contains what you expect.
+- If the pre-push build keeps failing, stop, report the error to the user, and wait for direction.
+
+### 5. Hard rules
+
+- Never use `--no-verify`, `HUSKY=0`, `LEFTHOOK=0`, or any other way to bypass hooks.
+- Never use `git push --force` or `--force-with-lease` unless the user explicitly asks.
+- Never create branches, merge, rebase, or reset unless the user asks.
+- Never commit secrets (`.env`, keys, credentials).
+- If a command fails for reasons outside the code (missing dependencies, network, permissions), report it to the user instead of working around it by changing project configuration.
 
 ## Documentation
 
