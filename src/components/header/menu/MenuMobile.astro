@@ -1,10 +1,11 @@
 ---
-import { langCodeSegments } from "$/i18n/config";
+import { langCodeSegments } from "$/i18n/i18n";
 import NavLinkInternal from "./NavLinkInternal.astro";
 import SelectorLanguage from "./SelectorLanguage.astro";
 import SelectorTheme from "./SelectorTheme.astro";
 
 const { langCode, t } = Astro.locals;
+
 const langCodeSegment = langCodeSegments[langCode];
 const segment = langCodeSegment === "" ? "" : `/${langCodeSegment}`;
 ---

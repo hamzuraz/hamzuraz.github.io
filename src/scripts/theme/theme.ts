@@ -1,20 +1,22 @@
 import {
-	isLangCode,
-	isResolvedTheme,
-	isThemePreference,
-	type LangCode,
-	langCodeDefault,
+	getLangCodeFromPathname,
 	localizedThemeOptions,
-	type ResolvedTheme,
-	type ThemePreference,
-} from "./helpers";
+} from "./i18n-theme-helpers";
+
+type ThemePreference = "system" | "light" | "dark";
+type ResolvedTheme = Exclude<ThemePreference, "system">;
 
 let controller: AbortController | undefined;
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-function getLangCodeFromPathname(pathname: string): LangCode {
-	const firstSegment = pathname.split("/")[1];
-	return isLangCode(firstSegment) ? firstSegment : langCodeDefault;
+function isThemePreference(
+	value: string | undefined,
+): value is ThemePreference {
+	return value === "system" || value === "light" || value === "dark";
+}
+
+function isResolvedTheme(value: string | null): value is ResolvedTheme {
+	return value === "light" || value === "dark";
 }
 
 function resolveTheme(theme: ThemePreference): ResolvedTheme {

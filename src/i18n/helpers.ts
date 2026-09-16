@@ -1,14 +1,15 @@
 import type { GetStaticPaths } from "astro";
-import { langCodeDefault, langCodeSegments, langCodes, ui } from "./config";
 
-// TYPE DEFINITIONS ===========================================================
+import { langCodeDefault, langCodeSegments, langCodes, ui } from "./i18n";
+
+// TYPES =======================================================================
 export type LangCode = keyof typeof ui;
 
 export type Dictionary = {
 	key: keyof (typeof ui)[LangCode];
 };
 
-// TYPE CONVERSIONS ===========================================================
+// TYPE GUARDS =================================================================
 export type TranslationFunc = (key: Dictionary["key"]) => string;
 
 export function getObjectKeys<T extends object>(obj: T): (keyof T)[] {
@@ -19,7 +20,7 @@ export function isLangCode(value: string): value is LangCode {
 	return Object.hasOwn(ui, value);
 }
 
-// FUNCTIONS DEFINITIONS ======================================================
+// CORE FUNCTIONS ==============================================================
 export const getLocalizedRouteStaticPaths = (() => {
 	return langCodes.map((langCode) => {
 		return {
