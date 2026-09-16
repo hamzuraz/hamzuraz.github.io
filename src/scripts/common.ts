@@ -9,11 +9,11 @@ window.document.addEventListener("astro:page-load", () => {
 		(event) => {
 			const element = event.target;
 			if (!(element instanceof Element)) return;
-			if (element.closest('details[name="header-dropdown"]')) return;
+			if (element.closest("details[data-dropdown]")) return;
 
 			window.document
 				.querySelectorAll<HTMLDetailsElement>(
-					'details[name="header-dropdown"][open]',
+					"details[data-dropdown][open]",
 				)
 				.forEach((dropdown) => {
 					dropdown.open = false;

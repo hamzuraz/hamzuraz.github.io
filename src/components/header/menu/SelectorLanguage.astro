@@ -8,7 +8,7 @@ const langCode = Astro.locals.langCode;
 const pathname = Astro.url.pathname;
 ---
 
-<details name="header-dropdown" class="d-dropdown d-dropdown-start">
+<details name="dropdown" data-dropdown class="d-dropdown d-dropdown-start">
 	<summary class="d-btn flex w-62 justify-between r-border-subtle group">
 		<div class="flex gap-2">
 			<Languages {...iconProps} class="translate-y-0.75" />
