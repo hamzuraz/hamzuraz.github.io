@@ -2,10 +2,9 @@
 export interface Props {
 	href: string;
 	label: string;
-	class?: string;
 }
 
-const { href, label, class: className = "" } = Astro.props;
+const { href, label } = Astro.props;
 const linkUrl = new URL(href, Astro.url);
 const isCurrent = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
 ---
@@ -13,12 +12,10 @@ const isCurrent = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
 <a
 	href={href}
 	class:list={[
-		"px-4 sm:px-3 rounded-none sm:rounded-box",
+		"px-4 sm:px-3 rounded-none sm:rounded-box transition-colors hover:bg-base-content/10 hover:text-base-content",
 		{
-			"bg-neutral-400 text-neutral dark:bg-neutral-800 dark:text-neutral-content font-medium":
-				isCurrent,
+			"bg-base-content/10 text-base-content font-medium": isCurrent,
 		},
-		className,
 	]}
 	aria-current={isCurrent ? "page" : undefined}
 >

@@ -16,20 +16,20 @@ document.addEventListener("click", async (event) => {
 		return;
 	}
 
+	const tooltip = button.closest<HTMLElement>("[data-copy-tooltip]");
 	const copyIcon = button.querySelector(".copy-icon");
 	const checkIcon = button.querySelector(".check-icon");
-	const copiedLabel = button.querySelector(".copied-label");
 
 	copyIcon?.classList.add("hidden");
 	checkIcon?.classList.remove("hidden");
-	copiedLabel?.classList.remove("hidden");
 	button.classList.add("text-success", "border-success");
+	tooltip?.classList.add("d-tooltip-open");
 
 	window.setTimeout(() => {
 		copyIcon?.classList.remove("hidden");
 		checkIcon?.classList.add("hidden");
-		copiedLabel?.classList.add("hidden");
 		button.classList.remove("text-success", "border-success");
+		tooltip?.classList.remove("d-tooltip-open");
 	}, 2000);
 });
 

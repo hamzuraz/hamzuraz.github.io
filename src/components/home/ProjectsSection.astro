@@ -17,9 +17,7 @@ const projects = [1, 2, 3, 4];
 		title={t("home.projects.title")}
 		description={t("home.projects.description")}
 	/>
-	<div
-		class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border border-neutral-400 dark:border-neutral-700 bg-neutral-400 dark:bg-neutral-700 sm:grid-cols-2"
-	>
+	<div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
 		{projects.map(() => (
 			<ProjectCard />
 		))}

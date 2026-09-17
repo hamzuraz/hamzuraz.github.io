@@ -5,7 +5,7 @@ export type SkillCategory = {
 };
 
 export type SkillTab = {
-	key: "all" | "core" | "familiar" | "others";
+	key: "all" | "core" | "familiar";
 	label: string;
 	skills: SkillCategory[];
 };
@@ -70,26 +70,22 @@ export const coreSkills: SkillCategory[] = [
 export const familiarSkills: SkillCategory[] = [
 	{
 		scope: "Familiar",
-		technologies: ["Python", "Rust", "Alpine.js", "HTMX", "Playwright"],
+		technologies: [
+			"Python",
+			"Rust",
+			"Alpine.js",
+			"HTMX",
+			"Playwright",
+			"Canva",
+			"Figma",
+		],
 	},
 ];
 
-export const otherSkills: SkillCategory[] = [
-	{
-		scope: "Others",
-		technologies: ["English", "Bahasa Indonesia", "Canva", "Figma"],
-	},
-];
-
-export const allSkills: SkillCategory[] = [
-	...coreSkills,
-	...familiarSkills,
-	...otherSkills,
-];
+export const allSkills: SkillCategory[] = [...coreSkills, ...familiarSkills];
 
 export const skillTabs: SkillTab[] = [
 	{ key: "all", label: "All", skills: allSkills },
 	{ key: "core", label: "Core", skills: coreSkills },
 	{ key: "familiar", label: "Familiar", skills: familiarSkills },
-	{ key: "others", label: "Others", skills: otherSkills },
 ];

@@ -34,19 +34,22 @@ const { type, value, href, copyLabel, openLabel, copiedTip, isExternal } =
 	</div>
 
 	<div class="flex shrink-0 items-center gap-2">
-		<button
-			type="button"
-			class="d-btn d-btn-sm d-btn-ghost flex items-center gap-1.5 border border-neutral-400 dark:border-neutral-700 px-2.5 transition-colors hover:bg-base-200"
-			data-copy-button
-			data-copy-value={value}
-			aria-label={copyLabel}
+		<div
+			class="d-tooltip d-tooltip-top"
+			data-copy-tooltip
+			data-tip={copiedTip}
 		>
-			<Copy class="copy-icon size-4" />
-			<Check class="check-icon size-4 hidden text-success" />
-			<span class="copied-label hidden text-xs font-mono text-success">
-				{copiedTip}
-			</span>
-		</button>
+			<button
+				type="button"
+				class="d-btn d-btn-sm d-btn-ghost flex items-center border border-neutral-400 dark:border-neutral-700 px-2.5 transition-colors hover:bg-base-200"
+				data-copy-button
+				data-copy-value={value}
+				aria-label={copyLabel}
+			>
+				<Copy class="copy-icon size-4" />
+				<Check class="check-icon size-4 hidden text-success" />
+			</button>
+		</div>
 
 		<a
 			href={href}

@@ -2,16 +2,11 @@
 import GitHub from "$/assets/GitHub.svg";
 import LinkedIn from "$/assets/LinkedIn.svg";
 
-interface Props {
-	class?: string;
-}
-
-const { class: className = "" } = Astro.props;
 const iconClass =
 	"size-7 sm:size-9 hover:stroke-neutral-600 dark:hover:stroke-neutral-400 transition-colors";
 ---
 
-<div class:list={["flex gap-1.5 sm:gap-2.5", className]}>
+<div class="flex gap-1.5 sm:gap-2.5">
 	<a
 		href="https://github.com/hamzuraz/"
 		target="_blank"
