@@ -37,7 +37,7 @@ const { type, value, href, copyLabel, openLabel, copiedTip, isExternal } =
 		<div
 			class="d-tooltip d-tooltip-top"
 			data-copy-tooltip
-			data-tip={copiedTip}
+			data-copied-tip={copiedTip}
 		>
 			<button
 				type="button"
@@ -63,3 +63,12 @@ const { type, value, href, copyLabel, openLabel, copiedTip, isExternal } =
 		</a>
 	</div>
 </div>
+
+<style>
+	[data-copy-tooltip]:not(.d-tooltip-open):hover::before,
+	[data-copy-tooltip]:not(.d-tooltip-open):hover::after,
+	[data-copy-tooltip]:not(.d-tooltip-open):focus-within::before,
+	[data-copy-tooltip]:not(.d-tooltip-open):focus-within::after {
+		display: none;
+	}
+</style>
