@@ -34,34 +34,29 @@ const { type, value, href, copyLabel, openLabel, copiedTip, isExternal } =
 	</div>
 
 	<div class="flex shrink-0 items-center gap-2">
-		<div
-			class="d-tooltip d-tooltip-top"
-			data-tip={copyLabel}
-			data-copy-tooltip
+		<button
+			type="button"
+			class="d-btn d-btn-sm d-btn-ghost flex items-center gap-1.5 border border-neutral-400 dark:border-neutral-700 px-2.5 transition-colors hover:bg-base-200"
+			data-copy-button
+			data-copy-value={value}
+			aria-label={copyLabel}
 		>
-			<button
-				type="button"
-				class="d-btn d-btn-square d-btn-sm d-btn-ghost border border-neutral-400 dark:border-neutral-700 transition-colors hover:bg-base-200"
-				data-copy-button
-				data-copy-value={value}
-				data-copied-tip={copiedTip}
-				aria-label={copyLabel}
-			>
-				<Copy class="copy-icon size-4" />
-				<Check class="check-icon size-4 hidden text-success" />
-			</button>
-		</div>
+			<Copy class="copy-icon size-4" />
+			<Check class="check-icon size-4 hidden text-success" />
+			<span class="copied-label hidden text-xs font-mono text-success">
+				{copiedTip}
+			</span>
+		</button>
 
-		<div class="d-tooltip d-tooltip-top" data-tip={openLabel}>
-			<a
-				href={href}
-				target={isExternal ? "_blank" : undefined}
-				rel={isExternal ? "noopener noreferrer" : undefined}
-				class="d-btn d-btn-square d-btn-sm d-btn-primary"
-				aria-label={openLabel}
-			>
-				<SquareArrowOutUpRight class="size-4" />
-			</a>
-		</div>
+		<a
+			href={href}
+			target={isExternal ? "_blank" : undefined}
+			rel={isExternal ? "noopener noreferrer" : undefined}
+			class="d-btn d-btn-square d-btn-sm d-btn-primary"
+			aria-label={openLabel}
+			title={openLabel}
+		>
+			<SquareArrowOutUpRight class="size-4" />
+		</a>
 	</div>
 </div>

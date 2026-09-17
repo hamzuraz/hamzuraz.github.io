@@ -1,8 +1,7 @@
 export type SkillCategory = {
 	scope: string;
 	technologies: string[];
-	badgeColor: "d-badge-accent" | "";
-	scopeColor: "text-base-content";
+	isCore?: boolean;
 };
 
 export type SkillTab = {
@@ -15,8 +14,7 @@ export const coreSkills: SkillCategory[] = [
 	{
 		scope: "Languages & Runtimes",
 		technologies: ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 	{
 		scope: "Web",
@@ -30,20 +28,17 @@ export const coreSkills: SkillCategory[] = [
 			"SvelteKit",
 			"Astro",
 		],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 	{
 		scope: "Mobile",
 		technologies: ["React Native", "Expo"],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 	{
 		scope: "Databases",
 		technologies: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 	{
 		scope: "Tooling",
@@ -56,8 +51,7 @@ export const coreSkills: SkillCategory[] = [
 			"Biome",
 			"Lefthook",
 		],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 	{
 		scope: "IDE & AI",
@@ -69,8 +63,7 @@ export const coreSkills: SkillCategory[] = [
 			"Codex",
 			"OpenCode",
 		],
-		badgeColor: "d-badge-accent",
-		scopeColor: "text-base-content",
+		isCore: true,
 	},
 ];
 
@@ -78,8 +71,6 @@ export const familiarSkills: SkillCategory[] = [
 	{
 		scope: "Familiar",
 		technologies: ["Python", "Rust", "Alpine.js", "HTMX", "Playwright"],
-		badgeColor: "",
-		scopeColor: "text-base-content",
 	},
 ];
 
@@ -87,8 +78,6 @@ export const otherSkills: SkillCategory[] = [
 	{
 		scope: "Others",
 		technologies: ["English", "Bahasa Indonesia", "Canva", "Figma"],
-		badgeColor: "",
-		scopeColor: "text-base-content",
 	},
 ];
 

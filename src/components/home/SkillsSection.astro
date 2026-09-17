@@ -1,6 +1,6 @@
 ---
-import Section from "$/components/common/Section.astro";
-import SectionHeader from "$/components/common/SectionHeader.astro";
+import Section from "$/components/ui/Section.astro";
+import SectionHeader from "$/components/ui/SectionHeader.astro";
 import { skillTabs } from "$/data/skills";
 
 const t = Astro.locals.t;
@@ -28,15 +28,16 @@ const t = Astro.locals.t;
 					<div>
 						{tab.skills.map((skill) => (
 							<div class="grid grid-cols-1 gap-3 border-t border-neutral-400 dark:border-neutral-700 py-4 first:border-t-0 first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
-								<span
-									class={`${skill.scopeColor} text-sm font-semibold tracking-widest`}
-								>
+								<span class="text-sm font-semibold tracking-widest text-base-content">
 									{skill.scope}
 								</span>
 								<div class="flex flex-wrap gap-2 font-mono">
 									{skill.technologies.map((technology) => (
 										<span
-											class={`${skill.badgeColor} d-badge d-badge-soft d-badge-sm`}
+											class:list={[
+												"d-badge d-badge-soft d-badge-sm",
+												skill.isCore && "d-badge-accent",
+											]}
 										>
 											{technology}
 										</span>

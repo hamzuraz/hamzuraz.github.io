@@ -1,28 +1,6 @@
-const defaultLangCode = "en-US";
-
-const localizedThemeOptions = {
-	"en-US": {
-		system: "System",
-		light: "Light",
-		dark: "Dark",
-	},
-	id: {
-		system: "Sistem",
-		light: "Terang",
-		dark: "Gelap",
-	},
-	ja: {
-		system: "システム",
-		light: "ライト",
-		dark: "ダーク",
-	},
-} as const;
-
-type LangCode = keyof typeof localizedThemeOptions;
 type ThemePreference = "system" | "light" | "dark";
-type ResolvedTheme = Exclude<ThemePreference, "system">;
+type ResolvedTheme = "light" | "dark";
 
-let controller: AbortController | undefined;
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
 function isThemePreference(
@@ -31,117 +9,78 @@ function isThemePreference(
 	return value === "system" || value === "light" || value === "dark";
 }
 
-function isResolvedTheme(value: string | null): value is ResolvedTheme {
-	return value === "light" || value === "dark";
-}
-
 function resolveTheme(theme: ThemePreference): ResolvedTheme {
 	return theme === "system" ? (mediaQuery.matches ? "dark" : "light") : theme;
 }
 
 function getStoredTheme(): ThemePreference {
 	const theme = window.localStorage.getItem("theme");
-
-	if (isResolvedTheme(theme)) return theme;
+	if (theme === "light" || theme === "dark") return theme;
 	if (theme !== null) window.localStorage.removeItem("theme");
-
 	return "system";
 }
 
-function getLangCodeFromPathname(pathname: string): LangCode {
-	const firstSegment = pathname.split("/")[1];
-	return Object.hasOwn(localizedThemeOptions, firstSegment)
-		? (firstSegment as LangCode)
-		: defaultLangCode;
+function updateThemeLabel(theme: ThemePreference) {
+	const matchingOption = document.querySelector<HTMLElement>(
+		`span[data-theme-value="${theme}"]`,
+	);
+	const labelText = matchingOption?.textContent?.trim() || theme;
+
+	const themeActiveTextElements = document.querySelectorAll<HTMLSpanElement>(
+		"span[data-theme-active-text]",
+	);
+	themeActiveTextElements.forEach((element) => {
+		element.textContent = labelText;
+		element.classList.remove("invisible");
+	});
 }
 
-window.document.addEventListener("astro:page-load", () => {
-	controller = new AbortController();
-	const { signal } = controller;
+function applyTheme(theme: ThemePreference) {
+	document.documentElement.dataset.theme = resolveTheme(theme);
+	updateThemeLabel(theme);
+}
 
-	const themeActiveTextElements =
-		window.document.querySelectorAll<HTMLSpanElement>(
-			"span[data-theme-active-text]",
-		);
-	if (themeActiveTextElements.length === 0) {
-		console.warn(
-			"No elements found with selector 'span[data-theme-active-text]'.",
-		);
-	}
+// Delegated click handler for theme selector items
+document.addEventListener("click", (event) => {
+	const element = event.target;
+	if (!(element instanceof Element)) return;
 
-	const themeMenuElements =
-		window.document.querySelectorAll<HTMLUListElement>(
-			"ul[data-theme-menu]",
-		);
-	if (themeMenuElements.length === 0) {
-		console.warn("No elements found with selector 'ul[data-theme-menu]'.");
-	}
-
-	function updateThemeLabel(theme: ThemePreference) {
-		const langCode = getLangCodeFromPathname(window.location.pathname);
-		themeActiveTextElements.forEach((element) => {
-			element.textContent = localizedThemeOptions[langCode][theme];
-			element.classList.remove("invisible");
-		});
-	}
-
-	function applyTheme(theme: ThemePreference) {
-		const themeValue = resolveTheme(theme);
-		window.document.documentElement.dataset.theme = themeValue;
-		updateThemeLabel(theme);
-	}
-
-	applyTheme(getStoredTheme());
-
-	themeMenuElements.forEach((list) => {
-		list.addEventListener(
-			"click",
-			(event) => {
-				const element = event.target;
-				if (!(element instanceof Element)) return;
-
-				const themeValueElement = element.closest<HTMLElement>(
-					"span[data-theme-value]",
-				);
-				if (!themeValueElement) return;
-
-				event.preventDefault();
-
-				const themeValue = themeValueElement.dataset.themeValue;
-				if (!isThemePreference(themeValue)) return;
-
-				if (themeValue === "system") {
-					window.localStorage.removeItem("theme");
-				} else {
-					window.localStorage.setItem("theme", themeValue);
-				}
-
-				applyTheme(themeValue);
-			},
-			{ signal },
-		);
-	});
-
-	mediaQuery.addEventListener(
-		"change",
-		() => {
-			if (getStoredTheme() === "system") applyTheme("system");
-		},
-		{ signal },
+	const themeValueElement = element.closest<HTMLElement>(
+		"span[data-theme-value]",
 	);
+	if (!themeValueElement) return;
 
-	window.addEventListener(
-		"storage",
-		(event) => {
-			if (event.key !== "theme") return;
-			applyTheme(getStoredTheme());
-		},
-		{ signal },
-	);
+	event.preventDefault();
+
+	const themeValue = themeValueElement.dataset.themeValue;
+	if (!isThemePreference(themeValue)) return;
+
+	if (themeValue === "system") {
+		window.localStorage.removeItem("theme");
+	} else {
+		window.localStorage.setItem("theme", themeValue);
+	}
+
+	applyTheme(themeValue);
 });
 
-window.document.addEventListener("astro:before-swap", () => {
-	if (controller) controller.abort();
+// Update theme if system preferences change
+mediaQuery.addEventListener("change", () => {
+	if (getStoredTheme() === "system") {
+		applyTheme("system");
+	}
+});
+
+// Sync across browser tabs
+window.addEventListener("storage", (event) => {
+	if (event.key === "theme") {
+		applyTheme(getStoredTheme());
+	}
+});
+
+// Apply theme on Astro page loads
+document.addEventListener("astro:page-load", () => {
+	applyTheme(getStoredTheme());
 });
 
 export type {};

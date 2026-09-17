@@ -1,8 +1,8 @@
-import type { Dictionary } from "$/i18n/helpers";
+import type { DictionaryKey } from "$/i18n/types";
 
 export type NavItem = {
 	path: string;
-	labelKey: Extract<Dictionary["key"], `header.nav.${string}`>;
+	labelKey: Extract<DictionaryKey, `header.nav.${string}`>;
 };
 
 export const navigationItems: NavItem[] = [

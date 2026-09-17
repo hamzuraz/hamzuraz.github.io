@@ -1,7 +1,7 @@
 ---
 import { ArrowRight } from "@lucide/astro";
-import Section from "$/components/common/Section.astro";
-import SectionHeader from "$/components/common/SectionHeader.astro";
+import Section from "$/components/ui/Section.astro";
+import SectionHeader from "$/components/ui/SectionHeader.astro";
 import { buildLocalizedRoutePath } from "$/i18n/helpers";
 import { iconProps } from "$/utils/icon-props";
 import ProjectCard from "./ProjectCard.astro";
@@ -20,17 +20,9 @@ const projects = [1, 2, 3, 4];
 	<div
 		class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border border-neutral-400 dark:border-neutral-700 bg-neutral-400 dark:bg-neutral-700 sm:grid-cols-2"
 	>
-		{projects.map((_, index) => {
-			const radiusClass =
-				index === 0
-					? "rounded-t-box rounded-b-none sm:rounded-tl-box sm:rounded-tr-none"
-					: index === 1
-						? "rounded-none sm:rounded-tr-box"
-						: index === 2
-							? "rounded-none sm:rounded-bl-box"
-							: "rounded-t-none rounded-b-box sm:rounded-br-box sm:rounded-bl-none";
-			return <ProjectCard radiusClass={radiusClass} />;
-		})}
+		{projects.map(() => (
+			<ProjectCard />
+		))}
 	</div>
 	<a
 		href={buildLocalizedRoutePath(langCode, "/projects/")}

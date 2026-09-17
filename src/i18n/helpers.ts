@@ -1,26 +1,18 @@
 import type { GetStaticPaths } from "astro";
+import { langCodeDefault, langCodeSegments, langCodes, ui } from "./config";
+import type { DictionaryKey, LangCode, TranslationFunc } from "./types";
 
-import { langCodeDefault, langCodeSegments, langCodes, ui } from "./i18n";
-
-// TYPES =======================================================================
-export type LangCode = keyof typeof ui;
-
-export type Dictionary = {
-	key: keyof (typeof ui)[LangCode];
-};
-
-// TYPE GUARDS =================================================================
-export type TranslationFunc = (key: Dictionary["key"]) => string;
-
-export function getObjectKeys<T extends object>(obj: T): (keyof T)[] {
-	return Object.keys(obj) as (keyof T)[];
-}
+export type {
+	Dictionary,
+	DictionaryKey,
+	LangCode,
+	TranslationFunc,
+} from "./types";
 
 export function isLangCode(value: string): value is LangCode {
 	return Object.hasOwn(ui, value);
 }
 
-// CORE FUNCTIONS ==============================================================
 export const getLocalizedRouteStaticPaths = (() => {
 	return langCodes.map((langCode) => {
 		return {
@@ -37,7 +29,7 @@ export function getLangCodeFromPathname(pathname: string): LangCode {
 }
 
 export function useTranslations(langCode: LangCode): TranslationFunc {
-	return function t(key: Dictionary["key"]): string {
+	return function t(key: DictionaryKey): string {
 		return ui[langCode][key];
 	};
 }
@@ -52,7 +44,7 @@ export function buildLocalizedRoutePath(
 	const segments = pathname.split("/").filter(Boolean);
 
 	const hasTrailingSlash = pathname.endsWith("/");
-	const hasLangCodeSegment = getObjectKeys(langCodeSegments).some(
+	const hasLangCodeSegment = Object.keys(langCodeSegments).some(
 		(code) => code === segments[0],
 	);
 

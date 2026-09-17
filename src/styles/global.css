@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import "./system/breakpoints.css";
-@import "./system/spacing-and-sizing.css";
 @import "./system/themes.css";
 @import "./system/typography/typography.css";
 

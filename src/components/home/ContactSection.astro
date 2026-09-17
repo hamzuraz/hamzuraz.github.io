@@ -1,6 +1,6 @@
 ---
-import Section from "$/components/common/Section.astro";
-import SectionHeader from "$/components/common/SectionHeader.astro";
+import Section from "$/components/ui/Section.astro";
+import SectionHeader from "$/components/ui/SectionHeader.astro";
 import ContactCard from "./ContactCard.astro";
 
 const t = Astro.locals.t;
@@ -54,13 +54,6 @@ const contactItems = [
 			))}
 		</div>
 	</div>
-
-	<div
-		id="contact-live-announcer"
-		class="sr-only"
-		aria-live="polite"
-		aria-atomic="true"
-	></div>
 </Section>
 
 <script src="$/scripts/clipboard.ts"></script>

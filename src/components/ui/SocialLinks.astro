@@ -1,7 +1,6 @@
 ---
 import GitHub from "$/assets/GitHub.svg";
 import LinkedIn from "$/assets/LinkedIn.svg";
-import ExternalLink from "./ExternalLink.astro";
 
 interface Props {
 	class?: string;
@@ -13,10 +12,20 @@ const iconClass =
 ---
 
 <div class:list={["flex gap-1.5 sm:gap-2.5", className]}>
-	<ExternalLink href="https://github.com/hamzuraz/" ariaLabel="GitHub">
+	<a
+		href="https://github.com/hamzuraz/"
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="GitHub"
+	>
 		<GitHub class={iconClass} />
-	</ExternalLink>
-	<ExternalLink href="#" ariaLabel="LinkedIn">
+	</a>
+	<a
+		href="https://linkedin.com/"
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="LinkedIn"
+	>
 		<LinkedIn class={iconClass} />
-	</ExternalLink>
+	</a>
 </div>

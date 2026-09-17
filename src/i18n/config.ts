@@ -1,9 +1,7 @@
 import { en_US } from "./dictionary/en-US";
 import { id } from "./dictionary/id";
 import { ja } from "./dictionary/ja";
-import { getObjectKeys, type LangCode } from "./helpers";
-
-type LangCodeRecord = Record<LangCode, string>;
+import type { LangCode, LangCodeRecord } from "./types";
 
 export const languages: LangCodeRecord = {
 	"en-US": "English",
@@ -17,9 +15,9 @@ export const langCodeSegments: LangCodeRecord = {
 	ja: "ja",
 };
 
-export const langCodes = getObjectKeys(languages);
+export const langCodes = Object.keys(languages) as LangCode[];
 
-export const langCodeDefault = "en-US";
+export const langCodeDefault: LangCode = "en-US";
 
 export const ui = {
 	"en-US": en_US,

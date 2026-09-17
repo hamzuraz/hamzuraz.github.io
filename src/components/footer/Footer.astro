@@ -1,5 +1,5 @@
 ---
-import SocialLinks from "$/components/common/SocialLinks.astro";
+import SocialLinks from "$/components/ui/SocialLinks.astro";
 
 const t = Astro.locals.t;
 const currentYear = new Date().getFullYear();
@@ -9,20 +9,9 @@ const currentYear = new Date().getFullYear();
 	class="d-footer items-center justify-between gap-4.5 border-b border-neutral-400 dark:border-neutral-700 bg-base-100 px-4 sm:px-8 py-9 sm:d-footer-horizontal"
 >
 	<aside class="grid-flow-col items-center">
-		<p>© <span id="year">{currentYear}</span> {t("footer.copyright")}</p>
+		<p>© {currentYear} {t("footer.copyright")}</p>
 	</aside>
 	<nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
 		<SocialLinks />
 	</nav>
 </footer>
-
-<script is:inline>
-	function updateYear() {
-		const yearTextElement = window.document.getElementById("year");
-		if (!(yearTextElement instanceof HTMLSpanElement)) return;
-
-		yearTextElement.textContent = String(new Date().getFullYear());
-	}
-
-	window.document.addEventListener("astro:page-load", updateYear);
-</script>
