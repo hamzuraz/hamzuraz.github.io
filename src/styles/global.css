@@ -5,6 +5,4 @@
 @import "./system/themes.css";
 @import "./system/typography/typography.css";
 
-@import "./responsive-utilities.css";
-
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));

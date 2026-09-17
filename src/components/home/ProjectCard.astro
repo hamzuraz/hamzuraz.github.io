@@ -1,0 +1,45 @@
+---
+import { SquareArrowOutUpRight } from "@lucide/astro";
+import { iconProps } from "$/utils/icon-props";
+
+interface Props {
+	title?: string;
+	tags?: string[];
+	description?: string;
+	radiusClass?: string;
+}
+
+const {
+	title = "Project Name",
+	tags = ["Svelte Kit", "Go", "Rust"],
+	description = "A card component has a figure, a body part, and inside body there are title and actions parts",
+	radiusClass = "",
+} = Astro.props;
+---
+
+<div class:list={["d-card bg-base-100 shadow-sm", radiusClass]}>
+	<div class="d-card-body gap-0 p-6">
+		<h3 class="d-card-title">{title}</h3>
+		<ul class="mt-2 flex gap-2">
+			{tags.map((tag) => (
+				<li>
+					<div class="d-badge d-badge-soft d-badge-accent d-badge-sm">
+						{tag}
+					</div>
+				</li>
+			))}
+		</ul>
+		<p class="mt-4">
+			{description}
+		</p>
+		<div class="d-card-actions mt-16 justify-end gap-3">
+			<button type="button" class="d-btn d-btn-outline d-btn-primary">
+				Source Code
+				<SquareArrowOutUpRight {...iconProps} />
+			</button>
+			<button type="button" class="d-btn d-btn-primary">
+				See Details
+			</button>
+		</div>
+	</div>
+</div>

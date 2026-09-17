@@ -1,0 +1,29 @@
+---
+import { Palette } from "@lucide/astro";
+import Dropdown from "$/components/common/Dropdown.astro";
+import { iconProps } from "$/utils/icon-props";
+
+const t = Astro.locals.t;
+---
+
+<Dropdown
+	placementClass="d-dropdown-start"
+	summaryClass="lg:w-38"
+	menuClass="-mt-px w-full lg:w-38"
+	menuAttributes={{ "data-theme-menu": "" }}
+>
+	<div slot="trigger" class="flex gap-2">
+		<Palette {...iconProps} class="translate-y-0.75" />
+		<span data-theme-active-text class="invisible">System</span>
+	</div>
+
+	<li>
+		<span data-theme-value="system">{t("header.theme.system")}</span>
+	</li>
+	<li>
+		<span data-theme-value="light">{t("header.theme.light")}</span>
+	</li>
+	<li>
+		<span data-theme-value="dark">{t("header.theme.dark")}</span>
+	</li>
+</Dropdown>

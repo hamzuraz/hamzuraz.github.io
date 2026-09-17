@@ -1,15 +1,15 @@
 ---
 import { Logs } from "@lucide/astro";
-
-import MenuDesktop from "./menu/MenuDesktop.astro";
-import MenuMobile from "./menu/MenuMobile.astro";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import MenuDesktop from "./MenuDesktop.astro";
+import MenuMobile from "./MenuMobile.astro";
 
 const langCode = Astro.locals.langCode;
-const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
+const localizedHomePath = buildLocalizedRoutePath(langCode, "/");
 ---
 
 <header
-	class="sticky top-0 z-100 rounded-none border-y r-border-subtle bg-base-300 px-4 sm:px-8"
+	class="sticky top-0 z-100 rounded-none border-y border-neutral-400 dark:border-neutral-700 bg-base-300 px-4 sm:px-8"
 >
 	<input
 		id="mobile-nav-toggle"
@@ -26,14 +26,14 @@ const localizedHomePath = langCode === "en-US" ? "/" : `/${langCode}/`;
 		<div class="d-navbar-start">
 			<label
 				for="mobile-nav-toggle"
-				class="d-btn r-border-subtle lg:hidden px-4"
+				class="d-btn border-neutral-400 dark:border-neutral-700 px-4 lg:hidden"
 				aria-label="Toggle navigation"
 			>
 				<Logs />
 			</label>
 			<a
 				href={localizedHomePath}
-				class="d-btn r-border-subtle px-3 text-xl tracking-wide max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
+				class="d-btn border-neutral-400 dark:border-neutral-700 px-3 text-xl tracking-wide max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
 			>
 				RM
 			</a>

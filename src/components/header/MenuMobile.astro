@@ -1,0 +1,50 @@
+---
+import { navigationItems } from "$/data/navigation";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import LanguageSelector from "./LanguageSelector.astro";
+import NavLink from "./NavLink.astro";
+import ThemeSelector from "./ThemeSelector.astro";
+
+const { langCode, t } = Astro.locals;
+---
+
+<div
+	id="mobile-navigation"
+	class="mobile-nav-panel absolute inset-x-0 top-full z-20 border-b border-neutral-400 dark:border-neutral-700 bg-base-300 sm:px-5 lg:hidden"
+>
+	<ul
+		class="d-menu w-full border-b border-neutral-400 dark:border-neutral-700 px-0 py-4 pt-4.5 sm:px-0"
+	>
+		{navigationItems.map((item) => (
+			<li>
+				<NavLink
+					href={buildLocalizedRoutePath(langCode, item.path)}
+					label={t(item.labelKey)}
+				/>
+			</li>
+		))}
+	</ul>
+	<div class="d-menu gap-3 px-4 py-6 sm:px-3">
+		<ThemeSelector />
+		<LanguageSelector />
+	</div>
+</div>
+
+<style>
+	.mobile-nav-panel {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-0.75rem);
+		transition:
+			transform 180ms ease,
+			opacity 180ms ease,
+			visibility 180ms ease;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.mobile-nav-panel {
+			transition: none;
+		}
+	}
+</style>

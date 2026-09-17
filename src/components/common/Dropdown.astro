@@ -1,0 +1,81 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import { chevronIconProps } from "$/utils/icon-props";
+
+interface Props {
+	detailsName?: string;
+	placementClass?: string;
+	summaryClass?: string;
+	menuClass?: string;
+	menuAttributes?: Record<string, string>;
+	class?: string;
+}
+
+const {
+	detailsName = "dropdown",
+	placementClass = "d-dropdown-start",
+	summaryClass = "",
+	menuClass = "",
+	menuAttributes = {},
+	class: className = "",
+} = Astro.props;
+---
+
+<details
+	name={detailsName}
+	data-dropdown
+	class:list={["d-dropdown", placementClass, className]}
+>
+	<summary
+		class:list={[
+			"d-btn flex justify-between border-neutral-400 dark:border-neutral-700 group",
+			summaryClass,
+		]}
+	>
+		<slot name="trigger" />
+		<ChevronDown
+			{...chevronIconProps}
+			class="dropdown-chevron transition-transform duration-200"
+		/>
+	</summary>
+	<ul
+		tabindex="-1"
+		class:list={[
+			"dropdown-menu d-menu d-dropdown-content z-1 rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 shadow-sm",
+			menuClass,
+		]}
+		{...menuAttributes}
+	>
+		<slot />
+	</ul>
+</details>
+
+<style>
+	.dropdown-menu {
+		visibility: hidden;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-0.75rem);
+		transition:
+			transform 180ms ease,
+			opacity 180ms ease,
+			visibility 180ms ease;
+	}
+
+	details[open] > .dropdown-menu {
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+	}
+
+	details[open] > summary .dropdown-chevron {
+		transform: rotate(180deg);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.dropdown-menu {
+			transition: none;
+		}
+	}
+</style>

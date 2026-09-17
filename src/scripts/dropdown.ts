@@ -26,3 +26,5 @@ window.document.addEventListener("astro:page-load", () => {
 window.document.addEventListener("astro:before-swap", () => {
 	if (controller) controller.abort();
 });
+
+export type {};

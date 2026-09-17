@@ -1,0 +1,42 @@
+---
+import { ArrowRight } from "@lucide/astro";
+import Section from "$/components/common/Section.astro";
+import SectionHeader from "$/components/common/SectionHeader.astro";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import { iconProps } from "$/utils/icon-props";
+import ProjectCard from "./ProjectCard.astro";
+
+const { langCode, t } = Astro.locals;
+
+const projects = [1, 2, 3, 4];
+---
+
+<Section id="projects">
+	<SectionHeader
+		eyebrow={t("home.projects.eyebrow")}
+		title={t("home.projects.title")}
+		description={t("home.projects.description")}
+	/>
+	<div
+		class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-box border border-neutral-400 dark:border-neutral-700 bg-neutral-400 dark:bg-neutral-700 sm:grid-cols-2"
+	>
+		{projects.map((_, index) => {
+			const radiusClass =
+				index === 0
+					? "rounded-t-box rounded-b-none sm:rounded-tl-box sm:rounded-tr-none"
+					: index === 1
+						? "rounded-none sm:rounded-tr-box"
+						: index === 2
+							? "rounded-none sm:rounded-bl-box"
+							: "rounded-t-none rounded-b-box sm:rounded-br-box sm:rounded-bl-none";
+			return <ProjectCard radiusClass={radiusClass} />;
+		})}
+	</div>
+	<a
+		href={buildLocalizedRoutePath(langCode, "/projects/")}
+		class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-outline d-btn-primary sm:mx-auto sm:w-fit lg:mt-16"
+	>
+		{t("home.projects.cta")}
+		<ArrowRight {...iconProps} aria-hidden="true" />
+	</a>
+</Section>

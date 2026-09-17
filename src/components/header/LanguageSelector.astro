@@ -1,0 +1,42 @@
+---
+import { Languages } from "@lucide/astro";
+import Dropdown from "$/components/common/Dropdown.astro";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import { languages } from "$/i18n/i18n";
+import { iconProps } from "$/utils/icon-props";
+
+const langCode = Astro.locals.langCode;
+const pathname = Astro.url.pathname;
+---
+
+<Dropdown
+	placementClass="d-dropdown-start"
+	summaryClass="w-62"
+	menuClass="-mt-px w-62"
+>
+	<div slot="trigger" class="flex gap-2">
+		<Languages {...iconProps} class="translate-y-0.75" />
+		<div class="flex items-baseline gap-2">
+			<span>{languages[langCode]}</span>
+			<span
+				class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase"
+			>
+				{langCode}
+			</span>
+		</div>
+	</div>
+
+	{Object.entries(languages).map(([code, langName]) => (
+		<li>
+			<a
+				href={buildLocalizedRoutePath(code, pathname)}
+				class="flex justify-between"
+			>
+				{langName}
+				<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase">
+					{code}
+				</span>
+			</a>
+		</li>
+	))}
+</Dropdown>

@@ -1,8 +1,24 @@
-import {
-	getLangCodeFromPathname,
-	localizedThemeOptions,
-} from "./i18n-theme-helpers";
+const defaultLangCode = "en-US";
 
+const localizedThemeOptions = {
+	"en-US": {
+		system: "System",
+		light: "Light",
+		dark: "Dark",
+	},
+	id: {
+		system: "Sistem",
+		light: "Terang",
+		dark: "Gelap",
+	},
+	ja: {
+		system: "システム",
+		light: "ライト",
+		dark: "ダーク",
+	},
+} as const;
+
+type LangCode = keyof typeof localizedThemeOptions;
 type ThemePreference = "system" | "light" | "dark";
 type ResolvedTheme = Exclude<ThemePreference, "system">;
 
@@ -30,6 +46,13 @@ function getStoredTheme(): ThemePreference {
 	if (theme !== null) window.localStorage.removeItem("theme");
 
 	return "system";
+}
+
+function getLangCodeFromPathname(pathname: string): LangCode {
+	const firstSegment = pathname.split("/")[1];
+	return Object.hasOwn(localizedThemeOptions, firstSegment)
+		? (firstSegment as LangCode)
+		: defaultLangCode;
 }
 
 window.document.addEventListener("astro:page-load", () => {
@@ -77,7 +100,7 @@ window.document.addEventListener("astro:page-load", () => {
 				const element = event.target;
 				if (!(element instanceof Element)) return;
 
-				const themeValueElement = element.closest<HTMLAnchorElement>(
+				const themeValueElement = element.closest<HTMLElement>(
 					"span[data-theme-value]",
 				);
 				if (!themeValueElement) return;
@@ -120,3 +143,5 @@ window.document.addEventListener("astro:page-load", () => {
 window.document.addEventListener("astro:before-swap", () => {
 	if (controller) controller.abort();
 });
+
+export type {};

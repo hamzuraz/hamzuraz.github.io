@@ -1,0 +1,26 @@
+---
+import { navigationItems } from "$/data/navigation";
+import { buildLocalizedRoutePath } from "$/i18n/helpers";
+import LanguageSelector from "./LanguageSelector.astro";
+import NavLink from "./NavLink.astro";
+import ThemeSelector from "./ThemeSelector.astro";
+
+const { langCode, t } = Astro.locals;
+---
+
+<div class="d-navbar-center hidden lg:flex">
+	<ul class="d-menu d-menu-horizontal p-0">
+		{navigationItems.map((item) => (
+			<li>
+				<NavLink
+					href={buildLocalizedRoutePath(langCode, item.path)}
+					label={t(item.labelKey)}
+				/>
+			</li>
+		))}
+	</ul>
+	<div class="ml-3 flex gap-3">
+		<ThemeSelector />
+		<LanguageSelector />
+	</div>
+</div>

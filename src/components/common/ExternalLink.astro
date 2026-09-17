@@ -1,0 +1,23 @@
+---
+interface Props {
+	href: string;
+	ariaLabel?: string;
+	class?: string;
+}
+
+const {
+	href,
+	ariaLabel = "Open external link",
+	class: className = "",
+} = Astro.props;
+---
+
+<a
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	aria-label={ariaLabel}
+	class={className}
+>
+	<slot />
+</a>

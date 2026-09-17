@@ -7,13 +7,12 @@ const siteUrl = Astro.site;
 ---
 
 {langCodes.map((langCode) => (
-        <link
-            rel="alternate"
-            hreflang={langCode}
-            href={new URL(buildLocalizedRoutePath(langCode, pathname), siteUrl)}
-        />
-    )
-)}
+	<link
+		rel="alternate"
+		hreflang={langCode}
+		href={new URL(buildLocalizedRoutePath(langCode, pathname), siteUrl)}
+	/>
+))}
 <link
 	rel="alternate"
 	hreflang="x-default"

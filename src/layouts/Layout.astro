@@ -1,26 +1,21 @@
 ---
-import "$/styles/global.css";
-import Footer from "$/components/Footer.astro";
-import Head from "$/components/head/Head.astro";
+import Footer from "$/components/footer/Footer.astro";
 import Header from "$/components/header/Header.astro";
-import type { HeadProps } from "$/env";
+import BaseLayout from "./BaseLayout.astro";
 
-type Props = HeadProps;
+export interface Props {
+	title: string;
+	description: string;
+	bodyClass?: string;
+}
 
-const { title, description } = Astro.props;
-const langCode = Astro.locals.langCode;
+const { title, description, bodyClass = "" } = Astro.props;
 ---
 
-<!doctype html>
-<html lang={langCode}>
-	<Head title={title} description={description} />
-	<body class="mx-auto min-w-80 lg:max-w-250 lg:border-x lg:r-border-subtle">
-		<Header />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-		<script src="$/scripts/common.ts"></script>
-		<script src="$/scripts/theme/theme.ts"></script>
-	</body>
-</html>
+<BaseLayout title={title} description={description} bodyClass={bodyClass}>
+	<Header />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</BaseLayout>

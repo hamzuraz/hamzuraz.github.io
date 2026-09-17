@@ -10,13 +10,3 @@ declare global {
 		}
 	}
 }
-
-export type HeadProps = {
-	title: string;
-	description: string;
-};
-
-export type LinkProps = {
-	href: string;
-	label: string;
-};

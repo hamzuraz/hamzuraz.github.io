@@ -1,17 +1,18 @@
 ---
-import IconLinkExternals from "./ui/IconLinkExternals.astro";
+import SocialLinks from "$/components/common/SocialLinks.astro";
 
 const t = Astro.locals.t;
+const currentYear = new Date().getFullYear();
 ---
 
 <footer
-	class="d-footer items-center justify-between gap-4.5 border-b r-border-subtle bg-base-100 r-container-padding-horizontal py-9 sm:d-footer-horizontal"
+	class="d-footer items-center justify-between gap-4.5 border-b border-neutral-400 dark:border-neutral-700 bg-base-100 px-4 sm:px-8 py-9 sm:d-footer-horizontal"
 >
 	<aside class="grid-flow-col items-center">
-		<p>© <span id="year">2026</span> {t("footer.copyright")}</p>
+		<p>© <span id="year">{currentYear}</span> {t("footer.copyright")}</p>
 	</aside>
 	<nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-		<IconLinkExternals />
+		<SocialLinks />
 	</nav>
 </footer>
 

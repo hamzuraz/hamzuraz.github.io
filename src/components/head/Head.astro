@@ -1,12 +1,14 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
-import type { HeadProps } from "$/env";
-import LinkHreflang from "./LinkHreflang.astro";
-import LinkPreloadFonts from "./LinkPreloadFonts.astro";
-import ScriptThemeInitializer from "./ScriptThemeInitializer.astro";
+import HreflangLinks from "./HreflangLinks.astro";
+import PreloadFonts from "./PreloadFonts.astro";
+import ThemeInitializerScript from "./ThemeInitializerScript.astro";
 
-type Props = HeadProps;
+export interface Props {
+	title: string;
+	description: string;
+}
 
 const { title, description } = Astro.props;
 const pathname = Astro.url.pathname;
@@ -23,16 +25,16 @@ const canonicalUrl = new URL(pathname, siteUrl);
 
 	<meta name="description" content={description}>
 
-	<ScriptThemeInitializer />
+	<ThemeInitializerScript />
 
-	<LinkPreloadFonts />
+	<PreloadFonts />
 
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 	<link rel="icon" href="/favicon.ico">
 
 	<link rel="canonical" href={canonicalUrl}>
 
-	<LinkHreflang />
+	<HreflangLinks />
 
 	<ClientRouter />
 </head>
