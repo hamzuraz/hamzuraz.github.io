@@ -8,7 +8,7 @@ import ThemeSelector from "./ThemeSelector.astro";
 const { langCode, t } = Astro.locals;
 ---
 
-<div class="d-navbar-center hidden lg:flex">
+<nav class="d-navbar-center hidden lg:flex">
 	<ul class="d-menu d-menu-horizontal p-0">
 		{navigationItems.map((item) => (
 			<li>
@@ -20,7 +20,7 @@ const { langCode, t } = Astro.locals;
 		))}
 	</ul>
 	<div class="ml-3 flex gap-3">
-		<ThemeSelector />
-		<LanguageSelector />
+		<ThemeSelector menuId="desktop-theme-selector-menu" />
+		<LanguageSelector menuId="desktop-language-selector-menu" />
 	</div>
-</div>
+</nav>

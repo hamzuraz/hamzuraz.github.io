@@ -4,3 +4,54 @@
 @import "./system/typography/typography.css";
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+.popover-menu {
+	position: fixed;
+	inset: unset;
+	top: anchor(bottom);
+	left: anchor(left);
+	margin: 0;
+
+	transform: translateY(-0.75rem);
+	opacity: 0;
+	transition:
+		transform 180ms ease,
+		opacity 180ms ease,
+		display 180ms allow-discrete,
+		overlay 180ms allow-discrete;
+}
+
+.popover-menu:popover-open {
+	transform: translateY(0);
+	opacity: 1;
+}
+
+.popover-menu-center {
+	left: anchor(center);
+	transform: translate(-50%, -0.75rem);
+}
+
+.popover-menu-center:popover-open {
+	transform: translate(-50%, 0);
+}
+
+[popovertarget]:has(+ .popover-menu:popover-open) .dropdown-chevron {
+	transform: rotate(180deg);
+}
+
+@starting-style {
+	.popover-menu:popover-open {
+		transform: translateY(-0.75rem);
+		opacity: 0;
+	}
+
+	.popover-menu-center:popover-open {
+		transform: translate(-50%, -0.75rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.popover-menu {
+		transition: none;
+	}
+}

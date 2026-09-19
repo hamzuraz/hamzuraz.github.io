@@ -13,6 +13,7 @@ const t = Astro.locals.t;
 		description={t("home.skills.description")}
 	/>
 	<div
+		role="tablist"
 		class="d-tabs mt-6 w-full overflow-hidden rounded-box border border-neutral-400 dark:border-neutral-700"
 	>
 		{skillTabs.map((tab, index) => (
@@ -25,27 +26,28 @@ const t = Astro.locals.t;
 					checked={index === 0}
 				/>
 				<div class="d-tab-content min-w-0 rounded-t-none border-x-0 border-t border-b-0 border-neutral-400 dark:border-neutral-700 bg-base-100 p-6">
-					<div>
-						{tab.skills.map((skill) => (
-							<div class="grid grid-cols-1 gap-3 border-t border-neutral-400 dark:border-neutral-700 py-4 first:border-t-0 first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
-								<span class="text-sm font-semibold tracking-widest text-base-content">
-									{t(skill.scopeKey)}
-								</span>
-								<div class="flex flex-wrap gap-2 font-mono">
-									{skill.technologies.map((technology) => (
+					{tab.skills.map((skill) => (
+						<section class="grid grid-cols-1 gap-3 border-t border-neutral-400 dark:border-neutral-700 py-4 first:border-t-0 first:pt-0 last:pb-0 sm:grid-cols-[minmax(8rem,0.35fr)_minmax(0,1fr)] sm:gap-6">
+							<h3 class="text-sm font-semibold tracking-widest text-base-content">
+								{t(skill.scopeKey)}
+							</h3>
+							<ul class="flex flex-wrap gap-2 font-mono">
+								{skill.technologies.map((technology) => (
+									<li>
 										<span
 											class:list={[
 												"d-badge d-badge-soft d-badge-sm",
-												skill.isCore && "d-badge-accent",
+												skill.isCore &&
+													"d-badge-accent",
 											]}
 										>
 											{technology}
 										</span>
-									))}
-								</div>
-							</div>
-						))}
-					</div>
+									</li>
+								))}
+							</ul>
+						</section>
+					))}
 				</div>
 			</>
 		))}

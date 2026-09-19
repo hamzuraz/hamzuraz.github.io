@@ -4,84 +4,57 @@ import { languages } from "$/i18n/config";
 import { buildLocalizedRoutePath } from "$/i18n/helpers";
 import { chevronIconProps, iconProps } from "$/utils/icon-props";
 
+export interface Props {
+	menuId: string;
+}
+
+const { menuId } = Astro.props;
 const langCode = Astro.locals.langCode;
 const pathname = Astro.url.pathname;
+const anchorName = `--${menuId}-trigger`;
 ---
 
-<details
-	name="dropdown"
-	data-dropdown
-	class="d-dropdown d-dropdown-start w-full sm:w-auto"
+<button
+	type="button"
+	popovertarget={menuId}
+	style={`anchor-name: ${anchorName}`}
+	class="d-btn flex w-62 justify-between border-neutral-400 dark:border-neutral-700"
 >
-	<summary
-		class="d-btn flex w-62 justify-between border-neutral-400 dark:border-neutral-700 group"
-	>
-		<div class="flex items-center gap-2">
-			<Globe
-				{...iconProps}
-				class="shrink-0 text-neutral-400 dark:text-neutral-500"
-			/>
-			<div class="flex items-baseline gap-1.5">
-				<span>{languages[langCode]}</span>
-				<span
-					class="font-mono text-xs text-neutral-400 dark:text-neutral-500 uppercase"
-				>
-					{langCode}
-				</span>
-			</div>
-		</div>
-		<ChevronDown
-			{...chevronIconProps}
-			class="dropdown-chevron shrink-0 transition-transform duration-200 text-neutral-400 dark:text-neutral-500"
+	<span class="flex items-center gap-2">
+		<Globe
+			{...iconProps}
+			class="shrink-0 text-neutral-400 dark:text-neutral-500"
 		/>
-	</summary>
+		<span class="flex items-baseline gap-1.5">
+			<span>{languages[langCode]}</span>
+			<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 uppercase">
+				{langCode}
+			</span>
+		</span>
+	</span>
+	<ChevronDown
+		{...chevronIconProps}
+		class="dropdown-chevron shrink-0 transition-transform duration-200 text-neutral-400 dark:text-neutral-500"
+	/>
+</button>
 
-	<ul
-		tabindex="-1"
-		class="dropdown-menu d-menu d-dropdown-content z-1 -mt-px w-full sm:w-62 rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 shadow-sm"
-	>
-		{Object.entries(languages).map(([code, langName]) => (
-			<li>
-				<a
-					href={buildLocalizedRoutePath(code, pathname)}
-					class="flex justify-between items-baseline"
-				>
-					{langName}
-					<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase">
-						{code}
-					</span>
-				</a>
-			</li>
-		))}
-	</ul>
-</details>
-
-<style>
-	.dropdown-menu {
-		visibility: hidden;
-		opacity: 0;
-		pointer-events: none;
-		transform: translateY(-0.75rem);
-		transition:
-			transform 180ms ease,
-			opacity 180ms ease,
-			visibility 180ms ease;
-	}
-
-	details[open] > .dropdown-menu {
-		visibility: visible;
-		opacity: 1;
-		pointer-events: auto;
-		transform: translateY(0);
-	}
-
-	details[open] > summary .dropdown-chevron {
-		transform: rotate(180deg);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.dropdown-menu {
-			transition: none;
-		}
-	}
-</style>
+<ul
+	id={menuId}
+	popover="auto"
+	style={`position-anchor: ${anchorName}`}
+	class="popover-menu d-dropdown d-menu -mt-px w-62 rounded-box border border-neutral-400 bg-base-100 shadow-sm dark:border-neutral-700"
+>
+	{Object.entries(languages).map(([code, langName]) => (
+		<li>
+			<a
+				href={buildLocalizedRoutePath(code, pathname)}
+				class="flex justify-between items-baseline"
+			>
+				{langName}
+				<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase">
+					{code}
+				</span>
+			</a>
+		</li>
+	))}
+</ul>

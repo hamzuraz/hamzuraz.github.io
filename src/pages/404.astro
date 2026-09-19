@@ -9,100 +9,61 @@ const langCode = Astro.locals.langCode;
 ---
 
 <BaseLayout title="404 - Not Found" description="The page could not be found.">
-	<main
-		class="flex min-h-screen items-center px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32"
-	>
-		<section class="w-full text-center  -mt-20">
-			<p
-				class="font-mono text-neutral-400 dark:text-neutral-500 sm:text-sm"
-			>
+	<main class="flex min-h-screen items-center px-4 py-12 sm:px-8 sm:pt-16 sm:pb-32">
+		<section class="-mt-20 w-full text-center">
+			<p class="font-mono text-neutral-400 dark:text-neutral-500 sm:text-sm">
 				Error / Not Found
 			</p>
-			<h1
-				class="mt-2.5 text-7xl font-bold tracking-tight text-base-content"
-			>
+			<h1 class="mt-2.5 text-7xl font-bold tracking-tight text-base-content">
 				404
 			</h1>
-			<p class="max-w-160 leading-relaxed mt-5 mx-auto">
+			<p class="mx-auto mt-5 max-w-160 leading-relaxed">
 				Sorry, the page you're looking for doesn't exist or has been
 				moved. Please check the URL, or head back to the homepage to
 				continue.
 			</p>
-			<div
-				class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row"
-			>
+			<div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
 				<a href="/" class="d-btn d-btn-primary w-60">
 					Return to homepage (English)
 				</a>
-				<details
-					name="dropdown"
-					data-dropdown
-					class="d-dropdown d-dropdown-center"
+				<button
+					type="button"
+					popovertarget="not-found-language-menu"
+					style="anchor-name: --not-found-language-trigger"
+					class="d-btn d-btn-neutral flex w-60 justify-center gap-4"
 				>
-					<summary
-						class="d-btn d-btn-neutral flex justify-center gap-4 w-60"
-					>
-						<span class="flex items-center gap-2">
-							<Globe {...iconProps} class="shrink-0 " />
-							Other languages
-						</span>
-						<ChevronDown
-							{...chevronIconProps}
-							class="dropdown-chevron shrink-0 transition-transform duration-200 "
-						/>
-					</summary>
-					<ul
-						tabindex="-1"
-						class="dropdown-menu d-menu d-dropdown-content z-1 w-full rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 shadow-sm"
-					>
-						{Object.entries(languages)
-							.filter(([code]) => code !== langCode)
-							.map(([code, language]) => (
-								<li>
-									<a
-										href={buildLocalizedRoutePath(code, "/")}
-										class="flex justify-between"
-									>
-										{language}
-										<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase">
-											{code}
-										</span>
-									</a>
-								</li>
-							))}
-					</ul>
-				</details>
+					<span class="flex items-center gap-2">
+						<Globe {...iconProps} class="shrink-0" />
+						Other languages
+					</span>
+					<ChevronDown
+						{...chevronIconProps}
+						class="dropdown-chevron shrink-0 transition-transform duration-200"
+					/>
+				</button>
+				<ul
+					id="not-found-language-menu"
+					popover="auto"
+					style="position-anchor: --not-found-language-trigger"
+					class="popover-menu popover-menu-center d-dropdown d-menu w-60 rounded-box border border-neutral-400 bg-base-100 shadow-sm dark:border-neutral-700"
+				>
+					{Object.entries(languages)
+						.filter(([code]) => code !== langCode)
+						.map(([code, language]) => (
+							<li>
+								<a
+									href={buildLocalizedRoutePath(code, "/")}
+									class="flex justify-between"
+								>
+									{language}
+									<span class="font-mono text-xs text-neutral-400 dark:text-neutral-500 tracking-wider uppercase">
+										{code}
+									</span>
+								</a>
+							</li>
+						))}
+				</ul>
 			</div>
 		</section>
 	</main>
 </BaseLayout>
-
-<style>
-	.dropdown-menu {
-		visibility: hidden;
-		opacity: 0;
-		pointer-events: none;
-		transform: translateY(-0.75rem);
-		transition:
-			transform 180ms ease,
-			opacity 180ms ease,
-			visibility 180ms ease;
-	}
-
-	details[open] > .dropdown-menu {
-		visibility: visible;
-		opacity: 1;
-		pointer-events: auto;
-		transform: translateY(0);
-	}
-
-	details[open] > summary .dropdown-chevron {
-		transform: rotate(180deg);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.dropdown-menu {
-			transition: none;
-		}
-	}
-</style>

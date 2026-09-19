@@ -30,22 +30,18 @@ const contactItems: ContactItem[] = [
 ];
 ---
 
-<Section id="contact" class="w-full max-w-full overflow-x-clip">
-	<p
-		class="font-mono text-xs font-semibold tracking-[0.2em] text-neutral-400 dark:text-neutral-500 uppercase"
-	>
+<Section id="contact" class="w-full overflow-x-clip">
+	<p class="font-mono text-xs font-semibold tracking-[0.2em] text-neutral-400 dark:text-neutral-500 uppercase">
 		{t("home.contact.eyebrow")}
 	</p>
-	<div
-		class="mt-3 grid min-w-0 grid-cols-1 items-start gap-8 sm:grid-cols-2 sm:gap-8"
-	>
+	<div class="mt-3 grid min-w-0 grid-cols-1 items-start gap-8 sm:grid-cols-2">
 		<SectionHeader
 			class="w-full min-w-0"
 			title={t("home.contact.title")}
 			description={t("home.contact.description")}
 		/>
 
-		<div class="flex w-full min-w-0 flex-col gap-4">
+		<ul class="flex w-full min-w-0 flex-col gap-4">
 			{contactItems.map((item) => (
 				<ContactCard
 					type={item.type}
@@ -57,7 +53,7 @@ const contactItems: ContactItem[] = [
 					isExternal={item.isExternal}
 				/>
 			))}
-		</div>
+		</ul>
 	</div>
 </Section>
 

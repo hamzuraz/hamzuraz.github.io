@@ -22,7 +22,7 @@ function getStoredTheme(): ThemePreference {
 
 function updateThemeLabel(theme: ThemePreference) {
 	const matchingOption = document.querySelector<HTMLElement>(
-		`span[data-theme-value="${theme}"]`,
+		`[data-theme-value="${theme}"]`,
 	);
 	const labelText = matchingOption?.textContent?.trim() || theme;
 
@@ -45,9 +45,8 @@ document.addEventListener("click", (event) => {
 	const element = event.target;
 	if (!(element instanceof Element)) return;
 
-	const themeValueElement = element.closest<HTMLElement>(
-		"span[data-theme-value]",
-	);
+	const themeValueElement =
+		element.closest<HTMLElement>("[data-theme-value]");
 	if (!themeValueElement) return;
 
 	event.preventDefault();

@@ -29,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: bun --bun install
 
+      - name: Check Biome formatting and lint
+        run: bun --bun run biome:check
+
+      - name: Validate Astro and TypeScript
+        run: bun --bun run astro check
+
       - name: Build Astro site
         run: bun --bun run build
 

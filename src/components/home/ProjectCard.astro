@@ -15,30 +15,24 @@ const {
 } = Astro.props;
 ---
 
-<div
-	class="d-card rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 shadow-sm"
->
+<article class="d-card rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 shadow-sm">
 	<div class="d-card-body flex flex-col justify-between p-6 gap-0">
 		<div>
 			<h3 class="d-card-title text-xl font-bold">{title}</h3>
 			<ul class="mt-3 flex flex-wrap gap-2">
 				{tags.map((tag) => (
 					<li>
-						<div class="d-badge d-badge-soft d-badge-accent d-badge-sm font-mono">
+						<span class="d-badge d-badge-soft d-badge-accent d-badge-sm font-mono">
 							{tag}
-						</div>
+						</span>
 					</li>
 				))}
 			</ul>
-			<p
-				class="mt-4 text-sm sm:text-base leading-relaxed text-base-content/80 h-20"
-			>
+			<p class="mt-4 text-sm sm:text-base leading-relaxed text-base-content/80 h-20">
 				{description}
 			</p>
 		</div>
-		<div
-			class="d-card-actions justify-end gap-3 pt-6 border-t border-neutral-400/40 dark:border-neutral-700/60 mt-6"
-		>
+		<footer class="d-card-actions justify-end gap-3 pt-6 border-t border-neutral-400/40 dark:border-neutral-700/60 mt-6">
 			<button
 				type="button"
 				class="d-btn d-btn-sm sm:d-btn-md d-btn-neutral sm:w-35"
@@ -52,6 +46,6 @@ const {
 			>
 				Live demo
 			</button>
-		</div>
+		</footer>
 	</div>
-</div>
+</article>
