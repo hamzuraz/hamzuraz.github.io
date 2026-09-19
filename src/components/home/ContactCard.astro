@@ -16,7 +16,9 @@ const { type, value, href, copyLabel, openLabel, copiedTip, isExternal } =
 	Astro.props;
 ---
 
-<li class="flex min-w-0 items-center justify-between gap-3 rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 p-3.5 sm:p-4">
+<li
+	class="flex min-w-0 items-center justify-between gap-3 rounded-box border border-neutral-400 dark:border-neutral-700 bg-base-100 p-3.5 sm:p-4"
+>
 	<div class="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3">
 		{type === "email" ? (
 			<Mail class="size-4.5 shrink-0 text-neutral-400 dark:text-neutral-500" />

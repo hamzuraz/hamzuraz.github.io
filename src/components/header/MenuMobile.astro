@@ -13,7 +13,9 @@ const { langCode, t } = Astro.locals;
 	popover="auto"
 	class="mobile-nav-panel border-b border-neutral-400 bg-base-300 dark:border-neutral-700 sm:px-5 lg:hidden"
 >
-	<ul class="d-menu w-full border-b border-neutral-400 px-0 pt-4.5 pb-4 dark:border-neutral-700">
+	<ul
+		class="d-menu w-full border-b border-neutral-400 px-0 pt-4.5 pb-4 dark:border-neutral-700"
+	>
 		{navigationItems.map((item) => (
 			<li>
 				<NavLink
