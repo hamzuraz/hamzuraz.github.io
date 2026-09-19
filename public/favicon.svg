@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#1e1e1e"/>
-  <text x="16" y="21" fill="#4ade80" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">RM</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="RM">
+  <rect width="64" height="64" rx="15" fill="oklch(58% 0.160 150)"/>
+  <g fill="none" stroke="oklch(98.5% 0 none)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.5 21.2V42.8"/>
+    <path d="M11.5 21.2H20.1A5.4 5.4 0 0 1 20.1 32H11.5"/>
+    <path d="M18.5 32L26.1 42.8"/>
+    <path d="M36.3 42.8V21.2L44.4 32.5L52.5 21.2V42.8"/>
+  </g>
 </svg>
