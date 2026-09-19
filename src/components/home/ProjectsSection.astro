@@ -24,13 +24,9 @@ const projects = [1, 2, 3, 4];
 	</div>
 	<a
 		href={buildLocalizedRoutePath(langCode, "/projects/")}
-		class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-neutral sm:mx-auto sm:w-fit sm:mt-14"
+		class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-primary d-btn-sm sm:d-btn-md sm:mx-auto sm:w-fit sm:mt-14"
 	>
 		{t("home.projects.cta")}
-		<ArrowRight
-			{...iconProps}
-			class="text-neutral-400 dark:text-neutral-500"
-			aria-hidden="true"
-		/>
+		<ArrowRight {...iconProps} aria-hidden="true" />
 	</a>
 </Section>
