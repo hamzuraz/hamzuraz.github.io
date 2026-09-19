@@ -8,9 +8,7 @@ const langCode = Astro.locals.langCode;
 const localizedHomePath = buildLocalizedRoutePath(langCode, "/");
 ---
 
-<header
-	class="sticky top-0 z-100 rounded-none border-y border-neutral-400 dark:border-neutral-700 bg-base-300 px-4 sm:px-8"
->
+<header class="sticky top-0 z-100 rounded-none">
 	<input
 		id="mobile-nav-toggle"
 		class="peer sr-only"
@@ -22,7 +20,9 @@ const localizedHomePath = buildLocalizedRoutePath(langCode, "/");
 		class="mobile-nav-backdrop fixed inset-0 z-20 bg-black/25 opacity-0 max-lg:pointer-events-none lg:hidden"
 		aria-label="Close navigation"
 	> </label>
-	<div class="d-navbar relative z-30 p-0">
+	<div
+		class="d-navbar relative z-30 border-y border-neutral-400 dark:border-neutral-700 bg-base-300 px-4 sm:px-8"
+	>
 		<div class="d-navbar-start">
 			<label
 				for="mobile-nav-toggle"
