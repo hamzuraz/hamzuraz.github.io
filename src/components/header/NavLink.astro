@@ -12,7 +12,7 @@ const isCurrent = !linkUrl.hash && linkUrl.pathname === Astro.url.pathname;
 <a
 	href={href}
 	class:list={[
-		"px-4 sm:px-3 rounded-none sm:rounded-box transition-colors hover:bg-base-content/10 hover:text-base-content",
+		"rounded-none px-4 transition-colors hover:bg-base-content/10 hover:text-base-content sm:rounded-box sm:px-3",
 		{
 			"bg-base-content/10 text-base-content font-medium": isCurrent,
 		},

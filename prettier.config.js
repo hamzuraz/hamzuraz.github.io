@@ -2,7 +2,14 @@
 const config = {
 	plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
 	tailwindStylesheet: "./src/styles/global.css",
-	tailwindAttributes: ["class:list"],
+	overrides: [
+		{
+			files: "*.astro",
+			options: {
+				parser: "astro",
+			},
+		},
+	],
 	useTabs: true,
 	tabWidth: 4,
 	printWidth: 80,
