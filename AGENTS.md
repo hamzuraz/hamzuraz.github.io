@@ -21,7 +21,7 @@ src/
 ├── components/      # UI components (footer/, head/, header/, home/, ui/)
 ├── data/            # Pure data sources (no styling or UI logic)
 ├── i18n/            # Routing helpers, dictionaries (en-US, id, ja), and types
-├── layouts/         # BaseLayout.astro (HTML skeleton) and Layout.astro (wrapper)
+├── layouts/         # BaseLayout.astro (HTML skeleton) and MainLayout.astro (wrapper)
 ├── middleware.ts    # Locale detection and Astro.locals injection
 ├── pages/           # 404.astro and [...lang]/ (index.astro, projects/)
 ├── scripts/         # Minimal client-side ES modules (clipboard, theme, dropdown)
