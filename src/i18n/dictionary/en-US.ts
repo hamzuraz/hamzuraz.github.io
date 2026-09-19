@@ -19,7 +19,7 @@ const homePage = {
 	"home.hero.role": "Software Engineer",
 	"home.hero.subheading":
 		"From the interface users interact with to the architecture that keeps it running — I\u00A0build both, and I\u00A0build them to scale.",
-	"home.hero.seemore": "See More",
+	"home.hero.seemore": "See more",
 	"home.hero.cta.primary": "See resume",
 	"home.hero.cta.secondary": "Get in touch",
 

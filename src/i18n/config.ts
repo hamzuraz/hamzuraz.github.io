@@ -15,7 +15,7 @@ export const langCodeSegments: LangCodeRecord = {
 	ja: "ja",
 };
 
-export const langCodes = Object.keys(languages) as LangCode[];
+export const langCodes: readonly LangCode[] = ["en-US", "id", "ja"] as const;
 
 export const langCodeDefault: LangCode = "en-US";
 

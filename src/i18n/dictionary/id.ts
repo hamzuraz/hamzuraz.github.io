@@ -6,7 +6,7 @@ const homePage = {
 	"home.hero.role": "Software Engineer",
 	"home.hero.subheading":
 		"Mulai dari antarmuka yang berinteraksi langsung dengan pengguna, sampai arsitektur yang menjaganya tetap berjalan — saya yang membangun keduanya, dan saya membangunnya agar siap berkembang.",
-	"home.hero.seemore": "Lihat Selengkapnya",
+	"home.hero.seemore": "Lihat selengkapnya",
 	"home.hero.cta.primary": "Lihat CV",
 	"home.hero.cta.secondary": "Hubungi Saya",
 

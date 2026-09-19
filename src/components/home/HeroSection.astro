@@ -47,19 +47,21 @@ const techStack = ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"];
 				</div>
 			</li>
 		))}
-		<li class="ml-0.5 d-link text-sm d-link-primary sm:text-base">
-			{t("home.hero.seemore")}
+		<li>
+			<a
+				href="#skills"
+				class="ml-0.5 d-link text-sm d-link-primary sm:text-base"
+			>
+				{t("home.hero.seemore")}
+			</a>
 		</li>
 	</ul>
 	<div class="mt-10 flex items-baseline gap-4 sm:mt-14 sm:gap-6">
-		<button type="button" class="d-btn d-btn-primary sm:d-btn-lg">
+		<a href="#contact" class="d-btn d-btn-primary sm:d-btn-lg">
 			{t("home.hero.cta.primary")}
-		</button>
-		<button
-			type="button"
-			class="d-btn d-btn-outline d-btn-primary sm:d-btn-lg"
-		>
+		</a>
+		<a href="#projects" class="d-btn d-btn-neutral sm:d-btn-lg">
 			{t("home.hero.cta.secondary")}
-		</button>
+		</a>
 	</div>
 </Section>

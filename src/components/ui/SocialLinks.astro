@@ -1,19 +1,15 @@
 ---
+import Email from "$/assets/Email.svg";
 import GitHub from "$/assets/GitHub.svg";
 import LinkedIn from "$/assets/LinkedIn.svg";
 
 const iconClass =
-	"size-7 sm:size-9 hover:stroke-neutral-600 dark:hover:stroke-neutral-400 transition-colors";
+	"size-6 sm:size-8 hover:stroke-neutral-600 dark:hover:stroke-neutral-400 transition-colors stroke-base-content";
 ---
 
 <div class="flex gap-1.5 sm:gap-2.5">
-	<a
-		href="https://github.com/hamzuraz/"
-		target="_blank"
-		rel="noopener noreferrer"
-		aria-label="GitHub"
-	>
-		<GitHub class={iconClass} />
+	<a href="mailto:hamzurazen@gmail.com" aria-label="Email">
+		<Email class={iconClass} />
 	</a>
 	<a
 		href="https://linkedin.com/"
@@ -22,5 +18,13 @@ const iconClass =
 		aria-label="LinkedIn"
 	>
 		<LinkedIn class={iconClass} />
+	</a>
+	<a
+		href="https://github.com/hamzuraz/"
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label="GitHub"
+	>
+		<GitHub class={iconClass} />
 	</a>
 </div>

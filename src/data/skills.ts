@@ -1,23 +1,25 @@
+import type { DictionaryKey } from "$/i18n/types";
+
 export type SkillCategory = {
-	scope: string;
+	scopeKey: DictionaryKey;
 	technologies: string[];
 	isCore?: boolean;
 };
 
 export type SkillTab = {
 	key: "all" | "core" | "familiar";
-	label: string;
+	labelKey: DictionaryKey;
 	skills: SkillCategory[];
 };
 
 export const coreSkills: SkillCategory[] = [
 	{
-		scope: "Languages & Runtimes",
+		scopeKey: "home.skills.table.scope.languages",
 		technologies: ["JavaScript", "TypeScript", "Node.js", "Bun", "Go"],
 		isCore: true,
 	},
 	{
-		scope: "Web",
+		scopeKey: "home.skills.table.scope.web",
 		technologies: [
 			"HTML",
 			"CSS",
@@ -31,17 +33,17 @@ export const coreSkills: SkillCategory[] = [
 		isCore: true,
 	},
 	{
-		scope: "Mobile",
+		scopeKey: "home.skills.table.scope.mobile",
 		technologies: ["React Native", "Expo"],
 		isCore: true,
 	},
 	{
-		scope: "Databases",
+		scopeKey: "home.skills.table.scope.databases",
 		technologies: ["MySQL", "PostgreSQL", "SQLite", "MongoDB"],
 		isCore: true,
 	},
 	{
-		scope: "Tooling",
+		scopeKey: "home.skills.table.scope.tooling",
 		technologies: [
 			"Git",
 			"GitHub",
@@ -54,7 +56,7 @@ export const coreSkills: SkillCategory[] = [
 		isCore: true,
 	},
 	{
-		scope: "IDE & AI",
+		scopeKey: "home.skills.table.scope.ide",
 		technologies: [
 			"Zed",
 			"Visual Studio Code",
@@ -69,10 +71,9 @@ export const coreSkills: SkillCategory[] = [
 
 export const familiarSkills: SkillCategory[] = [
 	{
-		scope: "Familiar",
+		scopeKey: "home.skills.table.scope.familiar",
 		technologies: [
 			"Python",
-			"Rust",
 			"Alpine.js",
 			"HTMX",
 			"Playwright",
@@ -85,7 +86,19 @@ export const familiarSkills: SkillCategory[] = [
 export const allSkills: SkillCategory[] = [...coreSkills, ...familiarSkills];
 
 export const skillTabs: SkillTab[] = [
-	{ key: "all", label: "All", skills: allSkills },
-	{ key: "core", label: "Core", skills: coreSkills },
-	{ key: "familiar", label: "Familiar", skills: familiarSkills },
+	{
+		key: "all",
+		labelKey: "home.skills.table.category.all",
+		skills: allSkills,
+	},
+	{
+		key: "core",
+		labelKey: "home.skills.table.category.core",
+		skills: coreSkills,
+	},
+	{
+		key: "familiar",
+		labelKey: "home.skills.table.category.familiar",
+		skills: familiarSkills,
+	},
 ];

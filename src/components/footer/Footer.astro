@@ -6,12 +6,12 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer
-	class="d-footer items-center justify-between gap-4.5 border-b border-neutral-400 dark:border-neutral-700 bg-base-100 px-4 sm:px-8 py-9 sm:d-footer-horizontal"
+	class="d-footer items-center justify-between gap-4.5 border-b border-neutral-400 dark:border-neutral-700 bg-base-100 px-4 sm:px-8 py-9 sm:d-footer-horizontal font-mono"
 >
 	<aside class="grid-flow-col items-center">
 		<p>© {currentYear} {t("footer.copyright")}</p>
 	</aside>
-	<nav class="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+	<nav class="grid-flow-col gap-4 sm:place-self-center sm:justify-self-end">
 		<SocialLinks />
 	</nav>
 </footer>

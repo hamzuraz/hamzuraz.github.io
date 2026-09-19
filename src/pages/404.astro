@@ -1,5 +1,5 @@
 ---
-import { ChevronDown, Languages } from "@lucide/astro";
+import { ChevronDown, Globe } from "@lucide/astro";
 import { languages } from "$/i18n/config";
 import { buildLocalizedRoutePath } from "$/i18n/helpers";
 import BaseLayout from "$/layouts/BaseLayout.astro";
@@ -35,15 +35,18 @@ const langCode = Astro.locals.langCode;
 					class="d-dropdown d-dropdown-center"
 				>
 					<summary
-						class="d-btn d-btn-outline d-btn-primary flex justify-center gap-4 w-60"
+						class="d-btn d-btn-neutral flex justify-center gap-4 w-60"
 					>
 						<span class="flex items-center gap-2">
-							<Languages {...iconProps} />
+							<Globe
+								{...iconProps}
+								class="shrink-0 text-neutral-400 dark:text-neutral-500"
+							/>
 							Other languages
 						</span>
 						<ChevronDown
 							{...chevronIconProps}
-							class="dropdown-chevron transition-transform duration-200"
+							class="dropdown-chevron shrink-0 transition-transform duration-200 text-neutral-400 dark:text-neutral-500"
 						/>
 					</summary>
 					<ul

@@ -80,7 +80,7 @@ Never edit generated output (`dist/`, `.astro/`) by hand.
 
 - ❌ Do not add `tailwind.config.js`. Tailwind v4 is configured in CSS (`@theme`, `@plugin`, etc.).
 - ❌ Do not leak CSS or HTML markup into pure data files (`src/data/`).
-- ❌ Do not use type assertions (`as`); use type guards or optional chaining instead.
+- ❌ Do not use type assertions `as` except for `as const`; use type guards or optional chaining instead.
 - ❌ Do not create over-engineered wrapper components to handle slight design variations.
 - ❌ Do not bypass Git hooks with `--no-verify`.
 

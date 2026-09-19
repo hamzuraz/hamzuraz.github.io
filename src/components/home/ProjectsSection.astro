@@ -17,16 +17,20 @@ const projects = [1, 2, 3, 4];
 		title={t("home.projects.title")}
 		description={t("home.projects.description")}
 	/>
-	<div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+	<div class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
 		{projects.map(() => (
 			<ProjectCard />
 		))}
 	</div>
 	<a
 		href={buildLocalizedRoutePath(langCode, "/projects/")}
-		class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-outline d-btn-primary sm:mx-auto sm:w-fit lg:mt-16"
+		class="d-btn mt-12 flex w-full items-center justify-center gap-2 d-btn-neutral sm:mx-auto sm:w-fit sm:mt-14"
 	>
 		{t("home.projects.cta")}
-		<ArrowRight {...iconProps} aria-hidden="true" />
+		<ArrowRight
+			{...iconProps}
+			class="text-neutral-400 dark:text-neutral-500"
+			aria-hidden="true"
+		/>
 	</a>
 </Section>

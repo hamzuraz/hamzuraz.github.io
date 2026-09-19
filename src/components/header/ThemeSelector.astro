@@ -1,5 +1,5 @@
 ---
-import { ChevronDown, Palette } from "@lucide/astro";
+import { ChevronDown, SunMoon } from "@lucide/astro";
 import { chevronIconProps, iconProps } from "$/utils/icon-props";
 
 const t = Astro.locals.t;
@@ -11,15 +11,18 @@ const t = Astro.locals.t;
 	class="d-dropdown d-dropdown-start w-full sm:w-auto"
 >
 	<summary
-		class="d-btn flex w-full lg:w-38 justify-between border-neutral-400 dark:border-neutral-700 group"
+		class="d-btn flex w-62 lg:w-38 justify-between border-neutral-400 dark:border-neutral-700 group"
 	>
-		<div class="flex gap-2">
-			<Palette {...iconProps} class="translate-y-0.75" />
+		<div class="flex items-center gap-2">
+			<SunMoon
+				{...iconProps}
+				class="shrink-0 text-neutral-400 dark:text-neutral-500"
+			/>
 			<span data-theme-active-text class="invisible">System</span>
 		</div>
 		<ChevronDown
 			{...chevronIconProps}
-			class="dropdown-chevron transition-transform duration-200"
+			class="dropdown-chevron shrink-0 transition-transform duration-200 text-neutral-400 dark:text-neutral-500"
 		/>
 	</summary>
 
