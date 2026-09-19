@@ -10,7 +10,8 @@ const { langCode, t } = Astro.locals;
 
 <div
 	id="mobile-navigation"
-	class="mobile-nav-panel absolute inset-x-0 top-full z-30 border-b border-neutral-400 dark:border-neutral-700 bg-base-300 sm:px-5 lg:hidden"
+	class="mobile-nav-panel absolute inset-x-0 top-full z-20 border-b border-neutral-400 dark:border-neutral-700 bg-base-300 sm:px-5 lg:hidden"
+	aria-hidden="true"
 >
 	<ul
 		class="d-menu w-full border-b border-neutral-400 dark:border-neutral-700 px-0 py-4 pt-4.5 sm:px-0"
@@ -35,11 +36,23 @@ const { langCode, t } = Astro.locals;
 		visibility: hidden;
 		opacity: 0;
 		pointer-events: none;
-		transform: translateY(-0.75rem);
+		transform: scaleY(0);
+		transform-origin: top;
 		transition:
 			transform 180ms ease,
 			opacity 180ms ease,
-			visibility 180ms ease;
+			visibility 0s linear 180ms;
+	}
+
+	:global(header[data-mobile-navigation-open="true"] #mobile-navigation) {
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+		transform: scaleY(1);
+		transition:
+			transform 180ms ease,
+			opacity 180ms ease,
+			visibility 0s;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

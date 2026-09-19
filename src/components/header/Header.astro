@@ -8,29 +8,30 @@ const langCode = Astro.locals.langCode;
 const localizedHomePath = buildLocalizedRoutePath(langCode, "/");
 ---
 
-<header class="sticky top-0 z-100 rounded-none">
-	<input
-		id="mobile-nav-toggle"
-		class="peer sr-only"
-		type="checkbox"
-		aria-label="Toggle navigation"
-	>
-	<label
-		for="mobile-nav-toggle"
-		class="mobile-nav-backdrop fixed inset-0 z-20 bg-black/25 opacity-0 max-lg:pointer-events-none lg:hidden"
+<header
+	class="sticky top-0 z-100 rounded-none"
+	data-mobile-navigation-open="false"
+>
+	<button
+		type="button"
+		data-mobile-navigation-backdrop
+		class="mobile-nav-backdrop fixed inset-0 z-10 border-0 bg-black/25 p-0 opacity-0 lg:hidden"
 		aria-label="Close navigation"
-	> </label>
+	></button>
 	<div
 		class="d-navbar relative z-30 border-y border-neutral-400 dark:border-neutral-700 bg-base-300 px-4 sm:px-8"
 	>
 		<div class="d-navbar-start">
-			<label
-				for="mobile-nav-toggle"
+			<button
+				type="button"
+				data-mobile-navigation-toggle
 				class="d-btn border-neutral-400 dark:border-neutral-700 px-4 lg:hidden"
 				aria-label="Toggle navigation"
+				aria-controls="mobile-navigation"
+				aria-expanded="false"
 			>
 				<Logs />
-			</label>
+			</button>
 			<a
 				href={localizedHomePath}
 				class="d-btn border-neutral-400 dark:border-neutral-700 px-3 text-xl tracking-wide max-lg:absolute max-lg:left-1/2 max-lg:-translate-x-1/2"
@@ -45,19 +46,20 @@ const localizedHomePath = buildLocalizedRoutePath(langCode, "/");
 
 <style>
 	.mobile-nav-backdrop {
-		transition: opacity 180ms ease;
+		visibility: hidden;
+		pointer-events: none;
+		transition:
+			opacity 180ms ease,
+			visibility 0s linear 180ms;
 	}
 
-	:global(#mobile-nav-toggle:checked ~ .mobile-nav-backdrop) {
-		opacity: 1;
-		pointer-events: auto;
-	}
-
-	:global(#mobile-nav-toggle:checked ~ .d-navbar ~ #mobile-navigation) {
+	:global(header[data-mobile-navigation-open="true"] .mobile-nav-backdrop) {
 		visibility: visible;
 		opacity: 1;
 		pointer-events: auto;
-		transform: translateY(0);
+		transition:
+			opacity 180ms ease,
+			visibility 0s;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
