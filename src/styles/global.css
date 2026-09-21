@@ -1,2 +1,9 @@
 @import "tailwindcss";
 @import "basecoat-css/maia";
+
+@import "./tokens/breakpoints.css";
+@import "./tokens/spacing-and-sizing.css";
+@import "./tokens/themes/themes.css";
+@import "./tokens/typography/typography.css";
+
+@custom-variant dark (&:is(.dark *));

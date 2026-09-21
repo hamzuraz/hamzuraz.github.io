@@ -1,0 +1,96 @@
+@import "./fonts.css";
+
+:root,
+.dark {
+	/* Font Family */
+	--font-sans: "Geist", sans-serif;
+	--font-pixel: "Geist Pixel", monospace;
+	--font-mono: "Geist Mono", monospace;
+	--font-serif: "Playfair Display", serif;
+
+	/* Font Size and Line Height */
+	--text-xs: 0.75rem;
+	--text-xs--line-height: 1rem;
+	--text-sm: 0.875rem;
+	--text-sm--line-height: 1.25rem;
+	--text-base: 1rem;
+	--text-base--line-height: 1.5rem;
+	--text-lg: 1.125rem;
+	--text-lg--line-height: 1.75rem;
+	--text-xl: 1.25rem;
+	--text-xl--line-height: 1.75rem;
+	--text-2xl: 1.5rem;
+	--text-2xl--line-height: 2rem;
+	--text-3xl: 1.875rem;
+	--text-3xl--line-height: 2.25rem;
+	--text-4xl: 2.25rem;
+	--text-4xl--line-height: 2.5rem;
+	--text-5xl: 3rem;
+	--text-5xl--line-height: 1;
+	--text-6xl: 3.75rem;
+	--text-6xl--line-height: 1;
+	--text-7xl: 4.5rem;
+	--text-7xl--line-height: 1;
+
+	/* Font Weight */
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	/* Letter Spacing */
+	--tracking-tightest: -0.04em;
+	--tracking-tighter: -0.02em;
+	--tracking-tight: -0.01em;
+	--tracking-normal: 0em;
+	--tracking-wide: 0.01em;
+	--tracking-wider: 0.03em;
+	--tracking-widest: 0.08em;
+}
+
+@theme inline {
+	/* Font Family */
+	--font-sans: var(--font-sans);
+	--font-pixel: var(--font-pixel);
+	--font-mono: var(--font-mono);
+	--font-serif: var(--font-serif);
+
+	/* Font Size and Line Height */
+	--text-xs: var(--text-xs);
+	--text-xs--line-height: var(--text-xs--line-height);
+	--text-sm: var(--text-sm);
+	--text-sm--line-height: var(--text-sm--line-height);
+	--text-base: var(--text-base);
+	--text-base--line-height: var(--text-base--line-height);
+	--text-lg: var(--text-lg);
+	--text-lg--line-height: var(--text-lg--line-height);
+	--text-xl: var(--text-xl);
+	--text-xl--line-height: var(--text-xl--line-height);
+	--text-2xl: var(--text-2xl);
+	--text-2xl--line-height: var(--text-2xl--line-height);
+	--text-3xl: var(--text-3xl);
+	--text-3xl--line-height: var(--text-3xl--line-height);
+	--text-4xl: var(--text-4xl);
+	--text-4xl--line-height: var(--text-4xl--line-height);
+	--text-5xl: var(--text-5xl);
+	--text-5xl--line-height: var(--text-5xl--line-height);
+	--text-6xl: var(--text-6xl);
+	--text-6xl--line-height: var(--text-6xl--line-height);
+	--text-7xl: var(--text-7xl);
+	--text-7xl--line-height: var(--text-7xl--line-height);
+
+	/* Font Weight */
+	--font-weight-normal: var(--font-weight-normal);
+	--font-weight-medium: var(--font-weight-medium);
+	--font-weight-semibold: var(--font-weight-semibold);
+	--font-weight-bold: var(--font-weight-bold);
+
+	/* Letter Spacing */
+	--tracking-tightest: var(--tracking-tightest);
+	--tracking-tighter: var(--tracking-tighter);
+	--tracking-tight: var(--tracking-tight);
+	--tracking-normal: var(--tracking-normal);
+	--tracking-wide: var(--tracking-wide);
+	--tracking-wider: var(--tracking-wider);
+	--tracking-widest: var(--tracking-widest);
+}
