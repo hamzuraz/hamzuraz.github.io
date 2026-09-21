@@ -19,6 +19,13 @@
 			"preset": "recommended"
 		}
 	},
+	"html": {
+		"experimentalFullSupportEnabled": true,
+		"formatter": {
+			"enabled": true,
+			"indentScriptAndStyle": true
+		}
+	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "double"

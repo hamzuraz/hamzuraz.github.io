@@ -20,13 +20,17 @@ const themes = [
 <!doctype html>
 <html lang="id" data-theme="zen-light">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content="Preview token untuk seluruh tema yang tersedia." />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width">
+		<meta
+			name="description"
+			content="Preview token untuk seluruh tema yang tersedia."
+		>
 		<title>Theme preview</title>
 		<script is:inline>
 			const storageKey = "hamzuraz-theme";
-			const themePattern = /^(claude|design-byte|minimal|portfolio|terminal|zen)-(light|dark)$/;
+			const themePattern =
+				/^(claude|design-byte|minimal|portfolio|terminal|zen)-(light|dark)$/;
 
 			try {
 				const savedTheme = window.localStorage.getItem(storageKey);
@@ -40,12 +44,19 @@ const themes = [
 	</head>
 	<body class="min-h-screen bg-background p-6 text-foreground sm:p-10">
 		<main class="mx-auto grid max-w-5xl gap-8">
-			<header class="flex flex-col gap-6 border-b pb-8 sm:flex-row sm:items-end sm:justify-between">
+			<header
+				class="flex flex-col gap-6 border-b pb-8 sm:flex-row sm:items-end sm:justify-between"
+			>
 				<div class="grid gap-2">
-					<p class="font-mono text-sm text-muted-foreground">THEME SYSTEM</p>
-					<h1 class="font-serif text-4xl tracking-tight">Theme preview</h1>
+					<p class="font-mono text-sm text-muted-foreground">
+						THEME SYSTEM
+					</p>
+					<h1 class="font-serif text-4xl tracking-tight">
+						Theme preview
+					</h1>
 					<p class="max-w-2xl text-muted-foreground">
-						Pilih salah satu dari dua belas varian untuk melihat perubahan token global.
+						Pilih salah satu dari dua belas varian untuk melihat
+						perubahan token global.
 					</p>
 				</div>
 
@@ -56,33 +67,48 @@ const themes = [
 						id="theme-selector"
 						name="theme"
 					>
-						{
-							themes.map((theme) => (
-								<option value={theme.id}>{theme.label}</option>
-							))
-						}
+						{themes.map((theme) => <option value={theme.id}>{theme.label}</option>)}
 					</select>
 				</label>
 			</header>
 
-			<section class="grid gap-6 lg:grid-cols-[1.4fr_1fr]" aria-label="Theme token examples">
-				<article class="grid gap-6 rounded-lg border bg-card p-6 text-card-foreground shadow-lg">
+			<section
+				class="grid gap-6 lg:grid-cols-[1.4fr_1fr]"
+				aria-label="Theme token examples"
+			>
+				<article
+					class="grid gap-6 rounded-lg border bg-card p-6 text-card-foreground shadow-lg"
+				>
 					<div class="grid gap-2">
-						<p class="font-mono text-sm text-muted-foreground">CARD / TYPOGRAPHY</p>
-						<h2 class="font-serif text-3xl tracking-tight">A consistent token surface</h2>
+						<p class="font-mono text-sm text-muted-foreground">
+							CARD / TYPOGRAPHY
+						</p>
+						<h2 class="font-serif text-3xl tracking-tight">
+							A consistent token surface
+						</h2>
 						<p class="text-muted-foreground">
-							Background, text, typeface, radius, border, and shadow come from the active theme.
+							Background, text, typeface, radius, border, and
+							shadow come from the active theme.
 						</p>
 					</div>
 
 					<div class="flex flex-wrap gap-3">
-						<button class="rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground shadow-sm" type="button">
+						<button
+							class="rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground shadow-sm"
+							type="button"
+						>
 							Primary action
 						</button>
-						<button class="rounded-md bg-secondary px-4 py-2 font-medium text-secondary-foreground" type="button">
+						<button
+							class="rounded-md bg-secondary px-4 py-2 font-medium text-secondary-foreground"
+							type="button"
+						>
 							Secondary action
 						</button>
-						<button class="rounded-md bg-destructive px-4 py-2 font-medium text-destructive-foreground" type="button">
+						<button
+							class="rounded-md bg-destructive px-4 py-2 font-medium text-destructive-foreground"
+							type="button"
+						>
 							Destructive action
 						</button>
 					</div>
@@ -94,26 +120,34 @@ const themes = [
 							id="example-input"
 							placeholder="Theme-aware input"
 							type="text"
-						/>
+						>
 					</label>
 				</article>
 
-				<aside class="grid content-start gap-5 rounded-lg border bg-sidebar p-6 text-sidebar-foreground shadow-md">
+				<aside
+					class="grid content-start gap-5 rounded-lg border bg-sidebar p-6 text-sidebar-foreground shadow-md"
+				>
 					<div class="grid gap-2">
-						<p class="font-mono text-sm text-muted-foreground">ACCENT / CHART</p>
+						<p class="font-mono text-sm text-muted-foreground">
+							ACCENT / CHART
+						</p>
 						<h2 class="text-xl font-semibold">Token palette</h2>
 					</div>
-					<div class="rounded-md bg-sidebar-accent p-4 text-sidebar-accent-foreground">
+					<div
+						class="rounded-md bg-sidebar-accent p-4 text-sidebar-accent-foreground"
+					>
 						Sidebar accent surface
 					</div>
-					<div class="grid grid-cols-5 items-end gap-2" aria-label="Chart color samples">
+					<div class="grid grid-cols-5 items-end gap-2">
 						<div class="h-12 rounded-sm bg-chart-1"></div>
 						<div class="h-20 rounded-sm bg-chart-2"></div>
 						<div class="h-16 rounded-sm bg-chart-3"></div>
 						<div class="h-24 rounded-sm bg-chart-4"></div>
 						<div class="h-10 rounded-sm bg-chart-5"></div>
 					</div>
-					<p class="rounded-md bg-muted p-3 text-sm text-muted-foreground">
+					<p
+						class="rounded-md bg-muted p-3 text-sm text-muted-foreground"
+					>
 						The selected theme is saved in this browser.
 					</p>
 				</aside>
@@ -127,7 +161,12 @@ const themes = [
 
 			if (selector instanceof HTMLSelectElement) {
 				const currentTheme = root.dataset.theme;
-				if (currentTheme && [...selector.options].some((option) => option.value === currentTheme)) {
+				if (
+					currentTheme &&
+					[...selector.options].some(
+						(option) => option.value === currentTheme,
+					)
+				) {
 					selector.value = currentTheme;
 				}
 
