@@ -19,6 +19,7 @@
 		"esbuild": true
 	},
 	"dependencies": {
+		"@lucide/astro": "^1.47.0",
 		"@tailwindcss/vite": "^4.3.3",
 		"astro": "^7.3.3",
 		"basecoat-css": "^1.0.2",
