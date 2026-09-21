@@ -10,15 +10,22 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome:check": "biome check --write --no-errors-on-unmatched"
-	},
-	"dependencies": {
-		"astro": "^7.3.3"
+		"biome:check": "biome check --write --no-errors-on-unmatched",
+		"astro:check": "astro check"
 	},
 	"allowScripts": {
 		"esbuild": true
 	},
+	"dependencies": {
+		"@tailwindcss/vite": "^4.3.3",
+		"astro": "^7.3.3",
+		"basecoat-css": "^1.0.2",
+		"tailwindcss": "^4.3.3"
+	},
 	"devDependencies": {
-		"@biomejs/biome": "2.5.14"
+		"@astrojs/check": "^0.9.10",
+		"@biomejs/biome": "2.5.14",
+		"lefthook": "^2.1.14",
+		"typescript": "^6.0.0"
 	}
 }
