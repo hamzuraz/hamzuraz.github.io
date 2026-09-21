@@ -29,7 +29,7 @@ jobs:
         run: bun ci
 
       - name: Biome (format + lint)
-        run: bunx --bun run biome ci .
+        run: bun --bun run biome ci .
 
       - name: Astro & TypeScript check
         run: bun --bun run astro check
