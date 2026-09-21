@@ -6,4 +6,4 @@
 @import "./tokens/themes/themes.css";
 @import "./tokens/typography/typography.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is([data-theme$="-dark"] *));
