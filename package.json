@@ -11,9 +11,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome:check": "biome check --write --no-errors-on-unmatched",
-		"astro:check": "astro check",
-		"commitlint": "commitlint"
+		"biome": "biome",
+		"biome:check": "biome check --write --no-errors-on-unmatched"
 	},
 	"allowScripts": {
 		"esbuild": true

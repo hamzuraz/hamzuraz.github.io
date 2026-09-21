@@ -5,7 +5,7 @@ pre-commit:
       run: bun --bun run biome:check
       stage_fixed: true
     - name: Astro check
-      run: bun --bun run astro:check
+      run: bun --bun run astro check
 
 commit-msg:
   jobs:
