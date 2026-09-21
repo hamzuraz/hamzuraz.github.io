@@ -20,7 +20,7 @@ const themes = [
 <div id="theme-selector" class="select">
 	<button
 		type="button"
-		class="w-45"
+		class="group w-45  cursor-pointer"
 		id="theme-selector-trigger"
 		aria-haspopup="listbox"
 		aria-expanded="false"
@@ -28,7 +28,7 @@ const themes = [
 	>
 		<span class="truncate">Theme: Default — Light</span>
 		<ChevronDown
-			class="theme-selector-chevron text-muted-foreground opacity-50 shrink-0"
+			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
 	</button>
 	<div id="theme-selector-popover" data-popover aria-hidden="true">
@@ -45,6 +45,7 @@ const themes = [
 		role="option"
 		data-value={theme.id}
 		data-label={`Theme: ${theme.label}`}
+		class="cursor-pointer"
 	>
 		{theme.label}
 	</div>
@@ -54,66 +55,3 @@ const themes = [
 	</div>
 	<input type="hidden" name="theme" value="">
 </div>
-
-<script>
-	const storageKey = "hamzuraz-theme";
-	const selector = document.querySelector("#theme-selector");
-	const root = document.documentElement;
-
-	if (selector instanceof HTMLElement) {
-		const input = selector.querySelector('input[type="hidden"]');
-		const validThemes = new Set(
-			[...selector.querySelectorAll<HTMLElement>('[role="option"]')]
-				.map((option) => option.dataset.value)
-				.filter((theme): theme is string => Boolean(theme)),
-		);
-		const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
-			.matches
-			? "default-dark"
-			: "default-light";
-		let activeTheme = fallbackTheme;
-
-		try {
-			const savedTheme = window.localStorage.getItem(storageKey);
-			if (savedTheme && validThemes.has(savedTheme)) {
-				activeTheme = savedTheme;
-			}
-		} catch {
-			// Storage can be unavailable in privacy-restricted browser contexts.
-		}
-
-		selector.addEventListener("change", (event) => {
-			const theme = (event as CustomEvent<{ value?: unknown }>).detail
-				?.value;
-			if (typeof theme !== "string" || !validThemes.has(theme)) return;
-
-			root.dataset.theme = theme;
-
-			try {
-				window.localStorage.setItem(storageKey, theme);
-			} catch {
-				// The active-page switch still works when storage is unavailable.
-			}
-		});
-
-		root.dataset.theme = activeTheme;
-
-		if (input instanceof HTMLInputElement) {
-			input.value = activeTheme;
-		}
-
-		if (selector.dataset.selectInitialized === "true") {
-			(selector as HTMLElement & { value: string }).value = activeTheme;
-		}
-	}
-</script>
-
-<style>
-	.theme-selector-chevron {
-		transition: transform 150ms ease;
-	}
-
-	#theme-selector-trigger[aria-expanded="true"] .theme-selector-chevron {
-		transform: rotate(180deg);
-	}
-</style>

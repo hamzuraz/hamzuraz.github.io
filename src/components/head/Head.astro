@@ -1,0 +1,38 @@
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<script is:inline>
+		const storageKey = "theme";
+		const validThemes = new Set([
+			"default-light",
+			"default-dark",
+			"claude-light",
+			"claude-dark",
+			"designbyte-light",
+			"designbyte-dark",
+			"minimal-light",
+			"minimal-dark",
+			"portfolio-light",
+			"portfolio-dark",
+			"terminal-dark",
+			"terminal-neon-dark",
+		]);
+		const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
+			.matches
+			? "default-dark"
+			: "default-light";
+
+		document.documentElement.dataset.theme = fallbackTheme;
+
+		try {
+			const savedTheme = window.localStorage.getItem(storageKey);
+			if (savedTheme && validThemes.has(savedTheme)) {
+				document.documentElement.dataset.theme = savedTheme;
+			}
+		} catch {
+			// Storage can be unavailable in privacy-restricted browser contexts.
+		}
+	</script>
+</head>
