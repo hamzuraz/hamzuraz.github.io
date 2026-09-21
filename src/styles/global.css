@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "basecoat-css/maia";
+@import "basecoat-css/vega.css";
 
 @import "./tokens/breakpoints.css";
 @import "./tokens/spacing-and-sizing.css";
