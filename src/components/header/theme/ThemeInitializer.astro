@@ -1,0 +1,30 @@
+<script is:inline>
+	const storageKey = "theme";
+	const validThemes = new Set([
+		"default-light",
+		"default-dark",
+		"claude-light",
+		"claude-dark",
+		"designbyte-light",
+		"designbyte-dark",
+		"minimal-light",
+		"minimal-dark",
+		"portfolio-light",
+		"portfolio-dark",
+	]);
+	const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
+		.matches
+		? "default-dark"
+		: "default-light";
+
+	document.documentElement.dataset.theme = fallbackTheme;
+
+	try {
+		const savedTheme = window.localStorage.getItem(storageKey);
+		if (savedTheme && validThemes.has(savedTheme)) {
+			document.documentElement.dataset.theme = savedTheme;
+		}
+	} catch {
+		// Storage may be unavailable (private mode, quota, blocked).
+	}
+</script>

@@ -1,9 +1,11 @@
 ---
+import Header from "@/components/header/Header.astro";
 import BaseLayout from "./BaseLayout.astro";
 ---
 
 <BaseLayout>
-	<main>
+	<main class="p-px bg-border">
+		<Header />
 		<slot />
 	</main>
 </BaseLayout>

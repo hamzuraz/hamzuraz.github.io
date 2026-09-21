@@ -1,32 +1,34 @@
 ---
-import { ChevronDown } from "@lucide/astro";
+import { ChevronDown, Wallpaper } from "@lucide/astro";
+import ThemeInitializer from "./ThemeInitializer.astro";
 
 const themes = [
+	{ id: "default-light", label: "Default Light" },
+	{ id: "default-dark", label: "Default Dark" },
 	{ id: "claude-light", label: "Claude Light" },
 	{ id: "claude-dark", label: "Claude Dark" },
 	{ id: "designbyte-light", label: "Designbyte Light" },
 	{ id: "designbyte-dark", label: "Designbyte Dark" },
-	{ id: "default-light", label: "Default Light" },
-	{ id: "default-dark", label: "Default Dark" },
 	{ id: "minimal-light", label: "Minimal Light" },
 	{ id: "minimal-dark", label: "Minimal Dark" },
 	{ id: "portfolio-light", label: "Portfolio Light" },
 	{ id: "portfolio-dark", label: "Portfolio Dark" },
-	{ id: "terminal-dark", label: "Terminal Dark" },
-	{ id: "terminal-neon-dark", label: "Terminal Neon Dark" },
 ];
 ---
+
+<ThemeInitializer />
 
 <div id="theme-selector" class="select">
 	<button
 		type="button"
-		class="group w-45  cursor-pointer"
+		class="group w-45 cursor-pointer"
 		id="theme-selector-trigger"
 		aria-haspopup="listbox"
 		aria-expanded="false"
 		aria-controls="theme-selector-listbox"
 	>
-		<span class="truncate">Theme: Default — Light</span>
+		<Wallpaper />
+		<span class="truncate"></span>
 		<ChevronDown
 			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
@@ -44,7 +46,7 @@ const themes = [
 	<div
 		role="option"
 		data-value={theme.id}
-		data-label={`Theme: ${theme.label}`}
+		data-label={theme.label}
 		class="cursor-pointer"
 	>
 		{theme.label}
@@ -55,3 +57,5 @@ const themes = [
 	</div>
 	<input type="hidden" name="theme" value="">
 </div>
+
+<script src="@/scripts/theme.ts"></script>
