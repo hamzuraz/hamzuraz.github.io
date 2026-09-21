@@ -1,4 +1,4 @@
-:root[data-theme="design-byte-light"] {
+:root[data-theme="designbyte-light"] {
 	--background: oklch(0.994 0 0);
 	--foreground: oklch(0 0 0);
 	--card: oklch(0.994 0 0);
@@ -58,7 +58,7 @@
 	--spacing: 0.27rem;
 }
 
-:root[data-theme="design-byte-dark"] {
+:root[data-theme="designbyte-dark"] {
 	--background: oklch(0 0 0);
 	--foreground: oklch(0.9551 0 0);
 	--card: oklch(0.1448 0 0);

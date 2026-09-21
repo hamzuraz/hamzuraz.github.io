@@ -1,9 +1,9 @@
 @import "./claude.css";
-@import "./design-byte.css";
+@import "./designbyte.css";
+@import "./default.css";
 @import "./minimal.css";
 @import "./portfolio.css";
 @import "./terminal.css";
-@import "./zen.css";
 
 @theme inline {
 	--color-background: var(--background);

@@ -1,4 +1,4 @@
-:root[data-theme="terminal-light"] {
+:root[data-theme="terminal-dark"] {
 	--background: oklch(0 0 0);
 	--foreground: oklch(0.8686 0.2776 144.4661);
 	--card: oklch(0.1149 0 0);
@@ -63,7 +63,7 @@
 	--spacing: 0.25rem;
 }
 
-:root[data-theme="terminal-dark"] {
+:root[data-theme="terminal-neon-dark"] {
 	--background: oklch(0 0 0);
 	--foreground: oklch(0.8686 0.2776 144.4661);
 	--card: oklch(0.1149 0 0);

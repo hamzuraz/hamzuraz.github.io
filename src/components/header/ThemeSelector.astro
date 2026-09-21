@@ -1,44 +1,119 @@
-<div id="select-demo" class="select" data-placeholder="Select a fruit">
+---
+import { ChevronDown } from "@lucide/astro";
+
+const themes = [
+	{ id: "claude-light", label: "Claude Light" },
+	{ id: "claude-dark", label: "Claude Dark" },
+	{ id: "designbyte-light", label: "Designbyte Light" },
+	{ id: "designbyte-dark", label: "Designbyte Dark" },
+	{ id: "default-light", label: "Default Light" },
+	{ id: "default-dark", label: "Default Dark" },
+	{ id: "minimal-light", label: "Minimal Light" },
+	{ id: "minimal-dark", label: "Minimal Dark" },
+	{ id: "portfolio-light", label: "Portfolio Light" },
+	{ id: "portfolio-dark", label: "Portfolio Dark" },
+	{ id: "terminal-dark", label: "Terminal Dark" },
+	{ id: "terminal-neon-dark", label: "Terminal Neon Dark" },
+];
+---
+
+<div id="theme-selector" class="select">
 	<button
 		type="button"
 		class="w-45"
-		id="select-demo-trigger"
+		id="theme-selector-trigger"
 		aria-haspopup="listbox"
 		aria-expanded="false"
-		aria-controls="select-demo-listbox"
+		aria-controls="theme-selector-listbox"
 	>
-		<span class="truncate">Select a fruit</span>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="lucide lucide-chevron-down text-muted-foreground opacity-50 shrink-0"
-		>
-			<path d="m6 9 6 6 6-6" />
-		</svg>
+		<span class="truncate">Theme: Default — Light</span>
+		<ChevronDown
+			class="theme-selector-chevron text-muted-foreground opacity-50 shrink-0"
+		/>
 	</button>
-	<div id="select-demo-popover" data-popover aria-hidden="true">
+	<div id="theme-selector-popover" data-popover aria-hidden="true">
 		<div
 			role="listbox"
-			id="select-demo-listbox"
+			id="theme-selector-listbox"
 			aria-orientation="vertical"
-			aria-labelledby="select-demo-trigger"
+			aria-labelledby="theme-selector-trigger"
 		>
-			<div role="group" aria-labelledby="select-demo-fruits">
-				<span role="heading" id="select-demo-fruits">Fruits</span>
-				<div role="option" data-value="apple">Apple</div>
-				<div role="option" data-value="banana">Banana</div>
-				<div role="option" data-value="blueberry">Blueberry</div>
-				<div role="option" data-value="grapes">Grapes</div>
-				<div role="option" data-value="pineapple">Pineapple</div>
+			<div role="group" aria-labelledby="theme-selector-themes">
+				<span role="heading" id="theme-selector-themes">Themes</span>
+				{themes.map((theme) => (
+	<div
+		role="option"
+		data-value={theme.id}
+		data-label={`Theme: ${theme.label}`}
+	>
+		{theme.label}
+	</div>
+))}
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="select-demo-value" value="">
+	<input type="hidden" name="theme" value="">
 </div>
+
+<script>
+	const storageKey = "hamzuraz-theme";
+	const selector = document.querySelector("#theme-selector");
+	const root = document.documentElement;
+
+	if (selector instanceof HTMLElement) {
+		const input = selector.querySelector('input[type="hidden"]');
+		const validThemes = new Set(
+			[...selector.querySelectorAll<HTMLElement>('[role="option"]')]
+				.map((option) => option.dataset.value)
+				.filter((theme): theme is string => Boolean(theme)),
+		);
+		const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
+			.matches
+			? "default-dark"
+			: "default-light";
+		let activeTheme = fallbackTheme;
+
+		try {
+			const savedTheme = window.localStorage.getItem(storageKey);
+			if (savedTheme && validThemes.has(savedTheme)) {
+				activeTheme = savedTheme;
+			}
+		} catch {
+			// Storage can be unavailable in privacy-restricted browser contexts.
+		}
+
+		selector.addEventListener("change", (event) => {
+			const theme = (event as CustomEvent<{ value?: unknown }>).detail
+				?.value;
+			if (typeof theme !== "string" || !validThemes.has(theme)) return;
+
+			root.dataset.theme = theme;
+
+			try {
+				window.localStorage.setItem(storageKey, theme);
+			} catch {
+				// The active-page switch still works when storage is unavailable.
+			}
+		});
+
+		root.dataset.theme = activeTheme;
+
+		if (input instanceof HTMLInputElement) {
+			input.value = activeTheme;
+		}
+
+		if (selector.dataset.selectInitialized === "true") {
+			(selector as HTMLElement & { value: string }).value = activeTheme;
+		}
+	}
+</script>
+
+<style>
+	.theme-selector-chevron {
+		transition: transform 150ms ease;
+	}
+
+	#theme-selector-trigger[aria-expanded="true"] .theme-selector-chevron {
+		transform: rotate(180deg);
+	}
+</style>

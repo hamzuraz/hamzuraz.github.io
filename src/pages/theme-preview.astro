@@ -4,21 +4,21 @@ import "../styles/global.css";
 const themes = [
 	{ id: "claude-light", label: "Claude — Light" },
 	{ id: "claude-dark", label: "Claude — Dark" },
-	{ id: "design-byte-light", label: "Design Byte — Light" },
-	{ id: "design-byte-dark", label: "Design Byte — Dark" },
+	{ id: "designbyte-light", label: "Designbyte — Light" },
+	{ id: "designbyte-dark", label: "Designbyte — Dark" },
+	{ id: "default-light", label: "Default — Light" },
+	{ id: "default-dark", label: "Default — Dark" },
 	{ id: "minimal-light", label: "Minimal — Light" },
 	{ id: "minimal-dark", label: "Minimal — Dark" },
 	{ id: "portfolio-light", label: "Portfolio — Light" },
 	{ id: "portfolio-dark", label: "Portfolio — Dark" },
-	{ id: "terminal-light", label: "Terminal — Light" },
 	{ id: "terminal-dark", label: "Terminal — Dark" },
-	{ id: "zen-light", label: "Zen — Light" },
-	{ id: "zen-dark", label: "Zen — Dark" },
+	{ id: "terminal-neon-dark", label: "Terminal Neon — Dark" },
 ];
 ---
 
 <!doctype html>
-<html lang="id" data-theme="zen-light">
+<html lang="id" data-theme="default-light">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
@@ -29,12 +29,31 @@ const themes = [
 		<title>Theme preview</title>
 		<script is:inline>
 			const storageKey = "hamzuraz-theme";
-			const themePattern =
-				/^(claude|design-byte|minimal|portfolio|terminal|zen)-(light|dark)$/;
+			const validThemes = new Set([
+				"claude-light",
+				"claude-dark",
+				"designbyte-light",
+				"designbyte-dark",
+				"default-light",
+				"default-dark",
+				"minimal-light",
+				"minimal-dark",
+				"portfolio-light",
+				"portfolio-dark",
+				"terminal-dark",
+				"terminal-neon-dark",
+			]);
+			const fallbackTheme = window.matchMedia(
+				"(prefers-color-scheme: dark)",
+			).matches
+				? "default-dark"
+				: "default-light";
+
+			document.documentElement.dataset.theme = fallbackTheme;
 
 			try {
 				const savedTheme = window.localStorage.getItem(storageKey);
-				if (savedTheme && themePattern.test(savedTheme)) {
+				if (savedTheme && validThemes.has(savedTheme)) {
 					document.documentElement.dataset.theme = savedTheme;
 				}
 			} catch {
