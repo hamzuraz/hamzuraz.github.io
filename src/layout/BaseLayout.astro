@@ -7,7 +7,9 @@ import Head from "@/components/head/Head.astro";
 <html lang="en">
 	<Head />
 	<body class="min-w-80 max-w-250 mx-auto">
-		<slot />
+		<div class="p-px bg-border">
+			<slot />
+		</div>
 		<script src="@/scripts/basecoat-css.ts"></script>
 	</body>
 </html>
