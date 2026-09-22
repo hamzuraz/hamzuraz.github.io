@@ -1,10 +1,11 @@
 ---
 import "@/styles/global.css";
 import Head from "@/components/head/Head.astro";
+import { getLocale } from "@/i18n/i18n";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={getLocale(Astro.currentLocale)}>
 	<Head />
 	<body class="min-w-80 max-w-250 mx-auto">
 		<div class="p-px bg-border">

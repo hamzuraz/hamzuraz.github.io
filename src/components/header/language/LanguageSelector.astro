@@ -1,44 +1,65 @@
-<div id="select-demo" class="select" data-placeholder="Select a fruit">
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { ChevronDown, Languages } from "@lucide/astro";
+import { defaultLocale, getLocale, locales } from "@/i18n/i18n";
+import LanguageCodeSpan from "./LanguageCodeSpan.astro";
+
+interface Props {
+	path?: string;
+}
+
+const { path } = Astro.props;
+const currentLocale = getLocale(Astro.currentLocale ?? defaultLocale);
+const currentLanguage = locales.find((locale) => locale.code === currentLocale);
+---
+
+<div id="language-selector" class="select">
 	<button
 		type="button"
-		class="w-45"
-		id="select-demo-trigger"
+		class="group w-50 cursor-pointer"
+		id="language-selector-trigger"
 		aria-haspopup="listbox"
 		aria-expanded="false"
-		aria-controls="select-demo-listbox"
+		aria-controls="language-selector-listbox"
 	>
-		<span class="truncate">Select a fruit</span>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			class="lucide lucide-chevron-down text-muted-foreground opacity-50 shrink-0"
-		>
-			<path d="m6 9 6 6 6-6" />
-		</svg>
+		<Languages />
+		<span class="truncate items-baseline">
+			{currentLanguage?.label}
+			<LanguageCodeSpan>
+				{currentLanguage?.code}
+			</LanguageCodeSpan>
+		</span>
+		<ChevronDown
+			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
+		/>
 	</button>
-	<div id="select-demo-popover" data-popover aria-hidden="true">
+	<div id="language-selector-popover" data-popover aria-hidden="true">
 		<div
 			role="listbox"
-			id="select-demo-listbox"
+			id="language-selector-listbox"
 			aria-orientation="vertical"
-			aria-labelledby="select-demo-trigger"
+			aria-labelledby="language-selector-trigger"
 		>
-			<div role="group" aria-labelledby="select-demo-fruits">
-				<span role="heading" id="select-demo-fruits">Fruits</span>
-				<div role="option" data-value="apple">Apple</div>
-				<div role="option" data-value="banana">Banana</div>
-				<div role="option" data-value="blueberry">Blueberry</div>
-				<div role="option" data-value="grapes">Grapes</div>
-				<div role="option" data-value="pineapple">Pineapple</div>
+			<div role="group" aria-labelledby="language-selector-languages">
+				<span role="heading" id="language-selector-languages">
+					Languages
+				</span>
+				{locales.map((language) => (
+	<a
+		href={getRelativeLocaleUrl(language.code, path)}
+		role="option"
+		data-value={language.code}
+		aria-selected={language.code === currentLocale ? "true" : undefined}
+		class="cursor-pointer items-baseline"
+	>
+		{language.label}
+		<LanguageCodeSpan>{language.code}</LanguageCodeSpan>
+	</a>
+))}
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="select-demo-value" value="">
+	<input type="hidden" name="language" value={currentLocale}>
 </div>
+
+<script src="@/scripts/language.ts"></script>

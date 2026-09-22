@@ -1,0 +1,26 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocale, getLocaleStaticPaths, localizedPages } from "@/i18n/i18n";
+import Layout from "@/layout/Layout.astro";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const locale = getLocale(Astro.currentLocale);
+---
+
+<Layout>
+	<section class="p-6">
+		<h1>Internationalization examples</h1>
+		<ul>
+			{localizedPages.map((page) => (
+	<li>
+		<a href={getRelativeLocaleUrl(locale, page.slug)}>
+			{page.translations[locale].title}
+		</a>
+	</li>
+))}
+		</ul>
+	</section>
+</Layout>

@@ -1,7 +1,17 @@
 ---
+import LanguageSelector from "./language/LanguageSelector.astro";
 import ThemeSelector from "./theme/ThemeSelector.astro";
+
+interface Props {
+	path?: string;
+}
+
+const { path } = Astro.props;
 ---
 
 <header class="p-3 bg-background rounded-b-sm">
-	<ThemeSelector />
+	<div class="flex flex-wrap gap-3">
+		<ThemeSelector />
+		<LanguageSelector path={path} />
+	</div>
 </header>
