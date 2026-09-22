@@ -1,0 +1,24 @@
+---
+import { getLocale, getLocaleStaticPaths, localizedPages } from "@/i18n/i18n";
+import Layout from "@/layout/Layout.astro";
+
+export function getStaticPaths() {
+	return localizedPages.flatMap((page) =>
+		getLocaleStaticPaths().map(({ params }) => ({
+			params: { ...params, page: page.slug },
+			props: { page },
+		})),
+	);
+}
+
+const { page } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const content = page.translations[locale];
+---
+
+<Layout path={page.slug}>
+	<section class="p-6">
+		<h1>{content.title}</h1>
+		<p>{content.description}</p>
+	</section>
+</Layout>
