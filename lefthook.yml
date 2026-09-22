@@ -2,9 +2,12 @@ pre-commit:
   parallel: false
   jobs:
     - name: Biome check
+      glob: "*.{js,ts,astro,svg,json,css}"
       run: bun --bun run biome:check
       stage_fixed: true
+
     - name: Astro check
+      glob: "*.{js,ts,astro}"
       run: bun --bun run astro check
 
 commit-msg:
