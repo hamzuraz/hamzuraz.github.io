@@ -2,14 +2,22 @@
 
 - This project is a portfolio website deployed to GitHub Pages and available at `https://hamzuraz.github.io`.
 - Use **Bun** as the runtime and package manager. Do **not** use `npm`, `pnpm`, or `yarn`.
-- The main technologies used by this project are:
-  - Astro v7
-  - Tailwind CSS v4
-  - Basecoat CSS v1
+- The main dependencies used by this project are:
+  - `astro` v7
+  - `@lucide/astro` v1
+  - `tailwindcss` v4
+  - `basecoat-css` v1
 - Refer to `@package.json` for the complete list of dependencies, dev dependencies, and available scripts.
 - The project supports:
   - Multiple themes
 - Preserve existing theme behavior when making changes.
+
+## Dependency Management
+
+- Do not add, remove, or change dependencies unless explicitly requested by the user.
+- Prefer using existing dependencies and built-in project capabilities.
+- If a new dependency is genuinely necessary and there is no reasonable alternative, ask the user for explicit approval before adding it.
+- Do not proceed with the dependency change without user approval.
 
 ## Astro Documentation
 
