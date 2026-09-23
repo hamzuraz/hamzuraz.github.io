@@ -14,8 +14,8 @@ export default defineConfig({
 		},
 	},
 	redirects: {
-		"/en-US/": "/",
 		"/en/": "/",
+		"/en-US/": "/",
 	},
 	trailingSlash: "always",
 	vite: {

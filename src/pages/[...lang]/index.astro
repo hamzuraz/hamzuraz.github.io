@@ -1,6 +1,12 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLocale, getLocaleStaticPaths, localizedPages } from "@/i18n/i18n";
+import {
+	getLocale,
+	getLocaleStaticPaths,
+	getPageTranslation,
+	locales,
+	localizedPages,
+} from "@/i18n/i18n";
 import Layout from "@/layout/Layout.astro";
 
 export function getStaticPaths() {
@@ -8,19 +14,40 @@ export function getStaticPaths() {
 }
 
 const locale = getLocale(Astro.currentLocale);
+
+const languageName =
+	locales.find(({ code }) => code === locale)?.name ?? locale;
+
+const availablePages = localizedPages.flatMap((page) => {
+	const content = getPageTranslation(page, locale);
+	return content ? [{ page, content }] : [];
+});
 ---
 
 <Layout>
+	{availablePages.length > 0 ? (
 	<section class="p-6">
 		<h1>Internationalization examples</h1>
 		<ul>
-			{localizedPages.map((page) => (
-	<li>
-		<a href={getRelativeLocaleUrl(locale, page.slug)}>
-			{page.translations[locale].title}
-		</a>
-	</li>
-))}
+			{availablePages.map(({ page, content }) => (
+				<li>
+					<a
+						href={getRelativeLocaleUrl(locale, page.slug, {
+							normalizeLocale: false,
+						})}
+					>
+						{content.title}
+					</a>
+				</li>
+			))}
 		</ul>
 	</section>
+) : (
+	<section class="p-6">
+		<p>
+			This page is not available in {languageName} yet, please choose
+			another language
+		</p>
+	</section>
+)}
 </Layout>

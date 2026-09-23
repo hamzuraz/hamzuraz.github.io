@@ -24,7 +24,7 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 	>
 		<Languages />
 		<span class="flex flex-1 truncate items-baseline gap-1.5">
-			{currentLanguage?.label}
+			{currentLanguage?.name}
 			<span class="text-xs text-muted-foreground">
 				{currentLanguage?.code}
 			</span>
@@ -51,12 +51,14 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 				</div>
 				{locales.map((language) => (
 	<a
-		href={getRelativeLocaleUrl(language.code, path)}
+		href={getRelativeLocaleUrl(language.code, path, {
+			normalizeLocale: false,
+		})}
 		role="menuitemradio"
 		class="cursor-pointer items-baseline"
 		aria-checked={language.code === currentLocale ? "true" : "false"}
 	>
-		{language.label}
+		{language.name}
 		<span class="text-xs text-muted-foreground pointer-events-none">
 			{language?.code}
 		</span>

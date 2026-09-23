@@ -59,6 +59,7 @@ Consult these guides before working on related tasks:
 ### Basecoat CSS Components
 
 - Basecoat CSS is the preferred starting point for UI components when an appropriate component already exists.
+- The user will often provide an initial component taken from Basecoat CSS; treat it as the starting point and modify it only as much as necessary.
 - Before creating or significantly modifying a Basecoat-based component, check the Basecoat CSS documentation:
   - `https://basecoatui.com/llms.txt`
   - `https://basecoatui.com/llms-full.txt`
@@ -76,7 +77,7 @@ Consult these guides before working on related tasks:
 
 ## JavaScript / TypeScript
 
-- Use JavaScript/TypeScript only when the required behavior cannot be implemented clearly with HTML/Astro and CSS/Tailwind CSS/Basecoat CSS.
+- Use JavaScript/TypeScript only when the required behavior cannot be implemented clearly with HTML/Astro and CSS/Tailwind/Basecoat.
 - Keep JavaScript/TypeScript minimal, simple, and easy to understand.
 - Prefer the `function` keyword for named function declarations.
 - Prefer arrow functions for functions passed directly as arguments or callbacks.
@@ -123,7 +124,7 @@ After completing all requested changes for a task, follow this workflow:
    - Never push changes unless the user explicitly asks for it.
    - Preparing or suggesting a commit message does not authorize creating the commit.
    - A request to commit does not automatically authorize pushing.
-   - Commit messages must follow the commits format.
+   - Commit messages must follow the Conventional Commits format.
    - Use a scope in the subject line when applicable (e.g. `feat(auth): ...`).
    - Body and footer are optional — include them only when necessary (e.g. to explain context, breaking changes, or reference an issue).
 

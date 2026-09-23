@@ -1,7 +1,7 @@
 export const exampleOne = {
 	slug: "example-one",
 	translations: {
-		"en-US": {
+		en: {
 			description: "This is the first localized example page.",
 			title: "Example one",
 		},

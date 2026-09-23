@@ -1,5 +1,11 @@
 ---
-import { getLocale, getLocaleStaticPaths, localizedPages } from "@/i18n/i18n";
+import {
+	getLocale,
+	getLocaleStaticPaths,
+	getPageTranslation,
+	locales,
+	localizedPages,
+} from "@/i18n/i18n";
 import Layout from "@/layout/Layout.astro";
 
 export function getStaticPaths() {
@@ -13,12 +19,24 @@ export function getStaticPaths() {
 
 const { page } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
-const content = page.translations[locale];
+const content = getPageTranslation(page, locale);
+
+const languageName =
+	locales.find(({ code }) => code === locale)?.name ?? locale;
 ---
 
 <Layout path={page.slug}>
+	{content ? (
 	<section class="p-6">
 		<h1>{content.title}</h1>
 		<p>{content.description}</p>
 	</section>
+) : (
+	<section class="p-6">
+		<p>
+			This page is not available in {languageName} yet, please choose
+			another language
+		</p>
+	</section>
+)}
 </Layout>
