@@ -1,65 +1,71 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { ChevronDown, Languages } from "@lucide/astro";
-import { defaultLocale, getLocale, locales } from "@/i18n/i18n";
-import LanguageCodeSpan from "./LanguageCodeSpan.astro";
+import { Check, ChevronDown, Languages } from "@lucide/astro";
+import { getLocale, locales } from "@/i18n/i18n";
 
 interface Props {
 	path?: string;
 }
 
 const { path } = Astro.props;
-const currentLocale = getLocale(Astro.currentLocale ?? defaultLocale);
+const currentLocale = getLocale(Astro.currentLocale);
 const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 ---
 
-<div id="language-selector" class="select">
+<div id="language-selector" class="dropdown-menu">
 	<button
 		type="button"
-		class="group w-50 cursor-pointer"
 		id="language-selector-trigger"
-		aria-haspopup="listbox"
+		class="btn group w-50 cursor-pointer"
+		data-variant="outline"
+		aria-controls="language-selector-menu"
 		aria-expanded="false"
-		aria-controls="language-selector-listbox"
+		aria-haspopup="menu"
 	>
 		<Languages />
-		<span class="truncate items-baseline">
+		<span class="flex flex-1 truncate items-baseline gap-1.5">
 			{currentLanguage?.label}
-			<LanguageCodeSpan>
+			<span class="text-xs text-muted-foreground">
 				{currentLanguage?.code}
-			</LanguageCodeSpan>
+			</span>
 		</span>
 		<ChevronDown
 			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
 	</button>
-	<div id="language-selector-popover" data-popover aria-hidden="true">
+
+	<div
+		id="language-selector-popover"
+		class="w-50"
+		data-popover
+		aria-hidden="true"
+	>
 		<div
-			role="listbox"
-			id="language-selector-listbox"
-			aria-orientation="vertical"
+			role="menu"
+			id="language-selector-menu"
 			aria-labelledby="language-selector-trigger"
 		>
 			<div role="group" aria-labelledby="language-selector-languages">
-				<span role="heading" id="language-selector-languages">
+				<div role="heading" id="language-selector-languages">
 					Languages
-				</span>
+				</div>
 				{locales.map((language) => (
 	<a
 		href={getRelativeLocaleUrl(language.code, path)}
-		aria-selected={language.code === currentLocale ? "true" : undefined}
-		role="option"
-		data-value={language.code}
+		role="menuitemradio"
 		class="cursor-pointer items-baseline"
+		aria-checked={language.code === currentLocale ? "true" : "false"}
 	>
 		{language.label}
-		<LanguageCodeSpan>{language.code}</LanguageCodeSpan>
+		<span class="text-xs text-muted-foreground pointer-events-none">
+			{language?.code}
+		</span>
+		<span data-indicator>
+			<Check />
+		</span>
 	</a>
 ))}
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="language" value={currentLocale}>
 </div>
-
-<script src="@/scripts/language.ts"></script>

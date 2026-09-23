@@ -1,17 +1,14 @@
-<script is:inline>
+---
+interface Props {
+	themeIds: string[];
+}
+
+const { themeIds } = Astro.props;
+---
+
+<script is:inline define:vars={{ themeIds }}>
 	const storageKey = "theme";
-	const validThemes = new Set([
-		"default-light",
-		"default-dark",
-		"claude-light",
-		"claude-dark",
-		"designbyte-light",
-		"designbyte-dark",
-		"minimal-light",
-		"minimal-dark",
-		"portfolio-light",
-		"portfolio-dark",
-	]);
+	const validThemes = new Set(themeIds);
 	const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
 		.matches
 		? "default-dark"

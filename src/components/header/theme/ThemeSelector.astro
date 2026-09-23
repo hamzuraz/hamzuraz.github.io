@@ -1,56 +1,78 @@
 ---
-import { ChevronDown, Wallpaper } from "@lucide/astro";
-import ThemeInitializer from "./ThemeInitializer.astro";
+import { Check, ChevronDown, Wallpaper } from "@lucide/astro";
+import ThemeInitializerScript from "./ThemeInitializerScript.astro";
+import ThemeSelectorScript from "./ThemeSelectorScript.astro";
 
 const themes = [
-	{ id: "default-light", label: "Default Light" },
-	{ id: "default-dark", label: "Default Dark" },
-	{ id: "claude-light", label: "Claude Light" },
-	{ id: "claude-dark", label: "Claude Dark" },
-	{ id: "designbyte-light", label: "Designbyte Light" },
-	{ id: "designbyte-dark", label: "Designbyte Dark" },
-	{ id: "minimal-light", label: "Minimal Light" },
-	{ id: "minimal-dark", label: "Minimal Dark" },
-	{ id: "portfolio-light", label: "Portfolio Light" },
-	{ id: "portfolio-dark", label: "Portfolio Dark" },
+	{ id: "default-light", name: "Default", mode: "Light" },
+	{ id: "default-dark", name: "Default", mode: "Dark" },
+	{ id: "claude-light", name: "Claude", mode: "Light" },
+	{ id: "claude-dark", name: "Claude", mode: "Dark" },
+	{ id: "designbyte-light", name: "Designbyte", mode: "Light" },
+	{ id: "designbyte-dark", name: "Designbyte", mode: "Dark" },
+	{ id: "minimal-light", name: "Minimal", mode: "Light" },
+	{ id: "minimal-dark", name: "Minimal", mode: "Dark" },
+	{ id: "mx-brutalist-light", name: "MX Brutalist", mode: "Light" },
+	{ id: "mx-brutalist-dark", name: "MX Brutalist", mode: "Dark" },
+	{ id: "portfolio-light", name: "Portfolio", mode: "Light" },
+	{ id: "portfolio-dark", name: "Portfolio", mode: "Dark" },
 ];
 ---
 
-<ThemeInitializer />
+<ThemeInitializerScript themeIds={themes.map((theme) => theme.id)} />
 
-<div id="theme-selector" class="select">
+<div id="theme-selector" class="dropdown-menu">
 	<button
 		type="button"
-		class="group w-50 cursor-pointer"
 		id="theme-selector-trigger"
-		aria-haspopup="listbox"
+		class="btn group w-50 cursor-pointer"
+		data-variant="outline"
+		aria-controls="theme-selector-menu"
 		aria-expanded="false"
-		aria-controls="theme-selector-listbox"
+		aria-haspopup="menu"
 	>
 		<Wallpaper />
-		<span class="truncate"></span>
+		<span class="flex flex-1 truncate items-baseline gap-1.5">
+			<span data-theme-name></span>
+			<span class="text-xs text-muted-foreground" data-theme-mode></span>
+		</span>
 		<ChevronDown
 			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
 	</button>
-	<div id="theme-selector-popover" data-popover aria-hidden="true">
+
+	<div
+		id="theme-selector-popover"
+		class="w-50"
+		data-popover
+		aria-hidden="true"
+	>
 		<div
-			role="listbox"
-			id="theme-selector-listbox"
-			aria-orientation="vertical"
+			role="menu"
+			id="theme-selector-menu"
 			aria-labelledby="theme-selector-trigger"
 		>
 			<div role="group" aria-labelledby="theme-selector-themes">
-				<span role="heading" id="theme-selector-themes">Themes</span>
+				<div role="heading" id="theme-selector-themes">Themes</div>
 				{themes.map((theme) => (
-	<div role="option" data-value={theme.id} class="cursor-pointer">
-		{theme.label}
+	<div
+		role="menuitemradio"
+		class="cursor-pointer"
+		data-value={theme.id}
+		data-theme-name={theme.name}
+		data-theme-mode={theme.mode}
+		aria-checked={theme.id === "default-light" ? "true" : "false"}
+	>
+		<span>{theme.name}</span>
+		<span class="text-xs text-muted-foreground">{theme.mode}</span>
+		<span data-indicator>
+			<Check />
+		</span>
 	</div>
 ))}
 			</div>
 		</div>
 	</div>
-	<input type="hidden" name="theme" value="">
 </div>
 
-<script src="@/scripts/theme.ts"></script>
+<ThemeSelectorScript />
