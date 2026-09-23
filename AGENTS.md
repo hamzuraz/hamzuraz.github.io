@@ -10,7 +10,8 @@
 - Refer to `@package.json` for the complete list of dependencies, dev dependencies, and available scripts.
 - The project supports:
   - Multiple themes
-- Preserve existing theme behavior when making changes.
+  - Multiple languages (i18n)
+- Preserve existing theme and i18n behavior when making changes.
 
 ## Dependency Management
 
@@ -112,7 +113,7 @@ After completing all requested changes for a task, follow this workflow:
    - Once all validation checks pass, ask the user whether:
      - The result is satisfactory.
      - They want changes or further adjustments.
-     - They want a Conventional Commit message prepared without creating a commit.
+     - They want a commit message prepared without creating a commit.
      - They want the changes committed.
      - They want the changes committed and pushed.
    - If the user requests any additional changes, make those changes and return to **Step 1**.
@@ -122,3 +123,19 @@ After completing all requested changes for a task, follow this workflow:
    - Never push changes unless the user explicitly asks for it.
    - Preparing or suggesting a commit message does not authorize creating the commit.
    - A request to commit does not automatically authorize pushing.
+   - Commit messages must follow the commits format.
+   - Use a scope in the subject line when applicable (e.g. `feat(auth): ...`).
+   - Body and footer are optional — include them only when necessary (e.g. to explain context, breaking changes, or reference an issue).
+
+5. **When the user asks for a commit message:**
+   - Before preparing the commit message, inspect only the changes currently staged by the user (`git diff --staged` / equivalent). Ignore any unstaged changes in the working directory.
+   - Review the staged diff for bugs (logic errors, broken references, edge cases, type mismatches, etc.).
+   - **If bugs are found:**
+     - Do not provide a commit message.
+     - Explain clearly what bug(s) were found and where.
+     - Explain the suggested fix/solution for each bug.
+     - Wait for the user's response. If the user asks for a commit message again, repeat the bug-check process from the beginning on the (possibly updated) staged changes.
+     - Only skip the fix and proceed to generate a commit message if the user explicitly states they want to ignore/accept the bug as-is.
+   - **If no bugs are found:**
+     - Tell the user that no bugs were found in the staged changes.
+     - Then provide the commit message based on all the staged changes.
