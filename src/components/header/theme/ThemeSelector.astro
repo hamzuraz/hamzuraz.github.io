@@ -21,7 +21,7 @@ const themes = [
 <div id="theme-selector" class="select">
 	<button
 		type="button"
-		class="group w-45 cursor-pointer"
+		class="group w-50 cursor-pointer"
 		id="theme-selector-trigger"
 		aria-haspopup="listbox"
 		aria-expanded="false"
@@ -43,12 +43,7 @@ const themes = [
 			<div role="group" aria-labelledby="theme-selector-themes">
 				<span role="heading" id="theme-selector-themes">Themes</span>
 				{themes.map((theme) => (
-	<div
-		role="option"
-		data-value={theme.id}
-		data-label={theme.label}
-		class="cursor-pointer"
-	>
+	<div role="option" data-value={theme.id} class="cursor-pointer">
 		{theme.label}
 	</div>
 ))}

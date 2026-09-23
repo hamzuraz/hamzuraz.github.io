@@ -47,9 +47,9 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 				{locales.map((language) => (
 	<a
 		href={getRelativeLocaleUrl(language.code, path)}
+		aria-selected={language.code === currentLocale ? "true" : undefined}
 		role="option"
 		data-value={language.code}
-		aria-selected={language.code === currentLocale ? "true" : undefined}
 		class="cursor-pointer items-baseline"
 	>
 		{language.label}
