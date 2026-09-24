@@ -25,7 +25,9 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 		aria-haspopup="menu"
 	>
 		<Languages />
-		<span class="flex flex-1 truncate items-baseline gap-1.5">
+		<span
+			class="flex flex-1 truncate items-baseline gap-1.5 text-sm text-foreground"
+		>
 			{currentLanguage?.name}
 			<span class="text-xs text-muted-foreground">
 				{currentLanguage?.code}
