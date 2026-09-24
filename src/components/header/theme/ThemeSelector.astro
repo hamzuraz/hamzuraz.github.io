@@ -1,5 +1,6 @@
 ---
 import { Check, ChevronDown, Wallpaper } from "@lucide/astro";
+import Kbd from "@/components/common/Kbd.astro";
 import ThemeInitializerScript from "./ThemeInitializerScript.astro";
 import ThemeSelectorScript from "./ThemeSelectorScript.astro";
 
@@ -25,7 +26,8 @@ const themes = [
 	<button
 		type="button"
 		id="theme-selector-trigger"
-		class="btn group w-50 cursor-pointer"
+		class="btn group w-58 cursor-pointer"
+		data-shortcut="t"
 		data-variant="outline"
 		aria-controls="theme-selector-menu"
 		aria-expanded="false"
@@ -36,6 +38,7 @@ const themes = [
 			<span data-theme-name></span>
 			<span class="text-xs text-muted-foreground" data-theme-mode></span>
 		</span>
+		<Kbd>T</Kbd>
 		<ChevronDown
 			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
@@ -43,7 +46,7 @@ const themes = [
 
 	<div
 		id="theme-selector-popover"
-		class="w-50"
+		class="w-full"
 		data-popover
 		aria-hidden="true"
 	>
