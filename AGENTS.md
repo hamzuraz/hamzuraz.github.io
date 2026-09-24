@@ -36,6 +36,7 @@ Consult these guides before working on related tasks:
 ## General Coding Guidelines
 
 - Keep files, folders, code, comments, and naming organized and easy to understand, especially for someone encountering the project for the first time.
+- Build the code and the overall codebase so it can scale easily as the project/feature grows.
 - Keep implementations simple and avoid unnecessary complexity.
 - When modifying existing code, make the smallest change necessary to satisfy the requirement.
 - Prefer native HTML/Astro and CSS-based solutions over JavaScript/TypeScript whenever practical.
