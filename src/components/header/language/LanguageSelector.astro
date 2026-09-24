@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Check, ChevronDown, Languages } from "@lucide/astro";
+import Kbd from "@/components/common/Kbd.astro";
 import { getLocale, locales } from "@/i18n/i18n";
 
 interface Props {
@@ -16,7 +17,8 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 	<button
 		type="button"
 		id="language-selector-trigger"
-		class="btn group w-50 cursor-pointer"
+		class="btn group w-58 cursor-pointer"
+		data-shortcut="l"
 		data-variant="outline"
 		aria-controls="language-selector-menu"
 		aria-expanded="false"
@@ -29,6 +31,7 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 				{currentLanguage?.code}
 			</span>
 		</span>
+		<Kbd>L</Kbd>
 		<ChevronDown
 			class="text-muted-foreground opacity-50 shrink-0 transition-transform duration-150 ease-out group-aria-expanded:rotate-180"
 		/>
@@ -36,7 +39,7 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 
 	<div
 		id="language-selector-popover"
-		class="w-50"
+		class="w-full"
 		data-popover
 		aria-hidden="true"
 	>
