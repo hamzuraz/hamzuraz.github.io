@@ -1,4 +1,4 @@
-:root[data-theme="minimal-light"] {
+:root[data-theme="monochrome-light"] {
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.145 0 0);
 	--card: oklch(0.995 0 0);
@@ -58,7 +58,7 @@
 	--spacing: 0.25rem;
 }
 
-:root[data-theme="minimal-dark"] {
+:root[data-theme="monochrome-dark"] {
 	--background: oklch(0.205 0 0);
 	--foreground: oklch(0.985 0 0);
 	--card: oklch(0.165 0 0);

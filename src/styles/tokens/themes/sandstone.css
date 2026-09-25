@@ -1,4 +1,4 @@
-:root[data-theme="portfolio-light"] {
+:root[data-theme="sandstone-light"] {
 	--background: oklch(0.9755 0.0067 97.351);
 	--foreground: oklch(0.2178 0 0);
 	--card: oklch(1 0 0);
@@ -63,7 +63,7 @@
 	--spacing: 0.25rem;
 }
 
-:root[data-theme="portfolio-dark"] {
+:root[data-theme="sandstone-dark"] {
 	--background: oklch(0.1904 0.004 106.7692);
 	--foreground: oklch(0.9755 0.0067 97.351);
 	--card: oklch(0.2343 0.0038 106.6863);

@@ -1,4 +1,4 @@
-:root[data-theme="mx-brutalist-light"] {
+:root[data-theme="brutalist-light"] {
 	--background: oklch(0.9923 0.0104 91.4994);
 	--foreground: oklch(0.1759 0.0275 161.2531);
 	--card: oklch(1 0 0);
@@ -58,7 +58,7 @@
 	--spacing: 0.25rem;
 }
 
-:root[data-theme="mx-brutalist-dark"] {
+:root[data-theme="brutalist-dark"] {
 	--background: oklch(0.1649 0.0308 162.2739);
 	--foreground: oklch(0.9809 0.026 91.6197);
 	--card: oklch(0.2283 0.0445 158.2398);
