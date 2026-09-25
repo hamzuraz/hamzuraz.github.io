@@ -1,8 +1,8 @@
-@import "./claude.css";
+@import "./brutalist.css";
 @import "./default.css";
-@import "./minimal.css";
-@import "./mx-brutalist.css";
-@import "./portfolio.css";
+@import "./monochrome.css";
+@import "./sandstone.css";
+@import "./terracotta.css";
 
 @theme inline {
 	--color-background: var(--background);
