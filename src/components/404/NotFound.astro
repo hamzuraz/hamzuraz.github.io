@@ -1,33 +1,23 @@
-<section class="empty">
+---
+import DefaultButton from "@/components/common/DefaultButton.astro";
+import LanguageSelector from "@/components/header/language/LanguageSelector.astro";
+---
+
+<section class="empty max-w-lg mx-auto text-center py-16">
 	<header>
-		<h3>404 - Not Found</h3>
-		<p>
-			The page you're looking for doesn't exist. Try searching for what
-			you need below.
+		<h1
+			class="font-pixel text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+		>
+			404 - Not Found
+		</h1>
+		<p class="font-sans text-sm sm:text-base text-muted-foreground mt-2">
+			The page you are looking for does not exist or has been moved.
 		</p>
 	</header>
-	<footer>
-		<div class="input-group sm:w-3/4">
-			<input type="search" placeholder="Try searching for pages...">
-			<span data-align="start" aria-hidden="true">
-				<svg
-					class="lucide lucide-search"
-					xmlns="http://www.w3.org/2000/svg"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path d="m21 21-4.34-4.34" />
-					<circle cx="11" cy="11" r="8" />
-				</svg>
-			</span>
-			<span data-align="end"><kbd class="kbd">/</kbd></span>
-		</div>
-		<p>Need help? <a href="#">Contact support</a></p>
+	<footer
+		class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+	>
+		<DefaultButton href="/"> Go back to homepage (English) </DefaultButton>
+		<LanguageSelector />
 	</footer>
 </section>

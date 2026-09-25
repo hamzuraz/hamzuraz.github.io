@@ -1,3 +1,40 @@
-<button type="button" class="btn" data-variant="outline">
-	<slot />
-</button>
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
+	href?: string;
+	target?: string;
+	rel?: string;
+}
+
+const {
+	href,
+	target,
+	rel,
+	class: className,
+	type = "button",
+	...rest
+} = Astro.props;
+---
+
+{href ? (
+	<a
+		href={href}
+		class:list={["btn", className]}
+		data-variant="outline"
+		target={target}
+		rel={rel}
+		{...(rest as HTMLAttributes<"a">)}
+	>
+		<slot />
+	</a>
+) : (
+	<button
+		type={type}
+		class:list={["btn", className]}
+		data-variant="outline"
+		{...rest}
+	>
+		<slot />
+	</button>
+)}

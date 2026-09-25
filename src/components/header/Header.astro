@@ -1,5 +1,8 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocale } from "@/i18n/i18n";
 import LanguageSelector from "./language/LanguageSelector.astro";
+import MobileMenu from "./MobileMenu.astro";
 import ThemeSelector from "./theme/ThemeSelector.astro";
 
 interface Props {
@@ -7,11 +10,58 @@ interface Props {
 }
 
 const { path } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
+const projectsUrl = getRelativeLocaleUrl(locale, "projects", {
+	normalizeLocale: false,
+});
 ---
 
-<header class="p-3 sm:px-6 bg-background rounded-b-sm">
-	<div class="flex flex-wrap gap-3">
-		<ThemeSelector />
-		<LanguageSelector path={path} />
+<header class="p-3 sm:px-6 bg-background rounded-b-sm border-b border-border">
+	<div class="flex items-center justify-between gap-3">
+		<!-- Mobile Menu trigger (only on < sm) -->
+		<div class="sm:hidden flex items-center">
+			<MobileMenu />
+		</div>
+
+		<!-- Brand mark: centered on < sm, left on >= sm -->
+		<div class="flex-1 text-center sm:text-left sm:flex-none">
+			<a
+				href={homeUrl}
+				class="font-pixel text-xl font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity"
+				aria-label="Rifki Muhazzar - Homepage"
+			>
+				RM
+			</a>
+		</div>
+
+		<!-- Right side: Navigation links + ThemeSelector + LanguageSelector -->
+		<div class="flex items-center gap-3 sm:gap-4">
+			<nav class="hidden sm:flex items-center gap-4 text-sm font-sans">
+				<a
+					href={projectsUrl}
+					class="text-muted-foreground hover:text-foreground transition-colors"
+				>
+					Projects
+				</a>
+				<a
+					href={`${homeUrl}#skills`}
+					class="text-muted-foreground hover:text-foreground transition-colors"
+				>
+					Skills
+				</a>
+				<a
+					href={`${homeUrl}#contact`}
+					class="text-muted-foreground hover:text-foreground transition-colors"
+				>
+					Contact
+				</a>
+			</nav>
+
+			<div class="flex items-center gap-2">
+				<ThemeSelector />
+				<LanguageSelector path={path} />
+			</div>
+		</div>
 	</div>
 </header>

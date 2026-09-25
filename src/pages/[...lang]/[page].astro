@@ -6,7 +6,7 @@ import {
 	locales,
 	localizedPages,
 } from "@/i18n/i18n";
-import Layout from "@/layout/Layout.astro";
+import NormalPageLayout from "@/layout/NormalPageLayout.astro";
 
 export function getStaticPaths() {
 	return localizedPages.flatMap((page) =>
@@ -25,18 +25,26 @@ const languageName =
 	locales.find(({ code }) => code === locale)?.name ?? locale;
 ---
 
-<Layout path={page.slug}>
+<NormalPageLayout
+	title={content ? `${content.title} | Rifki Muhazzar` : "Page | Rifki Muhazzar"}
+	description={content?.description}
+	path={page.slug}
+>
 	{content ? (
-	<section class="p-6">
-		<h1>{content.title}</h1>
-		<p>{content.description}</p>
+	<section class="py-12">
+		<h1 class="font-pixel text-3xl font-bold tracking-tight text-foreground">
+			{content.title}
+		</h1>
+		<p class="font-sans text-base text-muted-foreground mt-3 leading-relaxed">
+			{content.description}
+		</p>
 	</section>
 ) : (
-	<section class="p-6">
-		<p>
+	<section class="py-16 text-center">
+		<p class="font-sans text-base text-muted-foreground">
 			This page is not available in {languageName} yet, please choose
 			another language
 		</p>
 	</section>
 )}
-</Layout>
+</NormalPageLayout>

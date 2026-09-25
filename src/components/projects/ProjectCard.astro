@@ -1,0 +1,73 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	techStack: string[];
+	coverImage?: string;
+	sourceCodeUrl?: string;
+	sourceCodeButtonText?: string;
+	liveDemoUrl?: string;
+	liveDemoButtonText?: string;
+}
+
+const {
+	title,
+	description,
+	techStack,
+	coverImage,
+	sourceCodeUrl,
+	sourceCodeButtonText = "Source code",
+	liveDemoUrl,
+	liveDemoButtonText = "Live demo",
+} = Astro.props;
+
+// Show between 2 and 4 badges depending on array size
+const visibleTechStack = techStack.slice(0, 4);
+---
+
+<article class="card flex flex-col h-full overflow-hidden">
+	{coverImage && (
+	<img
+		alt={`${title} cover`}
+		class="aspect-video w-full object-cover border-b border-border"
+		src={coverImage}
+		loading="lazy"
+	/>
+)}
+	<header class="flex-1 p-4 pb-0">
+		<h3 class="font-pixel text-lg font-bold tracking-tight">{title}</h3>
+		<div class="flex flex-wrap gap-1.5 pt-2">
+			{visibleTechStack.map((tech) => (
+	<span class="badge text-xs truncate max-w-28" data-variant="secondary">
+		{tech}
+	</span>
+))}
+		</div>
+		<p class="font-sans text-sm text-muted-foreground mt-3 leading-relaxed">
+			{description}
+		</p>
+	</header>
+	<footer class="p-4 pt-4 flex flex-wrap gap-2">
+		{liveDemoUrl && (
+	<a
+		href={liveDemoUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="btn flex-1 text-center"
+	>
+		{liveDemoButtonText}
+	</a>
+)}
+		{sourceCodeUrl && (
+	<a
+		href={sourceCodeUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="btn flex-1 text-center"
+		data-variant="outline"
+	>
+		{sourceCodeButtonText}
+	</a>
+)}
+	</footer>
+</article>

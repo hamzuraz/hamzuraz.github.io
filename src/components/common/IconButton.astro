@@ -1,18 +1,50 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
 	tooltip: string;
+	href?: string;
+	ariaLabel?: string;
+	target?: string;
+	rel?: string;
 }
 
-const { tooltip } = Astro.props;
+const {
+	tooltip,
+	href,
+	ariaLabel,
+	target,
+	rel,
+	class: className,
+	type = "button",
+	...rest
+} = Astro.props;
 ---
 
-<button
-	type="button"
-	class="btn cursor-pointer"
-	data-size="icon"
-	data-tooltip={tooltip}
-	data-variant="outline"
-	aria-label="Open"
->
-	<slot />
-</button>
+{href ? (
+	<a
+		href={href}
+		class:list={["btn cursor-pointer", className]}
+		data-size="icon"
+		data-tooltip={tooltip}
+		data-variant="outline"
+		aria-label={ariaLabel ?? tooltip}
+		target={target}
+		rel={rel}
+		{...(rest as HTMLAttributes<"a">)}
+	>
+		<slot />
+	</a>
+) : (
+	<button
+		type={type}
+		class:list={["btn cursor-pointer", className]}
+		data-size="icon"
+		data-tooltip={tooltip}
+		data-variant="outline"
+		aria-label={ariaLabel ?? tooltip}
+		{...rest}
+	>
+		<slot />
+	</button>
+)}

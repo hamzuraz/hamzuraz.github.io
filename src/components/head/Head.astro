@@ -1,5 +1,60 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { defaultLocale, locales } from "@/i18n/i18n";
+
+interface Props {
+	title?: string;
+	description?: string;
+	path?: string;
+}
+
+const {
+	title = "Rifki Muhazzar — Software Engineer",
+	description = "Portfolio of Rifki Muhazzar, a software engineer crafting robust digital systems and web experiences.",
+	path = "",
+} = Astro.props;
+---
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>{title}</title>
+	<meta name="description" content={description}>
+
+	<!-- Preload Primary Fonts -->
+	<link
+		rel="preload"
+		href="/fonts/geist-sans-normal.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	>
+	<link
+		rel="preload"
+		href="/fonts/geist-pixel-normal.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin
+	>
+
+	<!-- Open Graph / Meta -->
+	<meta property="og:title" content={title}>
+	<meta property="og:description" content={description}>
+	<meta property="og:type" content="website">
+
+	<!-- i18n hreflang links -->
+	{locales.map((locale) => (
+	<link
+		rel="alternate"
+		hreflang={locale.code}
+		href={getRelativeLocaleUrl(locale.code, path, {
+			normalizeLocale: false,
+		})}
+	/>
+))}
+	<link
+		rel="alternate"
+		hreflang="x-default"
+		href={getRelativeLocaleUrl(defaultLocale, path, { normalizeLocale: false })}
+	>
 </head>

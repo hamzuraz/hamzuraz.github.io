@@ -1,0 +1,143 @@
+---
+import DefaultBadge from "@/components/common/DefaultBadge.astro";
+import OutlineBadge from "@/components/common/OutlineBadge.astro";
+import { skillCategories } from "@/data/skills";
+
+const coreCategories = skillCategories.filter((cat) => cat.core.length > 0);
+const familiarCategories = skillCategories.filter(
+	(cat) => cat.familiar.length > 0,
+);
+const allCategories = skillCategories.filter(
+	(cat) => cat.core.length > 0 || cat.familiar.length > 0,
+);
+---
+
+<section id="skills" class="py-12 border-b border-border">
+	<div class="mb-8">
+		<span
+			class="text-xs text-muted-foreground font-pixel tracking-wider uppercase"
+		>
+			3 / EXPERTISE
+		</span>
+		<h2 class="font-pixel text-2xl sm:text-3xl font-bold mt-2">
+			Skills & Technologies
+		</h2>
+		<p
+			class="font-sans text-sm sm:text-base text-muted-foreground mt-1 max-w-2xl"
+		>
+			A breakdown of tools, languages, and frameworks I use to engineer
+			robust digital systems.
+		</p>
+	</div>
+
+	<div class="tabs w-full" id="tabs-skills">
+		<nav
+			role="tablist"
+			aria-orientation="horizontal"
+			data-variant="line"
+			class="mb-6"
+		>
+			<button
+				type="button"
+				role="tab"
+				id="tabs-skills-tab-all"
+				aria-controls="tabs-skills-panel-all"
+				aria-selected="true"
+				tabindex="0"
+			>
+				All
+			</button>
+			<button
+				type="button"
+				role="tab"
+				id="tabs-skills-tab-core"
+				aria-controls="tabs-skills-panel-core"
+				aria-selected="false"
+				tabindex="-1"
+			>
+				Core
+			</button>
+			<button
+				type="button"
+				role="tab"
+				id="tabs-skills-tab-familiar"
+				aria-controls="tabs-skills-panel-familiar"
+				aria-selected="false"
+				tabindex="-1"
+			>
+				Familiar
+			</button>
+		</nav>
+
+		<!-- All Tab Panel -->
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-all"
+			aria-labelledby="tabs-skills-tab-all"
+			tabindex="-1"
+			class="flex flex-col divide-y divide-border/60"
+		>
+			{allCategories.map((category) => (
+	<div class="py-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 text-sm font-medium text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.core.map((skill) => (
+				<DefaultBadge>{skill}</DefaultBadge>
+			))}
+			{category.familiar.map((skill) => (
+				<OutlineBadge>{skill}</OutlineBadge>
+			))}
+		</div>
+	</div>
+))}
+		</div>
+
+		<!-- Core Tab Panel -->
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-core"
+			aria-labelledby="tabs-skills-tab-core"
+			tabindex="-1"
+			class="flex flex-col divide-y divide-border/60"
+			hidden
+		>
+			{coreCategories.map((category) => (
+	<div class="py-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 text-sm font-medium text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.core.map((skill) => (
+				<DefaultBadge>{skill}</DefaultBadge>
+			))}
+		</div>
+	</div>
+))}
+		</div>
+
+		<!-- Familiar Tab Panel -->
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-familiar"
+			aria-labelledby="tabs-skills-tab-familiar"
+			tabindex="-1"
+			class="flex flex-col divide-y divide-border/60"
+			hidden
+		>
+			{familiarCategories.map((category) => (
+	<div class="py-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 text-sm font-medium text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.familiar.map((skill) => (
+				<OutlineBadge>{skill}</OutlineBadge>
+			))}
+		</div>
+	</div>
+))}
+		</div>
+	</div>
+</section>

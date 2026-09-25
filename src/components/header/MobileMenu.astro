@@ -1,135 +1,72 @@
-<div class="flex flex-wrap gap-2">
-	<button
-		type="button"
-		class="btn"
-		data-variant="outline"
-		onclick="document.getElementById('drawer-side-top').showModal()"
-	>
-		Top
-	</button>
-</div>
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Menu, X } from "@lucide/astro";
+import { getLocale } from "@/i18n/i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
+const projectsUrl = getRelativeLocaleUrl(locale, "projects", {
+	normalizeLocale: false,
+});
+---
+
+<button
+	type="button"
+	class="btn sm:hidden cursor-pointer"
+	data-size="icon"
+	data-variant="outline"
+	aria-label="Toggle navigation menu"
+	onclick="document.getElementById('mobile-nav-drawer')?.showModal()"
+>
+	<Menu class="w-4 h-4" />
+</button>
+
 <dialog
-	id="drawer-side-top"
+	id="mobile-nav-drawer"
 	class="drawer"
 	data-side="top"
-	aria-labelledby="drawer-side-top-title"
-	aria-describedby="drawer-side-top-description"
+	aria-labelledby="mobile-nav-title"
 >
-	<article class="max-h-[50vh]">
-		<header>
-			<h2 id="drawer-side-top-title">Move Goal</h2>
-			<p id="drawer-side-top-description">
-				Set your daily activity goal.
-			</p>
-		</header>
-		<section class="px-4">
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</section>
-		<footer>
+	<article class="p-4 sm:p-6 flex flex-col gap-4">
+		<header
+			class="flex items-center justify-between pb-2 border-b border-border"
+		>
+			<span id="mobile-nav-title" class="font-pixel text-lg font-bold">
+				Navigation
+			</span>
 			<button
 				type="button"
-				class="btn"
-				onclick="this.closest('dialog').close()"
-			>
-				Submit
-			</button>
-			<button
-				type="button"
-				class="btn"
+				class="btn cursor-pointer"
+				data-size="icon"
 				data-variant="outline"
-				onclick="this.closest('dialog').close()"
+				aria-label="Close menu"
+				onclick="this.closest('dialog')?.close()"
 			>
-				Cancel
+				<X class="w-4 h-4" />
 			</button>
-		</footer>
+		</header>
+		<nav class="flex flex-col gap-2 font-sans text-base">
+			<a
+				href={projectsUrl}
+				class="py-2 px-3 rounded-sm hover:bg-muted text-foreground transition-colors"
+				onclick="this.closest('dialog')?.close()"
+			>
+				Projects
+			</a>
+			<a
+				href={`${homeUrl}#skills`}
+				class="py-2 px-3 rounded-sm hover:bg-muted text-foreground transition-colors"
+				onclick="this.closest('dialog')?.close()"
+			>
+				Skills
+			</a>
+			<a
+				href={`${homeUrl}#contact`}
+				class="py-2 px-3 rounded-sm hover:bg-muted text-foreground transition-colors"
+				onclick="this.closest('dialog')?.close()"
+			>
+				Contact
+			</a>
+		</nav>
 	</article>
 </dialog>

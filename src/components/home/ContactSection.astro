@@ -1,0 +1,125 @@
+---
+import { Check, Copy, ExternalLink, Mail } from "@lucide/astro";
+import IconButton from "@/components/common/IconButton.astro";
+
+const contacts = [
+	{
+		label: "Email",
+		value: "rifki.muhazzar@example.com",
+		openUrl: "mailto:rifki.muhazzar@example.com",
+		openTooltip: "Send email",
+		copyTooltip: "Copy email",
+		isExternal: false,
+		icon: Mail,
+	},
+	{
+		label: "LinkedIn",
+		value: "https://linkedin.com/in/rifkimuhazzar",
+		openUrl: "https://linkedin.com/in/rifkimuhazzar",
+		openTooltip: "Open LinkedIn",
+		copyTooltip: "Copy LinkedIn URL",
+		isExternal: true,
+		icon: ExternalLink,
+	},
+];
+---
+
+<section id="contact" class="py-12">
+	<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+		<div class="md:col-span-5">
+			<span
+				class="text-xs text-muted-foreground font-pixel tracking-wider uppercase"
+			>
+				4 / GET IN TOUCH
+			</span>
+			<h2 class="font-pixel text-2xl sm:text-3xl font-bold mt-2">
+				Let's Connect
+			</h2>
+			<p
+				class="font-sans text-sm sm:text-base text-muted-foreground mt-2 leading-relaxed"
+			>
+				I am currently open to new opportunities, collaborations, and
+				discussions on software engineering. Feel free to reach out via
+				email or LinkedIn.
+			</p>
+		</div>
+
+		<div class="md:col-span-7 flex flex-col gap-4">
+			{contacts.map((contact) => (
+	<div class="card p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-card border border-border rounded-md">
+		<div class="min-w-0">
+			<span class="text-xs text-muted-foreground block font-sans">
+				{contact.label}
+			</span>
+			<span class="text-sm font-medium text-foreground truncate block font-sans select-all">
+				{contact.value}
+			</span>
+		</div>
+
+		<div class="flex items-center gap-2 shrink-0">
+			<button
+				type="button"
+				class="btn cursor-pointer contact-copy-btn"
+				data-size="icon"
+				data-tooltip={contact.copyTooltip}
+				data-copy-value={contact.value}
+				data-variant="outline"
+				aria-label={`Copy ${contact.label}`}
+			>
+				<span class="copy-icon">
+					<Copy class="w-4 h-4" />
+				</span>
+				<span class="check-icon hidden text-primary">
+					<Check class="w-4 h-4" />
+				</span>
+			</button>
+
+			<IconButton
+				tooltip={contact.openTooltip}
+				href={contact.openUrl}
+				target={contact.isExternal ? "_blank" : undefined}
+				rel={contact.isExternal ? "noopener noreferrer" : undefined}
+				ariaLabel={`Open ${contact.label}`}
+			>
+				<contact.icon class="w-4 h-4" />
+			</IconButton>
+		</div>
+	</div>
+))}
+		</div>
+	</div>
+
+	<script>
+		function setupContactCopy() {
+			const copyButtons =
+				document.querySelectorAll<HTMLButtonElement>(
+					".contact-copy-btn",
+				);
+			copyButtons.forEach((btn) => {
+				btn.addEventListener("click", async () => {
+					const value = btn.dataset.copyValue;
+					if (!value) return;
+
+					try {
+						await navigator.clipboard.writeText(value);
+						const copyIcon = btn.querySelector(".copy-icon");
+						const checkIcon = btn.querySelector(".check-icon");
+						if (copyIcon && checkIcon) {
+							copyIcon.classList.add("hidden");
+							checkIcon.classList.remove("hidden");
+							setTimeout(() => {
+								copyIcon.classList.remove("hidden");
+								checkIcon.classList.add("hidden");
+							}, 2000);
+						}
+					} catch (err) {
+						console.error("Failed to copy:", err);
+					}
+				});
+			});
+		}
+
+		setupContactCopy();
+		document.addEventListener("astro:page-load", setupContactCopy);
+	</script>
+</section>

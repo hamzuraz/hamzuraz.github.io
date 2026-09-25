@@ -1,0 +1,14 @@
+---
+import ExternalLinks from "@/components/common/ExternalLinks.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+	class="p-3 sm:px-6 py-6 border-t border-border bg-background flex flex-wrap items-center justify-between gap-4"
+>
+	<p class="font-sans text-xs sm:text-sm text-muted-foreground">
+		&copy; {currentYear} Rifki Muhazzar. All rights reserved.
+	</p>
+	<ExternalLinks />
+</footer>

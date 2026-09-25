@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "@/components/projects/ProjectCard.astro";
+import { getLocale, getLocaleStaticPaths, locales } from "@/i18n/i18n";
+import NormalPageLayout from "@/layout/NormalPageLayout.astro";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const locale = getLocale(Astro.currentLocale);
+const languageName =
+	locales.find(({ code }) => code === locale)?.name ?? locale;
+
+const allProjects = (await getCollection("projects")).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<NormalPageLayout
+	title="Projects | Rifki Muhazzar"
+	description="A collection of software engineering projects, open-source work, and technical experiments."
+	path="projects"
+>
+	{locale === "en" ? (
+	<div class="py-8 sm:py-12">
+		<div class="mb-8">
+			<span class="text-xs text-muted-foreground font-pixel tracking-wider uppercase">
+				PORTFOLIO / ARCHIVE
+			</span>
+			<h1 class="font-pixel text-3xl sm:text-4xl font-bold tracking-tight mt-2 text-foreground">
+				Projects
+			</h1>
+			<p class="font-sans text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">
+				A comprehensive showcase of web applications, systems
+				engineering, developer tools, and open-source contributions.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{allProjects.map((project) => (
+				<ProjectCard
+					title={project.data.title}
+					description={project.data.description}
+					techStack={project.data.techStack}
+					coverImage={project.data.coverImage}
+					sourceCodeUrl={project.data.sourceCodeUrl}
+					sourceCodeButtonText={project.data.sourceCodeButtonText}
+					liveDemoUrl={project.data.liveDemoUrl}
+					liveDemoButtonText={project.data.liveDemoButtonText}
+				/>
+			))}
+		</div>
+	</div>
+) : (
+	<section class="py-16 text-center">
+		<p class="font-sans text-base text-muted-foreground">
+			This page is not available in {languageName} yet, please choose
+			another language.
+		</p>
+	</section>
+)}
+</NormalPageLayout>

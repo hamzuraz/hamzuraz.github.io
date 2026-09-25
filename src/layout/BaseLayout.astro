@@ -2,13 +2,23 @@
 import "@/styles/global.css";
 import Head from "@/components/head/Head.astro";
 import { getLocale } from "@/i18n/i18n";
+
+interface Props {
+	title?: string;
+	description?: string;
+	path?: string;
+}
+
+const { title, description, path } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang={getLocale(Astro.currentLocale)}>
-	<Head />
-	<body class="min-w-80 max-w-250 mx-auto">
-		<div class="p-px bg-border">
+	<Head title={title} description={description} path={path} />
+	<body
+		class="min-w-80 max-w-250 mx-auto min-h-screen flex flex-col bg-background"
+	>
+		<div class="p-px bg-border flex-1 flex flex-col">
 			<slot />
 		</div>
 		<script src="@/scripts/basecoat-css.ts"></script>
