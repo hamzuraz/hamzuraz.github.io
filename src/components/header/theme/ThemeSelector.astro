@@ -9,8 +9,6 @@ const themes = [
 	{ id: "default-dark", name: "Default", mode: "Dark" },
 	{ id: "claude-light", name: "Claude", mode: "Light" },
 	{ id: "claude-dark", name: "Claude", mode: "Dark" },
-	{ id: "designbyte-light", name: "Designbyte", mode: "Light" },
-	{ id: "designbyte-dark", name: "Designbyte", mode: "Dark" },
 	{ id: "minimal-light", name: "Minimal", mode: "Light" },
 	{ id: "minimal-dark", name: "Minimal", mode: "Dark" },
 	{ id: "mx-brutalist-light", name: "MX Brutalist", mode: "Light" },
@@ -73,6 +71,18 @@ const themes = [
 		</span>
 	</div>
 ))}
+				<hr role="separator">
+				<div
+					role="menuitemradio"
+					class="cursor-pointer"
+					data-value="reset"
+					data-variant="destructive"
+				>
+					<span>Reset theme preferences</span>
+					<span data-indicator>
+						<Check />
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>

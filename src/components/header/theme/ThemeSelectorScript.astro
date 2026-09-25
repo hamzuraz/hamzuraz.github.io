@@ -37,10 +37,8 @@
 			if (isSelected) selectedItem = item;
 		}
 
-		if (themeName) {
-			themeName.textContent = selectedItem?.dataset.themeName ?? theme;
-		}
-		if (themeMode) {
+		if (themeName && themeMode) {
+			themeName.textContent = selectedItem?.dataset.themeName ?? "";
 			themeMode.textContent = selectedItem?.dataset.themeMode ?? "";
 		}
 	}
@@ -53,17 +51,26 @@
 		const item = event.target.closest<HTMLDivElement>(
 			'[role="menuitemradio"][data-value]',
 		);
+
 		const theme = item?.dataset.value;
 		if (!theme) return;
 
-		applyTheme(theme);
-
-		try {
-			window.localStorage.setItem(storageKey, theme);
-		} catch {
-			// Storage may be unavailable (private mode, quota, blocked).
-			// The theme is already applied for this session.
-			// It just won't persist across reloads.
+		if (theme === "reset") {
+			applyTheme(systemTheme());
+			try {
+				window.localStorage.removeItem(storageKey);
+			} catch {
+				// Storage may be unavailable (private mode, quota, blocked).
+			}
+		} else {
+			applyTheme(theme);
+			try {
+				window.localStorage.setItem(storageKey, theme);
+			} catch {
+				// Storage may be unavailable (private mode, quota, blocked).
+				// The theme is already applied for this session.
+				// It just won't persist across reloads.
+			}
 		}
 	});
 
@@ -75,8 +82,6 @@
 	});
 
 	// OS THEME TRACKING
-	// theme changes only follow the OS if the user has not picked a theme manually
-	// (i.e., the theme is not stored in local storage).
 	mediaQuery.addEventListener("change", () => {
 		if (!getStoredTheme()) {
 			applyTheme(systemTheme());
