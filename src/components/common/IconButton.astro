@@ -1,7 +1,16 @@
+---
+interface Props {
+	tooltip: string;
+}
+
+const { tooltip } = Astro.props;
+---
+
 <button
 	type="button"
-	class="btn"
+	class="btn cursor-pointer"
 	data-size="icon"
+	data-tooltip={tooltip}
 	data-variant="outline"
 	aria-label="Open"
 >
