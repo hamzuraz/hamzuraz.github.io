@@ -1,17 +1,19 @@
-import { exampleOne } from "./pages/example-one";
-import { exampleTwo } from "./pages/example-two";
+import { home } from "./pages/home";
+import { projects } from "./pages/projects";
 
 export const locales = [
 	{ code: "en", name: "English" },
 	{ code: "id", name: "Bahasa Indonesia" },
 	{ code: "ja", name: "日本語" },
+	{ code: "de", name: "Deutsch" },
 	{ code: "es", name: "Español" },
 	{ code: "fr", name: "Français" },
 	{ code: "zh-CN", name: "简体中文" },
 	{ code: "zh-TW", name: "繁體中文" },
 ] as const;
+
 export const defaultLocale = "en";
-export const localizedPages = [exampleOne, exampleTwo] as const;
+export const localizedPages = [home, projects] as const;
 
 type Locale = (typeof locales)[number]["code"];
 type LocalizedPage = (typeof localizedPages)[number];
