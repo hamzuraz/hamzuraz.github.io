@@ -2,16 +2,28 @@
 import "@/styles/global.css";
 import Head from "@/components/head/Head.astro";
 import { getLocale } from "@/i18n/i18n";
+
+interface Props {
+	title: string;
+	description: string;
+	pathWithoutLocale?: string;
+}
+
+const { title, description, pathWithoutLocale } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang={getLocale(Astro.currentLocale)}>
-	<Head />
-	<body class="min-w-80 max-w-250 mx-auto">
-		<div class="p-px bg-border">
-			<slot />
-		</div>
+	<Head
+		title={title}
+		description={description}
+		pathWithoutLocale={pathWithoutLocale}
+	/>
+	<body class="p-px min-w-80 max-w-250 mx-auto bg-border">
+		<slot />
 		<script src="@/scripts/basecoat-css.ts"></script>
-		<script src="@/scripts/dropdown-shortcuts.ts"></script>
+		<script src="@/scripts/contact-copy.ts"></script>
+		<script src="@/scripts/kbd-shortcuts.ts"></script>
+		<script src="@/scripts/theme.ts"></script>
 	</body>
 </html>
