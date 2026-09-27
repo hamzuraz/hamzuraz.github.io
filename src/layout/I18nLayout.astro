@@ -1,0 +1,29 @@
+---
+import I18nFallbackContent from "@/components/common/i18n/I18nFallbackContent.astro";
+import Footer from "@/components/footer/Footer.astro";
+import Header from "@/components/header/Header.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	pathWithoutLocale?: string;
+	languageName: string;
+	showFallback: boolean;
+}
+
+const { title, description, pathWithoutLocale, languageName, showFallback } =
+	Astro.props;
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	pathWithoutLocale={pathWithoutLocale}
+>
+	<Header pathWithoutLocale={pathWithoutLocale} />
+	<main>
+		{showFallback ? <I18nFallbackContent languageName={languageName} /> : <slot />}
+	</main>
+	<Footer />
+</BaseLayout>
