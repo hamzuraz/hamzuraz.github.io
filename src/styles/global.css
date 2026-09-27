@@ -7,3 +7,7 @@
 @import "./tokens/typography/typography.css";
 
 @custom-variant dark (&:is([data-theme$="-dark"] *));
+
+html {
+	@apply bg-background;
+}
