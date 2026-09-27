@@ -1,0 +1,45 @@
+---
+import ButtonLink from "@/components/common/button-link/ButtonLink.astro";
+import LanguageSelector from "@/components/common/language/LanguageSelector.astro";
+import BaseLayout from "@/layout/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="404 - Not Found | Rifki Muhazzar — Software Engineer"
+	description="Page not found."
+>
+	<section class="empty h-[calc(100dvh-2px)] bg-background rounded-none">
+		<div class="-mt-32">
+			<header>
+				<h1 class="font-pixel font-bold text-3xl sm:text-4xl">
+					404 - Not Found
+				</h1>
+				<p
+					class="text-sm sm:text-base text-muted-foreground w-80 mt-3 mx-auto"
+				>
+					The page you're looking for doesn't exist or has been moved.
+				</p>
+			</header>
+			<footer
+				class="mt-8 flex flex-col items-center gap-6 sm:flex-row sm:items-end sm:gap-3"
+			>
+				<ButtonLink
+					href="/"
+					class="w-60"
+					shortcut="h"
+					isExternal={false}
+				>
+					Back to homepage (English)
+				</ButtonLink>
+				<div>
+					<p
+						class="text-sm sm:text-base text-muted-foreground mb-1.5"
+					>
+						Homepage in another language
+					</p>
+					<LanguageSelector />
+				</div>
+			</footer>
+		</div>
+	</section>
+</BaseLayout>
