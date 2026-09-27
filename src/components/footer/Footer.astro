@@ -1,0 +1,14 @@
+---
+import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+	class="mt-px px-3 sm:px-6 py-6 bg-background rounded-t-sm flex flex-col sm:flex-row gap-4 items-center justify-between"
+>
+	<p class="text-xs sm:text-sm text-muted-foreground">
+		&copy; {currentYear} Rifki Muhazzar. All rights reserved.
+	</p>
+	<SocialIconButtonLinks />
+</footer>
