@@ -1,0 +1,31 @@
+---
+import Projects from "@/components/projects/Projects.astro";
+import {
+	getLocale,
+	getLocaleStaticPaths,
+	getPageTranslation,
+	locales,
+} from "@/i18n/i18n";
+import { projects } from "@/i18n/pages/projects";
+import I18nLayout from "@/layout/I18nLayout.astro";
+
+export function getStaticPaths() {
+	return getLocaleStaticPaths();
+}
+
+const locale = getLocale(Astro.currentLocale);
+const t = getPageTranslation(projects, locale);
+const showFallback = t === undefined;
+const languageName =
+	locales.find(({ code }) => code === locale)?.name ?? locale;
+---
+
+<I18nLayout
+	title={t?.title}
+	description={t?.description}
+	pathWithoutLocale={projects.slug}
+	showFallback={showFallback}
+	languageName={languageName}
+>
+	<Projects locale={locale} t={t} />
+</I18nLayout>

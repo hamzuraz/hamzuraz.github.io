@@ -8,11 +8,11 @@ interface Props {
 	title?: string;
 	description?: string;
 	pathWithoutLocale?: string;
-	languageName: string;
 	showFallback: boolean;
+	languageName: string;
 }
 
-const { title, description, pathWithoutLocale, languageName, showFallback } =
+const { title, description, pathWithoutLocale, showFallback, languageName } =
 	Astro.props;
 ---
 
