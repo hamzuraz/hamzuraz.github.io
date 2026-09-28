@@ -1,0 +1,37 @@
+---
+import { SquareArrowOutUpRight } from "@lucide/astro";
+import Kbd from "@/components/common/kbd/Kbd.astro";
+
+interface Props {
+	href: string;
+	target?: string;
+	rel?: string;
+	class?: string;
+	shortcut?: string;
+	variant?: "outline";
+	isExternal: boolean;
+}
+
+const {
+	href,
+	target,
+	rel,
+	class: className,
+	shortcut,
+	variant,
+	isExternal,
+} = Astro.props;
+---
+
+<a
+	href={href}
+	target={target}
+	rel={rel}
+	class:list={["btn", className]}
+	data-shortcut={shortcut}
+	data-variant={variant}
+>
+	<slot />
+	{shortcut && <Kbd>{shortcut.toUpperCase()}</Kbd>}
+	{isExternal && <SquareArrowOutUpRight />}
+</a>

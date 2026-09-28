@@ -1,0 +1,78 @@
+---
+import { getCollection } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { ArrowRight } from "@lucide/astro";
+import ProjectCard from "@/components/common/card/ProjectCard.astro";
+import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import type { PageTranslation } from "@/i18n/i18n";
+import type { Home } from "@/i18n/pages/home";
+import { projects } from "@/i18n/pages/projects";
+
+interface Props {
+	locale: string;
+	t: PageTranslation<Home> | undefined;
+}
+
+const { locale, t } = Astro.props;
+
+const projectsPageUrl = getRelativeLocaleUrl(locale, projects.slug, {
+	normalizeLocale: false,
+});
+
+const allFeaturedProjects = await getCollection(
+	"projects",
+	({ id, data }) => id.startsWith(`${locale}/`) && data.featured,
+);
+
+const threeFeaturedProjects = allFeaturedProjects
+	.sort((a, b) => a.data.order - b.data.order)
+	.slice(0, 3);
+---
+
+<AestheticSection>
+	<div class="flex flex-col gap-12 items-end sm:flex-row sm:justify-between">
+		<div>
+			<span
+				class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
+			>
+				{t?.projects.sectionTag}
+			</span>
+			<h2 class="font-pixel text-2xl sm:text-3xl mt-2">
+				{t?.projects.heading}
+			</h2>
+			<p
+				class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl"
+			>
+				{t?.projects.description}
+			</p>
+		</div>
+		<a
+			href={projectsPageUrl}
+			class="inline-flex items-center gap-1 font-pixel shrink-0 hover:opacity-80 transition-opacity"
+		>
+			{t?.projects.seeAll}
+			<ArrowRight size={20} />
+		</a>
+	</div>
+	<div
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 sm:mt-12"
+	>
+		{threeFeaturedProjects.map((project, index) => (
+	<ProjectCard
+		class={
+			index === 2
+				? "md:col-span-2 md:w-[calc(50%-0.75rem)] md:mx-auto lg:col-span-1 lg:w-full lg:mx-0"
+				: undefined
+		}
+		title={project.data.title}
+		techStack={project.data.techStack}
+		description={project.data.description}
+		coverImageUrl={project.data.coverImageUrl}
+		sourceCodeUrl={project.data.sourceCodeUrl}
+		sourceCodeText={project.data.sourceCodeText}
+		liveDemoUrl={project.data.liveDemoUrl}
+		liveDemoText={project.data.liveDemoText}
+	/>
+))}
+	</div>
+</AestheticSection>
