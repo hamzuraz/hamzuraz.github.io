@@ -1,0 +1,75 @@
+---
+import Badge from "@/components/common/badge/Badge.astro";
+import ButtonLink from "@/components/common/button-link/ButtonLink.astro";
+
+interface Props {
+	title: string;
+	techStack: string[];
+	description: string;
+	coverImageUrl?: string;
+	sourceCodeUrl?: string;
+	sourceCodeText?: string;
+	liveDemoUrl?: string;
+	liveDemoText?: string;
+
+	class?: string;
+}
+
+const {
+	title,
+	techStack,
+	description,
+	coverImageUrl,
+	sourceCodeUrl,
+	sourceCodeText,
+	liveDemoUrl,
+	liveDemoText,
+
+	class: className,
+} = Astro.props;
+---
+
+<article class:list={["card", className]}>
+	{coverImageUrl && (
+	<img
+		alt={`${title} cover`}
+		class="aspect-video w-full object-cover border-b"
+		src={coverImageUrl}
+		loading="lazy"
+	/>
+)}
+	<header class="gap-1.5">
+		<h3 class="font-pixel text-lg">{title}</h3>
+		<div class="flex flex-wrap gap-1.5">
+			{techStack.map((tech) => <Badge variant="secondary">{tech}</Badge>)}
+		</div>
+		<p class="leading-relaxed mt-2.5">
+			{description}
+		</p>
+	</header>
+	<footer class="flex flex-wrap gap-2 mt-auto">
+		{liveDemoUrl && (
+	<ButtonLink
+		href={liveDemoUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="flex-1"
+		isExternal={true}
+	>
+		{liveDemoText}
+	</ButtonLink>
+)}
+		{sourceCodeUrl && (
+	<ButtonLink
+		href={sourceCodeUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		class="flex-1"
+		variant="outline"
+		isExternal={true}
+	>
+		{sourceCodeText}
+	</ButtonLink>
+)}
+	</footer>
+</article>
