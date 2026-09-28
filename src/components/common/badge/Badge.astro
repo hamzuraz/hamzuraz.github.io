@@ -1,0 +1,11 @@
+---
+interface Props {
+	variant?: "secondary" | "outline";
+}
+
+const { variant } = Astro.props;
+---
+
+<span class="badge" data-variant={variant}>
+	<slot />
+</span>

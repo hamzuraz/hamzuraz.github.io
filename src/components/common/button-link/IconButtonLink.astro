@@ -1,0 +1,25 @@
+---
+interface Props {
+	href: string;
+	target?: string;
+	rel?: string;
+	class?: string;
+	tooltip: string;
+	ariaLabel: string;
+}
+
+const { href, target, rel, class: className, tooltip, ariaLabel } = Astro.props;
+---
+
+<a
+	href={href}
+	target={target}
+	rel={rel}
+	class:list={["btn", className]}
+	data-size="icon"
+	data-variant="outline"
+	data-tooltip={tooltip}
+	aria-label={ariaLabel}
+>
+	<slot />
+</a>
