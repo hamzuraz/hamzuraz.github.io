@@ -1,0 +1,45 @@
+---
+import ButtonLink from "@/components/common/button-link/ButtonLink.astro";
+import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
+import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import type { PageTranslation } from "@/i18n/i18n";
+import type { Home } from "@/i18n/pages/home";
+
+interface Props {
+	t: PageTranslation<Home> | undefined;
+}
+
+const { t } = Astro.props;
+---
+
+<AestheticSection>
+	<div
+		class="flex gap-2.5 flex-col lg:flex-row lg:items-center lg:justify-between"
+	>
+		<span
+			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
+		>
+			{t?.hero.sectionTag}
+		</span>
+		<SocialIconButtonLinks />
+	</div>
+	<h1 class="font-pixel text-4xl sm:text-5xl lg:text-6xl mt-8">
+		{t?.hero.name}
+	</h1>
+	<p class="sm:text-lg text-muted-foreground leading-relaxed mt-4 max-w-2xl">
+		{t?.hero.bio}
+	</p>
+	<div class="flex flex-wrap gap-3 mt-8">
+		<ButtonLink href="#contact" shortcut="r" isExternal={false}>
+			{t?.hero.seeResume}
+		</ButtonLink>
+		<ButtonLink
+			href="#contact"
+			shortcut="c"
+			variant="outline"
+			isExternal={false}
+		>
+			{t?.hero.getInTouch}
+		</ButtonLink>
+	</div>
+</AestheticSection>

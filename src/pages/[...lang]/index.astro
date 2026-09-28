@@ -1,53 +1,36 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
+import ContactSection from "@/components/home/ContactSection.astro";
+import HeroSection from "@/components/home/HeroSection.astro";
+import ProjectsSection from "@/components/home/ProjectsSection.astro";
+import SkillsSection from "@/components/home/SkillsSection.astro";
 import {
 	getLocale,
 	getLocaleStaticPaths,
 	getPageTranslation,
 	locales,
-	localizedPages,
 } from "@/i18n/i18n";
-import Layout from "@/layout/Layout.astro";
+import { home } from "@/i18n/pages/home";
+import I18nLayout from "@/layout/I18nLayout.astro";
 
 export function getStaticPaths() {
 	return getLocaleStaticPaths();
 }
 
 const locale = getLocale(Astro.currentLocale);
-
+const t = getPageTranslation(home, locale);
+const showFallback = t === undefined;
 const languageName =
 	locales.find(({ code }) => code === locale)?.name ?? locale;
-
-const availablePages = localizedPages.flatMap((page) => {
-	const content = getPageTranslation(page, locale);
-	return content ? [{ page, content }] : [];
-});
 ---
 
-<Layout>
-	{availablePages.length > 0 ? (
-	<section class="p-6">
-		<h1>Internationalization examples</h1>
-		<ul>
-			{availablePages.map(({ page, content }) => (
-				<li>
-					<a
-						href={getRelativeLocaleUrl(locale, page.slug, {
-							normalizeLocale: false,
-						})}
-					>
-						{content.title}
-					</a>
-				</li>
-			))}
-		</ul>
-	</section>
-) : (
-	<section class="p-6">
-		<p>
-			This page is not available in {languageName} yet, please choose
-			another language
-		</p>
-	</section>
-)}
-</Layout>
+<I18nLayout
+	title={t?.title}
+	description={t?.description}
+	showFallback={showFallback}
+	languageName={languageName}
+>
+	<HeroSection t={t} />
+	<ProjectsSection locale={locale} t={t} />
+	<SkillsSection t={t} />
+	<ContactSection t={t} />
+</I18nLayout>
