@@ -1,24 +1,8 @@
 ---
 import { Check, ChevronDown, Wallpaper } from "@lucide/astro";
-import Kbd from "@/components/common/Kbd.astro";
-import ThemeInitializerScript from "./ThemeInitializerScript.astro";
-import ThemeSelectorScript from "./ThemeSelectorScript.astro";
-
-const themes = [
-	{ id: "default-light", name: "Default", mode: "Light" },
-	{ id: "default-dark", name: "Default", mode: "Dark" },
-	{ id: "brutalist-light", name: "Brutalist", mode: "Light" },
-	{ id: "brutalist-dark", name: "Brutalist", mode: "Dark" },
-	{ id: "monochrome-light", name: "Monochrome", mode: "Light" },
-	{ id: "monochrome-dark", name: "Monochrome", mode: "Dark" },
-	{ id: "sandstone-light", name: "Sandstone", mode: "Light" },
-	{ id: "sandstone-dark", name: "Sandstone", mode: "Dark" },
-	{ id: "terracotta-light", name: "Terracotta", mode: "Light" },
-	{ id: "terracotta-dark", name: "Terracotta", mode: "Dark" },
-];
+import Kbd from "@/components/common/kbd/Kbd.astro";
+import { themes } from "@/data/themes";
 ---
-
-<ThemeInitializerScript themeIds={themes.map((theme) => theme.id)} />
 
 <div id="theme-selector" class="dropdown-menu">
 	<button
@@ -62,7 +46,7 @@ const themes = [
 		data-value={theme.id}
 		data-theme-name={theme.name}
 		data-theme-mode={theme.mode}
-		aria-checked={theme.id === "default-light" ? "true" : "false"}
+		aria-checked="false"
 	>
 		<span>{theme.name}</span>
 		<span class="text-xs text-muted-foreground">{theme.mode}</span>
@@ -87,5 +71,3 @@ const themes = [
 		</div>
 	</div>
 </div>
-
-<ThemeSelectorScript />

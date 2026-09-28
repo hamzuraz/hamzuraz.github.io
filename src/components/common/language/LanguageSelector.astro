@@ -1,16 +1,16 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Check, ChevronDown, Languages } from "@lucide/astro";
-import Kbd from "@/components/common/Kbd.astro";
+import Kbd from "@/components/common/kbd/Kbd.astro";
 import { getLocale, locales } from "@/i18n/i18n";
 
 interface Props {
-	path?: string;
+	pathWithoutLocale?: string;
 }
 
-const { path } = Astro.props;
+const { pathWithoutLocale } = Astro.props;
 const currentLocale = getLocale(Astro.currentLocale);
-const currentLanguage = locales.find((locale) => locale.code === currentLocale);
+const currentLanguage = locales.find(({ code }) => code === currentLocale);
 ---
 
 <div id="language-selector" class="dropdown-menu">
@@ -55,7 +55,7 @@ const currentLanguage = locales.find((locale) => locale.code === currentLocale);
 				</div>
 				{locales.map((language) => (
 	<a
-		href={getRelativeLocaleUrl(language.code, path, {
+		href={getRelativeLocaleUrl(language.code, pathWithoutLocale, {
 			normalizeLocale: false,
 		})}
 		role="menuitemradio"

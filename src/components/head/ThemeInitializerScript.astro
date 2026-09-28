@@ -1,9 +1,7 @@
 ---
-interface Props {
-	themeIds: string[];
-}
+import { themes } from "@/data/themes";
 
-const { themeIds } = Astro.props;
+const themeIds = themes.map((theme) => theme.id);
 ---
 
 <script is:inline define:vars={{ themeIds }}>
