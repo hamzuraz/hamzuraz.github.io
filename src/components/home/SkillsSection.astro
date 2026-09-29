@@ -1,73 +1,156 @@
-<div class="tabs" id="tabs-with-icons">
-	<nav role="tablist" aria-orientation="horizontal">
-		<button
-			type="button"
-			role="tab"
-			id="tabs-with-icons-tab-preview"
-			aria-controls="tabs-with-icons-panel-preview"
-			aria-selected="true"
-			tabindex="0"
+---
+import { BookOpenCheck, Layers, Star } from "@lucide/astro";
+import Badge from "@/components/common/badge/Badge.astro";
+import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import { skillCategories } from "@/data/skills";
+import type { PageTranslation } from "@/i18n/i18n";
+import type { Home } from "@/i18n/pages/home";
+
+interface Props {
+	t: PageTranslation<Home> | undefined;
+}
+
+const { t } = Astro.props;
+
+const coreCategories = skillCategories.filter(
+	(category) => category.core.length > 0,
+);
+const familiarCategories = skillCategories.filter(
+	(category) => category.familiar.length > 0,
+);
+const allCategories = skillCategories.filter(
+	(category) => category.core.length > 0 || category.familiar.length > 0,
+);
+---
+
+<AestheticSection id="skills">
+	<div>
+		<span
+			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 		>
-			<svg
-				class="lucide lucide-app-window"
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+			{t?.skills.sectionTag}
+		</span>
+		<h2 class="font-pixel text-2xl sm:text-3xl mt-2">
+			{t?.skills.heading}
+		</h2>
+		<p class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl">
+			{t?.skills.description}
+		</p>
+	</div>
+
+	<div class="bg-border rounded mt-8 p-px">
+		<div class="tabs bg-background rounded-t py-2 px-3" id="tabs-skills">
+			<nav
+				role="tablist"
+				class="gap-4 bg-background"
+				aria-orientation="horizontal"
+				data-variant="line"
 			>
-				<rect x="2" y="4" width="20" height="16" rx="2" />
-				<path d="M10 4v4" />
-				<path d="M2 8h20" />
-				<path d="M6 4v4" />
-			</svg>
-			Preview
-		</button>
-		<button
-			type="button"
-			role="tab"
-			id="tabs-with-icons-tab-code"
-			aria-controls="tabs-with-icons-panel-code"
-			aria-selected="false"
+				<button
+					type="button"
+					role="tab"
+					id="tabs-skills-tab-all"
+					class="cursor-pointer"
+					aria-controls="tabs-skills-panel-all"
+					aria-selected="true"
+					tabindex="0"
+				>
+					<Layers aria-hidden="true" />
+					{t?.skills.tabs.all}
+				</button>
+				<button
+					type="button"
+					role="tab"
+					id="tabs-skills-tab-core"
+					class="cursor-pointer"
+					aria-controls="tabs-skills-panel-core"
+					aria-selected="false"
+					tabindex="-1"
+				>
+					<Star aria-hidden="true" />
+					{t?.skills.tabs.core}
+				</button>
+				<button
+					type="button"
+					role="tab"
+					id="tabs-skills-tab-familiar"
+					class="cursor-pointer"
+					aria-controls="tabs-skills-panel-familiar"
+					aria-selected="false"
+					tabindex="-1"
+				>
+					<BookOpenCheck aria-hidden="true" />
+					{t?.skills.tabs.familiar}
+				</button>
+			</nav>
+		</div>
+
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-all"
+			aria-labelledby="tabs-skills-tab-all"
 			tabindex="-1"
+			class="bg-background rounded-b mt-px divide-y divide-border"
 		>
-			<svg
-				class="lucide lucide-code"
-				xmlns="http://www.w3.org/2000/svg"
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			>
-				<path d="m16 18 6-6-6-6" />
-				<path d="m8 6-6 6 6 6" />
-			</svg>
-			Code
-		</button>
-	</nav>
-	<div
-		role="tabpanel"
-		id="tabs-with-icons-panel-preview"
-		aria-labelledby="tabs-with-icons-tab-preview"
-		tabindex="-1"
-	>
-		Preview content.
+			{allCategories.map((category) => (
+	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 font-medium text-sm text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.core.map((skill) => (
+				<Badge>{skill}</Badge>
+			))}
+			{category.familiar.map((skill) => (
+				<Badge variant="outline">{skill}</Badge>
+			))}
+		</div>
 	</div>
-	<div
-		role="tabpanel"
-		id="tabs-with-icons-panel-code"
-		aria-labelledby="tabs-with-icons-tab-code"
-		tabindex="-1"
-		hidden
-	>
-		Code content.
+))}
+		</div>
+
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-core"
+			aria-labelledby="tabs-skills-tab-core"
+			tabindex="-1"
+			class="bg-background rounded-b mt-px divide-y divide-border"
+			hidden
+		>
+			{coreCategories.map((category) => (
+	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 font-medium text-sm text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.core.map((skill) => (
+				<Badge>{skill}</Badge>
+			))}
+		</div>
 	</div>
-</div>
+))}
+		</div>
+
+		<div
+			role="tabpanel"
+			id="tabs-skills-panel-familiar"
+			aria-labelledby="tabs-skills-tab-familiar"
+			tabindex="-1"
+			class="bg-background rounded-b mt-px divide-y divide-border"
+			hidden
+		>
+			{familiarCategories.map((category) => (
+	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
+		<div class="md:col-span-4 font-medium text-sm text-foreground">
+			{category.name}
+		</div>
+		<div class="md:col-span-8 flex flex-wrap gap-2">
+			{category.familiar.map((skill) => (
+				<Badge variant="outline">{skill}</Badge>
+			))}
+		</div>
+	</div>
+))}
+		</div>
+	</div>
+</AestheticSection>
