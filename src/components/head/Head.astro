@@ -1,5 +1,65 @@
+---
+import { defaultLocale, getLocale, localizedPages } from "@/i18n/i18n";
+import { home } from "@/i18n/pages/home";
+import HreflangLinks from "./HreflangLinks.astro";
+import PreloadFontLinks from "./PreloadFontLinks.astro";
+import ThemeInitializerScript from "./ThemeInitializerScript.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	pathWithoutLocale?: string;
+	noindex?: boolean;
+}
+
+const { title, description, pathWithoutLocale, noindex = false } = Astro.props;
+const currentLocale = getLocale(Astro.currentLocale);
+
+const siteUrl = Astro.site ?? new URL("https://hamzuraz.github.io");
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogTcImageUrl = new URL("/og-tc-placeholder-image-500x500.png", siteUrl)
+	.href;
+
+const matchedPage =
+	localizedPages.find((page) => page.slug === pathWithoutLocale) ?? home;
+const englishFallback = matchedPage.translations[defaultLocale];
+
+const resolvedTitle = title ?? englishFallback.title;
+const resolvedDescription = description ?? englishFallback.description;
+---
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<meta name="generator" content={Astro.generator}>
+
+	<title>{resolvedTitle}</title>
+	<meta name="description" content={resolvedDescription}>
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+	<PreloadFontLinks />
+	<ThemeInitializerScript />
+	<!-- <meta name="color-scheme" content="light dark"> -->
+	<!-- <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"> -->
+	<!-- <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"> -->
+
+	{noindex && <meta name="robots" content="noindex, follow" />}
+	{!noindex && <link rel="canonical" href={canonicalUrl}>}
+	{!noindex && <HreflangLinks pathWithoutLocale={pathWithoutLocale} />}
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content={resolvedTitle}>
+	<meta property="og:description" content={resolvedDescription}>
+	<meta property="og:image" content={ogTcImageUrl}>
+	<meta property="og:image:alt" content={resolvedTitle}>
+	<meta property="og:url" content={canonicalUrl}>
+	<meta property="og:locale" content={currentLocale}>
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content={resolvedTitle}>
+	<meta name="twitter:description" content={resolvedDescription}>
+	<meta name="twitter:image" content={ogTcImageUrl}>
+	<meta name="twitter:image:alt" content={resolvedTitle}>
 </head>
