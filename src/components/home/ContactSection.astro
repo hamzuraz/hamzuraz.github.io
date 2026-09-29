@@ -1,0 +1,73 @@
+---
+import { Check, Copy } from "@lucide/astro";
+import IconButton from "@/components/common/button/IconButton.astro";
+import IconButtonLink from "@/components/common/button-link/IconButtonLink.astro";
+import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import { localizeContacts } from "@/i18n/common/localizeContacts";
+import type { PageTranslation } from "@/i18n/i18n";
+import type { Home } from "@/i18n/pages/home";
+
+interface Props {
+	t: PageTranslation<Home> | undefined;
+}
+
+const { t } = Astro.props;
+const localizedContacts = localizeContacts(t);
+---
+
+<AestheticSection id="contact">
+	<span
+		class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
+	>
+		{t?.contact.sectionTag}
+	</span>
+
+	<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mt-2">
+		<div class="md:col-span-6">
+			<h2 class="font-pixel text-2xl sm:text-3xl">
+				{t?.contact.heading}
+			</h2>
+			<p
+				class="text-sm sm:text-base text-muted-foreground mt-1.25 leading-relaxed"
+			>
+				{t?.contact.description}
+			</p>
+		</div>
+
+		<div class="md:col-span-6 flex flex-col gap-4">
+			{localizedContacts.map((contact) => (
+	<div class="card overflow-visible p-4 flex flex-row items-center justify-between">
+		<div>
+			<h3 class="text-xs sm:text-sm text-muted-foreground">
+				{contact.label}
+			</h3>
+			<p class="text-sm sm:text-base">{contact.value}</p>
+		</div>
+		<div class="flex gap-2.5">
+			<IconButton
+				ariaLabel={contact.copyAriaLabel}
+				tooltip={contact.copyTooltip}
+				copyValue={contact.value}
+			>
+				<span data-copy-icon>
+					<Copy />
+				</span>
+				<span data-check-icon class="hidden">
+					<Check />
+				</span>
+			</IconButton>
+			<IconButtonLink
+				href={contact.openUrl}
+				target={contact.isExternal ? "_blank" : undefined}
+				rel={contact.isExternal ? "noopener noreferrer" : undefined}
+				ariaLabel={contact.openAriaLabel}
+				tooltip={contact.openTooltip}
+			>
+				<contact.icon />
+			</IconButtonLink>
+		</div>
+	</div>
+))}
+		</div>
+	</div>
+</AestheticSection>

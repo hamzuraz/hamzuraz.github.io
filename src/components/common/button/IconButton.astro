@@ -1,0 +1,22 @@
+---
+interface Props {
+	class?: string;
+	ariaLabel: string;
+	tooltip: string;
+	copyValue?: string;
+}
+
+const { class: className, tooltip, ariaLabel, copyValue } = Astro.props;
+---
+
+<button
+	type="button"
+	class:list={["btn cursor-pointer", className]}
+	aria-label={ariaLabel}
+	data-size="icon"
+	data-variant="outline"
+	data-tooltip={tooltip}
+	data-copy-value={copyValue}
+>
+	<slot />
+</button>
