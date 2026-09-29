@@ -1,0 +1,73 @@
+<div class="tabs" id="tabs-with-icons">
+	<nav role="tablist" aria-orientation="horizontal">
+		<button
+			type="button"
+			role="tab"
+			id="tabs-with-icons-tab-preview"
+			aria-controls="tabs-with-icons-panel-preview"
+			aria-selected="true"
+			tabindex="0"
+		>
+			<svg
+				class="lucide lucide-app-window"
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<rect x="2" y="4" width="20" height="16" rx="2" />
+				<path d="M10 4v4" />
+				<path d="M2 8h20" />
+				<path d="M6 4v4" />
+			</svg>
+			Preview
+		</button>
+		<button
+			type="button"
+			role="tab"
+			id="tabs-with-icons-tab-code"
+			aria-controls="tabs-with-icons-panel-code"
+			aria-selected="false"
+			tabindex="-1"
+		>
+			<svg
+				class="lucide lucide-code"
+				xmlns="http://www.w3.org/2000/svg"
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path d="m16 18 6-6-6-6" />
+				<path d="m8 6-6 6 6 6" />
+			</svg>
+			Code
+		</button>
+	</nav>
+	<div
+		role="tabpanel"
+		id="tabs-with-icons-panel-preview"
+		aria-labelledby="tabs-with-icons-tab-preview"
+		tabindex="-1"
+	>
+		Preview content.
+	</div>
+	<div
+		role="tabpanel"
+		id="tabs-with-icons-panel-code"
+		aria-labelledby="tabs-with-icons-tab-code"
+		tabindex="-1"
+		hidden
+	>
+		Code content.
+	</div>
+</div>
