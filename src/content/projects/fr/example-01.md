@@ -3,7 +3,7 @@ title: "Example 01"
 techStack: ["SvelteKit", "Canva", "Next.js", "HTML"]
 description: "Description de l'exemple 01"
 
-coverImageUrl: "/placeholder-image-500x500.png"
+coverImageUrl: "/project-card-placeholder-image-500x500.png"
 liveDemoUrl: "https://github.com/hamzuraz"
 liveDemoText: "Démo en direct"
 sourceCodeUrl: "https://github.com/hamzuraz"
