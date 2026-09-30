@@ -1,135 +1,91 @@
-<div class="flex flex-wrap gap-2">
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { PanelLeftClose, PanelLeftOpen } from "@lucide/astro";
+import LanguageSelector from "@/components/common/language/LanguageSelector.astro";
+import ThemeSelector from "@/components/common/theme/ThemeSelector.astro";
+import { localizeNav } from "@/i18n/common/localizeNav";
+import { getLocale } from "@/i18n/i18n";
+import { projects } from "@/i18n/pages/projects";
+
+interface Props {
+	pathWithoutLocale?: string;
+}
+
+const { pathWithoutLocale } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const localizedNav = localizeNav(locale);
+
+const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
+const projectsUrl = getRelativeLocaleUrl(locale, projects.slug, {
+	normalizeLocale: false,
+});
+---
+
+<div class="lg:hidden">
 	<button
 		type="button"
-		class="btn"
-		data-variant="outline"
-		onclick="document.getElementById('drawer-side-top').showModal()"
+		class="btn cursor-pointer"
+		data-size="icon"
+		aria-label={localizedNav.openMenu}
+		onclick="document.getElementById('mobile-nav-drawer')?.showModal()"
 	>
-		Top
+		<PanelLeftOpen class="w-5.5 h-5.5 stroke-[1.25]" />
 	</button>
+	<dialog id="mobile-nav-drawer" class="drawer" data-side="left">
+		<article class="w-full max-w-max overflow-x-auto bg-border">
+			<div class="w-max flex flex-col divide-y grow *:last:grow">
+				<header
+					class="relative p-3 sm:px-6 flex items-center bg-background rounded-b-lg"
+				>
+					<button
+						type="button"
+						class="btn cursor-pointer"
+						data-size="icon"
+						aria-label={localizedNav.closeMenu}
+						onclick="this.closest('dialog')?.close()"
+					>
+						<PanelLeftClose class="w-5.5 h-5.5 stroke-[1.25]" />
+					</button>
+					<a
+						href={homeUrl}
+						class="absolute left-1/2 -translate-x-1/2 font-pixel text-xl tracking-widest hover:opacity-80 transition-opacity"
+						aria-label="Rifki Muhazzar - Homepage"
+					>
+						RM
+					</a>
+				</header>
+				<nav
+					class="py-3 sm:px-3 flex flex-col text-sm text-muted-foreground bg-background rounded-lg"
+				>
+					<a
+						href={projectsUrl}
+						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
+						onclick="this.closest('dialog')?.close()"
+					>
+						{localizedNav.projects}
+					</a>
+					<a
+						href={`${homeUrl}#skills`}
+						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
+						onclick="this.closest('dialog')?.close()"
+					>
+						{localizedNav.skills}
+					</a>
+					<a
+						href={`${homeUrl}#contact`}
+						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
+						onclick="this.closest('dialog')?.close()"
+					>
+						{localizedNav.contact}
+					</a>
+				</nav>
+				<div
+					class="p-3 sm:px-6 flex flex-col gap-3 bg-background rounded-t-lg"
+				>
+					<ThemeSelector />
+					<LanguageSelector pathWithoutLocale={pathWithoutLocale} />
+				</div>
+			</div>
+		</article>
+	</dialog>
 </div>
-<dialog
-	id="drawer-side-top"
-	class="drawer"
-	data-side="top"
-	aria-labelledby="drawer-side-top-title"
-	aria-describedby="drawer-side-top-description"
->
-	<article class="max-h-[50vh]">
-		<header>
-			<h2 id="drawer-side-top-title">Move Goal</h2>
-			<p id="drawer-side-top-description">
-				Set your daily activity goal.
-			</p>
-		</header>
-		<section class="px-4">
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-			<p class="mb-4 leading-normal">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-				eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-				enim ad minim veniam, quis nostrud exercitation ullamco laboris
-				nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-				in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-				nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-				sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</section>
-		<footer>
-			<button
-				type="button"
-				class="btn"
-				onclick="this.closest('dialog').close()"
-			>
-				Submit
-			</button>
-			<button
-				type="button"
-				class="btn"
-				data-variant="outline"
-				onclick="this.closest('dialog').close()"
-			>
-				Cancel
-			</button>
-		</footer>
-	</article>
-</dialog>
