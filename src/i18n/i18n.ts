@@ -15,11 +15,13 @@ export const locales = [
 export const defaultLocale = "en";
 export const localizedPages = [home, projects] as const;
 
-type Locale = (typeof locales)[number]["code"];
-type LocalizedPage = (typeof localizedPages)[number];
+export type Locale = (typeof locales)[number]["code"];
+export type DefaultLocale = typeof defaultLocale;
 
-export type PageTranslation<T extends LocalizedPage> =
-	T["translations"][keyof T["translations"]];
+type LocalizedPage = (typeof localizedPages)[number];
+export type PageTranslation<T extends LocalizedPage> = Partial<
+	Record<Locale, T["translations"][keyof T["translations"]]>
+>;
 
 export function getLocale(currentLocale: string | undefined): Locale {
 	return locales.some(({ code }) => code === currentLocale)
@@ -36,10 +38,8 @@ export function getLocaleStaticPaths() {
 export function getPageTranslation<T extends LocalizedPage>(
 	page: T,
 	locale: Locale,
-): PageTranslation<T> | undefined {
-	const translations: Record<string, unknown> = page.translations;
-	if (translations[locale]) {
-		return translations[locale] as PageTranslation<T>;
-	}
-	return undefined;
+) {
+	const translations = page.translations as PageTranslation<T>;
+	const translation = translations[locale];
+	return translation;
 }
