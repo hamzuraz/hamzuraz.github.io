@@ -35,12 +35,12 @@ const localizedContacts = localizeContacts(t);
 
 		<div class="md:col-span-6 flex flex-col gap-4">
 			{localizedContacts.map((contact) => (
-	<div class="card overflow-visible p-4 flex flex-row items-center justify-between">
-		<div>
+	<div class="card overflow-visible py-4 px-6 flex flex-row items-center justify-between gap-2.5">
+		<div class="flex flex-col gap-1.25 min-w-0">
 			<h3 class="text-xs sm:text-sm text-muted-foreground">
 				{contact.label}
 			</h3>
-			<p class="text-sm sm:text-base">{contact.value}</p>
+			<p class="text-sm sm:text-base truncate">{contact.value}</p>
 		</div>
 		<div class="flex gap-2.5">
 			<IconButton
