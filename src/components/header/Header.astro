@@ -1,17 +1,29 @@
 ---
-import LanguageSelector from "./language/LanguageSelector.astro";
-import ThemeSelector from "./theme/ThemeSelector.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocale } from "@/i18n/i18n";
+import DesktopMenu from "./DesktopMenu.astro";
+import MobileMenu from "./MobileMenu.astro";
 
 interface Props {
-	path?: string;
+	pathWithoutLocale?: string;
 }
 
-const { path } = Astro.props;
+const { pathWithoutLocale } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
 ---
 
-<header class="p-3 sm:px-6 bg-background rounded-b-sm">
-	<div class="flex flex-wrap gap-3">
-		<ThemeSelector />
-		<LanguageSelector path={path} />
+<header class="p-3 sm:px-6 bg-background rounded-b-lg">
+	<div class="flex items-center justify-between gap-4">
+		<MobileMenu pathWithoutLocale={pathWithoutLocale} />
+		<a
+			href={homeUrl}
+			class="font-pixel text-xl tracking-widest hover:opacity-80 transition-opacity"
+			aria-label="Rifki Muhazzar - Homepage"
+		>
+			RM
+		</a>
+		<DesktopMenu pathWithoutLocale={pathWithoutLocale} />
+		<div class="lg:hidden w-9" aria-hidden="true"></div>
 	</div>
 </header>
