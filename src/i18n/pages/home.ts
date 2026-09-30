@@ -56,4 +56,5 @@ export const home = {
 	translations: { en },
 } as const;
 
-export type Home = typeof home;
+export type HomeTranslation =
+	(typeof home.translations)[keyof typeof home.translations];

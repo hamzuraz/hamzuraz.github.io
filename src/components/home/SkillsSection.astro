@@ -3,11 +3,10 @@ import { BookOpenCheck, Layers, Star } from "@lucide/astro";
 import Badge from "@/components/common/badge/Badge.astro";
 import AestheticSection from "@/components/common/container/AestheticSection.astro";
 import { skillCategories } from "@/data/skills";
-import type { PageTranslation } from "@/i18n/i18n";
-import type { Home } from "@/i18n/pages/home";
+import type { HomeTranslation } from "@/i18n/pages/home";
 
 interface Props {
-	t: PageTranslation<Home> | undefined;
+	t: HomeTranslation | undefined;
 }
 
 const { t } = Astro.props;

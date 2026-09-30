@@ -2,6 +2,8 @@ import { Mail, SquareArrowOutUpRight } from "@lucide/astro";
 
 export const contacts = [
 	{
+		key: "email",
+
 		label: "Email",
 		copyTooltip: "Copy email",
 		copyAriaLabel: "Copy email",
@@ -14,6 +16,8 @@ export const contacts = [
 		icon: Mail,
 	},
 	{
+		key: "linkedin",
+
 		label: "LinkedIn",
 		copyTooltip: "Copy LinkedIn URL",
 		copyAriaLabel: "Copy LinkedIn URL",

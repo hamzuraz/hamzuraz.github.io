@@ -1,36 +1,17 @@
 import { contacts } from "@/data/contacts";
-import type { PageTranslation } from "@/i18n/i18n";
-import type { Home } from "@/i18n/pages/home";
+import type { HomeTranslation } from "@/i18n/pages/home";
 
-export function localizeContacts(t: PageTranslation<Home> | undefined) {
-	return contacts.map((c) => {
-		switch (c.label) {
-			case "Email":
-				return {
-					...c,
-					label: t?.contact.emailLabel ?? c.label,
-					copyTooltip: t?.contact.emailCopyTooltip ?? c.copyTooltip,
-					copyAriaLabel:
-						t?.contact.emailCopyAriaLabel ?? c.copyAriaLabel,
-					openTooltip: t?.contact.emailOpenTooltip ?? c.openTooltip,
-					openAriaLabel:
-						t?.contact.emailOpenAriaLabel ?? c.openAriaLabel,
-				};
-			case "LinkedIn":
-				return {
-					...c,
-					label: t?.contact.linkedinLabel ?? c.label,
-					copyTooltip:
-						t?.contact.linkedinCopyTooltip ?? c.copyTooltip,
-					copyAriaLabel:
-						t?.contact.linkedinCopyAriaLabel ?? c.copyAriaLabel,
-					openTooltip:
-						t?.contact.linkedinOpenTooltip ?? c.openTooltip,
-					openAriaLabel:
-						t?.contact.linkedinOpenAriaLabel ?? c.openAriaLabel,
-				};
-			default:
-				return c;
-		}
+export function localizeContacts(t: HomeTranslation | undefined) {
+	return contacts.map((contact) => {
+		const translation = t?.contact[contact.key];
+
+		return {
+			...contact,
+			label: translation?.label ?? contact.label,
+			copyTooltip: translation?.copyTooltip ?? contact.copyTooltip,
+			copyAriaLabel: translation?.copyAriaLabel ?? contact.copyAriaLabel,
+			openTooltip: translation?.openTooltip ?? contact.openTooltip,
+			openAriaLabel: translation?.openAriaLabel ?? contact.openAriaLabel,
+		};
 	});
 }
