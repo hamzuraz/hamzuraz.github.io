@@ -1,0 +1,44 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import LanguageSelector from "@/components/common/language/LanguageSelector.astro";
+import ThemeSelector from "@/components/common/theme/ThemeSelector.astro";
+import { localizeNav } from "@/i18n/common/localizeNav";
+import { getLocale } from "@/i18n/i18n";
+
+interface Props {
+	pathWithoutLocale?: string;
+}
+
+const { pathWithoutLocale } = Astro.props;
+const locale = getLocale(Astro.currentLocale);
+const localizedNav = localizeNav(locale);
+
+const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
+const projectsUrl = getRelativeLocaleUrl(locale, "projects", {
+	normalizeLocale: false,
+});
+---
+
+<div class="hidden lg:flex gap-4">
+	<nav class="flex items-center gap-4 text-sm text-muted-foreground">
+		<a href={projectsUrl} class="hover:text-foreground transition-colors">
+			{localizedNav.projects}
+		</a>
+		<a
+			href={`${homeUrl}#skills`}
+			class="hover:text-foreground transition-colors"
+		>
+			{localizedNav.skills}
+		</a>
+		<a
+			href={`${homeUrl}#contact`}
+			class="hover:text-foreground transition-colors"
+		>
+			{localizedNav.contact}
+		</a>
+	</nav>
+	<div class="flex gap-2">
+		<ThemeSelector />
+		<LanguageSelector pathWithoutLocale={pathWithoutLocale} />
+	</div>
+</div>
