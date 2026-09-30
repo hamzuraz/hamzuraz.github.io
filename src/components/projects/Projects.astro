@@ -26,11 +26,11 @@ const allProjects = (
 		<h1 class="font-pixel text-3xl sm:text-4xl mt-2">
 			{t?.heading}
 		</h1>
-		<p class="text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">
+		<p class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl">
 			{t?.description}
 		</p>
 	</div>
-	<div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 		{allProjects.map((project) => (
 	<ProjectCard
 		title={project.data.title}
