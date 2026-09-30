@@ -38,8 +38,8 @@ const allCategories = skillCategories.filter(
 		</p>
 	</div>
 
-	<div class="bg-border rounded mt-8 p-px">
-		<div class="tabs bg-background rounded-t py-2 px-3" id="tabs-skills">
+	<div class="bg-border rounded-xl mt-8 p-px">
+		<div class="tabs bg-background rounded-t-xl py-2 px-3" id="tabs-skills">
 			<nav
 				role="tablist"
 				class="gap-4 bg-background"
@@ -90,7 +90,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-all"
 			aria-labelledby="tabs-skills-tab-all"
 			tabindex="-1"
-			class="bg-background rounded-b mt-px divide-y divide-border"
+			class="bg-background rounded-b-xl mt-px divide-y divide-border"
 		>
 			{allCategories.map((category) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
@@ -114,7 +114,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-core"
 			aria-labelledby="tabs-skills-tab-core"
 			tabindex="-1"
-			class="bg-background rounded-b mt-px divide-y divide-border"
+			class="bg-background rounded-b-xl mt-px divide-y divide-border"
 			hidden
 		>
 			{coreCategories.map((category) => (
@@ -136,7 +136,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-familiar"
 			aria-labelledby="tabs-skills-tab-familiar"
 			tabindex="-1"
-			class="bg-background rounded-b mt-px divide-y divide-border"
+			class="bg-background rounded-b-xl mt-px divide-y divide-border"
 			hidden
 		>
 			{familiarCategories.map((category) => (
