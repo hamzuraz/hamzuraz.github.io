@@ -15,4 +15,5 @@ export const projects = {
 	translations: { en },
 } as const;
 
-export type Projects = typeof projects;
+export type ProjectsTranslation =
+	(typeof projects.translations)[keyof typeof projects.translations];

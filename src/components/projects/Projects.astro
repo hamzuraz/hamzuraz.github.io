@@ -2,12 +2,11 @@
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/common/card/ProjectCard.astro";
 import AestheticSection from "@/components/common/container/AestheticSection.astro";
-import type { PageTranslation } from "@/i18n/i18n";
-import type { Projects } from "@/i18n/pages/projects";
+import type { ProjectsTranslation } from "@/i18n/pages/projects";
 
 interface Props {
 	locale: string;
-	t: PageTranslation<Projects> | undefined;
+	t: ProjectsTranslation | undefined;
 }
 
 const { locale, t } = Astro.props;
@@ -28,7 +27,7 @@ const allProjects = (
 			{t?.heading}
 		</h1>
 		<p class="text-sm sm:text-base text-muted-foreground mt-2 max-w-2xl">
-			{t?.descriptionText}
+			{t?.description}
 		</p>
 	</div>
 	<div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
