@@ -37,11 +37,11 @@ const allCategories = skillCategories.filter(
 		</p>
 	</div>
 
-	<div class="bg-border rounded-xl mt-8 p-px">
-		<div class="tabs bg-background rounded-t-xl py-2 px-3" id="tabs-skills">
+	<div class="mt-8 border rounded-xl overflow-hidden">
+		<div class="tabs border-b py-2 px-3" id="tabs-skills">
 			<nav
 				role="tablist"
-				class="gap-4 bg-background"
+				class="gap-6 bg-background"
 				aria-orientation="horizontal"
 				data-variant="line"
 			>
@@ -49,7 +49,7 @@ const allCategories = skillCategories.filter(
 					type="button"
 					role="tab"
 					id="tabs-skills-tab-all"
-					class="cursor-pointer"
+					class="cursor-pointer after:-bottom-0.75 px-0"
 					aria-controls="tabs-skills-panel-all"
 					aria-selected="true"
 					tabindex="0"
@@ -61,7 +61,7 @@ const allCategories = skillCategories.filter(
 					type="button"
 					role="tab"
 					id="tabs-skills-tab-core"
-					class="cursor-pointer"
+					class="cursor-pointer after:-bottom-0.75 px-0"
 					aria-controls="tabs-skills-panel-core"
 					aria-selected="false"
 					tabindex="-1"
@@ -73,7 +73,7 @@ const allCategories = skillCategories.filter(
 					type="button"
 					role="tab"
 					id="tabs-skills-tab-familiar"
-					class="cursor-pointer"
+					class="cursor-pointer after:-bottom-0.75 px-0"
 					aria-controls="tabs-skills-panel-familiar"
 					aria-selected="false"
 					tabindex="-1"
@@ -89,7 +89,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-all"
 			aria-labelledby="tabs-skills-tab-all"
 			tabindex="-1"
-			class="bg-background rounded-b-xl mt-px divide-y divide-border"
+			class="divide-y"
 		>
 			{allCategories.map((category) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
@@ -113,7 +113,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-core"
 			aria-labelledby="tabs-skills-tab-core"
 			tabindex="-1"
-			class="bg-background rounded-b-xl mt-px divide-y divide-border"
+			class="divide-y"
 			hidden
 		>
 			{coreCategories.map((category) => (
@@ -135,7 +135,7 @@ const allCategories = skillCategories.filter(
 			id="tabs-skills-panel-familiar"
 			aria-labelledby="tabs-skills-tab-familiar"
 			tabindex="-1"
-			class="bg-background rounded-b-xl mt-px divide-y divide-border"
+			class="divide-y"
 			hidden
 		>
 			{familiarCategories.map((category) => (
