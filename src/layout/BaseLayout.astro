@@ -21,7 +21,9 @@ const { title, description, pathWithoutLocale, noindex } = Astro.props;
 		pathWithoutLocale={pathWithoutLocale}
 		noindex={noindex}
 	/>
-	<body class="min-w-75 max-w-250 mx-auto bg-border border-y lg:border-x ">
+	<body
+		class="min-w-75 max-w-250 mx-auto bg-border border-t divide-y lg:border-x"
+	>
 		<slot />
 		<script src="@/scripts/basecoat-css.ts"></script>
 		<script src="@/scripts/contact-copy.ts"></script>

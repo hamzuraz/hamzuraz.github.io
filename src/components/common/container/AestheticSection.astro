@@ -6,9 +6,6 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<section
-	id={id}
-	class="mt-px px-3 sm:px-6 py-12 sm:py-16 bg-background rounded-lg"
->
+<section id={id} class="px-3 sm:px-6 py-12 sm:py-16 bg-background rounded-lg">
 	<slot />
 </section>
