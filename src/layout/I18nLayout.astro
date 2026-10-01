@@ -22,7 +22,7 @@ const { title, description, pathWithoutLocale, showFallback, languageName } =
 	pathWithoutLocale={pathWithoutLocale}
 >
 	<Header pathWithoutLocale={pathWithoutLocale} />
-	<main>
+	<main class="divide-y">
 		{showFallback ? <I18nFallbackContent languageName={languageName} /> : <slot />}
 	</main>
 	<Footer />
