@@ -1,5 +1,3 @@
-// @ts-check
-
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import { defaultLocale, locales } from "./src/i18n/i18n";
