@@ -1,5 +1,6 @@
 ---
 import { OctagonAlert } from "@lucide/astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 
 interface Props {
 	languageName: string;
@@ -8,8 +9,8 @@ interface Props {
 const { languageName } = Astro.props;
 ---
 
-<div
-	class="px-3 sm:px-6 py-12 sm:py-16 bg-background rounded-lg flex items-center justify-center h-[calc(100dvh-2px-2px-3.75rem-7.25rem)] sm:h-[calc(100dvh-2px-2px-3.75rem-5.25rem)]"
+<SectionContainer
+	class="flex items-center justify-center h-[calc(100dvh-2px-2px-3.75rem-7.25rem)] sm:h-[calc(100dvh-2px-2px-3.75rem-5.25rem)]"
 >
 	<div class="-mt-64 flex flex-col items-center gap-4">
 		<OctagonAlert class="w-16 h-16 stroke-muted-foreground stroke-1" />
@@ -21,4 +22,4 @@ const { languageName } = Astro.props;
 			yet, please choose another language.
 		</h1>
 	</div>
-</div>
+</SectionContainer>

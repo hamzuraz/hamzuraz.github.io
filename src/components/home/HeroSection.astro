@@ -1,7 +1,7 @@
 ---
 import ButtonLink from "@/components/common/button-link/ButtonLink.astro";
 import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
-import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import type { HomeTranslation } from "@/i18n/pages/home";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 const { t } = Astro.props;
 ---
 
-<AestheticSection>
+<SectionContainer>
 	<div
 		class="flex gap-2.5 flex-col lg:flex-row lg:items-center lg:justify-between"
 	>
@@ -41,4 +41,4 @@ const { t } = Astro.props;
 			{t?.hero.getInTouch}
 		</ButtonLink>
 	</div>
-</AestheticSection>
+</SectionContainer>
