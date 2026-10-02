@@ -1,7 +1,7 @@
 ---
 import { BookOpenCheck, Layers, Star } from "@lucide/astro";
 import Badge from "@/components/common/badge/Badge.astro";
-import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import { skillCategories } from "@/data/skills";
 import type { HomeTranslation } from "@/i18n/pages/home";
 
@@ -22,7 +22,7 @@ const allCategories = skillCategories.filter(
 );
 ---
 
-<AestheticSection id="skills">
+<SectionContainer id="skills">
 	<div>
 		<span
 			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
@@ -152,4 +152,4 @@ const allCategories = skillCategories.filter(
 ))}
 		</div>
 	</div>
-</AestheticSection>
+</SectionContainer>

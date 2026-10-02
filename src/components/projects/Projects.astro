@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/common/card/ProjectCard.astro";
-import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import type { ProjectsTranslation } from "@/i18n/pages/projects";
 
 interface Props {
@@ -16,7 +16,7 @@ const allProjects = (
 ).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<AestheticSection>
+<SectionContainer>
 	<div>
 		<span
 			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
@@ -44,4 +44,4 @@ const allProjects = (
 	/>
 ))}
 	</div>
-</AestheticSection>
+</SectionContainer>

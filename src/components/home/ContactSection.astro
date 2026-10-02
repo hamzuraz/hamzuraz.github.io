@@ -2,7 +2,7 @@
 import { Check, Copy } from "@lucide/astro";
 import IconButton from "@/components/common/button/IconButton.astro";
 import IconButtonLink from "@/components/common/button-link/IconButtonLink.astro";
-import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import { localizeContacts } from "@/i18n/common/localizeContacts";
 import type { HomeTranslation } from "@/i18n/pages/home";
 
@@ -14,7 +14,7 @@ const { t } = Astro.props;
 const localizedContacts = localizeContacts(t);
 ---
 
-<AestheticSection id="contact">
+<SectionContainer id="contact">
 	<span
 		class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 	>
@@ -69,4 +69,4 @@ const localizedContacts = localizeContacts(t);
 ))}
 		</div>
 	</div>
-</AestheticSection>
+</SectionContainer>

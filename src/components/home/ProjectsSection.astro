@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ArrowRight } from "@lucide/astro";
 import ProjectCard from "@/components/common/card/ProjectCard.astro";
-import AestheticSection from "@/components/common/container/AestheticSection.astro";
+import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import type { HomeTranslation } from "@/i18n/pages/home";
 import { projects } from "@/i18n/pages/projects";
 
@@ -28,7 +28,7 @@ const threeFeaturedProjects = allFeaturedProjects
 	.slice(0, 3);
 ---
 
-<AestheticSection>
+<SectionContainer>
 	<div class="flex flex-col gap-12 items-end sm:flex-row sm:justify-between">
 		<div>
 			<span
@@ -74,4 +74,4 @@ const threeFeaturedProjects = allFeaturedProjects
 	/>
 ))}
 	</div>
-</AestheticSection>
+</SectionContainer>
