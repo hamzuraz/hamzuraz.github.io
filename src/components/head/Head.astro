@@ -22,10 +22,10 @@ const ogTcImageUrl = new URL("/og-tc-placeholder-image-500x500.png", siteUrl)
 
 const matchedPage =
 	localizedPages.find((page) => page.slug === pathWithoutLocale) ?? home;
-const englishFallback = matchedPage.translations[defaultLocale];
 
-const resolvedTitle = title ?? englishFallback.title;
-const resolvedDescription = description ?? englishFallback.description;
+const fallbackTranslation = matchedPage.translations[defaultLocale];
+const resolvedTitle = title ?? fallbackTranslation.head.title;
+const resolvedDescription = description ?? fallbackTranslation.head.description;
 ---
 
 <head>
@@ -39,7 +39,7 @@ const resolvedDescription = description ?? englishFallback.description;
 
 	<PreloadFontLinks />
 	<ThemeInitializerScript />
-	<!-- <meta name="color-scheme" content="light dark"> -->
+	<meta name="color-scheme" content="light dark">
 	<!-- <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"> -->
 	<!-- <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"> -->
 
