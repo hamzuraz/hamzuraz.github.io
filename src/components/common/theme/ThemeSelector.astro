@@ -2,6 +2,11 @@
 import { Check, ChevronDown, Wallpaper } from "@lucide/astro";
 import Kbd from "@/components/common/kbd/Kbd.astro";
 import { themes } from "@/data/themes";
+import { localizeTheme } from "@/i18n/common/localizeTheme";
+import { getLocale } from "@/i18n/i18n";
+
+const locale = getLocale(Astro.currentLocale);
+const localizedTheme = localizeTheme(locale);
 ---
 
 <div id="theme-selector" class="dropdown-menu">
@@ -38,35 +43,33 @@ import { themes } from "@/data/themes";
 			aria-labelledby="theme-selector-trigger"
 		>
 			<div role="group" aria-labelledby="theme-selector-themes">
-				<div role="heading" id="theme-selector-themes">Themes</div>
+				<div role="heading" id="theme-selector-themes">
+					{localizedTheme.heading}
+				</div>
 				{themes.map((theme) => (
 	<div
 		role="menuitemradio"
 		class="cursor-pointer"
 		data-value={theme.id}
 		data-theme-name={theme.name}
-		data-theme-mode={theme.mode}
+		data-theme-mode={
+			theme.mode === "Light"
+				? localizedTheme.modes.light
+				: localizedTheme.modes.dark
+		}
 		aria-checked="false"
 	>
 		<span>{theme.name}</span>
-		<span class="text-xs text-muted-foreground">{theme.mode}</span>
+		<span class="text-xs text-muted-foreground">
+			{theme.mode === "Light"
+				? localizedTheme.modes.light
+				: localizedTheme.modes.dark}
+		</span>
 		<span data-indicator>
 			<Check />
 		</span>
 	</div>
 ))}
-				<hr role="separator">
-				<div
-					role="menuitemradio"
-					class="cursor-pointer"
-					data-value="reset"
-					data-variant="destructive"
-				>
-					<span>Reset theme preferences</span>
-					<span data-indicator>
-						<Check />
-					</span>
-				</div>
 			</div>
 		</div>
 	</div>
