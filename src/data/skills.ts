@@ -1,17 +1,17 @@
-interface SkillCategory {
-	name: string;
+type SkillCategory = {
+	id: string;
 	core: string[];
 	familiar: string[];
-}
+};
 
-export const skillCategories: SkillCategory[] = [
+export const skillCategories = [
 	{
-		name: "Programming Languages & Runtimes",
+		id: "languages&runtimes",
 		core: ["Go", "JavaScript", "TypeScript", "Bun", "Node.js"],
-		familiar: ["Python"],
+		familiar: ["Python", "Rust"],
 	},
 	{
-		name: "Frontend & Backend",
+		id: "frontend&fullstack",
 		core: [
 			"HTML",
 			"CSS",
@@ -22,41 +22,43 @@ export const skillCategories: SkillCategory[] = [
 			"React",
 			"Next.js",
 		],
-		familiar: ["Alpine.js", "HTMX", "Express"],
+		familiar: ["Alpine.js", "HTMX"],
 	},
 	{
-		name: "Mobile",
+		id: "mobile",
 		core: ["React Native", "Expo"],
 		familiar: [],
 	},
 	{
-		name: "Databases",
+		id: "backend",
+		core: [],
+		familiar: ["Express", "Hono", "Elysia"],
+	},
+	{
+		id: "databases",
 		core: ["PostgreSQL", "MySQL", "SQLite", "MongoDB"],
 		familiar: [],
 	},
 	{
-		name: "Tools",
+		id: "tools",
 		core: [
 			"Git",
 			"GitHub",
 			"Docker",
-			"Biome",
 			"Vite",
+			"Vite+",
 			"Vitest",
+			"OXC",
+			"Biome",
 			"Lefthook",
 		],
 		familiar: ["Playwright"],
 	},
 	{
-		name: "Design",
-		core: [],
-		familiar: ["Canva", "Figma"],
-	},
-	{
-		name: "IDE & AI",
+		id: "ide&ai",
 		core: [
-			"Zed",
 			"Visual Studio Code",
+			"Zed",
 			"Antigravity",
 			"Codex",
 			"GitHub Copilot",
@@ -64,4 +66,9 @@ export const skillCategories: SkillCategory[] = [
 		],
 		familiar: [],
 	},
-];
+	{
+		id: "design",
+		core: [],
+		familiar: ["Canva", "Figma"],
+	},
+] as const satisfies SkillCategory[];
