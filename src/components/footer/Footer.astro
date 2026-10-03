@@ -1,4 +1,5 @@
 ---
+import { Copyright } from "@lucide/astro";
 import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
 import { localizeFooter } from "@/i18n/common/localizeFooter";
 import { getLocale } from "@/i18n/i18n";
@@ -11,9 +12,10 @@ const currentYear = new Date().getFullYear();
 <footer
 	class="px-3 sm:px-6 py-6 bg-background rounded-t-lg flex flex-col sm:flex-row gap-4 items-center justify-between"
 >
-	<p class="text-xs sm:text-sm text-muted-foreground">
-		&copy; <span data-current-year>{currentYear}</span> Rifki Muhazzar.{" "}
-		{localizedFooter.rights}
+	<p class="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
+		<Copyright class="size-4" />
+		<span data-current-year>{currentYear}</span>
+		<span>Rifki Muhazzar. {localizedFooter.rights}</span>
 	</p>
 	<SocialIconButtonLinks />
 </footer>
