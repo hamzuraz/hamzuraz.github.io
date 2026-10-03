@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Check, ChevronDown, Languages } from "@lucide/astro";
 import Kbd from "@/components/common/kbd/Kbd.astro";
+import { localizeLanguageSelectorHeading } from "@/i18n/common/localizeLanguageSelectorHeading";
 import { getLocale, locales } from "@/i18n/i18n";
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 const { pathWithoutLocale } = Astro.props;
 const currentLocale = getLocale(Astro.currentLocale);
 const currentLanguage = locales.find(({ code }) => code === currentLocale);
+const heading = localizeLanguageSelectorHeading(currentLocale);
 ---
 
 <div id="language-selector" class="dropdown-menu">
@@ -51,7 +53,7 @@ const currentLanguage = locales.find(({ code }) => code === currentLocale);
 		>
 			<div role="group" aria-labelledby="language-selector-languages">
 				<div role="heading" id="language-selector-languages">
-					Languages
+					{heading}
 				</div>
 				{locales.map((language) => (
 	<a
