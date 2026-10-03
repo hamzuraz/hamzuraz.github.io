@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLocale } from "@/i18n/i18n";
+import { homePage } from "@/i18n/pages/home/homePage";
 import DesktopMenu from "./DesktopMenu.astro";
 import MobileMenu from "./MobileMenu.astro";
 
@@ -10,7 +11,9 @@ interface Props {
 
 const { pathWithoutLocale } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
-const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
+const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
+	normalizeLocale: false,
+});
 ---
 
 <header class="p-3 sm:px-6 bg-background rounded-b-lg">

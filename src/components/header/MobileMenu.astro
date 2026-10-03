@@ -5,7 +5,8 @@ import LanguageSelector from "@/components/common/language/LanguageSelector.astr
 import ThemeSelector from "@/components/common/theme/ThemeSelector.astro";
 import { localizeNav } from "@/i18n/common/localizeNav";
 import { getLocale } from "@/i18n/i18n";
-import { projects } from "@/i18n/pages/projects";
+import { homePage } from "@/i18n/pages/home/homePage";
+import { projectsPage } from "@/i18n/pages/projects/projectsPage";
 
 interface Props {
 	pathWithoutLocale?: string;
@@ -15,8 +16,10 @@ const { pathWithoutLocale } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
 const localizedNav = localizeNav(locale);
 
-const homeUrl = getRelativeLocaleUrl(locale, "", { normalizeLocale: false });
-const projectsUrl = getRelativeLocaleUrl(locale, projects.slug, {
+const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
+	normalizeLocale: false,
+});
+const projectsUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 	normalizeLocale: false,
 });
 ---
