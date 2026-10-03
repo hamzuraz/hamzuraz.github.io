@@ -29,13 +29,14 @@ export const ja = {
 			familiar: "経験あり",
 		},
 		categories: {
-			languages: "プログラミング言語・ランタイム",
-			web: "フロントエンド・バックエンド",
+			"languages&runtimes": "言語とランタイム",
+			"frontend&fullstack": "フロントエンドとフルスタック",
 			mobile: "モバイル",
+			backend: "バックエンド",
 			databases: "データベース",
 			tools: "ツール",
+			"ide&ai": "IDE・AI",
 			design: "デザイン",
-			ide: "IDE・AI",
 		},
 	},
 	contact: {

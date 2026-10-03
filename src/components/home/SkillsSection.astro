@@ -3,10 +3,10 @@ import { BookOpenCheck, Layers, Star } from "@lucide/astro";
 import Badge from "@/components/common/badge/Badge.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import { skillCategories } from "@/data/skills";
-import type { HomeTranslation } from "@/i18n/pages/home";
+import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
 
 interface Props {
-	t: HomeTranslation | undefined;
+	t: HomePageTranslation | undefined;
 }
 
 const { t } = Astro.props;
@@ -94,7 +94,7 @@ const allCategories = skillCategories.filter(
 			{allCategories.map((category) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{category.name}
+			{t?.skills.categories[category.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
 			{category.core.map((skill) => (
@@ -119,7 +119,7 @@ const allCategories = skillCategories.filter(
 			{coreCategories.map((category) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{category.name}
+			{t?.skills.categories[category.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
 			{category.core.map((skill) => (
@@ -141,7 +141,7 @@ const allCategories = skillCategories.filter(
 			{familiarCategories.map((category) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{category.name}
+			{t?.skills.categories[category.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
 			{category.familiar.map((skill) => (

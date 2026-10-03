@@ -29,13 +29,14 @@ export const id = {
 			familiar: "Familiar",
 		},
 		categories: {
-			languages: "Bahasa Pemrograman & Runtime",
-			web: "Frontend & Backend",
+			"languages&runtimes": "Bahasa & Runtime",
+			"frontend&fullstack": "Frontend & Fullstack",
 			mobile: "Mobile",
+			backend: "Backend",
 			databases: "Basis Data",
 			tools: "Alat",
+			"ide&ai": "IDE & AI",
 			design: "Desain",
-			ide: "IDE & AI",
 		},
 	},
 	contact: {
