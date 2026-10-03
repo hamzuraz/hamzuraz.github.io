@@ -29,13 +29,14 @@ export const es = {
 			familiar: "Conocimientos",
 		},
 		categories: {
-			languages: "Lenguajes de programación y runtimes",
-			web: "Frontend y backend",
+			"languages&runtimes": "Lenguajes y runtimes",
+			"frontend&fullstack": "Frontend y fullstack",
 			mobile: "Móvil",
+			backend: "Backend",
 			databases: "Bases de datos",
 			tools: "Herramientas",
+			"ide&ai": "IDE e IA",
 			design: "Diseño",
-			ide: "IDE e IA",
 		},
 	},
 	contact: {

@@ -29,13 +29,14 @@ export const de = {
 			familiar: "Vertraut",
 		},
 		categories: {
-			languages: "Programmiersprachen & Laufzeitumgebungen",
-			web: "Frontend & Backend",
+			"languages&runtimes": "Sprachen & Laufzeiten",
+			"frontend&fullstack": "Frontend & Fullstack",
 			mobile: "Mobile",
+			backend: "Backend",
 			databases: "Datenbanken",
 			tools: "Werkzeuge",
+			"ide&ai": "IDE & KI",
 			design: "Design",
-			ide: "IDE & KI",
 		},
 	},
 	contact: {

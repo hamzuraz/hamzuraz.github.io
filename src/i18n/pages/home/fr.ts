@@ -29,13 +29,14 @@ export const fr = {
 			familiar: "Pratiquées",
 		},
 		categories: {
-			languages: "Langages et environnements d'exécution",
-			web: "Frontend et backend",
+			"languages&runtimes": "Langages et runtimes",
+			"frontend&fullstack": "Frontend et fullstack",
 			mobile: "Mobile",
+			backend: "Backend",
 			databases: "Bases de données",
 			tools: "Outils",
+			"ide&ai": "IDE et IA",
 			design: "Design",
-			ide: "IDE et IA",
 		},
 	},
 	contact: {
