@@ -1,6 +1,6 @@
 ---
 import { defaultLocale, getLocale, localizedPages } from "@/i18n/i18n";
-import { home } from "@/i18n/pages/home";
+import { homePage } from "@/i18n/pages/home/homePage";
 import HreflangLinks from "./HreflangLinks.astro";
 import PreloadFontLinks from "./PreloadFontLinks.astro";
 import ThemeInitializerScript from "./ThemeInitializerScript.astro";
@@ -21,7 +21,7 @@ const ogTcImageUrl = new URL("/og-tc-placeholder-image-500x500.png", siteUrl)
 	.href;
 
 const matchedPage =
-	localizedPages.find((page) => page.slug === pathWithoutLocale) ?? home;
+	localizedPages.find((page) => page.slug === pathWithoutLocale) ?? homePage;
 
 const fallbackTranslation = matchedPage.translations[defaultLocale];
 const resolvedTitle = title ?? fallbackTranslation.head.title;
