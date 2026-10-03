@@ -1,4 +1,4 @@
-const en = {
+export const en = {
 	head: {
 		title: "Projects — Rifki Muhazzar",
 		description:
@@ -8,12 +8,4 @@ const en = {
 	heading: "Projects",
 	description:
 		"Everything I've built to learn, experiment, and solve real problems. Browse the code or try a live demo where available.",
-};
-
-export const projects = {
-	slug: "projects",
-	translations: { en },
 } as const;
-
-export type ProjectsTranslation =
-	(typeof projects.translations)[keyof typeof projects.translations];

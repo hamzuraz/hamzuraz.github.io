@@ -9,7 +9,7 @@ import {
 	getPageTranslation,
 	locales,
 } from "@/i18n/i18n";
-import { home } from "@/i18n/pages/home";
+import { homePage } from "@/i18n/pages/home/homePage";
 import I18nLayout from "@/layout/I18nLayout.astro";
 
 export function getStaticPaths() {
@@ -17,7 +17,7 @@ export function getStaticPaths() {
 }
 
 const locale = getLocale(Astro.currentLocale);
-const t = getPageTranslation(home, locale);
+const t = getPageTranslation(homePage, locale);
 const showFallback = t === undefined;
 const languageName =
 	locales.find(({ code }) => code === locale)?.name ?? locale;

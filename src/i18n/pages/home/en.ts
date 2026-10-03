@@ -1,11 +1,11 @@
-const en = {
+export const en = {
 	head: {
 		title: "Rifki Muhazzar — Software Engineer",
 		description:
 			"Personal portfolio of Rifki Muhazzar, a software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
 	},
 	hero: {
-		sectionTag: "01 / SOFTWARE ENGINEER",
+		sectionTag: "01 / SOFTWAREENTWICKLER",
 		name: "Rifki Muhazzar",
 		bio: "Software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
 		seeResume: "See resume",
@@ -28,6 +28,15 @@ const en = {
 			core: "Core",
 			familiar: "Familiar",
 		},
+		categories: {
+			languages: "Programming Languages & Runtimes",
+			web: "Frontend & Backend",
+			mobile: "Mobile",
+			databases: "Databases",
+			tools: "Tools",
+			design: "Design",
+			ide: "IDE & AI",
+		},
 	},
 	contact: {
 		sectionTag: "04 / CONTACT",
@@ -37,9 +46,9 @@ const en = {
 		email: {
 			label: "Email",
 			copyTooltip: "Copy email",
-			copyAriaLabel: "Copy Email",
+			copyAriaLabel: "Copy email",
 			openTooltip: "Send email",
-			openAriaLabel: "Open Email",
+			openAriaLabel: "Open email",
 		},
 		linkedin: {
 			label: "LinkedIn",
@@ -50,11 +59,3 @@ const en = {
 		},
 	},
 } as const;
-
-export const home = {
-	slug: "",
-	translations: { en },
-} as const;
-
-export type HomeTranslation =
-	(typeof home.translations)[keyof typeof home.translations];
