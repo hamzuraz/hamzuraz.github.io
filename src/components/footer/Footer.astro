@@ -1,6 +1,10 @@
 ---
 import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
+import { localizeFooter } from "@/i18n/common/localizeFooter";
+import { getLocale } from "@/i18n/i18n";
 
+const locale = getLocale(Astro.currentLocale);
+const localizedFooter = localizeFooter(locale);
 const currentYear = new Date().getFullYear();
 ---
 
@@ -8,7 +12,8 @@ const currentYear = new Date().getFullYear();
 	class="px-3 sm:px-6 py-6 bg-background rounded-t-lg flex flex-col sm:flex-row gap-4 items-center justify-between"
 >
 	<p class="text-xs sm:text-sm text-muted-foreground">
-		&copy; {currentYear} Rifki Muhazzar. All rights reserved.
+		&copy; <span data-current-year>{currentYear}</span> Rifki Muhazzar.
+		{localizedFooter.rights}
 	</p>
 	<SocialIconButtonLinks />
 </footer>
