@@ -2,10 +2,11 @@
 import { getCollection } from "astro:content";
 import ProjectCard from "@/components/common/card/ProjectCard.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
+import type { Locale } from "@/i18n/i18n";
 import type { ProjectsPageTranslation } from "@/i18n/pages/projects/projectsPage";
 
 interface Props {
-	locale: string;
+	locale: Locale;
 	t: ProjectsPageTranslation | undefined;
 }
 
