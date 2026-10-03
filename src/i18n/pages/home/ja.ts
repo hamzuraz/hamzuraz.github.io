@@ -35,7 +35,7 @@ export const ja = {
 			backend: "バックエンド",
 			databases: "データベース",
 			tools: "ツール",
-			"ide&ai": "IDE・AI",
+			"ide&ai": "統合開発環境・人工知能",
 			design: "デザイン",
 		},
 	},
