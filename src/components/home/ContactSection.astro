@@ -4,14 +4,16 @@ import IconButton from "@/components/common/button/IconButton.astro";
 import IconButtonLink from "@/components/common/button-link/IconButtonLink.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import { localizeContacts } from "@/i18n/common/localizeContacts";
-import type { HomeTranslation } from "@/i18n/pages/home";
+import type { Locale } from "@/i18n/i18n";
+import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
 
 interface Props {
-	t: HomeTranslation | undefined;
+	locale: Locale;
+	t: HomePageTranslation | undefined;
 }
 
-const { t } = Astro.props;
-const localizedContacts = localizeContacts(t);
+const { locale, t } = Astro.props;
+const localizedContacts = localizeContacts(locale);
 ---
 
 <SectionContainer id="contact">
