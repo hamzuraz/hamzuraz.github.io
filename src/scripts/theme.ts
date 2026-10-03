@@ -1,7 +1,7 @@
 import { themes } from "@/data/themes";
 
 const storageKey = "theme";
-const themeIds = themes.map((theme) => theme.id);
+const themeIds: string[] = themes.map((theme) => theme.id);
 const root = document.documentElement;
 const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -65,22 +65,13 @@ document.addEventListener("click", (event) => {
 	const theme = item?.dataset.value;
 	if (!theme) return;
 
-	if (theme === "reset") {
-		applyTheme(systemTheme());
-		try {
-			window.localStorage.removeItem(storageKey);
-		} catch {
-			// Storage may be unavailable (private mode, quota, blocked).
-		}
-	} else {
-		applyTheme(theme);
-		try {
-			window.localStorage.setItem(storageKey, theme);
-		} catch {
-			// Storage may be unavailable (private mode, quota, blocked).
-			// The theme is already applied for this session.
-			// It just won't persist across reloads.
-		}
+	applyTheme(theme);
+	try {
+		window.localStorage.setItem(storageKey, theme);
+	} catch {
+		// Storage may be unavailable (private mode, quota, blocked).
+		// The theme is already applied for this session.
+		// It just won't persist across reloads.
 	}
 });
 
