@@ -8,8 +8,8 @@ type NavTranslation = {
 	closeMenu: string;
 };
 
-type NavTranslations = Record<DefaultLocale, Readonly<NavTranslation>> &
-	Partial<Record<Locale, Readonly<NavTranslation>>>;
+type NavTranslations = Partial<Record<Locale, NavTranslation>> &
+	Record<DefaultLocale, NavTranslation>;
 
 const nav: NavTranslations = {
 	en: {

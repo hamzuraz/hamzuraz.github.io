@@ -1,5 +1,5 @@
-import { home } from "./pages/home";
-import { projects } from "./pages/projects";
+import { homePage } from "./pages/home/homePage";
+import { projectsPage } from "./pages/projects/projectsPage";
 
 export const locales = [
 	{ code: "en", name: "English" },
@@ -13,7 +13,7 @@ export const locales = [
 ] as const;
 
 export const defaultLocale = "en";
-export const localizedPages = [home, projects] as const;
+export const localizedPages = [homePage, projectsPage] as const;
 
 export type Locale = (typeof locales)[number]["code"];
 export type DefaultLocale = typeof defaultLocale;
