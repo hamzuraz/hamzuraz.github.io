@@ -4,17 +4,17 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { ArrowRight } from "@lucide/astro";
 import ProjectCard from "@/components/common/card/ProjectCard.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
-import type { HomeTranslation } from "@/i18n/pages/home";
-import { projects } from "@/i18n/pages/projects";
+import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
+import { projectsPage } from "@/i18n/pages/projects/projectsPage";
 
 interface Props {
 	locale: string;
-	t: HomeTranslation | undefined;
+	t: HomePageTranslation | undefined;
 }
 
 const { locale, t } = Astro.props;
 
-const projectsPageUrl = getRelativeLocaleUrl(locale, projects.slug, {
+const projectsPageUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 	normalizeLocale: false,
 });
 
