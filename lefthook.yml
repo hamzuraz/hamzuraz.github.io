@@ -2,7 +2,7 @@ pre-commit:
   parallel: false
   jobs:
     - name: Biome check
-      glob: "*.{js,ts,astro,svg,json,css}"
+      glob: "*.{js,ts,astro,svg,css,json}"
       run: bun --bun run biome:check
       stage_fixed: true
 
