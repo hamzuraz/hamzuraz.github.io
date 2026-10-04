@@ -1,7 +1,6 @@
 @import "./fonts.css";
 
-:root,
-.dark {
+:root {
 	/* Font Family */
 	--font-sans: "Geist", sans-serif;
 	--font-pixel: "Geist Pixel", monospace;
