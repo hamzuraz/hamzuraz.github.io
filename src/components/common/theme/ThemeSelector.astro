@@ -2,23 +2,23 @@
 import { Check, ChevronDown, Wallpaper } from "@lucide/astro";
 import Kbd from "@/components/common/kbd/Kbd.astro";
 import { themes } from "@/data/themes";
-import { localizeTheme } from "@/i18n/common/localizeTheme";
+import { localizeThemeSelector } from "@/i18n/common/localizeThemeSelector";
 import { getLocale } from "@/i18n/i18n";
 
 const locale = getLocale(Astro.currentLocale);
-const localizedTheme = localizeTheme(locale);
+const t = localizeThemeSelector(locale);
 ---
 
-<div id="theme-selector" class="dropdown-menu">
+<div class="dropdown-menu" data-theme-selector>
 	<button
 		type="button"
 		id="theme-selector-trigger"
 		class="btn group w-60 cursor-pointer"
-		data-shortcut="t"
-		data-variant="outline"
 		aria-controls="theme-selector-menu"
 		aria-expanded="false"
 		aria-haspopup="menu"
+		data-shortcut="t"
+		data-variant="outline"
 	>
 		<Wallpaper />
 		<span class="truncate w-full text-left">
@@ -44,26 +44,20 @@ const localizedTheme = localizeTheme(locale);
 		>
 			<div role="group" aria-labelledby="theme-selector-themes">
 				<div role="heading" id="theme-selector-themes">
-					{localizedTheme.heading}
+					{t.heading}
 				</div>
 				{themes.map((theme) => (
 	<div
 		role="menuitemradio"
 		class="cursor-pointer"
-		data-value={theme.id}
-		data-theme-name={theme.name}
-		data-theme-mode={
-			theme.mode === "Light"
-				? localizedTheme.modes.light
-				: localizedTheme.modes.dark
-		}
 		aria-checked="false"
+		data-theme-id={theme.id}
+		data-theme-name={theme.name}
+		data-theme-mode={theme.mode === "Light" ? t.modes.light : t.modes.dark}
 	>
 		<span>{theme.name}</span>
 		<span class="text-xs text-muted-foreground">
-			{theme.mode === "Light"
-				? localizedTheme.modes.light
-				: localizedTheme.modes.dark}
+			{theme.mode === "Light" ? t.modes.light : t.modes.dark}
 		</span>
 		<span data-indicator>
 			<Check />

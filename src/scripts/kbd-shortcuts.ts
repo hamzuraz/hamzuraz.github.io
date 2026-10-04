@@ -6,8 +6,12 @@ function isTypingTarget(target: EventTarget | null) {
 	);
 }
 
-function isElementVisible(el: HTMLElement) {
-	return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+function isElementVisible(element: HTMLElement) {
+	return !!(
+		element.offsetWidth ||
+		element.offsetHeight ||
+		element.getClientRects().length
+	);
 }
 
 document.addEventListener("keydown", (event) => {
@@ -25,7 +29,7 @@ document.addEventListener("keydown", (event) => {
 	const shortcut = event.key.toLowerCase();
 	const triggers = Array.from(
 		document.querySelectorAll<HTMLElement>(
-			`[data-shortcut="${window.CSS.escape(shortcut)}"]`,
+			`[data-shortcut="${CSS.escape(shortcut)}"]`,
 		),
 	);
 

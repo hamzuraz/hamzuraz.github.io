@@ -1,14 +1,14 @@
-import type { DefaultLocale, Locale } from "@/i18n/i18n";
+import { type DefaultLocale, defaultLocale, type Locale } from "@/i18n/i18n";
 
-type ThemeTranslation = {
+type ThemeSelectorTranslation = {
 	heading: string;
 	modes: { light: string; dark: string };
 };
+type Optional = Partial<Record<Locale, ThemeSelectorTranslation>>;
+type Required = Record<DefaultLocale, ThemeSelectorTranslation>;
+type ThemeSelectorTranslations = Optional & Required;
 
-type ThemeTranslations = Partial<Record<Locale, ThemeTranslation>> &
-	Record<DefaultLocale, ThemeTranslation>;
-
-const translations: ThemeTranslations = {
+const translations: ThemeSelectorTranslations = {
 	en: {
 		heading: "Themes",
 		modes: { light: "Light", dark: "Dark" },
@@ -35,7 +35,7 @@ const translations: ThemeTranslations = {
 	},
 };
 
-export function localizeTheme(locale: Locale) {
+export function localizeThemeSelector(locale: Locale) {
 	const translation = translations[locale];
-	return translation ?? translations.en;
+	return translation ?? translations[defaultLocale];
 }
