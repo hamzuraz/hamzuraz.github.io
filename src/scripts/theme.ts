@@ -1,19 +1,19 @@
 import { themes } from "@/data/themes";
 
 const storageKey = "theme";
-const themeIds: string[] = themes.map((theme) => theme.id);
+const themeIds = themes.map<string>((theme) => theme.id);
 const root = document.documentElement;
-const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
 
 function systemTheme() {
 	return mediaQuery.matches ? "default-dark" : "default-light";
 }
 
-const activeTheme = root.dataset.theme ?? systemTheme();
-
 function getStoredTheme() {
 	try {
-		return window.localStorage.getItem(storageKey);
+		const theme = localStorage.getItem(storageKey);
+		if (!theme || !themeIds.includes(theme)) return null;
+		return theme;
 	} catch {
 		return null;
 	}
@@ -22,25 +22,27 @@ function getStoredTheme() {
 function applyTheme(theme: string) {
 	root.dataset.theme = theme;
 
-	const themeSelectors =
-		document.querySelectorAll<HTMLDivElement>("#theme-selector");
+	const themeSelectors = document.querySelectorAll<HTMLElement>(
+		"[data-theme-selector]",
+	);
 
 	themeSelectors.forEach((themeSelector) => {
-		let selectedItem: HTMLDivElement | undefined;
-		const items = themeSelector.querySelectorAll<HTMLDivElement>(
-			'[role="menuitemradio"]',
+		let selectedItem: HTMLElement | undefined;
+
+		const items = themeSelector.querySelectorAll<HTMLElement>(
+			'[role="menuitemradio"][data-theme-id]',
 		);
 
 		for (const item of items) {
-			const isSelected = item.dataset.value === theme;
+			const isSelected = item.dataset.themeId === theme;
 			item.setAttribute("aria-checked", String(isSelected));
 			if (isSelected) selectedItem = item;
 		}
 
 		const themeName =
-			themeSelector.querySelector<HTMLSpanElement>("[data-theme-name]");
+			themeSelector.querySelector<HTMLElement>("[data-theme-name]");
 		const themeMode =
-			themeSelector.querySelector<HTMLSpanElement>("[data-theme-mode]");
+			themeSelector.querySelector<HTMLElement>("[data-theme-mode]");
 
 		if (themeName && themeMode) {
 			themeName.textContent = selectedItem?.dataset.themeName ?? "";
@@ -49,43 +51,29 @@ function applyTheme(theme: string) {
 	});
 }
 
-applyTheme(activeTheme);
+applyTheme(root.dataset.theme ?? systemTheme());
 
 document.addEventListener("click", (event) => {
 	if (!(event.target instanceof Element)) return;
 
-	const themeSelector =
-		event.target.closest<HTMLDivElement>("#theme-selector");
+	const themeSelector = event.target.closest<HTMLElement>(
+		"[data-theme-selector]",
+	);
 	if (!themeSelector) return;
 
-	const item = event.target.closest<HTMLDivElement>(
-		'[role="menuitemradio"][data-value]',
+	const item = event.target.closest<HTMLElement>(
+		'[role="menuitemradio"][data-theme-id]',
 	);
-
-	const theme = item?.dataset.value;
+	const theme = item?.dataset.themeId;
 	if (!theme) return;
 
 	applyTheme(theme);
 	try {
-		window.localStorage.setItem(storageKey, theme);
+		localStorage.setItem(storageKey, theme);
 	} catch {
 		// Storage may be unavailable (private mode, quota, blocked).
 		// The theme is already applied for this session.
 		// It just won't persist across reloads.
-	}
-});
-
-// CROSS-TAB SYNC
-window.addEventListener("storage", (event) => {
-	if (event.key !== storageKey) return;
-
-	if (event.newValue === null) {
-		applyTheme(systemTheme());
-		return;
-	}
-
-	if (themeIds.includes(event.newValue)) {
-		applyTheme(event.newValue);
 	}
 });
 
@@ -94,4 +82,17 @@ mediaQuery.addEventListener("change", () => {
 	if (!getStoredTheme()) {
 		applyTheme(systemTheme());
 	}
+});
+
+// CROSS-TAB SYNC
+addEventListener("storage", (event) => {
+	if (
+		event.key === storageKey &&
+		event.newValue &&
+		themeIds.includes(event.newValue)
+	) {
+		applyTheme(event.newValue);
+		return;
+	}
+	if (!getStoredTheme()) applyTheme(systemTheme());
 });

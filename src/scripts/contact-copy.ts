@@ -1,5 +1,4 @@
-const copyButtons =
-	document.querySelectorAll<HTMLButtonElement>("[data-copy-value]");
+const copyButtons = document.querySelectorAll<HTMLElement>("[data-copy-value]");
 
 copyButtons.forEach((button) => {
 	button.addEventListener("click", async () => {
