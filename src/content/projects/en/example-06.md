@@ -1,6 +1,6 @@
 ---
 title: "Example 06"
-techStack: ["SvelteKit", "Svelte", "React", "Codex"]
+techStack: ["FastAPI", "Astro", "Svelte", "Turso", "Railway"]
 description: "Description for example 06"
 
 coverImageUrl: "/project-card-placeholder-image-500x500.png"

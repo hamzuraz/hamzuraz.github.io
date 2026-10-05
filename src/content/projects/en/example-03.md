@@ -1,6 +1,6 @@
 ---
 title: "Example 03"
-techStack: ["Antigravity", "SQLite", "Svelte", "Lefthook"]
+techStack: ["FastAPI", "Astro", "Svelte", "Turso", "Railway"]
 description: "Description for example 03"
 
 coverImageUrl: "/project-card-placeholder-image-500x500.png"

@@ -1,6 +1,6 @@
 ---
 title: "Example 02"
-techStack: ["JavaScript", "SvelteKit", "React", "Vitest"]
+techStack: ["TypeScript", "Next.js", "Expo", "MongoDB", "Vercel"]
 description: "Description for example 02"
 
 coverImageUrl: "/project-card-placeholder-image-500x500.png"
