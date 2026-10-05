@@ -1,4 +1,4 @@
-import type { DefaultLocale, Locale } from "@/i18n/i18n";
+import { type DefaultLocale, defaultLocale, type Locale } from "@/i18n/i18n";
 
 type NavTranslation = {
 	projects: string;
@@ -7,11 +7,11 @@ type NavTranslation = {
 	openMenu: string;
 	closeMenu: string;
 };
+type Optional = Partial<Record<Locale, NavTranslation>>;
+type Required = Record<DefaultLocale, NavTranslation>;
+type NavTranslations = Optional & Required;
 
-type NavTranslations = Partial<Record<Locale, NavTranslation>> &
-	Record<DefaultLocale, NavTranslation>;
-
-const nav: NavTranslations = {
+const translations: NavTranslations = {
 	en: {
 		projects: "Projects",
 		skills: "Skills",
@@ -57,6 +57,6 @@ const nav: NavTranslations = {
 };
 
 export function localizeNav(locale: Locale) {
-	const translation = nav[locale];
-	return translation ?? nav.en;
+	const translation = translations[locale];
+	return translation ?? translations[defaultLocale];
 }

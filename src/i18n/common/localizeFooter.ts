@@ -1,13 +1,13 @@
-import type { DefaultLocale, Locale } from "@/i18n/i18n";
+import { type DefaultLocale, defaultLocale, type Locale } from "@/i18n/i18n";
 
 type FooterTranslation = {
 	rights: string;
 };
+type Optional = Partial<Record<Locale, FooterTranslation>>;
+type Required = Record<DefaultLocale, FooterTranslation>;
+type FooterTranslations = Optional & Required;
 
-type FooterTranslations = Partial<Record<Locale, FooterTranslation>> &
-	Record<DefaultLocale, FooterTranslation>;
-
-const footer: FooterTranslations = {
+const translations: FooterTranslations = {
 	en: {
 		rights: "All rights reserved.",
 	},
@@ -29,6 +29,6 @@ const footer: FooterTranslations = {
 };
 
 export function localizeFooter(locale: Locale) {
-	const translation = footer[locale];
-	return translation ?? footer.en;
+	const translation = translations[locale];
+	return translation ?? translations[defaultLocale];
 }
