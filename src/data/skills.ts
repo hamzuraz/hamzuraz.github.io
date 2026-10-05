@@ -7,11 +7,24 @@ type SkillCategory = {
 export const skillCategories = [
 	{
 		id: "languages&runtimes",
-		core: ["Go", "JavaScript", "TypeScript", "Bun", "Node.js"],
-		familiar: ["Python", "Rust"],
+		core: ["Go", "JavaScript", "TypeScript", "Node.js", "Bun"],
+		familiar: ["Python", "Rust", "Tokio"],
 	},
 	{
-		id: "frontend&fullstack",
+		id: "backendFrameworks",
+		core: [],
+		familiar: [
+			"GIN",
+			"Fiber",
+			"Express",
+			"Hono",
+			"Elysia",
+			"FastAPI",
+			"Axum",
+		],
+	},
+	{
+		id: "web",
 		core: [
 			"HTML",
 			"CSS",
@@ -26,17 +39,7 @@ export const skillCategories = [
 	},
 	{
 		id: "mobile",
-		core: ["React Native", "Expo"],
-		familiar: [],
-	},
-	{
-		id: "backend",
-		core: [],
-		familiar: ["Express", "Hono", "Elysia"],
-	},
-	{
-		id: "databases",
-		core: ["PostgreSQL", "MySQL", "SQLite", "MongoDB"],
+		core: ["React Native", "Expo", "Uniwind"],
 		familiar: [],
 	},
 	{
@@ -53,6 +56,16 @@ export const skillCategories = [
 			"Lefthook",
 		],
 		familiar: ["Playwright"],
+	},
+	{
+		id: "databases",
+		core: ["PostgreSQL", "MySQL", "SQLite", "MongoDB"],
+		familiar: ["MariaDB", "Turso"],
+	},
+	{
+		id: "deployment",
+		core: ["Railway", "Vercel"],
+		familiar: [],
 	},
 	{
 		id: "ide&ai",
