@@ -1,6 +1,6 @@
 ---
 title: "Example 01"
-techStack: ["SvelteKit", "Canva", "Next.js", "HTML"]
+techStack: ["Go", "TypeScript", "SvelteKit", "PostgreSQL", "Railway"]
 description: "Description for example 01"
 
 coverImageUrl: "/project-card-placeholder-image-500x500.png"

@@ -1,6 +1,6 @@
 ---
 title: "Example 04"
-techStack: ["HTMX", "Docker", "Zed", "TypeScript"]
+techStack: ["Go", "TypeScript", "SvelteKit", "PostgreSQL", "Railway"]
 description: "Description for example 04"
 
 coverImageUrl: "/project-card-placeholder-image-500x500.png"
