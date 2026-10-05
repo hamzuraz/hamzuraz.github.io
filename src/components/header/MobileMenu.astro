@@ -14,7 +14,7 @@ interface Props {
 
 const { pathWithoutLocale } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
-const localizedNav = localizeNav(locale);
+const t = localizeNav(locale);
 
 const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
 	normalizeLocale: false,
@@ -29,7 +29,7 @@ const projectsUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 		type="button"
 		class="btn cursor-pointer"
 		data-size="icon"
-		aria-label={localizedNav.openMenu}
+		aria-label={t.openMenu}
 		onclick="document.getElementById('mobile-nav-drawer')?.showModal()"
 	>
 		<PanelLeftOpen class="w-5.5 h-5.5 stroke-[1.25]" />
@@ -44,7 +44,7 @@ const projectsUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 						type="button"
 						class="btn cursor-pointer"
 						data-size="icon"
-						aria-label={localizedNav.closeMenu}
+						aria-label={t.closeMenu}
 						onclick="this.closest('dialog')?.close()"
 					>
 						<PanelLeftClose class="w-5.5 h-5.5 stroke-[1.25]" />
@@ -65,21 +65,21 @@ const projectsUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
 						onclick="this.closest('dialog')?.close()"
 					>
-						{localizedNav.projects}
+						{t.projects}
 					</a>
 					<a
 						href={`${homeUrl}#skills`}
 						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
 						onclick="this.closest('dialog')?.close()"
 					>
-						{localizedNav.skills}
+						{t.skills}
 					</a>
 					<a
 						href={`${homeUrl}#contact`}
 						class="py-2 px-3 sm:rounded-md hover:bg-muted hover:text-foreground transition-colors"
 						onclick="this.closest('dialog')?.close()"
 					>
-						{localizedNav.contact}
+						{t.contact}
 					</a>
 				</nav>
 				<div

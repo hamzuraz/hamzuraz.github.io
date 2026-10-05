@@ -3,72 +3,73 @@ import { Check, Copy } from "@lucide/astro";
 import IconButton from "@/components/common/button/IconButton.astro";
 import IconButtonLink from "@/components/common/button-link/IconButtonLink.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
-import { localizeContacts } from "@/i18n/common/localizeContacts";
-import type { Locale } from "@/i18n/i18n";
+import { contacts } from "@/data/contacts";
 import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
 
 interface Props {
-	locale: Locale;
-	t: HomePageTranslation | undefined;
+	t: HomePageTranslation;
 }
 
-const { locale, t } = Astro.props;
-const localizedContacts = localizeContacts(locale);
+const { t } = Astro.props;
 ---
 
 <SectionContainer id="contact">
 	<span
 		class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 	>
-		{t?.contact.sectionTag}
+		{t.contact.sectionTag}
 	</span>
 
 	<div class="grid grid-cols-1 md:grid-cols-12 gap-8 mt-2">
 		<div class="md:col-span-6">
 			<h2 class="font-pixel text-2xl sm:text-3xl">
-				{t?.contact.heading}
+				{t.contact.heading}
 			</h2>
 			<p
 				class="text-sm sm:text-base text-muted-foreground mt-1.25 leading-relaxed"
 			>
-				{t?.contact.description}
+				{t.contact.description}
 			</p>
 		</div>
 
 		<div class="md:col-span-6 flex flex-col gap-4">
-			{localizedContacts.map((contact) => (
-	<div class="card overflow-visible py-4 px-6 flex flex-row items-center justify-between gap-2.5">
-		<div class="flex flex-col gap-1.25 min-w-0">
-			<h3 class="text-xs sm:text-sm text-muted-foreground">
-				{contact.label}
-			</h3>
-			<p class="text-sm sm:text-base truncate">{contact.value}</p>
+			{contacts.map((contact) => {
+	const c = { ...contact, ...t.contact.list[contact.id] };
+	return (
+		<div class="card overflow-visible py-4 px-6 flex flex-row items-center justify-between gap-2.5">
+			<div class="flex flex-col gap-1.25 min-w-0">
+				<h3 class="text-xs sm:text-sm text-muted-foreground">
+					{c.label}
+				</h3>
+				<p class="text-sm sm:text-base truncate">{c.value}</p>
+			</div>
+
+			<div class="flex gap-2.5">
+				<IconButton
+					ariaLabel={c.copyAriaLabel}
+					tooltip={c.copyTooltip}
+					copyValue={c.value}
+				>
+					<span data-copy-icon>
+						<Copy />
+					</span>
+					<span data-check-icon class="hidden">
+						<Check />
+					</span>
+				</IconButton>
+				<IconButtonLink
+					href={c.url}
+					target={c.isExternal ? "_blank" : undefined}
+					rel={c.isExternal ? "noopener noreferrer" : undefined}
+					ariaLabel={c.openAriaLabel}
+					tooltip={c.openTooltip}
+				>
+					<c.icon />
+				</IconButtonLink>
+			</div>
 		</div>
-		<div class="flex gap-2.5">
-			<IconButton
-				ariaLabel={contact.copyAriaLabel}
-				tooltip={contact.copyTooltip}
-				copyValue={contact.value}
-			>
-				<span data-copy-icon>
-					<Copy />
-				</span>
-				<span data-check-icon class="hidden">
-					<Check />
-				</span>
-			</IconButton>
-			<IconButtonLink
-				href={contact.openUrl}
-				target={contact.isExternal ? "_blank" : undefined}
-				rel={contact.isExternal ? "noopener noreferrer" : undefined}
-				ariaLabel={contact.openAriaLabel}
-				tooltip={contact.openTooltip}
-			>
-				<contact.icon />
-			</IconButtonLink>
-		</div>
-	</div>
-))}
+	);
+})}
 		</div>
 	</div>
 </SectionContainer>

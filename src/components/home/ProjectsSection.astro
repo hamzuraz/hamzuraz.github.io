@@ -10,7 +10,7 @@ import { projectsPage } from "@/i18n/pages/projects/projectsPage";
 
 interface Props {
 	locale: Locale;
-	t: HomePageTranslation | undefined;
+	t: HomePageTranslation;
 }
 
 const { locale, t } = Astro.props;
@@ -23,7 +23,6 @@ const allFeaturedProjects = await getCollection(
 	"projects",
 	({ id, data }) => id.startsWith(`${locale}/`) && data.featured,
 );
-
 const threeFeaturedProjects = allFeaturedProjects
 	.sort((a, b) => a.data.order - b.data.order)
 	.slice(0, 3);
@@ -35,25 +34,26 @@ const threeFeaturedProjects = allFeaturedProjects
 			<span
 				class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 			>
-				{t?.projects.sectionTag}
+				{t.projects.sectionTag}
 			</span>
 			<h2 class="font-pixel text-2xl sm:text-3xl mt-2">
-				{t?.projects.heading}
+				{t.projects.heading}
 			</h2>
 			<p
 				class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl"
 			>
-				{t?.projects.description}
+				{t.projects.description}
 			</p>
 		</div>
 		<a
 			href={projectsPageUrl}
 			class="inline-flex items-center gap-1 font-pixel shrink-0 hover:opacity-80 transition-opacity"
 		>
-			{t?.projects.seeAll}
+			{t.projects.seeAll}
 			<ArrowRight size={20} />
 		</a>
 	</div>
+
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6 sm:mt-12"
 	>

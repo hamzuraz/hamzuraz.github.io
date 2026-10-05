@@ -6,19 +6,15 @@ import { skillCategories } from "@/data/skills";
 import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
 
 interface Props {
-	t: HomePageTranslation | undefined;
+	t: HomePageTranslation;
 }
 
 const { t } = Astro.props;
 
-const coreCategories = skillCategories.filter(
-	(category) => category.core.length > 0,
-);
-const familiarCategories = skillCategories.filter(
-	(category) => category.familiar.length > 0,
-);
-const allCategories = skillCategories.filter(
-	(category) => category.core.length > 0 || category.familiar.length > 0,
+const coreSkills = skillCategories.filter((sc) => sc.core.length > 0);
+const familiarSkills = skillCategories.filter((sc) => sc.familiar.length > 0);
+const allSkills = skillCategories.filter(
+	(sc) => sc.core.length > 0 || sc.familiar.length > 0,
 );
 ---
 
@@ -27,13 +23,13 @@ const allCategories = skillCategories.filter(
 		<span
 			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 		>
-			{t?.skills.sectionTag}
+			{t.skills.sectionTag}
 		</span>
 		<h2 class="font-pixel text-2xl sm:text-3xl mt-2">
-			{t?.skills.heading}
+			{t.skills.heading}
 		</h2>
 		<p class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl">
-			{t?.skills.description}
+			{t.skills.description}
 		</p>
 	</div>
 
@@ -55,7 +51,7 @@ const allCategories = skillCategories.filter(
 					tabindex="0"
 				>
 					<Layers aria-hidden="true" />
-					{t?.skills.tabs.all}
+					{t.skills.tabs.all}
 				</button>
 				<button
 					type="button"
@@ -67,7 +63,7 @@ const allCategories = skillCategories.filter(
 					tabindex="-1"
 				>
 					<Star aria-hidden="true" />
-					{t?.skills.tabs.core}
+					{t.skills.tabs.core}
 				</button>
 				<button
 					type="button"
@@ -79,7 +75,7 @@ const allCategories = skillCategories.filter(
 					tabindex="-1"
 				>
 					<BookOpenCheck aria-hidden="true" />
-					{t?.skills.tabs.familiar}
+					{t.skills.tabs.familiar}
 				</button>
 			</nav>
 		</div>
@@ -91,17 +87,17 @@ const allCategories = skillCategories.filter(
 			tabindex="-1"
 			class="divide-y"
 		>
-			{allCategories.map((category) => (
+			{allSkills.map((sc) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{t?.skills.categories[category.id]}
+			{t.skills.categories[sc.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
-			{category.core.map((skill) => (
-				<Badge>{skill}</Badge>
+			{sc.core.map((tech) => (
+				<Badge>{tech}</Badge>
 			))}
-			{category.familiar.map((skill) => (
-				<Badge variant="outline">{skill}</Badge>
+			{sc.familiar.map((tech) => (
+				<Badge variant="outline">{tech}</Badge>
 			))}
 		</div>
 	</div>
@@ -116,14 +112,14 @@ const allCategories = skillCategories.filter(
 			class="divide-y"
 			hidden
 		>
-			{coreCategories.map((category) => (
+			{coreSkills.map((sc) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{t?.skills.categories[category.id]}
+			{t.skills.categories[sc.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
-			{category.core.map((skill) => (
-				<Badge>{skill}</Badge>
+			{sc.core.map((tech) => (
+				<Badge>{tech}</Badge>
 			))}
 		</div>
 	</div>
@@ -138,14 +134,14 @@ const allCategories = skillCategories.filter(
 			class="divide-y"
 			hidden
 		>
-			{familiarCategories.map((category) => (
+			{familiarSkills.map((sc) => (
 	<div class="p-4 grid grid-cols-1 md:grid-cols-12 gap-3 items-baseline">
 		<div class="md:col-span-4 font-medium text-sm text-foreground">
-			{t?.skills.categories[category.id]}
+			{t.skills.categories[sc.id]}
 		</div>
 		<div class="md:col-span-8 flex flex-wrap gap-2">
-			{category.familiar.map((skill) => (
-				<Badge variant="outline">{skill}</Badge>
+			{sc.familiar.map((tech) => (
+				<Badge variant="outline">{tech}</Badge>
 			))}
 		</div>
 	</div>

@@ -7,7 +7,7 @@ import type { ProjectsPageTranslation } from "@/i18n/pages/projects/projectsPage
 
 interface Props {
 	locale: Locale;
-	t: ProjectsPageTranslation | undefined;
+	t: ProjectsPageTranslation;
 }
 
 const { locale, t } = Astro.props;
@@ -22,15 +22,16 @@ const allProjects = (
 		<span
 			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 		>
-			{t?.sectionTag}
+			{t.sectionTag}
 		</span>
 		<h1 class="font-pixel text-3xl sm:text-4xl mt-2">
-			{t?.heading}
+			{t.heading}
 		</h1>
 		<p class="text-sm sm:text-base text-muted-foreground mt-1.25 max-w-2xl">
-			{t?.description}
+			{t.description}
 		</p>
 	</div>
+
 	<div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 		{allProjects.map((project) => (
 	<ProjectCard

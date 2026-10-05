@@ -1,7 +1,7 @@
 import { themes } from "@/data/themes";
 
-const storageKey = "theme";
 const themeIds = themes.map<string>((theme) => theme.id);
+const storageKey = "theme";
 const root = document.documentElement;
 const mediaQuery = matchMedia("(prefers-color-scheme: dark)");
 

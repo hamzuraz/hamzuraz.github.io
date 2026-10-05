@@ -3,23 +3,22 @@ interface Props {
 	href: string;
 	target?: string;
 	rel?: string;
-	class?: string;
-	tooltip: string;
 	ariaLabel: string;
+	tooltip: string;
 }
 
-const { href, target, rel, class: className, tooltip, ariaLabel } = Astro.props;
+const { href, target, rel, ariaLabel, tooltip } = Astro.props;
 ---
 
 <a
 	href={href}
 	target={target}
 	rel={rel}
-	class:list={["btn", className]}
+	class="btn cursor-pointer"
+	aria-label={ariaLabel}
 	data-size="icon"
 	data-variant="outline"
 	data-tooltip={tooltip}
-	aria-label={ariaLabel}
 >
 	<slot />
 </a>

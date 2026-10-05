@@ -27,5 +27,5 @@ const languageName =
 	showFallback={showFallback}
 	languageName={languageName}
 >
-	<Projects locale={locale} t={t} />
+	{t && <Projects locale={locale} t={t} />}
 </I18nLayout>

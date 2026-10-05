@@ -29,8 +29,10 @@ const languageName =
 	showFallback={showFallback}
 	languageName={languageName}
 >
-	<HeroSection t={t} />
-	<ProjectsSection locale={locale} t={t} />
-	<SkillsSection t={t} />
-	<ContactSection locale={locale} t={t} />
+	{t && (
+		<HeroSection t={t} />
+		<ProjectsSection locale={locale} t={t} />
+		<SkillsSection t={t} />
+		<ContactSection t={t} />
+)}
 </I18nLayout>
