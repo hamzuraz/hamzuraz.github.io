@@ -46,21 +46,21 @@ export const en = {
 		heading: "Get in Touch",
 		description:
 			"I am currently open to new opportunities, collaborations, and discussions on software engineering. Feel free to reach out via email or LinkedIn.",
-		list: [
-			{
+		list: {
+			email: {
 				label: "Email",
 				copyTooltip: "Copy email",
 				copyAriaLabel: "Copy email",
 				openTooltip: "Send email",
 				openAriaLabel: "Open email",
 			},
-			{
+			linkedin: {
 				label: "LinkedIn",
 				copyTooltip: "Copy LinkedIn URL",
 				copyAriaLabel: "Copy LinkedIn URL",
 				openTooltip: "Open LinkedIn",
 				openAriaLabel: "Open LinkedIn",
 			},
-		],
+		},
 	},
 } as const;
