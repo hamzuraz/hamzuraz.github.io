@@ -5,9 +5,10 @@ export const en = {
 			"Personal portfolio of Rifki Muhazzar, a software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
 	},
 	hero: {
-		sectionTag: "01 / SOFTWAREENTWICKLER",
-		name: "Rifki Muhazzar",
-		bio: "Software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
+		sectionTag: "01 / SOFTWARE ENGINEER",
+		heading: "Rifki Muhazzar",
+		description:
+			"Software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
 		seeResume: "See resume",
 		getInTouch: "Get in touch",
 	},
@@ -15,7 +16,7 @@ export const en = {
 		sectionTag: "02 / PROJECTS",
 		heading: "Selected Works",
 		description:
-			"A growing collection of projects built to learn, experiment, and solve real problems. Browse the code or try a live demo where available.",
+			"A collection of projects I've built to learn, experiment, and solve real problems. Browse the code or try a live demo where available.",
 		seeAll: "See all projects",
 	},
 	skills: {
@@ -30,11 +31,12 @@ export const en = {
 		},
 		categories: {
 			"languages&runtimes": "Languages & Runtimes",
-			"frontend&fullstack": "Frontend & Fullstack",
+			backendFrameworks: "Backend Frameworks",
+			web: "Web",
 			mobile: "Mobile",
-			backend: "Backend",
-			databases: "Databases",
 			tools: "Tools",
+			databases: "Databases",
+			deployment: "Deployment",
 			"ide&ai": "IDE & AI",
 			design: "Design",
 		},
@@ -44,19 +46,21 @@ export const en = {
 		heading: "Get in Touch",
 		description:
 			"I am currently open to new opportunities, collaborations, and discussions on software engineering. Feel free to reach out via email or LinkedIn.",
-		email: {
-			label: "Email",
-			copyTooltip: "Copy email",
-			copyAriaLabel: "Copy email",
-			openTooltip: "Send email",
-			openAriaLabel: "Open email",
-		},
-		linkedin: {
-			label: "LinkedIn",
-			copyTooltip: "Copy LinkedIn URL",
-			copyAriaLabel: "Copy LinkedIn URL",
-			openTooltip: "Open LinkedIn",
-			openAriaLabel: "Open LinkedIn",
-		},
+		list: [
+			{
+				label: "Email",
+				copyTooltip: "Copy email",
+				copyAriaLabel: "Copy email",
+				openTooltip: "Send email",
+				openAriaLabel: "Open email",
+			},
+			{
+				label: "LinkedIn",
+				copyTooltip: "Copy LinkedIn URL",
+				copyAriaLabel: "Copy LinkedIn URL",
+				openTooltip: "Open LinkedIn",
+				openAriaLabel: "Open LinkedIn",
+			},
+		],
 	},
 } as const;

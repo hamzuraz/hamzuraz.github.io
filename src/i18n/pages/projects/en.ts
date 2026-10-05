@@ -1,11 +1,11 @@
 export const en = {
 	head: {
-		title: "Projects — Rifki Muhazzar",
+		title: "Projects | Rifki Muhazzar — Software Engineer",
 		description:
 			"Projects by Rifki Muhazzar, a software engineer building fast, reliable, and accessible applications across the modern web, mobile, and backend systems.",
 	},
 	sectionTag: "ARCHIVE",
 	heading: "Projects",
 	description:
-		"Everything I've built to learn, experiment, and solve real problems. Browse the code or try a live demo where available.",
+		"A growing collection of everything I've built to learn, experiment, and solve real problems. Browse the code or try a live demo where available.",
 } as const;
