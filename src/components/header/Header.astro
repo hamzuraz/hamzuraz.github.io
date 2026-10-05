@@ -11,6 +11,7 @@ interface Props {
 
 const { pathWithoutLocale } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
+
 const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
 	normalizeLocale: false,
 });

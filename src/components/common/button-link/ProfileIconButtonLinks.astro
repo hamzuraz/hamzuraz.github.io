@@ -1,0 +1,18 @@
+---
+import { profiles } from "@/data/profiles";
+import IconButtonLink from "./IconButtonLink.astro";
+---
+
+<div class="flex gap-2.5">
+	{profiles.map((profile) => (
+	<IconButtonLink
+		href={profile.href}
+		target={profile.isExternal ? "_blank" : undefined}
+		rel={profile.isExternal ? "noopener noreferrer" : undefined}
+		ariaLabel={profile.ariaLabel}
+		tooltip={profile.tooltip}
+	>
+		<profile.icon />
+	</IconButtonLink>
+))}
+</div>

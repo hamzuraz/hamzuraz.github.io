@@ -8,6 +8,7 @@ interface Props {
 	rel?: string;
 	class?: string;
 	shortcut?: string;
+	size?: "lg";
 	variant?: "outline";
 	isExternal: boolean;
 }
@@ -20,6 +21,7 @@ const {
 	shortcut,
 	variant,
 	isExternal,
+	size,
 } = Astro.props;
 ---
 
@@ -29,6 +31,7 @@ const {
 	rel={rel}
 	class:list={["btn", className]}
 	data-shortcut={shortcut}
+	data-size={size}
 	data-variant={variant}
 >
 	<slot />

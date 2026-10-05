@@ -1,11 +1,11 @@
 ---
 import { Copyright } from "@lucide/astro";
-import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
+import ProfileIconButtonLinks from "@/components/common/button-link/ProfileIconButtonLinks.astro";
 import { localizeFooter } from "@/i18n/common/localizeFooter";
 import { getLocale } from "@/i18n/i18n";
 
 const locale = getLocale(Astro.currentLocale);
-const localizedFooter = localizeFooter(locale);
+const t = localizeFooter(locale);
 const currentYear = new Date().getFullYear();
 ---
 
@@ -15,7 +15,7 @@ const currentYear = new Date().getFullYear();
 	<p class="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
 		<Copyright class="size-4" />
 		<span data-current-year>{currentYear}</span>
-		<span>Rifki Muhazzar. {localizedFooter.rights}</span>
+		<span>Rifki Muhazzar. {t.rights}</span>
 	</p>
-	<SocialIconButtonLinks />
+	<ProfileIconButtonLinks />
 </footer>

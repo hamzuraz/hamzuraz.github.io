@@ -13,7 +13,7 @@ interface Props {
 
 const { pathWithoutLocale } = Astro.props;
 const locale = getLocale(Astro.currentLocale);
-const localizedNav = localizeNav(locale);
+const t = localizeNav(locale);
 
 const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
 	normalizeLocale: false,
@@ -26,19 +26,19 @@ const projectsUrl = getRelativeLocaleUrl(locale, projectsPage.slug, {
 <div class="hidden lg:flex gap-4">
 	<nav class="flex items-center gap-4 text-sm text-muted-foreground">
 		<a href={projectsUrl} class="hover:text-foreground transition-colors">
-			{localizedNav.projects}
+			{t.projects}
 		</a>
 		<a
 			href={`${homeUrl}#skills`}
 			class="hover:text-foreground transition-colors"
 		>
-			{localizedNav.skills}
+			{t.skills}
 		</a>
 		<a
 			href={`${homeUrl}#contact`}
 			class="hover:text-foreground transition-colors"
 		>
-			{localizedNav.contact}
+			{t.contact}
 		</a>
 	</nav>
 	<div class="flex gap-3">

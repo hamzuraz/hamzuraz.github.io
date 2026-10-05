@@ -1,23 +1,22 @@
 ---
 import { themes } from "@/data/themes";
 
-const themeIds = themes.map((theme) => theme.id);
+const themeIds = themes.map<string>((theme) => theme.id);
 ---
 
-<script is:inline define:vars={{ themeIds }}>
+<script define:vars={{ themeIds }}>
 	const storageKey = "theme";
-	const validThemes = new Set(themeIds);
-	const fallbackTheme = window.matchMedia("(prefers-color-scheme: dark)")
-		.matches
+	const root = document.documentElement;
+	const fallbackTheme = matchMedia("(prefers-color-scheme: dark)").matches
 		? "default-dark"
 		: "default-light";
 
-	document.documentElement.dataset.theme = fallbackTheme;
+	root.dataset.theme = fallbackTheme;
 
 	try {
-		const savedTheme = window.localStorage.getItem(storageKey);
-		if (savedTheme && validThemes.has(savedTheme)) {
-			document.documentElement.dataset.theme = savedTheme;
+		const savedTheme = localStorage.getItem(storageKey);
+		if (savedTheme && themeIds.includes(savedTheme)) {
+			root.dataset.theme = savedTheme;
 		}
 	} catch {
 		// Storage may be unavailable (private mode, quota, blocked).

@@ -1,11 +1,11 @@
 ---
 import ButtonLink from "@/components/common/button-link/ButtonLink.astro";
-import SocialIconButtonLinks from "@/components/common/button-link/SocialIconButtonLinks.astro";
+import ProfileIconButtonLinks from "@/components/common/button-link/ProfileIconButtonLinks.astro";
 import SectionContainer from "@/components/common/container/SectionContainer.astro";
 import type { HomePageTranslation } from "@/i18n/pages/home/homePage";
 
 interface Props {
-	t: HomePageTranslation | undefined;
+	t: HomePageTranslation;
 }
 
 const { t } = Astro.props;
@@ -18,27 +18,29 @@ const { t } = Astro.props;
 		<span
 			class="font-pixel text-xs text-muted-foreground tracking-widest uppercase"
 		>
-			{t?.hero.sectionTag}
+			{t.hero.sectionTag}
 		</span>
-		<SocialIconButtonLinks />
+		<ProfileIconButtonLinks />
 	</div>
 	<h1 class="font-pixel text-4xl sm:text-5xl lg:text-6xl mt-8">
-		{t?.hero.name}
+		{t.hero.heading}
 	</h1>
 	<p class="sm:text-lg text-muted-foreground leading-relaxed mt-4 max-w-2xl">
-		{t?.hero.bio}
+		{t.hero.description}
 	</p>
+
 	<div class="flex flex-wrap gap-3 mt-8">
-		<ButtonLink href="#contact" shortcut="r" isExternal={false}>
-			{t?.hero.seeResume}
+		<ButtonLink href="#contact" shortcut="r" size="lg" isExternal={false}>
+			{t.hero.seeResume}
 		</ButtonLink>
 		<ButtonLink
 			href="#contact"
 			shortcut="c"
+			size="lg"
 			variant="outline"
 			isExternal={false}
 		>
-			{t?.hero.getInTouch}
+			{t.hero.getInTouch}
 		</ButtonLink>
 	</div>
 </SectionContainer>

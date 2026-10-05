@@ -1,17 +1,16 @@
 ---
 interface Props {
-	class?: string;
 	ariaLabel: string;
 	tooltip: string;
 	copyValue?: string;
 }
 
-const { class: className, tooltip, ariaLabel, copyValue } = Astro.props;
+const { ariaLabel, tooltip, copyValue } = Astro.props;
 ---
 
 <button
 	type="button"
-	class:list={["btn cursor-pointer", className]}
+	class="btn cursor-pointer"
 	aria-label={ariaLabel}
 	data-size="icon"
 	data-variant="outline"
