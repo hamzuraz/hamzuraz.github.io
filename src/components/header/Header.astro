@@ -17,17 +17,17 @@ const homeUrl = getRelativeLocaleUrl(locale, homePage.slug, {
 });
 ---
 
-<header class="p-3 sm:px-6 bg-background rounded-b-lg">
-	<div class="flex items-center justify-between gap-4">
-		<MobileMenu pathWithoutLocale={pathWithoutLocale} />
-		<a
-			href={homeUrl}
-			class="font-pixel text-xl tracking-widest hover:opacity-80 transition-opacity"
-			aria-label="Rifki Muhazzar - Homepage"
-		>
-			RM
-		</a>
-		<DesktopMenu pathWithoutLocale={pathWithoutLocale} />
-		<div class="lg:hidden w-9" aria-hidden="true"></div>
-	</div>
+<header
+	class="p-3 sm:px-6 bg-background rounded-b-lg flex items-center justify-between gap-4"
+>
+	<MobileMenu pathWithoutLocale={pathWithoutLocale} />
+	<a
+		href={homeUrl}
+		class="font-pixel text-xl tracking-widest hover:opacity-80 transition-opacity"
+		aria-label="Rifki Muhazzar - Homepage"
+	>
+		RM
+	</a>
+	<DesktopMenu pathWithoutLocale={pathWithoutLocale} />
+	<div class="lg:hidden w-9" aria-hidden="true"></div>
 </header>
