@@ -1,5 +1,5 @@
 ﻿import { describe, expect, it } from "bun:test";
-import { localizeThemeSelector } from "@/i18n/common/localizeThemeSelector";
+import { localizeThemeSelector } from "@/i18n/common/localize-theme-selector";
 import { defaultLocale, type Locale } from "@/i18n/i18n";
 
 describe("i18n: localizeThemeSelector", () => {

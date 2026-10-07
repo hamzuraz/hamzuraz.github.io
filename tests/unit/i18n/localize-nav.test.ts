@@ -1,5 +1,5 @@
 ﻿import { describe, expect, it } from "bun:test";
-import { localizeNav } from "@/i18n/common/localizeNav";
+import { localizeNav } from "@/i18n/common/localize-nav";
 import { defaultLocale, type Locale } from "@/i18n/i18n";
 
 describe("i18n: localizeNav", () => {

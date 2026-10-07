@@ -6,7 +6,7 @@ import {
 	getPageTranslation,
 	locales,
 } from "@/i18n/i18n";
-import { homePage } from "@/i18n/pages/home/homePage";
+import { homePage } from "@/i18n/pages/home/home-page";
 
 describe("i18n: getLocale", () => {
 	it("returns the exact locale when provided a valid supported locale", () => {
