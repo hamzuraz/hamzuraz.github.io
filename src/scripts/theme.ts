@@ -19,7 +19,10 @@ function getStoredTheme() {
 	}
 }
 
+let selectedTheme = root.dataset.theme ?? systemTheme();
+
 function applyTheme(theme: string) {
+	selectedTheme = theme;
 	root.dataset.theme = theme;
 
 	const themeSelectors = document.querySelectorAll<HTMLElement>(
@@ -51,7 +54,12 @@ function applyTheme(theme: string) {
 	});
 }
 
-applyTheme(root.dataset.theme ?? systemTheme());
+function syncTheme() {
+	applyTheme(getStoredTheme() ?? selectedTheme);
+}
+
+syncTheme();
+document.addEventListener("astro:after-swap", syncTheme);
 
 document.addEventListener("click", (event) => {
 	if (!(event.target instanceof Element)) return;
