@@ -97,7 +97,7 @@ mediaQuery.addEventListener("change", () => {
 });
 
 // CROSS-TAB SYNC
-addEventListener("storage", (event) => {
+addEventListener("storage", (event: StorageEvent) => {
 	if (
 		event.key === storageKey &&
 		event.newValue &&
