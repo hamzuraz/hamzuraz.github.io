@@ -1,3 +1,5 @@
+import { showToast } from "@/scripts/toast";
+
 document.addEventListener("click", async (event) => {
 	if (!(event.target instanceof Element)) return;
 
@@ -20,8 +22,11 @@ document.addEventListener("click", async (event) => {
 			}, 2000);
 		}
 	} catch {
-		console.error("Failed to copy");
+		showToast({
+			category: "error",
+			title: "Could not copy contact details",
+			description:
+				"Clipboard access was denied. Please copy the contact information manually.",
+		});
 	}
 });
-
-export {};

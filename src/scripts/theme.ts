@@ -1,4 +1,5 @@
 import { themes } from "@/data/themes";
+import { showToast } from "@/scripts/toast";
 
 const themeIds = themes.map<string>((theme) => theme.id);
 const storageKey = "theme";
@@ -79,9 +80,12 @@ document.addEventListener("click", (event) => {
 	try {
 		localStorage.setItem(storageKey, theme);
 	} catch {
-		// Storage may be unavailable (private mode, quota, blocked).
-		// The theme is already applied for this session.
-		// It just won't persist across reloads.
+		showToast({
+			category: "warning",
+			title: "Theme preference not saved",
+			description:
+				"Your selected appearance is active but will not persist across reloads.",
+		});
 	}
 });
 
