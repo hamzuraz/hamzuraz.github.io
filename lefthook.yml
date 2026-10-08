@@ -17,5 +17,8 @@ commit-msg:
 
 pre-push:
   jobs:
+    - name: Test
+      run: bun --bun run test
+
     - name: Build
       run: bun --bun run build

@@ -1,4 +1,5 @@
 import { themes } from "@/data/themes";
+import { showToast } from "@/scripts/toast";
 
 const themeIds = themes.map<string>((theme) => theme.id);
 const storageKey = "theme";
@@ -19,7 +20,10 @@ function getStoredTheme() {
 	}
 }
 
+let selectedTheme = root.dataset.theme ?? systemTheme();
+
 function applyTheme(theme: string) {
+	selectedTheme = theme;
 	root.dataset.theme = theme;
 
 	const themeSelectors = document.querySelectorAll<HTMLElement>(
@@ -51,7 +55,12 @@ function applyTheme(theme: string) {
 	});
 }
 
-applyTheme(root.dataset.theme ?? systemTheme());
+function syncTheme() {
+	applyTheme(getStoredTheme() ?? selectedTheme);
+}
+
+syncTheme();
+document.addEventListener("astro:after-swap", syncTheme);
 
 document.addEventListener("click", (event) => {
 	if (!(event.target instanceof Element)) return;
@@ -71,9 +80,12 @@ document.addEventListener("click", (event) => {
 	try {
 		localStorage.setItem(storageKey, theme);
 	} catch {
-		// Storage may be unavailable (private mode, quota, blocked).
-		// The theme is already applied for this session.
-		// It just won't persist across reloads.
+		showToast({
+			category: "warning",
+			title: "Theme preference not saved",
+			description:
+				"Your selected appearance is active but will not persist across reloads.",
+		});
 	}
 });
 
@@ -85,7 +97,7 @@ mediaQuery.addEventListener("change", () => {
 });
 
 // CROSS-TAB SYNC
-addEventListener("storage", (event) => {
+addEventListener("storage", (event: StorageEvent) => {
 	if (
 		event.key === storageKey &&
 		event.newValue &&

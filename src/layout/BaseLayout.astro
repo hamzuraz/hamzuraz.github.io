@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css";
+import Toast from "@/components/common/toast/Toast.astro";
 import Head from "@/components/head/Head.astro";
 import { getLocale } from "@/i18n/i18n";
 
@@ -25,6 +26,7 @@ const { title, description, pathWithoutLocale, noindex } = Astro.props;
 		class="min-w-75 max-w-250 mx-auto bg-border border-t divide-y lg:border-x"
 	>
 		<slot />
+		<Toast />
 		<script src="@/scripts/basecoat-css.ts"></script>
 		<script src="@/scripts/contact-copy.ts"></script>
 		<script src="@/scripts/footer-year.ts"></script>

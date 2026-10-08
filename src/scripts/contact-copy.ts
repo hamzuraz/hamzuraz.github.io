@@ -1,28 +1,32 @@
-const copyButtons = document.querySelectorAll<HTMLElement>("[data-copy-value]");
+import { showToast } from "@/scripts/toast";
 
-copyButtons.forEach((button) => {
-	button.addEventListener("click", async () => {
-		const value = button.dataset.copyValue;
-		if (!value) return;
+document.addEventListener("click", async (event) => {
+	if (!(event.target instanceof Element)) return;
 
-		try {
-			await navigator.clipboard.writeText(value);
-			const copyIcon = button.querySelector("[data-copy-icon]");
-			const checkIcon = button.querySelector("[data-check-icon]");
+	const button = event.target.closest<HTMLElement>("[data-copy-value]");
+	const value = button?.dataset.copyValue;
+	if (!button || !value) return;
 
-			if (copyIcon && checkIcon) {
-				copyIcon.classList.add("hidden");
-				checkIcon.classList.remove("hidden");
+	try {
+		await navigator.clipboard.writeText(value);
+		const copyIcon = button.querySelector("[data-copy-icon]");
+		const checkIcon = button.querySelector("[data-check-icon]");
 
-				setTimeout(() => {
-					copyIcon.classList.remove("hidden");
-					checkIcon.classList.add("hidden");
-				}, 2000);
-			}
-		} catch {
-			console.error("Failed to copy");
+		if (copyIcon && checkIcon) {
+			copyIcon.classList.add("hidden");
+			checkIcon.classList.remove("hidden");
+
+			setTimeout(() => {
+				copyIcon.classList.remove("hidden");
+				checkIcon.classList.add("hidden");
+			}, 2000);
 		}
-	});
+	} catch {
+		showToast({
+			category: "error",
+			title: "Could not copy contact details",
+			description:
+				"Clipboard access was denied. Please copy the contact information manually.",
+		});
+	}
 });
-
-export {};

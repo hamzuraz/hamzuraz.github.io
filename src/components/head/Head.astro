@@ -1,6 +1,7 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import { defaultLocale, getLocale, localizedPages } from "@/i18n/i18n";
-import { homePage } from "@/i18n/pages/home/homePage";
+import { homePage } from "@/i18n/pages/home/home-page";
 import HreflangLinks from "./HreflangLinks.astro";
 import PreloadFontLinks from "./PreloadFontLinks.astro";
 import ThemeInitializerScript from "./ThemeInitializerScript.astro";
@@ -42,6 +43,7 @@ const resolvedDescription = description ?? fallbackTranslation.head.description;
 	<meta name="color-scheme" content="light dark">
 	<!-- <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"> -->
 	<!-- <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"> -->
+	<ClientRouter />
 
 	{noindex && <meta name="robots" content="noindex, follow" />}
 	{!noindex && <link rel="canonical" href={canonicalUrl}>}

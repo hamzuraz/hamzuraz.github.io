@@ -13,5 +13,5 @@ html {
 }
 
 [data-tooltip]:not(:hover)::before {
-	display: none;
+	@apply hidden;
 }

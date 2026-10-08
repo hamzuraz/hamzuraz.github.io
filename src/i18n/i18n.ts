@@ -1,5 +1,5 @@
-import { homePage } from "./pages/home/homePage";
-import { projectsPage } from "./pages/projects/projectsPage";
+import { homePage } from "./pages/home/home-page";
+import { projectsPage } from "./pages/projects/projects-page";
 
 export const locales = [
 	{ code: "en", name: "English" },

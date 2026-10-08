@@ -34,6 +34,9 @@ jobs:
       - name: Astro & TypeScript check
         run: bun --bun run astro check
 
+      - name: Run unit tests
+        run: bun --bun run test
+
       - name: Build
         run: bun --bun run build
 

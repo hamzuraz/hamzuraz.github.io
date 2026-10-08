@@ -1,7 +1,7 @@
 {
 	"name": "hamzuraz.github.io",
 	"type": "module",
-	"version": "0.4.0",
+	"version": "1.0.0",
 	"engines": {
 		"node": ">=22.12.0"
 	},
@@ -11,7 +11,9 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"biome:check": "biome check --write --no-errors-on-unmatched"
+		"biome:check": "biome check --write --no-errors-on-unmatched",
+		"test": "bun test tests/unit",
+		"test:coverage": "bun test tests/unit --coverage"
 	},
 	"allowScripts": {
 		"esbuild": true
@@ -19,6 +21,7 @@
 	"dependencies": {
 		"@lucide/astro": "^1.47.0",
 		"@tailwindcss/vite": "^4.3.3",
+		"@types/bun": "^1.4.2",
 		"astro": "^7.3.3",
 		"basecoat-css": "^1.0.2",
 		"tailwindcss": "^4.3.3"
