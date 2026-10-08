@@ -35,7 +35,7 @@ Consult these guides before working on related tasks:
 
 ## General Coding Guidelines
 
-- Keep files, folders, code, comments, and naming organized and easy to understand, especially for someone encountering the project for the first time.
+- Keep files, folders, code, comments, and naming organized and easy to understand.
 - Build the code and the overall codebase so it can scale easily as the project/feature grows.
 - Keep implementations simple and avoid unnecessary complexity.
 - When modifying existing code, make the smallest change necessary to satisfy the requirement.
@@ -69,8 +69,8 @@ Consult these guides before working on related tasks:
   - Modify only the parts necessary to meet the requirement.
   - Avoid unnecessary rewrites or major structural changes.
 - Some Basecoat components include built-in JavaScript behavior. Preserve and use that behavior rather than reimplementing it.
-- Basecoat JavaScript is centralized in `@src/scripts/basecoat.ts`, which imports `basecoat/all`. The `basecoat.ts` script is imported by `@src/layouts/BaseLayout.astro`.
-- Do not import `basecoat/all` or any Basecoat JavaScript directly into individual components unless explicitly necessary.
+- Basecoat script is centralized in `@src/scripts/basecoat-css.ts`. The `basecoat-css.ts` script is imported by `@src/layouts/BaseLayout.astro`.
+- Do not import any Basecoat script directly into individual components unless explicitly necessary.
 - When creating a component from scratch:
   1. Check the Basecoat CSS documentation first for an existing component that matches the requirement.
   2. Use the existing Basecoat component when one exists, and modify it only when necessary to meet the requirement.
@@ -100,44 +100,34 @@ Consult these guides before working on related tasks:
 
 After completing all requested changes for a task, follow this workflow:
 
-1. **Run Biome**
-   - Run `bun --bun run biome:check`
-   - If it fails, fix all reported issues and run it again.
-   - Do not proceed to the next step until it passes.
+1. **Validation Checks (Loop until all pass)**
+   Run checks sequentially. If any step fails, fix the issues and restart from step 1a:
+   a. **Biome**: `bun --bun run biome:check`
+   b. **Astro Check**: `bun --bun run astro check`
 
-2. **Run Astro Check**
-   - After Biome passes, run `bun --bun run astro check`
-   - If it fails, fix all reported issues.
-   - After making any changes to fix the issues, return to **Step 1** and run Biome again.
-   - Repeat this cycle until both Biome and Astro Check pass.
+2. **Ask for Next Action**
+   Once all validation checks pass, ask the user whether they want to:
+   - Accept the result or make further adjustments (restart validation from step 1 if changes are made).
+   - Prepare a commit message without creating a commit.
+   - Prepare a commit message and commit the changes.
+   - Prepare a commit message, commit the changes, and push.
 
-3. **Ask for the next action**
-   - Once all validation checks pass, ask the user whether:
-     - The result is satisfactory.
-     - They want changes or further adjustments.
-     - They want a commit message prepared without creating a commit.
-     - They want the changes committed.
-     - They want the changes committed and pushed.
-   - If the user requests any additional changes, make those changes and return to **Step 1**.
+3. **Commit and Push Rules**
+   - **Strict Authorization Boundary**: Preparing, generating, or suggesting a commit message grants **ZERO authorization** to commit or push. The AI must never execute a commit or push unless the user explicitly requests that action.
+   - **No Implied Actions**: An authorization to commit does not authorize pushing. Each action requires separate, explicit permission.
+   - **Format**: Commit messages must follow the Conventional Commits format, using a scope when applicable (e.g., `feat(auth): ...`). Body and footer are optional.
 
-4. **Commit and Push**
-   - Never create a commit unless the user explicitly asks for it.
-   - Never push changes unless the user explicitly asks for it.
-   - Preparing or suggesting a commit message does not authorize creating the commit.
-   - A request to commit does not automatically authorize pushing.
-   - Commit messages must follow the Conventional Commits format.
-   - Use a scope in the subject line when applicable (e.g. `feat(auth): ...`).
-   - Body and footer are optional — include them only when necessary (e.g. to explain context, breaking changes, or reference an issue).
+4. **When Preparing a Commit Message**
+   Follow these steps sequentially before providing a commit message:
 
-5. **When the user asks for a commit message:**
-   - Before preparing the commit message, inspect only the changes currently staged by the user (`git diff --staged` / equivalent). Ignore any unstaged changes in the working directory.
-   - Review the staged diff for bugs (logic errors, broken references, edge cases, type mismatches, etc.).
-   - **If bugs are found:**
-     - Do not provide a commit message.
-     - Explain clearly what bug(s) were found and where.
-     - Explain the suggested fix/solution for each bug.
-     - Wait for the user's response. If the user asks for a commit message again, repeat the bug-check process from the beginning on the (possibly updated) staged changes.
-     - Only skip the fix and proceed to generate a commit message if the user explicitly states they want to ignore/accept the bug as-is.
-   - **If no bugs are found:**
-     - Tell the user that no bugs were found in the staged changes.
-     - Then provide the commit message based on all the staged changes.
+   a. **Run Unit Tests (`bun test`)**:
+   - If tests fail: **STOP immediately**. Do NOT automatically modify the application core code or test code.
+   - Explain the failure and report whether the fix is required in the **application core code**, the **test code**, or **both**. Wait for user guidance.
+
+   b. **Inspect Staged Diff (`git diff --staged`)**:
+   - If unit tests pass, inspect **only** staged changes (ignore unstaged files) for bugs (logic errors, broken references, edge cases, type mismatches).
+   - **If bugs are found**: Do not provide a commit message. Explain each bug, its location, and suggested fix. Repeat review upon subsequent requests unless the user explicitly accepts/ignores the bug as-is.
+
+   c. **Generate Message / Proceed with Authorized Action**:
+   - If no bugs are found, confirm all tests passed and staged changes are clean, then provide the Conventional Commit message.
+   - Only proceed to run `git commit` (and `git push`) if the user explicitly chose an option that authorized it in Step 2 or via a direct instruction.
